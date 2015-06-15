@@ -1,18 +1,17 @@
 __author__ = 'jie'
 
 from ui_window import MainWindow
-from controller.Menu_items_controller import MenuController
-
+from UI_units.controller.tool_bar_controller import ToolBarController
 
 class UiLoader:
 
     def __init__(self):
         self.mainWindow = MainWindow()
         self.instantiateControllers()
-        self.connectActions()
+   #     self.connectActions()
 
-    def connectActions(self):
-        self.menuItemController.connect(self)
+    #def connectActions(self):
+    #   self.toolBarController.connect()
 
     def instantiateControllers(self):
-        self.menuItemController = MenuController()
+        self.toolBarController = ToolBarController(self)
