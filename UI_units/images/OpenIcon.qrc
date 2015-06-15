@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Live_Mail_Icon">
+    <file>Live Mail.ico</file>
+  </qresource>
+</RCC>

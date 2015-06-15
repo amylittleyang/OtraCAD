@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="redo_icon">
+    <file>Redo-icon.PNG</file>
+  </qresource>
+</RCC>
