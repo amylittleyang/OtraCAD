@@ -3,9 +3,9 @@ __author__ = 'jie'
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtWidgets import QMessageBox
 
-class MenuController:
-    def __init__(self):
-        pass
+class ToolBarController:
+    def __init__(self,loader):
+        self.controlledItem = loader.mainWindow.toolBar
 
     def import_button_item_clicked_Slot(self):
         fileDialog = QFileDialog()
@@ -25,7 +25,5 @@ class MenuController:
             messageBox.setText('import nonsuccessful')
             messageBox.show()
 
-    def connect(self,ui_loader):
-        ui_loader.mainWindow.import_button_item.clicked.connect(ui_loader.menuItemController.import_button_item_clicked_Slot)
-
-
+    def connect(self):
+        self.controlledItem.clicked.connect(self.import_button_item_clicked_Slot())
