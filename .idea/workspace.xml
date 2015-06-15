@@ -1,7 +1,333 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="" />
+    <list default="true" id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Added in caDNAno subdirectory with cadnano2.5 code.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/amy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/source/cadnano2-about.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/cadnano2-about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-app-icon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-app-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-app-icon_shelf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-document-icon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-document-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/cadnano2-icon.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2-icon_doc-legacy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/cadnano2_installer-bkg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-export-staples.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/data-export.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-export.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-new_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-open_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-save_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-svg-old.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/data-svg.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/data-svg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/diagram.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/diagram.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/diagram1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/diagram2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/export-staples.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/graph1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/graph2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/graph3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/graphamy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-endpoint.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-endpoint.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-handle.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-part.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-scaf.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-scaf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-stap.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-stap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-strand.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-strand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-filter-xover.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-filter-xover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/part-honeycomb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-new-honeycomb.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-new-honeycomb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-new-hpx.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-new-hpx.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-new-origami.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-new-origami.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-new-spx.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-new-spx.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-new-square.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-new-square.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/part-renum.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/part-renum.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/part-square.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-addseq.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-addseq.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-addseq_old.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-autobreak.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-autostaple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-edit.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/path-edit_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-edit_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-erase_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/path-force-xover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-force-xover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-frame.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-frame.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-insert.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-insert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-insert_48x48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-loop.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-loop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-loop_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-mod.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-mod.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-modify.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-move.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-nick.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-nick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-paint.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-paint.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/path-paint_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-pen_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-pencil.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-pencil.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-sequence.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-sequence.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/path-skip.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-skip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/source/radnano-app-icon.ai" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/radnano-app-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-delete-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-go-first.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-go-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-move.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/slice-renumber.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.pydevproject" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Nature09_monolith.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Nature09_monolith.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Nature09_squarenut.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Nature09_squarenut.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/tests/Nature09_squarenut.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/Part.dot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/QGraphicsScene-event-dispatching-overview.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Science09_beachball_v1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Science09_beachball_v1.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Science09_prot120_98_v3.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/Science09_prot120_98_v3.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/StrandItem.dot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/Ui_MainWindow.dot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/data/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/decorators/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/strand/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/tools/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/oligo/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strand/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/virtualhelix/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/about.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/abstractdecoratoritem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/abstractpathtool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/abstractstranditem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/activesliceitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/activesliceitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/activesliceitemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/add-bases.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/addseq.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/addseqtool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/oligo/applycolorcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/oligo/applysequencecmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/autobreak.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/autobreakconfig.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/autobreakconfig.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/autobreakconfig_ui.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/breaktool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/pyqtdeploy/cadnano.pdy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/pyqtdeploy/cadnano.pro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.idea/cadnano2.5.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/cadnanoguitestcase.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/cadnanoqt.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/classes_No_Name.dot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/cnproxy.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/color.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/colorpanel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/bin/createstl.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/createstrandcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/createvhelixcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/customqgraphicsview.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/cylinder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/decoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/decoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/dialogicons.qrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/dialogicons_rc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/data/dnasequences.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/document.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/documentcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/documentwindow.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/emptyhelixitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/encoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/encoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/endpointitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/strand/endpointitemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/enum.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/erasetool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/export-staples.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/face.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/fluorophoreitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/gap_vs_skip.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/gap_vs_skip.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/guitestcase.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/halfcylinder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/honeycombpart.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/icons_rc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/decorators/insertion.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strand/insertioncmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/insertionitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/insertiontool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/latticetype.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/legacydecoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/legacydecoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/legacyencoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/legacyencoder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/loop_size_1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/loop_size_1.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/loops_and_skips.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/loops_and_skips.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/bin/main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/mainwindow.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/matrix3.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/matrix4.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/data/mayadefaultmodules.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/mergecmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/modeltests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/mods.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strand/modscmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/modstool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/nanorobot.v2.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/new_icons_rc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/fileio/nnodecode.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/fileio/nnodecode.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/oligo/oligo.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.settings/org.eclipse.core.resources.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/painttool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/part.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/partitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/partitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/partitemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/parttoolbar.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/images/path-addseq.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-addseq.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-mod.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/path-modify.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/pathrootitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/pathselection.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/pathstyles.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/pathtoolbar.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/pathtoolmanager.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/penciltool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/pmodscmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/preferences.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/preferences.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/preferences.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/prexoveritem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/proxyconfigure.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/pyqtdeploy/pyqt5-osx.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/pyqt5_check.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/pyqtdeploy/pyqt_setup_instructions.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/refresholigoscmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/images/remove-bases.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/removeallstrandscmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/oligo/removeoligocmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/removepartcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/removestrandcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/virtualhelix/removevhelixcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/renumbercmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strand/resizecmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/resizepartcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/runall.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/selecttool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/data/sequencemods.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/simple42.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/simple42legacy.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/simple42legacy.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/skip.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/functionaltestinputs/skip.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/skipitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/tools/skiptool.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/slicerootitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/slicestyles.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/tools/slicetoolmanager.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/solid.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/splitcmd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/squarepart.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/decorators/stapleextensionitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/autobreak/staplegraph.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/stlwriter.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strand/strand.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/stranditem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/strand/stranditemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/strandset/strandset.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/styles.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/tests/super_barcode_hex.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/svgbutton.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/plugins/test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_about.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_addseq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_latticetype.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/mainwindow/ui_mainwindow.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_mods.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_preferences.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/ui_warning.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/undocommand.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/undostack.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/unittests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/util.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/nno2stl/vector.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/viewrootcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/virtualhelix/virtualhelix.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/virtualhelixhandleitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/virtualhelixitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/sliceview/virtualhelixitem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/virtualhelixitemcontroller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/ui/dialogs/warning.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/tests/xmlrunner.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/part/xovercmds.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/views/pathview/strand/xoveritem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/caDNAno/cadnano2.5/cadnano/gui/controllers/itemcontrollers/strand/xoveritemcontroller.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="AnimDNA.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +347,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="contributors.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/contributors.txt">
+      <file leaf-file-name="decode.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fileio/decode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06198347">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.28907922">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -77,6 +403,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -85,123 +412,226 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fileio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caDNAno" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cadnano2.5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caDNAno" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cadnano2.5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Workspace" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/contributors.txt</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+  <component name="RunManager" selected="Python.main">
+    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/caDNAno/cadnano2.5/bin" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/caDNAno/cadnano2.5/bin/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AnimDNA" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.main" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -223,26 +653,35 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="29" y="36" width="1400" height="833" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32984293" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -253,7 +692,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="I typed Hi Reem" />
-    <option name="LAST_COMMIT_MESSAGE" value="I typed Hi Reem" />
+    <MESSAGE value="Added in caDNAno subdirectory with cadnano2.5 code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added in caDNAno subdirectory with cadnano2.5 code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -262,8 +702,32 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/contributors.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06198347">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contributors.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06423983">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileio/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileio/decode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28907922">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding />
         </state>
       </provider>
