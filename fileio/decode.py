@@ -1,8 +1,8 @@
-from cadnano.fileio import nnodecode
-
 __author__ = 'jie'
+from cadnano.cadnano2_5.cadnano.document import Document
+from cadnano.cadnano2_5.fileio import nnodecode
 import io
-from cadnano.document import Document
+
 import json
 class Decoder:
     def __init__(self,toolBarController, path):

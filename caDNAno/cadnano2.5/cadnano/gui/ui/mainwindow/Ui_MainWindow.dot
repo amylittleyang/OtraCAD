@@ -1,5 +1,0 @@
-digraph "Ui_MainWindow" {
-charset="utf-8"
-rankdir=BT
-"0" [label="{ui_mainwindow.Ui_MainWindow|actionCopy\lactionPaste\lactionSelect_All\laction_X3D\laction_about\laction_autostaple\laction_cadnano_website\laction_close\laction_cut\laction_feedback\laction_filter_endpoint\laction_filter_handle\laction_filter_part\laction_filter_scaf\laction_filter_stap\laction_filter_strand\laction_filter_xover\laction_modify\laction_new\laction_new_honeycomb_part\laction_new_honeypx_part\laction_new_square_part\laction_open\laction_path_break\laction_path_erase\laction_path_insertion\laction_path_mods\laction_path_pencil\laction_path_select\laction_path_skip\laction_preferences\laction_print\laction_save\laction_save_a_copy\laction_save_as\laction_slice_first\laction_slice_last\lcentralwidget\lgridLayout\lmain_splitter\lmenu_edit\lmenu_file\lmenu_plugins\lmenubar\lpath_graphics_view\lpath_splitter\lselectionToolBar\lslice_graphics_view\lslice_splitter\l|retranslateUi()\lsetupUi()\l}", shape="record"];
-}
