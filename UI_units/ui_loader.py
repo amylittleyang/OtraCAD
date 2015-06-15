@@ -8,10 +8,10 @@ class UiLoader:
     def __init__(self):
         self.mainWindow = MainWindow()
         self.instantiateControllers()
-   #     self.connectActions()
+        self.connectActions()
 
-    #def connectActions(self):
-    #   self.toolBarController.connect()
+    def connectActions(self):
+       self.toolBarController.connect()
 
     def instantiateControllers(self):
         self.toolBarController = ToolBarController(self)
