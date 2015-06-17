@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 __author__ = 'jie'
 # controller that handles all event for all buttons in the menu bar.
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog   # don't understand why underscored but works fine ¬_¬
 from PyQt5.QtWidgets import QMessageBox
 from fileio.decode import Decoder
 from document_controller import DocumentController

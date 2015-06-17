@@ -8,9 +8,9 @@ import json
 class Decoder:
     def __init__(self,toolBarController, path):
         with io.open(path, 'r', encoding='utf-8') as fd:
-            dict = json.load(fd)
+            dictionary = json.load(fd)
             self.mainWindow = toolBarController.mainWindow
-            self.document = self.nnodecode(dict)
+            self.document = self.nnodecode(dictionary)
 
     def nnodecode(self,dict):
         doc = Document()
