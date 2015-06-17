@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appDecorator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileio/decode.py" afterPath="$PROJECT_DIR$/fileio/decode.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/main.py" afterPath="$PROJECT_DIR$/UI_units/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/controller/tool_bar_controller.py" afterPath="$PROJECT_DIR$/UI_units/controller/tool_bar_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/ui_loader.py" afterPath="$PROJECT_DIR$/UI_units/ui_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/ui_window.py" afterPath="$PROJECT_DIR$/UI_units/ui_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/ui_window.ui" afterPath="$PROJECT_DIR$/UI_units/ui_window.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/initialization/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/mainWindow.py" afterPath="$PROJECT_DIR$/initialization/mainWindow.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/ui_loader.py" afterPath="$PROJECT_DIR$/initialization/ui_loader.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/ui_window.py" afterPath="$PROJECT_DIR$/initialization/ui_window.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/ui_window.ui" afterPath="$PROJECT_DIR$/initialization/ui_window.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appDecorator.py" afterPath="$PROJECT_DIR$/appDecorator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AnimDNA.iws" />
@@ -42,52 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="decode.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fileio/decode.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewrootcontroller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/gui/controllers/viewrootcontroller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="document.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/document.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="38" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cadnanoqt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/cadnanoqt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preferences.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="preferences.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/gui/views/preferences.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16949153">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
               <folding />
             </state>
@@ -104,11 +62,55 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ui_window.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/initialization/ui_window.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3502825">
+              <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+              <folding>
+                <element signature="e#19#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano2.5/bin/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cadnanoqt.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/cadnanoqt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="141" column="28" selection-start-line="122" selection-start-column="4" selection-end-line="141" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="appDecorator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appDecorator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -120,17 +122,7 @@
         <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano2.5/bin/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -178,6 +170,7 @@
         <option value="$PROJECT_DIR$/cadnano2.5/cadnano/gui/controllers/documentcontroller.py" />
         <option value="$PROJECT_DIR$/UI_units/ui_window.py" />
         <option value="$PROJECT_DIR$/appDecorator.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -245,7 +238,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fileio" />
+              <option name="myItemId" value="initialization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI_units" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,6 +272,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/initialization" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/cadnano_package" />
     </key>
   </component>
@@ -281,7 +290,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="AnimDNA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UI_units/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -489,7 +498,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434550838959</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated AnimDNA">
+      <created>1434566177504</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1434566177504</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -506,21 +521,21 @@
     <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3495935" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.398374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2642857" sideWeight="0.5081967" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2642857" sideWeight="0.4918033" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.398374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24254742" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2642857" sideWeight="0.5081967" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -541,7 +556,8 @@
     <MESSAGE value="I typed Hi Reem" />
     <MESSAGE value="Added in caDNAno subdirectory with cadnano2.5 code." />
     <MESSAGE value="Deleted cadnano2.5 because Reem." />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted cadnano2.5 because Reem." />
+    <MESSAGE value="Updated AnimDNA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated AnimDNA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -612,7 +628,7 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/UI_units/ui_loader.py</url>
+          <url>file://$PROJECT_DIR$/initialization/ui_loader.py</url>
           <line>8</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
@@ -629,7 +645,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UI_units/main.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
@@ -655,7 +671,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/ui_window.py">
+    <entry file="file://$PROJECT_DIR$/initialization/ui_window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
@@ -665,12 +681,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/ui_loader.py">
+    <entry file="file://$PROJECT_DIR$/initialization/ui_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding>
-            <element signature="e#20#52#0" expanded="true" />
+            <element signature="e#20#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -717,7 +733,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/main.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
@@ -743,12 +759,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/ui_loader.py">
+    <entry file="file://$PROJECT_DIR$/initialization/ui_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#20#52#0" expanded="true" />
+            <element signature="e#20#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,6 +823,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32608697">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="13" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -818,10 +835,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/mainWindow.py">
+    <entry file="file://$PROJECT_DIR$/initialization/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -867,20 +885,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/ui_loader.py">
+    <entry file="file://$PROJECT_DIR$/initialization/ui_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2542373">
           <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding>
-            <element signature="e#20#52#0" expanded="true" />
+            <element signature="e#20#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -898,16 +908,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/ui_window.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-          <folding>
-            <element signature="e#19#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,39 +973,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano2.5/bin/main.py">
+    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/gui/views/preferences.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appDecorator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/cadnanoqt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,11 +989,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/gui/views/preferences.py">
+    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/cadnanoqt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16949153">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="141" column="28" selection-start-line="122" selection-start-column="4" selection-end-line="141" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano2.5/bin/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano2.5/cadnano/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appDecorator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initialization/ui_window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3502825">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+          <folding>
+            <element signature="e#19#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
