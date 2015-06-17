@@ -6,7 +6,8 @@ from UI_units.controller.tool_bar_controller import ToolBarController
 class UiLoader:
 
     def __init__(self):
-        self.mainWindow = MainWindow()
+        window = MainWindow()
+        self.mainWindow = window
         self.instantiateControllers()
         self.connectActions()
 

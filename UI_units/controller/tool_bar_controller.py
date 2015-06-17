@@ -3,11 +3,13 @@ __author__ = 'jie'
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtWidgets import QMessageBox
 from fileio.decode import Decoder
-
+from document_controller import DocumentController
+from cadnano.document import Document
 class ToolBarController:
     def __init__(self,loader):
         self.controlledItem = loader.mainWindow.toolBar
         self.loader = loader
+        self.mainWindow = loader.mainWindow
 
     def action_Open_Triggered_Slot(self):
         file_dialog = QFileDialog()
@@ -26,9 +28,6 @@ class ToolBarController:
             messageBox.exec_()
             path = myFile
             decoder = Decoder(toolBarController = self, path = path) # parse json file, create new document
-            # define globally document
-            global _doc_
-            _doc_ = decoder.document
             messageBox = QMessageBox()
             messageBox.setText('parsed')
             messageBox.exec_()
