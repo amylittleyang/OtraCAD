@@ -1,6 +1,6 @@
 __author__ = 'jie'
 
-from initialization.ui_window import MainWindow
+from UI_units.ui_window import MainWindow
 from UI_units.controller.tool_bar_controller import ToolBarController
 
 class UiLoader:
