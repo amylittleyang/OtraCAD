@@ -41,16 +41,25 @@ class AppDecorator(QObject):
         from cadnano.fileio.nnodecode import decode
         from cadnano.gui.controllers.documentcontroller import DocumentController
         from cadnano.gui.views.pathview import pathstyles as styles
-        doc = Document()
-        self.d = self.newDocument(base_doc=doc)
+        # doc = Document()
+        # self.d = self.newDocument(base_doc=doc)
         styles.setFontMetrics()
 
-    def newDocument(self, base_doc=None):
-        global DocumentController
-        dc = DocumentController(base_doc)
-        dc.newDocument()  # tell it to make a new doucment
-        return dc._document
+    # def newDocument(self, base_doc=None):
+    #     global DocumentController
+    #     dc = DocumentController(base_doc)
+    #     dc.newDocument()  # tell it to make a new doucment
+    #     return dc._document
 
 
     def prefsClicked(self):
         self.prefs.showDialog()
+
+    def exec_(self):
+        if hasattr(self, 'qApp'):
+            from initialization.ui_loader import UiLoader
+            loader = UiLoader()
+            loader.mainWindow.show()
+            self.mainEventLoop = QEventLoop()
+            self.mainEventLoop.exec_()
+            #self.qApp.exec_()

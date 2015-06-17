@@ -35,7 +35,7 @@ class MainWindow(QMainWindow):
     #somewhere in constructor:
     def __init__(self):
         super(MainWindow, self).__init__()
-        uic.loadUi('ui_window.ui', self)
+        uic.loadUi('initialization/ui_window.ui', self)
         self.setupUI()
 
     def setupUI(self):

@@ -4,8 +4,10 @@ from PyQt5.QtWidgets import QApplication
 
 from appDecorator import AppDecorator
 
-if __name__ == "__main__":
-    app = AppDecorator()   # return decorated app object
-    loader = UiLoader()
-    loader.mainWindow.show()
+def main(args):
+    app = AppDecorator(args)
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main(sys.argv)
