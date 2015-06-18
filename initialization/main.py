@@ -1,7 +1,7 @@
 __author__ = 'jie'
 import sys
 
-from initialization
+from initialization import initAppWithGui
 
 def main(args):
     app = initAppWithGui(appArgs=None)
