@@ -4,7 +4,7 @@ import sys
 from initialization import initAppWithGui
 
 def main(args):
-    app = initAppWithGui(appArgs=None)
+    app = initAppWithGui(args)
     sys.exit(app.exec_())
 
 

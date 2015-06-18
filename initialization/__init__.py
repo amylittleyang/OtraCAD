@@ -34,12 +34,12 @@ def app():
 
 def initAppWithGui(appArgs=None):
     global shared_app
-    from cadnano.cadnanoqt import CadnanoQt
+    from initialization.appDecorator import AppDecorator
     # 1. Create the application object
-    shared_app = CadnanoQt(appArgs)
+    shared_app = AppDecorator(appArgs)
     # 2. Use the object to finish importing and creating
     # application wide objects
-    shared_app.finishInit()
+#    shared_app.finishInit()
     return shared_app
 
 
