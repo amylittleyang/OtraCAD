@@ -4,7 +4,6 @@ __author__ = 'jie'
 from PyQt5.QtWidgets import QFileDialog   # don't understand why underscored but works fine ¬_¬
 from PyQt5.QtWidgets import QMessageBox
 from fileio.decode import Decoder
-from document_controller import DocumentController
 from cadnano.document import Document
 class ToolBarController:
     def __init__(self,loader):

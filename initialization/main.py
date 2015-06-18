@@ -1,11 +1,10 @@
 __author__ = 'jie'
 import sys
-from PyQt5.QtWidgets import QApplication
 
-from appDecorator import AppDecorator
+from initialization
 
 def main(args):
-    app = AppDecorator(args)
+    app = initAppWithGui(appArgs=None)
     sys.exit(app.exec_())
 
 

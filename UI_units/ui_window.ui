@@ -74,6 +74,18 @@
    <addaction name="actionOpen"/>
    <addaction name="actionSave"/>
   </widget>
+  <widget class="QToolBar" name="path_toolbar">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSelect"/>
+  </widget>
   <action name="actionRecent_File">
    <property name="text">
     <string>Preference</string>
@@ -139,12 +151,25 @@
     <string>smiley_with_teeth.json</string>
    </property>
   </action>
+  <action name="actionSelect">
+   <property name="icon">
+    <iconset resource="images/SelectIcon.qrc">
+     <normaloff>:/select_icon/Undo-icon.png</normaloff>:/select_icon/Undo-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>select</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+S</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="images/OpenIcon.qrc"/>
   <include location="images/UndoIcon.qrc"/>
   <include location="images/RedoIcon.qrc"/>
   <include location="images/SaveIcon.qrc"/>
+  <include location="images/SelectIcon.qrc"/>
  </resources>
  <connections/>
 </ui>
