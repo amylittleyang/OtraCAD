@@ -1,35 +1,13 @@
 __author__ = 'jie'
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow
+from cadnano.gui.views.pathview.tools.pathtoolmanager import PathToolManager
+from cadnano.gui.views.pathview.pathrootitem import PathRootItem
 from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon
-from cadnano import app
-
-from cadnano.gui.views.pathview.pathtoolbar import PathToolBar
-from cadnano.gui.views.pathview.parttoolbar import PartToolBar
-from cadnano.gui.views.pathview.colorpanel import ColorPanel
-
-from cadnano.gui.views.pathview.tools.pathtoolmanager import PathToolManager
-from cadnano.gui.views.sliceview.slicerootitem import SliceRootItem
-from cadnano.gui.views.pathview.pathrootitem import PathRootItem
-
-from cadnano.gui.views.sliceview.tools.slicetoolmanager import SliceToolManager
-import cadnano.gui.ui.mainwindow.ui_mainwindow as ui_mainwindow
-import cadnano.util
-from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtCore import QFileInfo, QSettings
-from PyQt5.QtCore import QPoint, QSize
-from cadnano.cnproxy import DummySignal
-from PyQt5.QtGui import QPaintEngine, QIcon
-from PyQt5.QtWidgets import QGraphicsObject, QGraphicsScene
-from PyQt5.QtWidgets import QGraphicsView, QMainWindow
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem
-from PyQt5.QtWidgets import QApplication, QWidget, QAction
-from PyQt5.QtWidgets import QSizePolicy, QFrame
+from PyQt5.QtWidgets import QGraphicsScene
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QGraphicsItem
 from cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
-from PyQt5.QtCore import QObject, pyqtSignal
-from cadnano.cnproxy import ProxyObject,ProxySignal
-
 class MainWindow(QMainWindow):
 
     #somewhere in constructor:
@@ -40,11 +18,13 @@ class MainWindow(QMainWindow):
 
     def setupUI(self):
         root = QFileInfo(__file__).absolutePath()
-        #self.newAct = QAction(QIcon(root + '/images/new.png'), "&New", self,
-        #        shortcut=QKeySequence.New, statusTip="Create a new file",
-        #        triggered=self.newFile)
         self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
         self.actionSave.setIcon(QIcon(root+'/images/489751-Floppy_Disk-128.png'))
+        self.actionSelect.setIcon(QIcon(root+'/images/mouse.png'))
+        self.actionRip_off.setIcon(QIcon(root+'/images/rip_off.png'))
+        self.setWindowTitle('AnimDNA')
+        self.actionAnalyze_structure.setIcon(QIcon(root+'/images/transformation.png'))
+        self.setWindowIcon((QIcon(root+'/images/bug.png')))
         from PyQt5 import QtCore, QtGui, QtWidgets
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
         self.path_splitter = QtWidgets.QSplitter(self.main_splitter)
@@ -66,9 +46,10 @@ class MainWindow(QMainWindow):
         self.renderView.setObjectName("renderView")
         self.renderView.setupGL(self)
         self.gridLayout.addWidget(self.main_splitter, 0, 0, 1, 1)
-#        MainWindow.setCentralWidget(self.centralwidget)
         self.action_modify = QtWidgets.QAction(self)
         self.action_modify.setCheckable(True)
+
+
 
     def updateRenderView(self,doc_ctrl):
          doc = doc_ctrl._document

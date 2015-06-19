@@ -18,6 +18,7 @@ class ToolBarController:
         file_dialog.selectNameFilter("Jason files (*.json)")
 # show the dialog
         boo = file_dialog.exec_()
+        myFile = None
         if(boo):
             selectedFiles = file_dialog.selectedFiles()
             myFile = selectedFiles[0]
@@ -31,12 +32,10 @@ class ToolBarController:
             messageBox = QMessageBox()
             messageBox.setText('parsed')
             messageBox.exec_()
-
-
         else:
             messageBox = QMessageBox()
             messageBox.setText('No file selected')
             messageBox.exec_()
 
     def connect(self):
-        self.loader.mainWindow.actionOpen.triggered.connect(self.action_Open_Triggered_Slot)
+        self.mainWindow.actionOpen.triggered.connect(self.action_Open_Triggered_Slot)
