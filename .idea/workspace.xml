@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI_units/controller/pathToolbarController.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI_units/rip_off_dialog.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/UI_units/images/undo-3-xxl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/initialization/mainWindow.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/controller/tool_bar_controller.py" afterPath="$PROJECT_DIR$/UI_units/controller/tool_bar_controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/initialization/ui_loader.py" afterPath="$PROJECT_DIR$/initialization/ui_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/ui_window.py" afterPath="$PROJECT_DIR$/UI_units/ui_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/ui_window.ui" afterPath="$PROJECT_DIR$/UI_units/ui_window.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AnimDNA.iws" />
@@ -510,7 +502,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434660408437</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="scale_to_fit feature added; problem with zoom limit: can't zoom fully out">
+      <created>1434729897039</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1434729897039</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
