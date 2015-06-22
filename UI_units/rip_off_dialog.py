@@ -1,6 +1,6 @@
 __author__ = 'jie'
 from PyQt5 import uic
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QListWidgetItem
 class RipOffDialog(QDialog):
     def __init__(self):
         super(RipOffDialog, self).__init__()
@@ -8,4 +8,10 @@ class RipOffDialog(QDialog):
         self.setupUI()
 
     def setupUI(self):
-        pass
+        self.setWindowTitle('New Rip-off Transformation')
+        listW = self.listWidget
+        item1 = QListWidgetItem('Select Strand')
+        listW.addItem(item1)
+        listW.show()
+
+
