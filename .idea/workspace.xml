@@ -677,7 +677,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435093264638</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Notes:&#10;added hybridized/unhybridized region attribute to Scaffold strand on a virtual helix when decoding json in domainDecode.py; &#10;added domainList as an attribute of scaffold strand that stores all domain in ascending base order;&#10; domains have a naming convention with letter denoting the placement on the virtual helix and a number denoting the number of the virtual helix;&#10;both hybridized and unhybridized region have a domain representation on scaffold under the same naming convention.&#10;&#10;To do:&#10;1. add domainList attribute to staple strands&#10;2. substitute nnodecode with domainDecode in decode.py to test new code&#10;3. figure out how to have hybridized domain reference each other-&gt; for naming and for getting comeplement sequence.&#10;">
+      <created>1435093807701</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1435093807701</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
