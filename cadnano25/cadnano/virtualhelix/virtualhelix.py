@@ -10,7 +10,7 @@ from cadnano.cnproxy import UndoStack, UndoCommand
 from cadnano.strandset import StrandSet
 
 from .removevhelixcmd import RemoveVirtualHelixCommand
-
+from strandrep.linked_list import LinkedList
 class VirtualHelix(ProxyObject):
     """
     VirtualHelix is a container class for two StrandSet objects (one scaffold
@@ -25,8 +25,9 @@ class VirtualHelix(ProxyObject):
         super(VirtualHelix, self).__init__(part)
         self._coord = (row, col) # col, row
         self._part = part
-        self._scaf_strandset = StrandSet(StrandType.SCAFFOLD, self)
-        self._stap_strandset = StrandSet(StrandType.STAPLE, self)
+        self._scaf_LinkedList = LinkedList(StrandType.SCAFFOLD, self)
+        self._stap_LinkedList = LinkedList(StrandType.STAPLE, self)
+        self._overHang_LinkedList = LinkedList(StrandType.OVERHANG,self)
         # If self._part exists, it owns self._number
         # in that only it may modify it through the
         # private interface. The public interface for

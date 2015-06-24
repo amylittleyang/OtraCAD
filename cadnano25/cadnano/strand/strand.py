@@ -88,31 +88,6 @@ class Strand(ProxyObject):
     # end def
 
 
-    def populateDomain(self,scaf_hybridized):
-        domainList = self.domainList
-        for idx in range(len(scaf_hybridized)):
-            list = scaf_hybridized[idx]
-            vhNum = list[0]
-            stapNum = list[4]
-            five_idx = (float(list[1])+float(list[3]))/2
-            three_list = getThreeList(stapNum,scaf_hybridized,idx)
-            three_idx = (float(three_list[1]) + float(three_list[3]))/2
-            domainIdx = len(domainList)
-            if self._is_drawn_5_to_3:
-                domainList.append(Domain(True,vhNum, domainIdx, bs_low = five_idx,bs_high= three_idx))
-            else:
-                domainList.append(Domain(True,vhNum, domainIdx, bs_low = three_idx,bs_high= five_idx))
-
-
-
-
-    def getThreeList(self,stapNum,scaf_hybridized,idx):
-        if idx == len(scaf_hybridized):
-            return scaf_hybridized[idx-1]
-        elif scaf_hybridized[idx][4] != stapNum:
-            return scaf_hybridized[idx-1]
-        else:
-            return getThreeList(stapNum,scaf_hybridized,idx+1)
 
 
 

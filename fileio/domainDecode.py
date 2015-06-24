@@ -102,10 +102,9 @@ def decode(document,obj):
         insertions = helix['loop']
         skips = helix['skip']
         vh = part.virtualHelixAtCoord((row, col))
-        scaf_strand_set = vh.scaffoldStrandSet()
-        stap_strand_set = vh.stapleStrandSet()
-        scaf_hybridized = []
-        scaf_unhybridized = []
+        scaf_strand_LinkedList = vh._scaf_LinkedList
+        stap_strand_LinkedList = vh._scaf_LinkedList
+        scaf_update = []
         # read staple segments and xovers
         for i in range(len(stap)):
                 five_vh, five_idx, three_vh, three_idx = stap[i]
@@ -119,24 +118,23 @@ def decode(document,obj):
                 if is3primeXover(StrandType.STAPLE, vh_num, i, three_vh, three_idx):
                     stap_xo[vh_num].append((i, three_vh, three_idx))
             assert (len(stap_seg[vh_num]) % 2 == 0)
-        # install staple segments
+        # install staple segments -> modify to incorporate scaffold xover?
         for i in range(0, len(stap_seg[vh_num]), 2):
                 low_idx = stap_seg[vh_num][i]
                 high_idx = stap_seg[vh_num][i + 1]
-                stap_strand_set.createStrand(low_idx, high_idx, use_undostack=False)
+                stap_domain = Domain(True,helix,i/2,low_idx,high_idx)
+                stap_strand_LinkedList.append(stap_domain)
         # read scaffold segments and xovers
         for i in range(len(scaf)):
                 five_vh, five_idx, three_vh, three_idx = scaf[i]
                 if five_vh == -1 and three_vh == -1:
                     continue  # null base
                 elif hybridized(stap[i]):
-                    stapNum = getStapleNumber(five_idx,three_idx,stap_seg,vh_num)
-                    list = stap[i].append(stapNum)
-                    scaf_hybridized.append(list)
+                    stapNum = getStapleIdx(five_idx,three_idx,stap_seg,vh_num)
+                    list = scaf[i].append(stapNum)
                 else:
-                    stapNum = getStapleNumber(five_idx,three_idx,stap_seg,vh_num)
-                    list = stap[i].append(stapNum)
-                    scaf_unhybridized.append(list)
+                    list = scaf[i].append(-1)
+                scaf_update.append(list)
 
                 if isSegmentStartOrEnd(StrandType.SCAFFOLD, vh_num, i, five_vh,\
                                        five_idx, three_vh, three_idx):
@@ -147,10 +145,56 @@ def decode(document,obj):
                     scaf_xo[vh_num].append((i, three_vh, three_idx))
 
         # install scaffold segments
+        domain_idx = 0
         for i in range(0, len(scaf_seg[vh_num]), 2):
             low_idx = scaf_seg[vh_num][i]
             high_idx = scaf_seg[vh_num][i + 1]
-            scaf_strand_set.createStrand(low_idx, high_idx, scaf_hybridized,scaf_unhybridized,use_undostack=False)
+            populateLinkedList(low_idx,high_idx,scaf_update,helix,scaf_strand_LinkedList,domain_idx)
+
+
+# calls recursive function
+def populateLinkedList(self,low_idx,high_idx,scaf_update,vh,scaf_linkedList,domain_idx):
+    start = getStartIdx(scaf_update,low_idx)
+    end = getEndIdx(scaf_update,high_idx)
+    assert start, end > 0
+    list = []
+    for i in range(start,end+1):
+        list.append(scaf_update[i])
+    hyb_stap = list[0][4]
+    appendDomain(list, hyb_stap,scaf_linkedList,0,domain_idx)
+
+
+
+# recursion, needs testing
+def appendDomain(list,hyb_stap,scaf_linkedList,idx,domain_idx):
+    if idx == len(list) or len(list) == 0:
+        domain = Domain(hyb_stap!=-1,scaf_linkedList._virtual_helix, domain_idx ,bs_low=list[0],bs_high=list[len(list)-1])
+        scaf_linkedList.append(domain)
+        domain_idx+=1
+        return
+    now_stap = list[idx][4]
+    if now_stap != hyb_stap:
+        domain = Domain(hyb_stap!=-1,scaf_linkedList._virtual_helix, domain_idx ,bs_low=list[0],bs_high=list[idx-1])
+        scaf_linkedList.append(domain)
+        domain+=1
+        appendDomain(list[idx:],now_stap,scaf_linkedList,0,domain_idx)
+    else:
+        appendDomain(list,hyb_stap,scaf_linkedList,idx+1,domain_idx)
+
+
+
+def getStartIdx(scaf_update,idx):
+    for i in range(0,len(scaf_update)):
+        if scaf_update[i][1] == idx:
+            return i
+    return -1
+
+def getEndIdx(scaf_update,idx):
+    for i in range(0,len(scaf_update)):
+        if scaf_update[i][3] == idx:
+            return i
+    return -1
+
 
 
 def hybridized(list):
@@ -158,13 +202,13 @@ def hybridized(list):
         list[i] = list[i]+1
     return any(list)
 
-def getStapleNumber(five_idx,three_idx,stap_seg,vh_num):
+def getStapleIdx(five_idx,three_idx,stap_seg,vh_num):
     mid_idx = (float(five_idx) + float(three_idx))/2
     for i in range(0,len(stap_seg),2):
         l = stap_seg[vh_num][i]
         h = stap_seg[vh_num][i+1]
         if l <= mid_idx and mid_idx <= h:
-            return i
+            return i/2
 
 def isSegmentStartOrEnd(strandtype, vh_num, base_idx, five_vh, five_idx, three_vh, three_idx):
     """Returns True if the base is a breakpoint or crossover."""

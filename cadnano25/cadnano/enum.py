@@ -12,6 +12,7 @@ class EndType:
 class StrandType:
     SCAFFOLD = 0
     STAPLE = 1
+    OVERHANG = 2
 
 
 class Parity:
