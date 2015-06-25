@@ -105,11 +105,33 @@ def decode(document,obj):
         scaf_strand_LinkedList = vh._scaf_LinkedList
         stap_strand_LinkedList = vh._scaf_LinkedList
         scaf_update = []
-        # read staple segments and xovers
+        stap_update = []
+
+        # read scaf segments and xovers
+
+        for i in range(len(scaf)):
+            five_vh, five_idx, three_vh, three_idx = scaf[i]
+            if five_vh == -1 and three_vh == -1:
+                continue  # null base
+            if isSegmentStartOrEnd(StrandType.SCAFFOLD, vh_num, i, five_vh,\
+                                       five_idx, three_vh, three_idx):
+                scaf_seg[vh_num].append(i)
+            if five_vh != vh_num and three_vh != vh_num:  # special case
+                scaf_seg[vh_num].append(i)  # end segment on a double crossover
+            if is3primeXover(StrandType.SCAFFOLD, vh_num, i, three_vh, three_idx):
+                scaf_xo[vh_num].append((i, three_vh, three_idx))
+            # read staple segments and xovers; update stap .json
         for i in range(len(stap)):
                 five_vh, five_idx, three_vh, three_idx = stap[i]
                 if five_vh == -1 and three_vh == -1:
+                    stap[i].append(-1)
+                    stap_update.append(stap[i])
                     continue  # null base
+                elif hybridized(scaf[i]):
+                    scafNum = getStrandIdx(i,scaf_seg,vh_num)
+                    stap[i].append(scafNum)
+                stap_update.append(stap[i])
+
                 if isSegmentStartOrEnd(StrandType.STAPLE, vh_num, i, five_vh,\
                                        five_idx, three_vh, three_idx):
                     stap_seg[vh_num].append(i)
@@ -117,80 +139,71 @@ def decode(document,obj):
                     stap_seg[vh_num].append(i)  # end segment on a double crossover
                 if is3primeXover(StrandType.STAPLE, vh_num, i, three_vh, three_idx):
                     stap_xo[vh_num].append((i, three_vh, three_idx))
-            assert (len(stap_seg[vh_num]) % 2 == 0)
-        # install staple segments -> modify to incorporate scaffold xover?
-       for i in range(0, len(stap_seg[vh_num]), 2):
-                low_idx = stap_seg[vh_num][i]
-                high_idx = stap_seg[vh_num][i + 1]
-                ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
-                stap_domain = Domain(helix,i/2,bs_low=stap[low_idx],bs_high=stap[high_idx])
-                stap_strand_LinkedList.append(stap_domain)
 
-    for i in range(len(scaf)):
+        assert (len(stap_seg[vh_num]) % 2 == 0)
+        # update scaf .json
+        for i in range(len(scaf)):
                 five_vh, five_idx, three_vh, three_idx = scaf[i]
                 if five_vh == -1 and three_vh == -1:
                     scaf[i].append(-1)
                     scaf_update.append(scaf[i])
                     continue  # null base
                 elif hybridized(stap[i]):
-                    stapNum = getStapleIdx(i,stap_seg,vh_num)
+                    stapNum = getStrandIdx(i,stap_seg,vh_num)
                     scaf[i].append(stapNum)
-                else:
-                    scaf[i].append(-1)
+                    scaf_update.append(scaf[i])
+            # install scaffold segments
+        for i in range(0, len(scaf_seg[vh_num]), 2):
+            low_idx = scaf_seg[vh_num][i]
+            high_idx = scaf_seg[vh_num][i + 1]
+            installLinkedList(low_idx,high_idx,scaf_update,scaf_strand_LinkedList)
 
-                scaf_update.append(scaf[i])
-                #print 'list appended'
 
-                if isSegmentStartOrEnd(StrandType.SCAFFOLD, vh_num, i, five_vh,\
-                                       five_idx, three_vh, three_idx):
-                    scaf_seg[vh_num].append(i)
-                if five_vh != vh_num and three_vh != vh_num:  # special case
-                    scaf_seg[vh_num].append(i)  # end segment on a double crossover
-                if is3primeXover(StrandType.SCAFFOLD, vh_num, i, three_vh, three_idx):
-                    scaf_xo[vh_num].append((i, three_vh, three_idx))
-        # install scaffold segments
-      for i in range(0, len(scaf_seg[vh_num]), 2):
-        low_idx = scaf_seg[vh_num][i]
-        high_idx = scaf_seg[vh_num][i + 1]
-        populateLinkedList(low_idx,high_idx,scaf_update,helix,scaf_strand_LinkedList)
+        # install staple segments -> modify to incorporate scaffold xover?
+        for i in range(0, len(stap_seg[vh_num]), 2):
+            low_idx = stap_seg[vh_num][i]
+            high_idx = stap_seg[vh_num][i + 1]
+            installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
+            ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
 
 
 # calls recursive function
-def populateLinkedList(low_idx,high_idx,scaf_update,vh,scaf_linkedList):
+def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):
     list = []
-    print 'low idx = '+ str(low_idx) + ', high idx = '+ str(high_idx)
+#    print 'low idx = '+ str(low_idx) + ', high idx = '+ str(high_idx)
     for i in range(low_idx,high_idx+1):
-        print 'i = '+ str(i)
-        list.append(scaf_update[i])
-    hyb_stap = list[0][4]
-    appendDomain(list, hyb_stap,scaf_linkedList,0)
+#        print 'i = '+ str(i)
+        list.append(strand_update[i])
+    hyb_strand = list[0][4]
+    appendDomain(list, hyb_strand,strand_linkedList,0)
 
-
-
-# recursion, needs testing
-def appendDomain(list,hyb_stap,scaf_linkedList,idx):
+# recursion, tested
+def appendDomain(list,hyb_stap,strand_linkedList,idx):
     if idx == len(list) or len(list) == 0:
-        domain = Domain(scaf_linkedList._virtual_helix, scaf_linkedList._length ,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
-        scaf_linkedList.append(domain)
+        domain = Domain(strand_linkedList._virtual_helix, strand_linkedList._length ,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
+        strand_linkedList.append(domain)
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-        domain = Domain(scaf_linkedList._virtual_helix, scaf_linkedList._length ,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
-        scaf_linkedList.append(domain)
-        appendDomain(list[idx:],now_stap,scaf_linkedList,0)
+        print(strand_linkedList._length)
+        domain = Domain(strand_linkedList._virtual_helix, strand_linkedList._length ,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
+        strand_linkedList.append(domain)
+        appendDomain(list[idx:],now_stap,strand_linkedList,0)
     else:
-        appendDomain(list,hyb_stap,scaf_linkedList,idx+1)
+        appendDomain(list,hyb_stap,strand_linkedList,idx+1)
+
 
 def hybridized(list):
+    list_copy = []
     for i in range(len(list)):
-        list[i] = list[i]+1
+        list_copy.append(list[i]+1)
     return any(list)
 
 
-def getStapleIdx(idx,stap_seg,vh_num):
-    for i in range(0,len(stap_seg[vh_num]),2):
-        l = stap_seg[vh_num][i]
-        h = stap_seg[vh_num][i+1]
+def getStrandIdx(idx,strand_seg,vh_num):
+    for i in range(0,len(strand_seg[vh_num]),2):
+        l = strand_seg[vh_num][i]
+        h = strand_seg[vh_num][i+1]
         if l <= idx and idx <= h:
             return i/2
 
@@ -233,3 +246,106 @@ def is3primeXover(strandtype, vh_num, base_idx, three_vh, three_idx):
         return True
     if (vh_num % 2 == 1 and three_vh == vh_num and three_idx != base_idx-offset):
         return True
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    from strandrep.domain import Domain
+    from strandrep.linked_list import LinkedList
+    from cadnano.enum import StrandType
+    from collections import defaultdict
+
+    vh_num = 2
+    helix = 2
+    stap_seg = defaultdict(list)
+    scaf_seg = defaultdict(list)
+    stap_xo = defaultdict(list)
+    scaf_xo = defaultdict(list)
+    scaf_update = []
+    stap_update = []
+    stap_strand_LinkedList = LinkedList(StrandType.STAPLE,2)
+    scaf_strand_LinkedList = LinkedList(StrandType.SCAFFOLD,2)
+
+    scaf = [[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[3,83,2,84],[2,83,2,85],[2,84,2,86],[2,85,2,87],[2,86,2,88],[2,87,2,89],[2,88,2,90],[2,89,2,91],[2,90,2,92],[2,91,2,93],[2,92,2,94],[2,93,2,95],[2,94,2,96],[2,95,2,97],[2,96,2,98],[2,97,2,99],[2,98,2,100],[2,99,2,101],[2,100,2,102],[2,101,2,103],[2,102,2,104],[2,103,2,105],[2,104,2,106],[2,105,2,107],[2,106,2,108],[2,107,2,109],[2,108,2,110],[2,109,2,111],[2,110,2,112],[2,111,2,113],[2,112,2,114],[2,113,2,115],[2,114,2,116],[2,115,2,117],[2,116,2,118],[2,117,2,119],[2,118,2,120],[2,119,2,121],[2,120,2,122],[2,121,2,123],[2,122,2,124],[2,123,2,125],[2,124,2,126],[2,125,2,127],[2,126,2,128],[2,127,2,129],[2,128,2,130],[2,129,1,130],[1,131,2,132],[2,131,2,133],[2,132,2,134],[2,133,2,135],[2,134,2,136],[2,135,2,137],[2,136,2,138],[2,137,2,139],[2,138,2,140],[2,139,2,141],[2,140,2,142],[2,141,2,143],[2,142,2,144],[2,143,2,145],[2,144,2,146],[2,145,2,147],[2,146,2,148],[2,147,2,149],[2,148,2,150],[2,149,2,151],[2,150,2,152],[2,151,2,153],[2,152,2,154],[2,153,2,155],[2,154,2,156],[2,155,2,157],[2,156,2,158],[2,157,2,159],[2,158,2,160],[2,159,2,161],[2,160,2,162],[2,161,2,163],[2,162,2,164],[2,163,2,165],[2,164,2,166],[2,165,2,167],[2,166,2,168],[2,167,2,169],[2,168,2,170],[2,169,2,171],[2,170,2,172],[2,171,2,173],[2,172,2,174],[2,173,2,175],[2,174,2,176],[2,175,2,177],[2,176,2,178],[2,177,3,178],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]]
+    stap = [[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[2,84,-1,-1],[2,85,2,83],[2,86,2,84],[2,87,2,85],[2,88,2,86],[2,89,2,87],[2,90,2,88],[2,91,2,89],[2,92,2,90],[2,93,2,91],[2,94,2,92],[2,95,2,93],[2,96,2,94],[2,97,2,95],[2,98,2,96],[2,99,2,97],[2,100,2,98],[2,101,2,99],[2,102,2,100],[2,103,2,101],[2,104,2,102],[2,105,2,103],[2,106,2,104],[2,107,2,105],[2,108,2,106],[2,109,2,107],[2,110,2,108],[2,111,2,109],[2,112,2,110],[2,113,2,111],[2,114,2,112],[2,115,2,113],[2,116,2,114],[-1,-1,2,115],[2,118,-1,-1],[2,119,2,117],[3,119,2,118],[2,121,3,120],[2,122,2,120],[2,123,2,121],[2,124,2,122],[2,125,2,123],[2,126,2,124],[2,127,2,125],[2,128,2,126],[2,129,2,127],[2,130,2,128],[2,131,2,129],[2,132,2,130],[2,133,2,131],[2,134,2,132],[2,135,2,133],[2,136,2,134],[2,137,2,135],[2,138,2,136],[2,139,2,137],[2,140,2,138],[2,141,2,139],[2,142,2,140],[2,143,2,141],[2,144,2,142],[2,145,2,143],[2,146,2,144],[2,147,2,145],[2,148,2,146],[-1,-1,2,147],[2,150,-1,-1],[2,151,2,149],[3,151,2,150],[2,153,3,152],[2,154,2,152],[2,155,2,153],[2,156,2,154],[2,157,2,155],[2,158,2,156],[2,159,2,157],[2,160,2,158],[2,161,2,159],[2,162,2,160],[2,163,2,161],[2,164,2,162],[2,165,2,163],[2,166,2,164],[2,167,2,165],[2,168,2,166],[2,169,2,167],[2,170,2,168],[2,171,2,169],[2,172,2,170],[2,173,2,171],[2,174,2,172],[2,175,2,173],[2,176,2,174],[2,177,2,175],[2,178,2,176],[-1,-1,2,177],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1]]
+
+    for i in range(len(scaf)):
+        five_vh, five_idx, three_vh, three_idx = scaf[i]
+        if five_vh == -1 and three_vh == -1:
+            continue  # null base
+        if isSegmentStartOrEnd(StrandType.SCAFFOLD, vh_num, i, five_vh,\
+                                       five_idx, three_vh, three_idx):
+            scaf_seg[vh_num].append(i)
+        if five_vh != vh_num and three_vh != vh_num:  # special case
+            scaf_seg[vh_num].append(i)  # end segment on a double crossover
+        if is3primeXover(StrandType.SCAFFOLD, vh_num, i, three_vh, three_idx):
+            scaf_xo[vh_num].append((i, three_vh, three_idx))
+        # read staple segments and xovers; update stap .json
+    for i in range(len(stap)):
+                five_vh, five_idx, three_vh, three_idx = stap[i]
+                if five_vh == -1 and three_vh == -1:
+                    stap[i].append(-1)
+                    stap_update.append(stap[i])
+                    continue  # null base
+                elif hybridized(scaf[i]):
+                    scafNum = getStrandIdx(i,scaf_seg,vh_num)
+                    stap[i].append(scafNum)
+                stap_update.append(stap[i])
+
+                if isSegmentStartOrEnd(StrandType.STAPLE, vh_num, i, five_vh,\
+                                       five_idx, three_vh, three_idx):
+                    stap_seg[vh_num].append(i)
+                if five_vh != vh_num and three_vh != vh_num:  # special case
+                    stap_seg[vh_num].append(i)  # end segment on a double crossover
+                if is3primeXover(StrandType.STAPLE, vh_num, i, three_vh, three_idx):
+                    stap_xo[vh_num].append((i, three_vh, three_idx))
+
+    assert (len(stap_seg[vh_num]) % 2 == 0)
+        # update scaf .json
+    for i in range(len(scaf)):
+                five_vh, five_idx, three_vh, three_idx = scaf[i]
+                if five_vh == -1 and three_vh == -1:
+                    scaf[i].append(-1)
+                    scaf_update.append(scaf[i])
+                    continue  # null base
+                elif hybridized(stap[i]):
+                    stapNum = getStrandIdx(i,stap_seg,vh_num)
+                    scaf[i].append(stapNum)
+                    scaf_update.append(scaf[i])
+            # install scaffold segments
+    for i in range(0, len(scaf_seg[vh_num]), 2):
+            low_idx = scaf_seg[vh_num][i]
+            high_idx = scaf_seg[vh_num][i + 1]
+            installLinkedList(low_idx,high_idx,scaf_update,scaf_strand_LinkedList)
+
+
+        # install staple segments -> modify to incorporate scaffold xover?
+    for i in range(0, len(stap_seg[vh_num]), 2):
+            low_idx = stap_seg[vh_num][i]
+            high_idx = stap_seg[vh_num][i + 1]
+            installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
+            ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
+
+    print('stap domains')
+    curr = stap_strand_LinkedList._head
+    while True:
+        print 'domain idx %d low base %d, high base %d, hybridized to scaffold domain %d, on helix number %d' % (curr._idx,curr._bs_low[1],curr._bs_high[3],curr._hyb_strand,curr._vhNum)
+        print curr._bs_high
+        curr = curr._next
+        if curr == None:
+            break
+
+    print 'scaf domains'
+    curr = scaf_strand_LinkedList._head
+    while True:
+        print 'domain idx %d low base %d, high base %d, hybridized to staple %d, on helix number %d' % (curr._idx,curr._bs_low[1],curr._bs_high[3],curr._hyb_strand,curr._vhNum)
+        curr = curr._next
+        if curr == None:
+            break

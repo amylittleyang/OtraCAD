@@ -12,7 +12,6 @@ class LinkedList(ProxyObject):
         self._head = None
         self._next = None
         self._length = 0
-
     def append(self,domain):
         # append domian to the end of the list
         if self._head is None:
@@ -32,9 +31,17 @@ class LinkedList(ProxyObject):
         # retrieve domain by domain_name
         pass
 
+    def domainAtIndex(self,index):
+        # return domain at the index (starting at 0)
+        pass
+
     def insertAt(self,domain,idx):
         # insert domain at specified index. Index numbered 5' to 3'
         self._length += 1
+        pass
+
+    def __reversed__(self):
+        # reverse linked list to go 5' to 3' if necessary. hint: queue/stack
         pass
 
     def __len__(self):
