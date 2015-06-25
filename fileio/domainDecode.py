@@ -166,6 +166,24 @@ def decode(document,obj):
             installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
             ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
 
+        # get complement domain references for stap_linkedlist
+        curr = stap_strand_LinkedList._head
+        while True:
+            index = curr._hyb_strand_idx
+            curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
+            curr = curr._next
+            if curr == None:
+                break
+
+        # get complement domain references for scaf_linkedlist
+        curr = scaf_strand_LinkedList._head
+        while True:
+            index = curr._hyb_strand_idx
+            curr._hyb_domain = scaf_strand_LinkedList._virtual_helix._stap_LinkedList.domainAtIndex(index)
+            curr = curr._next
+            if curr == None:
+                break
+
 
 # calls recursive function
 def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):

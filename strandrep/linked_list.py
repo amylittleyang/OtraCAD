@@ -33,7 +33,17 @@ class LinkedList(ProxyObject):
 
     def domainAtIndex(self,index):
         # return domain at the index (starting at 0)
-        pass
+        assert(index>=0 and index < self._length)
+        curr = self._head
+        while True:
+            if curr._index == index:
+                return curr
+            else:
+                curr = curr._next
+                if curr == None:
+                    break
+
+
 
     def insertAt(self,domain,idx):
         # insert domain at specified index. Index numbered 5' to 3'
