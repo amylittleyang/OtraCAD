@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AnimDNA.iml" filepath="$PROJECT_DIR$/.idea/AnimDNA.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../cadnano_clone/cadnano/.idea/cadnano2.5.iml" filepath="$PROJECT_DIR$/../cadnano_clone/cadnano/.idea/cadnano2.5.iml" />
     </modules>
   </component>
 </project>
