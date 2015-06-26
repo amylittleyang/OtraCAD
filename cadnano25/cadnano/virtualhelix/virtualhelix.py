@@ -50,11 +50,11 @@ class VirtualHelix(ProxyObject):
     ### ACCESSORS ###
     def scaf(self, idx):
         """ Returns the strand at idx in self's scaffold, if any """
-        return self._scaf_strandset.getStrand(idx)
+        return self._scaf_LinkedList.domainAtIndex(idx)
 
     def stap(self, idx):
         """ Returns the strand at idx in self's scaffold, if any """
-        return self._stap_strandset.getStrand(idx)
+        return self._stap_LinkedList.domainAtIndex(idx)
 
     def coord(self):
         return self._coord
@@ -88,11 +88,11 @@ class VirtualHelix(ProxyObject):
     # end def
 
     def scaffoldStrandSet(self):
-        return self._scaf_strandset
+        return self._scaf_LinkedList
     # end def
 
     def stapleStrandSet(self):
-        return self._stap_strandset
+        return self._stap_LinkedList
     # end def
 
     def undoStack(self):
@@ -111,43 +111,46 @@ class VirtualHelix(ProxyObject):
         """
         if idx == 0:
             if self.isEvenParity():
-                return self._scaf_strandset
+                return self._scaf_LinkedList
             else:
-                return self._stap_strandset
+                return self._stap_LinkedList
         else:
             if self.isEvenParity():
-                return self._stap_strandset
+                return self._stap_LinkedList
             else:
-                return self._scaf_strandset
+                return self._scaf_LinkedList
     # end def
 
     def getStrandSetByType(self, strand_type):
         if strand_type == StrandType.SCAFFOLD:
-            return self._scaf_strandset
+            return self._scaf_LinkedList
+        elif strand_type == StrandType.STAPLE:
+            return self._stap_LinkedList
         else:
-            return self._stap_strandset
+            return self._overHang_LinkedList
     # end def
 
     def getStrandSets(self):
         """Return a tuple of the scaffold and staple StrandSets."""
-        return self._scaf_strandset, self._stap_strandset
+        return self._scaf_LinkedList, self._stap_LinkedList, self._overHang_LinkedList
     # end def
 
     def hasStrandAtIdx(self, idx):
         """Return a tuple for (Scaffold, Staple). True if
            a strand is present at idx, False otherwise."""
-        return (self._scaf_strandset.hasStrandAt(idx, idx),\
-                self._stap_strandset.hasStrandAt(idx, idx))
+        return (self._scaf_LinkedList.hasStrandAt(idx, idx),\
+                self._stap_LinkedList.hasStrandAt(idx, idx),\
+                self._overHang_LinkedList.hasStrandAt(idx,idx))
     # end def
 
     def indexOfRightmostNonemptyBase(self):
         """Returns the rightmost nonempty base in either scaf of stap."""
-        return max(self._scaf_strandset.indexOfRightmostNonemptyBase(),\
-                   self._stap_strandset.indexOfRightmostNonemptyBase())
+        return max(self._scaf_LinkedList.indexOfRightmostNonemptyBase(),\
+                   self._stap_LinkedList.indexOfRightmostNonemptyBase())
     # end def
 
     def isDrawn5to3(self, strandset):
-        is_scaf = strandset == self._scaf_strandset
+        is_scaf = strandset == self._scaf_LinkedList
         is_even = self.isEvenParity()
         return is_even == is_scaf
     # end def
@@ -177,8 +180,8 @@ class VirtualHelix(ProxyObject):
         """
         if use_undostack:
             self.undoStack().beginMacro("Delete VirtualHelix")
-        self._scaf_strandset.remove(use_undostack)
-        self._stap_strandset.remove(use_undostack)
+        self._scaf_LinkedList.remove(use_undostack)
+        self._stap_LinkedList.remove(use_undostack)
         c = RemoveVirtualHelixCommand(self.part(), self)
         if use_undostack:
             self.undoStack().push(c)
@@ -207,9 +210,11 @@ class VirtualHelix(ProxyObject):
     def getLegacyStrandSetArray(self, strand_type):
         """Called by legacyencoder."""
         if strand_type == StrandType.SCAFFOLD:
-            return self._scaf_strandset.getLegacyArray()
+            return self._scaf_LinkedList.getLegacyArray()
+        elif strand_type == StrandType.STAPLE:
+            return self._stap_LinkedList.getLegacyArray()
         else:
-            return self._stap_strandset.getLegacyArray()
+            return self._overHang_LinkedList.getLegacyArray()
 
     def shallowCopy(self):
         pass

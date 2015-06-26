@@ -1,6 +1,6 @@
 __author__ = 'jie'
 from cadnano.document import Document
-from cadnano.fileio import nnodecode
+from fileio import domain_decode
 import io
 from cadnano.gui.controllers.documentcontroller import DocumentController
 
@@ -10,12 +10,12 @@ class Decoder:
         with io.open(path, 'r', encoding='utf-8') as fd:
             dictionary = json.load(fd)
             self.mainWindow = toolBarController.mainWindow
-            self.document = self.nnodecode(dictionary)
+            self.document = self.domainDecode(dictionary)
 
-    def nnodecode(self,dict):
+    def domainDecode(self,dict):
         doc = Document()
         doc.mainWindow = self.mainWindow
         doc.dc = DocumentController(doc)
-        document = nnodecode.decode(doc,dict)
+        document = domain_decode.decode(doc,dict)
         return document
 
