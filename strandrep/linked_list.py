@@ -1,12 +1,9 @@
 __author__ = 'jie'
-from cadnano.cnproxy import ProxyObject, ProxySignal
-from cadnano.enum import StrandType
-
 from cadnano.enum import StrandType
 import cadnano.preferences as prefs
 
 import cadnano.util as util
-
+from cadnano.strandset.createstrandcmd import CreateStrandCommand
 from cadnano.cnproxy import UndoStack, UndoCommand
 from cadnano.cnproxy import ProxyObject, ProxySignal
 
@@ -16,7 +13,8 @@ from cadnano.oligo import Oligo
 
 class LinkedList(ProxyObject):
     def __init__(self, strand_type,vh):
-        super(LinkedList, self).__init__(self)
+        self._doc = vh.document()
+        super(LinkedList, self).__init__(vh)
         self._virtual_helix = vh
         self._undoStack = None
         self._last_strandset_idx = None
@@ -24,14 +22,16 @@ class LinkedList(ProxyObject):
         self._undoStack = None
         self._last_strandset_idx = None
 
-
         self._head = None
         self._length = 0
+        self._strand_list = []
 
 
         ### questionable methods
     def __iter__(self):
         """Iterate over each strand in the strands list."""
+        self._strand_list = self.getStrandList()
+#        print 'strand list is ' + str(self._strand_list)
         return self._strand_list.__iter__()
     # end def
     def generatorStrand(self):
@@ -195,7 +195,9 @@ class LinkedList(ProxyObject):
 
     def domainAtIndex(self,index):
         # return domain at the index (starting at 0)
-        assert(index>=0 and index < self._length)
+        if index < 0:
+            return None
+        assert index < self._length
         curr = self._head
         while True:
             if curr._index == index:
@@ -216,9 +218,16 @@ class LinkedList(ProxyObject):
 
     def __len__(self):
         return self._length
-
-
-
+    def getStrandList(self):
+        strandList = []
+        curr = self._head
+        if curr is not None:
+            while True:
+                strandList.append(curr)
+                curr = curr._next
+                if curr == None:
+                    break
+        return strandList
 
     ### PUBLIC METHODS FOR EDITING THE MODEL ###
     def removeStrand(self, strand, strandset_idx=None, use_undostack=True, solo=True):
@@ -670,3 +679,24 @@ class LinkedList(ProxyObject):
     def deepCopy(self, virtual_helix):
         """docstring for deepCopy"""
         pass
+
+    def createStrand(self, base_idx_low, base_idx_high, use_undostack=True):
+        """
+        Assumes a strand is being created at a valid set of indices.
+        """
+        boundsLow, boundsHigh = \
+                            self.getBoundsOfEmptyRegionContaining(base_idx_low)
+        can_insert, strandset_idx = \
+                                self.getIndexToInsert(base_idx_low, base_idx_high)
+        if can_insert:
+            c = CreateStrandCommand(self,
+                                        base_idx_low, base_idx_high, strandset_idx)
+            row, col = self._virtual_helix.coord()
+            # d = "(%d,%d).%d + [%d,%d]" % \
+            #             (row, col, self._strand_type, base_idx_low, base_idx_high)
+            d = "(%d,%d).%d^%d" % (row, col, self._strand_type, strandset_idx)
+            util.execCommandList(self, [c], desc=d, use_undostack=use_undostack)
+            return c
+        else:
+            return -1
+    # end def

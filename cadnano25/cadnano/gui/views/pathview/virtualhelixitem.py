@@ -252,18 +252,19 @@ class VirtualHelixItem(QGraphicsPathItem):
     # end def
 
     def mouseMoveEvent(self, event):
+        pass
         """
         Parses a mouseMoveEvent to extract strand_set and base index,
         forwarding them to approproate tool method as necessary.
         """
-        tool_method_name = self._getActiveTool().methodPrefix() + "MouseMove"
-        if hasattr(self, tool_method_name):
-            strand_set, idx = self.baseAtPoint(event.pos())
-            if self._last_strand_set != strand_set or self._last_idx != idx:
-                self._last_strand_set, self._last_idx = strand_set, idx
-                getattr(self, tool_method_name)(strand_set, idx)
-        else:
-            event.setAccepted(False)
+#        tool_method_name = self._getActiveTool().methodPrefix() + "MouseMove"
+#        if hasattr(self, tool_method_name):
+#            strand_set, idx = self.baseAtPoint(event.pos())
+#            if self._last_strand_set != strand_set or self._last_idx != idx:
+#                self._last_strand_set, self._last_idx = strand_set, idx
+#                getattr(self, tool_method_name)(strand_set, idx)
+#        else:
+#            event.setAccepted(False)
     # end def
 
     def customMouseRelease(self, event):

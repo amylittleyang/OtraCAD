@@ -242,6 +242,7 @@ class EndpointItem(QGraphicsPathItem):
         Parses a mouseMoveEvent, calling the approproate tool method as
         necessary. Updates _moveIdx if it changed.
         """
+        pass
         tool_method_name = self._getActiveTool().methodPrefix() + "MouseMove"
         if hasattr(self, tool_method_name):  # if the tool method exists
             idx = int(floor((self.x() + event.pos().x()) / _BASE_WIDTH))

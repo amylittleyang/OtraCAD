@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="cadnano2.5" />
+    <orderEntry type="module" module-name="cadnano_copy" />
+    <orderEntry type="module" module-name="cadnano" />
   </component>
 </module>

@@ -95,6 +95,7 @@ def decode(document,obj):
 
     for helix in obj['vstrands']:
         vh_num = helix['num']
+#        print 'helix =' + str(vh_num)
         row = helix['row']
         col = helix['col']
         scaf = helix['scaf']
@@ -103,7 +104,7 @@ def decode(document,obj):
         skips = helix['skip']
         vh = part.virtualHelixAtCoord((row, col))
         scaf_strand_LinkedList = vh._scaf_LinkedList
-        stap_strand_LinkedList = vh._scaf_LinkedList
+        stap_strand_LinkedList = vh._stap_LinkedList
         scaf_update = []
         stap_update = []
 
@@ -168,7 +169,8 @@ def decode(document,obj):
 
         # get complement domain references for stap_linkedlist
         curr = stap_strand_LinkedList._head
-        while True:
+        if curr is not None:
+         while True:
             index = curr._hyb_strand_idx
             curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
             curr = curr._next
@@ -177,8 +179,11 @@ def decode(document,obj):
 
         # get complement domain references for scaf_linkedlist
         curr = scaf_strand_LinkedList._head
-        while True:
+        if curr is not None:
+         while True:
             index = curr._hyb_strand_idx
+#            print 'index = ' + str(index)
+#            print 'length = ' + str(scaf_strand_LinkedList._virtual_helix._stap_LinkedList._length)
             curr._hyb_domain = scaf_strand_LinkedList._virtual_helix._stap_LinkedList.domainAtIndex(index)
             curr = curr._next
             if curr == None:
@@ -303,22 +308,23 @@ def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):
 #        print 'i = '+ str(i)
         list.append(strand_update[i])
     hyb_strand = list[0][4]
-    appendDomain(list, hyb_strand,strand_linkedList,0)
+    appendDomain(list, hyb_strand,strand_linkedList,0,low_idx)
 
 # recursion, tested
-def appendDomain(list,hyb_stap,strand_linkedList,idx):
+def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
     if idx == len(list) or len(list) == 0:
-        domain = Domain(strand_linkedList._virtual_helix, strand_linkedList._length ,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-        print(strand_linkedList._length)
-        domain = Domain(strand_linkedList._virtual_helix, strand_linkedList._length ,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
+#        print(strand_linkedList._length)
+        domain = Domain(strand_linkedList,low,low+idx,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
-        appendDomain(list[idx:],now_stap,strand_linkedList,0)
+        low = low + idx
+        appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
     else:
-        appendDomain(list,hyb_stap,strand_linkedList,idx+1)
+        appendDomain(list,hyb_stap,strand_linkedList,idx+1,low)
 
 
 def hybridized(list):

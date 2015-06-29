@@ -31,7 +31,11 @@ class RefreshOligosCommand(UndoCommand):
         visited = {}
         doc = self._part.document()
         for vh in self._part.getVirtualHelices():
+           # print 'vh_num = ' + str(vh._number)
             stap_ss = vh.stapleStrandSet()
+           # print stap_ss
+            list = stap_ss.getStrandList()
+           # print list
             for strand in stap_ss:
                 visited[strand] = False
             if self.include_scaffold:
@@ -40,7 +44,7 @@ class RefreshOligosCommand(UndoCommand):
                     visited[strand] = False
 
         colors = self.colors
-        for strand in list(visited.keys()):
+        for strand in visited.keys():
             if visited[strand]:
                 continue
             visited[strand] = True

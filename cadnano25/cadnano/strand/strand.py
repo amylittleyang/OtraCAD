@@ -4,8 +4,6 @@
 from operator import attrgetter
 from array import array
 import sys
-from strandrep.domain import Domain
-
 IS_PY_3 = int(sys.version_info[0] > 2)
 if IS_PY_3:
     sixb = lambda x: x.encode('utf-8')
@@ -47,7 +45,7 @@ class Strand(ProxyObject):
     connectionHigh) are bound during the init for convenience.
     """
 
-    def __init__(self, strandset, base_idx_low, base_idx_high, scaf_hybridized, scaf_unhybridized, oligo=None):
+    def __init__(self, strandset, base_idx_low, base_idx_high, oligo=None):
         self._doc = strandset.document()
         super(Strand, self).__init__(strandset)
         self._strandset = strandset
@@ -57,11 +55,9 @@ class Strand(ProxyObject):
         self._strand5p = None  # 5' connection to another strand
         self._strand3p = None  # 3' connection to another strand
         self._sequence = None
-        self.domainList = []
+
         self._decorators = {}
         self._modifiers = {}
-
-
 
         # dynamic methods for mapping high/low connection /indices
         # to corresponding 3Prime 5Prime
@@ -80,16 +76,8 @@ class Strand(ProxyObject):
             self.connectionHigh = self.connection5p
             self.setConnectionLow = self.setConnection3p
             self.setConnectionHigh = self.setConnection5p
-
         self._is_drawn_5_to_3 = is_drawn_5_to_3
-
-        self.populateDomain(scaf_hybridized)
-        self.populateDomain(scaf_unhybridized)
     # end def
-
-
-
-
 
     def __repr__(self):
         clsName = self.__class__.__name__
