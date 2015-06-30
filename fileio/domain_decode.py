@@ -173,7 +173,7 @@ def decode(document,obj):
          while True:
             index = curr._hyb_strand_idx
             curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
-            curr = curr._next
+            curr = curr._domain_3p
             if curr == None:
                 break
 
@@ -185,7 +185,7 @@ def decode(document,obj):
 #            print 'index = ' + str(index)
 #            print 'length = ' + str(scaf_strand_LinkedList._virtual_helix._stap_LinkedList._length)
             curr._hyb_domain = scaf_strand_LinkedList._virtual_helix._stap_LinkedList.domainAtIndex(index)
-            curr = curr._next
+            curr = curr._domain_3p
             if curr == None:
                 break
 
@@ -206,9 +206,11 @@ def decode(document,obj):
         # install scaffold xovers
         for (idx5p, to_vh_num, idx3p) in scaf_xo[vh_num]:
             # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
-            strand5p = scaf_strand_set.getStrand(idx5p)
+            index = getStrandIdx(idx5p,scaf_seg,vh_num)
+            strand5p = scaf_strand_set.domainAtIndex(index)
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
+
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                 update_oligo=False, use_undostack=False)
         # install staple xovers
@@ -225,15 +227,15 @@ def decode(document,obj):
     RefreshOligosCommand(part, include_scaffold=True,
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
-    # SET DEFAULT COLOR
-    # for oligo in part.oligos():
-    #     if oligo.isStaple():
-    #         default_color = prefs.DEFAULT_STAP_COLOR
-    #     else:
-    #         default_color = prefs.DEFAULT_SCAF_COLOR
-    #     oligo.applyColor(default_color, use_undostack=False)
+#    SET DEFAULT COLOR
+    for oligo in part.oligos():
+        if oligo.isStaple():
+            default_color = prefs.DEFAULT_STAP_COLOR
+        else:
+            default_color = prefs.DEFAULT_SCAF_COLOR
+        oligo.applyColor(default_color, use_undostack=False)
 
-    # COLORS, INSERTIONS, SKIPS
+ #   COLORS, INSERTIONS, SKIPS
     for helix in obj['vstrands']:
         vh_num = helix['num']
         row = helix['row']
@@ -309,6 +311,7 @@ def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):
         list.append(strand_update[i])
     hyb_strand = list[0][4]
     appendDomain(list, hyb_strand,strand_linkedList,0,low_idx)
+    strand_linkedList.finishAppend()
 
 # recursion, tested
 def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
@@ -319,7 +322,7 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
 #        print(strand_linkedList._length)
-        domain = Domain(strand_linkedList,low,low+idx,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
         low = low + idx
         appendDomain(list[idx:],now_stap,strand_linkedList,0,low)

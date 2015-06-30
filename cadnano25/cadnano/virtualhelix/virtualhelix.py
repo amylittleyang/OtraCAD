@@ -38,6 +38,7 @@ class VirtualHelix(ProxyObject):
         self.setNumber(idnum)
     # end def
 
+
     def __repr__(self):
         return "<%s(%d)>" % (self.__class__.__name__, self._number)
 
@@ -154,6 +155,9 @@ class VirtualHelix(ProxyObject):
         is_even = self.isEvenParity()
         return is_even == is_scaf
     # end def
+
+    def _scaf_LinkedList(self):
+        return self._scaf_LinkedList
 
     def isEvenParity(self):
         return self._part.isEvenParity(*self._coord)

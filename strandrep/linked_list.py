@@ -1,7 +1,6 @@
 __author__ = 'jie'
 from cadnano.enum import StrandType
 import cadnano.preferences as prefs
-
 import cadnano.util as util
 from cadnano.strandset.createstrandcmd import CreateStrandCommand
 from cadnano.cnproxy import UndoStack, UndoCommand
@@ -21,12 +20,17 @@ class LinkedList(ProxyObject):
         self._strand_type = strand_type
         self._undoStack = None
         self._last_strandset_idx = None
+        self._name = str(strand_type)
 
         self._head = None
         self._length = 0
         self._strand_list = []
+        self._is_Drawn_5_to_3 = self.isDrawn5to3()
 
-
+    def finishAppend(self):
+        pass
+        if not self._is_Drawn_5_to_3:
+            self.reverse()
         ### questionable methods
     def __iter__(self):
         """Iterate over each strand in the strands list."""
@@ -180,9 +184,10 @@ class LinkedList(ProxyObject):
             self._head = domain
         else:
             curr = self._head
-            while curr._next is not None:
-                curr = curr._next
-            curr._next = domain
+            while curr._domain_3p is not None:
+                curr = curr._domain_3p
+            curr._domain_3p = domain
+            domain._domain_5p = curr
 
         self._length += 1
 
@@ -203,7 +208,7 @@ class LinkedList(ProxyObject):
             if curr._index == index:
                 return curr
             else:
-                curr = curr._next
+                curr = curr._domain_3p
                 if curr == None:
                     break
 
@@ -212,9 +217,24 @@ class LinkedList(ProxyObject):
         self._length += 1
         pass
 
-    def __reversed__(self):
+    def reverse(self):
         # reverse linked list to go 5' to 3' if necessary. hint: queue/stack
-        pass
+        curr = self._head
+        stack = []
+        while True:
+            stack.append(curr)
+            curr = curr._domain_3p
+            if curr == None:
+                break
+        curr = stack.pop()
+        curr._domain_5p = None
+        self._head = curr
+        while stack:
+            curr._domain_3p = stack.pop()
+            curr._domain_3p._domain_5p = curr
+            curr = curr._domain_3p
+        curr._domain_3p = None
+
 
     def __len__(self):
         return self._length
@@ -224,7 +244,7 @@ class LinkedList(ProxyObject):
         if curr is not None:
             while True:
                 strandList.append(curr)
-                curr = curr._next
+                curr = curr._domain_3p
                 if curr == None:
                     break
         return strandList
@@ -700,3 +720,18 @@ class LinkedList(ProxyObject):
         else:
             return -1
     # end def
+
+    def strandCanBeSplit(self, strand, base_idx):
+        """
+        Make sure the base index is within the strand
+        Don't split right next to a 3Prime end
+        Don't split on endpoint (AKA a crossover)
+        """
+        # no endpoints
+        if base_idx == strand.lowIdx() or base_idx == strand.highIdx():
+            return False
+        # make sure the base index within the strand
+        elif strand.lowIdx() > base_idx or base_idx > strand.highIdx():
+            return False
+        elif abs(base_idx - strand.idx3Prime()) > 1:
+            return True

@@ -4,20 +4,21 @@ from strandrep.linked_list import LinkedList
 from cadnano.enum import StrandType
 from cadnano.virtualhelix import VirtualHelix
 
-def appendDomain(list,hyb_stap,scaf_linkedList,idx,domain_idx):
+def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
     if idx == len(list) or len(list) == 0:
-        domain = Domain(scaf_linkedList._virtual_helix, domain_idx ,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
-        scaf_linkedList.append(domain)
-        domain_idx+=1
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
+        strand_linkedList.append(domain)
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-        domain = Domain(scaf_linkedList._virtual_helix, domain_idx ,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
-        scaf_linkedList.append(domain)
-        domain_idx+=1
-        appendDomain(list[idx:],now_stap,scaf_linkedList,0,domain_idx)
+#        print(strand_linkedList._length)
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
+        strand_linkedList.append(domain)
+        low = low + idx
+        appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
     else:
-        appendDomain(list,hyb_stap,scaf_linkedList,idx+1,domain_idx)
+        appendDomain(list,hyb_stap,strand_linkedList,idx+1,low)
+
 
 
 
@@ -28,7 +29,7 @@ if __name__ == '__main__':
     appendDomain(list, hyb_stap,scaf_linkedList,0,0)
     curr = scaf_linkedList._head
     while True:
-        print 'domain idx %d low base %d, high base %d, hybridized to staple number %d on helix number %d' % (curr._idx,curr._bs_low[0],curr._bs_high[0],curr._hyb_strand,curr._vhNum)
+        print 'domain idx %d low base %d, high base %d, low index %d, high index %d, hybridized to staple number %d.' % (curr._index,curr._bs_low[0],curr._bs_high[0],curr._low_idx,curr._high_idx,curr._hyb_strand_idx)
         curr = curr._next
         if curr == None:
             break

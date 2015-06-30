@@ -234,6 +234,7 @@ class VirtualHelixItem(QGraphicsPathItem):
         Parses a mousePressEvent to extract strand_set and base index,
         forwarding them to approproate tool method as necessary.
         """
+        pass
         self.scene().views()[0].addToPressList(self)
         strand_set, idx = self.baseAtPoint(event.pos())
         self.setActive(idx)
@@ -268,6 +269,7 @@ class VirtualHelixItem(QGraphicsPathItem):
     # end def
 
     def customMouseRelease(self, event):
+        pass
         """
         Parses a mouseReleaseEvent to extract strand_set and base index,
         forwarding them to approproate tool method as necessary.
