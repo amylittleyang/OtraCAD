@@ -1,5 +1,4 @@
 __author__ = 'jie'
-__author__ = 'jie'
 
 from cadnano.cnproxy import tapp
 

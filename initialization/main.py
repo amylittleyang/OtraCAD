@@ -3,6 +3,7 @@ import sys
 
 from initialization import initAppWithGui
 
+
 def main(args):
     app = initAppWithGui(args)
     sys.exit(app.exec_())
