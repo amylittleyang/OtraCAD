@@ -22,7 +22,6 @@ def proxyConfigure(signal_type=None):
         cnp.ProxyObject = cnp.CNObject
         import cadnano    
         cadnano.app = cnp.app
-
     elif signal_type == "PyQt":
         from PyQt5.QtCore import QObject, pyqtSignal
         from PyQt5.QtWidgets import QUndoCommand, QUndoStack
