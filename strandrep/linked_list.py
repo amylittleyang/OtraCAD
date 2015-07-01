@@ -325,6 +325,7 @@ class LinkedList(ProxyObject):
     # end def
 
     def hasStrandAtAndNoXover(self, idx):
+        return
         dummy_strand = Strand(self, idx, idx)
         strand_list = [s for s in self._findOverlappingRanges(dummy_strand)]
         dummy_strand._strandset = None
@@ -338,6 +339,7 @@ class LinkedList(ProxyObject):
     # end def
 
     def hasNoStrandAtOrNoXover(self, idx):
+        return
         dummy_strand = Strand(self, idx, idx)
         strand_list = [s for s in self._findOverlappingRanges(dummy_strand)]
         dummy_strand._strandset = None

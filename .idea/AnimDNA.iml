@@ -8,7 +8,7 @@
     <content url="file:///opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PyQt5">
       <excludeFolder url="file:///opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PyQt5" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.10 (/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.4.3 (/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cadnano_copy" />
     <orderEntry type="module" module-name="cadnano" />

@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Notes:&#10;- domain_decode.py has full functionality of nnodecode.py&#10;- virtual helix modified to allow linked list to fit in;&#10;- linked list modified to have functionality of strandset, problematic functions marked out;&#10;- code in decode.py changed to use domain_decode.py to parse .json;&#10;&#10;To do:&#10;- selectively import linked list methods; important methods modified to fit linked list property; use debugger to adapt?&#10;- domain needs to have equivalent methods from strand.py&#10;&#10;- complete helper methods in linked_list.py ( when necessary)&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/output2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cadnano_copy/.idea/cadnano_copy.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/classes_No_Name.dot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes_animDNA.dot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/make.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cadnano_copy/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cadnano_copy/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/packages_animDNA.dot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cadnano_copy/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cadnano_copy/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/UI_units/ui_window.ui" afterPath="$PROJECT_DIR$/bin/ui_window.ui" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/initialization/main.py" afterPath="$PROJECT_DIR$/bin/main.py" />
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Notes:&#10;- bugs in two functions in domain_decode.py ruined the installation of xovers at lines &#10;&#10;To do:&#10;- selectively import linked list methods; important methods modified to fit linked list property; use debugger to adapt?&#10;- domain needs to have equivalent methods from strand.py&#10;&#10;- complete helper methods in linked_list.py ( when necessary)&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" afterPath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AnimDNA.iml" afterPath="$PROJECT_DIR$/.idea/AnimDNA.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/domain.py" afterPath="$PROJECT_DIR$/strandrep/domain.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileio/domain_decode.py" afterPath="$PROJECT_DIR$/fileio/domain_decode.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/linked_list.py" afterPath="$PROJECT_DIR$/strandrep/linked_list.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py" />
     </list>
     <ignored path="AnimDNA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +32,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="domain_decode.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="domain_decode.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23427331">
+              <caret line="213" column="32" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="part.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/part.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+              <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -58,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/virtualhelix/virtualhelix.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="155" column="33" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
+              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -67,8 +65,8 @@
       <file leaf-file-name="linked_list.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="358" column="55" selection-start-line="358" selection-start-column="36" selection-end-line="358" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="341" column="14" selection-start-line="341" selection-start-column="14" selection-end-line="341" selection-end-column="14" />
               <folding>
                 <element signature="e#19#54#0" expanded="true" />
               </folding>
@@ -79,8 +77,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.2222223">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="e#19#29#0" expanded="true" />
               </folding>
@@ -98,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="domain.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="domain.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3507109">
-              <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
               <folding>
                 <element signature="e#19#32#0" expanded="true" />
               </folding>
@@ -157,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/UI_units/main.py" />
-        <option value="$PROJECT_DIR$/cadnano2.5/cadnano/document.py" />
         <option value="$PROJECT_DIR$/cadnano2.5/cadnano/gui/controllers/viewrootcontroller.py" />
         <option value="$PROJECT_DIR$/initialization/ui_window.py" />
         <option value="$PROJECT_DIR$/cadnano2.5/cadnano/gui/controllers/documentcontroller.py" />
@@ -203,11 +199,13 @@
         <option value="$PROJECT_DIR$/tests/append_Domain_test.py" />
         <option value="$PROJECT_DIR$/tests/queue_test.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/virtualhelix/virtualhelix.py" />
-        <option value="$PROJECT_DIR$/strandrep/linked_list.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/strandset/createstrandcmd.py" />
         <option value="$PROJECT_DIR$/cadnano_copy/cadnano2.5/cadnano/strand/strand.py" />
-        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
+        <option value="$PROJECT_DIR$/strandrep/linked_list.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
         <option value="$PROJECT_DIR$/strandrep/domain.py" />
+        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
       </list>
     </option>
   </component>
@@ -215,8 +213,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1088" />
-    <option name="y" value="23" />
+    <option name="x" value="-1086" />
+    <option name="y" value="39" />
     <option name="width" value="1053" />
     <option name="height" value="805" />
   </component>
@@ -243,7 +241,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -263,117 +260,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="initialization" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fileio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cadnano_copy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cadnano2.5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cadnano_copy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AnimDNA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI_units" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/cadnano" />
+    <property name="last_opened_file_path" value="/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistoryKey" value="virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strand/strand.py&#10;domain&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;stra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;strandset&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/strandset/strandset.py&#10;virtualh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;strandtype&#9;null&#9;null&#10;linked&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;mainwindow&#9;null&#9;null&#10;document&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/document.py&#10;documentcontro&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/gui/controllers/documentcontroller.py&#10;createStrand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strandset/createstrandcmd.py&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;virtua&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/virtualhelix/virtualhelix.py&#10;domain_de&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;nno&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/fileio/nnodecode.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/virtualhelixitem.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/partitem.py&#10;clickhandler&#9;null&#9;null&#10;clickHandler&#9;null&#9;null" />
@@ -403,76 +299,8 @@
       <recent name="$PROJECT_DIR$/UI_units" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration default="false" name="cadnano_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/cadnano/cadnano2.5/bin" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="cadnano" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/cadnano/cadnano2.5/bin/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.AnimDNA_main">
     <configuration default="false" name="AnimDNA_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UI_units" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AnimDNA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/initialization/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="append_Domain_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AnimDNA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/append_Domain_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="queue_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AnimDNA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/queue_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -628,20 +456,12 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.cadnano_main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.AnimDNA_main" />
-      <item index="2" class="java.lang.String" itemvalue="Python.append_Domain_test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.queue_test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.AnimDNA_main" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.AnimDNA_main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.queue_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.append_Domain_test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.cadnano_main" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.AnimDNA_main" />
       </list>
     </recent_temporary>
   </component>
@@ -838,25 +658,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1088" y="23" width="1053" height="805" extended-state="0" />
+    <frame x="-1086" y="39" width="1053" height="805" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676056" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2820513" sideWeight="0.4692623" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2820513" sideWeight="0.4692623" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3971831" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27323943" sideWeight="0.48907882" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27323943" sideWeight="0.48528016" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2820513" sideWeight="0.5307377" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32816902" sideWeight="0.5071225" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27323943" sideWeight="0.51471984" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38208956" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2746479" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1014,6 +834,16 @@
           <line>389</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/fileio/domain_decode.py</url>
+          <line>215</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/fileio/domain_decode.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -1025,19 +855,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="84" />
+      <option name="time" value="86" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1060,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1196,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16483517">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1269,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.0">
           <caret line="77" column="57" selection-start-line="64" selection-start-column="8" selection-end-line="77" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.8888888">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,9 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.4814816">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#19#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1309,23 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.888889">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7396963">
-          <caret line="815" column="24" selection-start-line="815" selection-start-column="24" selection-end-line="815" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/part.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5555553">
-          <caret line="680" column="31" selection-start-line="680" selection-start-column="31" selection-end-line="680" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.888889">
           <caret line="292" column="0" selection-start-line="292" selection-start-column="0" selection-end-line="305" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,15 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35140997">
           <caret line="557" column="29" selection-start-line="557" selection-start-column="29" selection-end-line="557" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/virtualhelix/virtualhelix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="155" column="33" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1357,14 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1377,21 +1156,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="358" column="55" selection-start-line="358" selection-start-column="36" selection-end-line="358" selection-end-column="55" />
-          <folding>
-            <element signature="e#19#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/etree/ElementTree.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3319672">
           <caret line="646" column="0" selection-start-line="646" selection-start-column="0" selection-end-line="646" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1405,21 +1173,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.2222223">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#19#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="341" column="14" selection-start-line="341" selection-start-column="14" selection-end-line="341" selection-end-column="14" />
+          <folding>
+            <element signature="e#19#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="450" column="14" selection-start-line="450" selection-start-column="14" selection-end-line="450" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="691" column="52" selection-start-line="691" selection-start-column="52" selection-end-line="691" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/virtualhelix/virtualhelix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3507109">
-          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
           <folding>
             <element signature="e#19#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/part.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23427331">
+          <caret line="213" column="32" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

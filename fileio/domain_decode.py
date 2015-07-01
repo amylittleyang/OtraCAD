@@ -122,24 +122,24 @@ def decode(document,obj):
             if is3primeXover(StrandType.SCAFFOLD, vh_num, i, three_vh, three_idx):
                 scaf_xo[vh_num].append((i, three_vh, three_idx))
             # read staple segments and xovers; update stap .json
-        for i in range(len(stap)):
-                five_vh, five_idx, three_vh, three_idx = stap[i]
-                if five_vh == -1 and three_vh == -1:
-                    stap[i].append(-1)
-                    stap_update.append(stap[i])
-                    continue  # null base
-                elif hybridized(scaf[i]):
-                    scafNum = getStrandIdx(i,scaf_seg,vh_num)
-                    stap[i].append(scafNum)
-                stap_update.append(stap[i])
-
-                if isSegmentStartOrEnd(StrandType.STAPLE, vh_num, i, five_vh,\
-                                       five_idx, three_vh, three_idx):
-                    stap_seg[vh_num].append(i)
-                if five_vh != vh_num and three_vh != vh_num:  # special case
-                    stap_seg[vh_num].append(i)  # end segment on a double crossover
-                if is3primeXover(StrandType.STAPLE, vh_num, i, three_vh, three_idx):
-                    stap_xo[vh_num].append((i, three_vh, three_idx))
+        # for i in range(len(stap)):
+        #         five_vh, five_idx, three_vh, three_idx = stap[i]
+        #         if five_vh == -1 and three_vh == -1:
+        #             stap[i].append(-1)
+        #             stap_update.append(stap[i])
+        #             continue  # null base
+        #         elif hybridized(scaf[i]):
+        #             scafNum = getStrandIdx(i,scaf_seg,vh_num)
+        #             stap[i].append(scafNum)
+        #         stap_update.append(stap[i])
+        #
+        #         if isSegmentStartOrEnd(StrandType.STAPLE, vh_num, i, five_vh,\
+        #                                five_idx, three_vh, three_idx):
+        #             stap_seg[vh_num].append(i)
+        #         if five_vh != vh_num and three_vh != vh_num:  # special case
+        #             stap_seg[vh_num].append(i)  # end segment on a double crossover
+        #         if is3primeXover(StrandType.STAPLE, vh_num, i, three_vh, three_idx):
+        #             stap_xo[vh_num].append((i, three_vh, three_idx))
 
         assert (len(stap_seg[vh_num]) % 2 == 0)
         # update scaf .json
@@ -159,23 +159,23 @@ def decode(document,obj):
             high_idx = scaf_seg[vh_num][i + 1]
             installLinkedList(low_idx,high_idx,scaf_update,scaf_strand_LinkedList)
 
+        #
+        # # install staple segments -> modify to incorporate scaffold xover?
+        # for i in range(0, len(stap_seg[vh_num]), 2):
+        #     low_idx = stap_seg[vh_num][i]
+        #     high_idx = stap_seg[vh_num][i + 1]
+        #     installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
+        #     ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
 
-        # install staple segments -> modify to incorporate scaffold xover?
-        for i in range(0, len(stap_seg[vh_num]), 2):
-            low_idx = stap_seg[vh_num][i]
-            high_idx = stap_seg[vh_num][i + 1]
-            installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
-            ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
-
-        # get complement domain references for stap_linkedlist
-        curr = stap_strand_LinkedList._head
-        if curr is not None:
-         while True:
-            index = curr._hyb_strand_idx
-            curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
-            curr = curr._domain_3p
-            if curr == None:
-                break
+        # # get complement domain references for stap_linkedlist
+        # curr = stap_strand_LinkedList._head
+        # if curr is not None:
+        #  while True:
+        #     index = curr._hyb_strand_idx
+        #     curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
+        #     curr = curr._domain_3p
+        #     if curr == None:
+        #         break
 
         # get complement domain references for scaf_linkedlist
         curr = scaf_strand_LinkedList._head
@@ -203,24 +203,28 @@ def decode(document,obj):
         from_vh = part.virtualHelixAtCoord((row, col))
         scaf_strand_set = from_vh.scaffoldStrandSet()
         stap_strand_set = from_vh.stapleStrandSet()
+        print ('helix number = '+str(vh_num))
         # install scaffold xovers
         for (idx5p, to_vh_num, idx3p) in scaf_xo[vh_num]:
             # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
             index = getStrandIdx(idx5p,scaf_seg,vh_num)
             strand5p = scaf_strand_set.domainAtIndex(index)
+            print (strand5p._name +' at location '+ str(idx5p))
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
+            print ('to virtual helix '+ str(to_vh._number))
+            #strand3p = to_vh.scaffoldStrandSet().domainAtIndex(0)
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
 
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                 update_oligo=False, use_undostack=False)
         # install staple xovers
-        for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
-            # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
-            strand5p = stap_strand_set.getStrand(idx5p)
-            to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
-            strand3p = to_vh.stapleStrandSet().getStrand(idx3p)
-            part.createXover(strand5p, idx5p, strand3p, idx3p,
-                update_oligo=False, use_undostack=False)
+        # for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
+        #     # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
+        #     strand5p = stap_strand_set.getStrand(idx5p)
+        #     to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
+        #     strand3p = to_vh.stapleStrandSet().getStrand(idx3p)
+        #     part.createXover(strand5p, idx5p, strand3p, idx3p,
+        #         update_oligo=False, use_undostack=False)
 
     # need to heal all oligo connections into a continuous
     # oligo for the next steps
@@ -228,77 +232,77 @@ def decode(document,obj):
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
 #    SET DEFAULT COLOR
-    for oligo in part.oligos():
-        if oligo.isStaple():
-            default_color = prefs.DEFAULT_STAP_COLOR
-        else:
-            default_color = prefs.DEFAULT_SCAF_COLOR
-        oligo.applyColor(default_color, use_undostack=False)
-
- #   COLORS, INSERTIONS, SKIPS
-    for helix in obj['vstrands']:
-        vh_num = helix['num']
-        row = helix['row']
-        col = helix['col']
-        scaf = helix['scaf']
-        stap = helix['stap']
-        insertions = helix['loop']
-        skips = helix['skip']
-        vh = part.virtualHelixAtCoord((row, col))
-        scaf_strand_set = vh.scaffoldStrandSet()
-        stap_strand_set = vh.stapleStrandSet()
-        # install insertions and skips
-        for base_idx in range(len(stap)):
-            sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
-            if sum_of_insert_skip != 0:
-                strand = scaf_strand_set.getStrand(base_idx)
-                strand.addInsertion(base_idx, sum_of_insert_skip, use_undostack=False)
-        # end for
-        # populate colors
-        for base_idx, color_number in helix['stap_colors']:
-            color = Color(  (color_number >> 16) & 0xFF,
-                            (color_number >> 8) & 0xFF,
-                            color_number & 0xFF).name()
-            strand = stap_strand_set.getStrand(base_idx)
-            strand.oligo().applyColor(color, use_undostack=False)
-
-    if 'oligos' in obj:
-        for oligo in obj['oligos']:
-            vh_num = oligo['vh_num']
-            idx = oligo['idx']
-            seq = str(oligo['seq']) if oligo['seq'] is not None else ''
-            if seq != '':
-                coord = vh_num_to_coord[vhNum]
-                vh = part.virtualHelixAtCoord(coord)
-                scaf_ss = vh.scaffoldStrandSet()
-                # stapStrandSet = vh.stapleStrandSet()
-                strand = scaf_ss.getStrand(idx)
-                # print "sequence", seq, vh, idx,  strand.oligo()._strand5p
-                strand.oligo().applySequence(seq, use_undostack=False)
-    if 'modifications' in obj:
-        # print("AD", cadnano.app().activeDocument)
-        # win = cadnano.app().activeDocument.win
-        # modstool = win.pathToolManager.modsTool
-        # modstool.connectSignals(part)
-        for mod_id, item in obj['modifications'].items():
-            if mod_id != 'int_instances' and mod_id != 'ext_instances':
-                part.createMod(item, mod_id)
-        for key, mid in obj['modifications']['ext_instances'].items():
-            strand, idx = part.getModStrandIdx(key)
-            try:
-                strand.addMods(mid, idx, use_undostack=False)
-            except:
-                print(strand, idx)
-                raise
-        for key in obj['modifications']['int_instances'].items():
-            strand, idx = part.getModStrandIdx(key)
-            try:
-                strand.addMods(mid, idx, use_undostack=False)
-            except:
-                print(strand, idx)
-                raise
-        # modstool.disconnectSignals(part)
-# end def
+#     for oligo in part.oligos():
+#         if oligo.isStaple():
+#             default_color = prefs.DEFAULT_STAP_COLOR
+#         else:
+#             default_color = prefs.DEFAULT_SCAF_COLOR
+#         oligo.applyColor(default_color, use_undostack=False)
+#
+#  #   COLORS, INSERTIONS, SKIPS
+#     for helix in obj['vstrands']:
+#         vh_num = helix['num']
+#         row = helix['row']
+#         col = helix['col']
+#         scaf = helix['scaf']
+#         stap = helix['stap']
+#         insertions = helix['loop']
+#         skips = helix['skip']
+#         vh = part.virtualHelixAtCoord((row, col))
+#         scaf_strand_set = vh.scaffoldStrandSet()
+#         stap_strand_set = vh.stapleStrandSet()
+#         # install insertions and skips
+#         for base_idx in range(len(stap)):
+#             sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
+#             if sum_of_insert_skip != 0:
+#                 strand = scaf_strand_set.getStrand(base_idx)
+#                 strand.addInsertion(base_idx, sum_of_insert_skip, use_undostack=False)
+#         # end for
+#         # populate colors
+#         for base_idx, color_number in helix['stap_colors']:
+#             color = Color(  (color_number >> 16) & 0xFF,
+#                             (color_number >> 8) & 0xFF,
+#                             color_number & 0xFF).name()
+#             strand = stap_strand_set.getStrand(base_idx)
+#             strand.oligo().applyColor(color, use_undostack=False)
+#
+#     if 'oligos' in obj:
+#         for oligo in obj['oligos']:
+#             vh_num = oligo['vh_num']
+#             idx = oligo['idx']
+#             seq = str(oligo['seq']) if oligo['seq'] is not None else ''
+#             if seq != '':
+#                 coord = vh_num_to_coord[vhNum]
+#                 vh = part.virtualHelixAtCoord(coord)
+#                 scaf_ss = vh.scaffoldStrandSet()
+#                 # stapStrandSet = vh.stapleStrandSet()
+#                 strand = scaf_ss.getStrand(idx)
+#                 # print "sequence", seq, vh, idx,  strand.oligo()._strand5p
+#                 strand.oligo().applySequence(seq, use_undostack=False)
+#     if 'modifications' in obj:
+#         # print("AD", cadnano.app().activeDocument)
+#         # win = cadnano.app().activeDocument.win
+#         # modstool = win.pathToolManager.modsTool
+#         # modstool.connectSignals(part)
+#         for mod_id, item in obj['modifications'].items():
+#             if mod_id != 'int_instances' and mod_id != 'ext_instances':
+#                 part.createMod(item, mod_id)
+#         for key, mid in obj['modifications']['ext_instances'].items():
+#             strand, idx = part.getModStrandIdx(key)
+#             try:
+#                 strand.addMods(mid, idx, use_undostack=False)
+#             except:
+#                 print(strand, idx)
+#                 raise
+#         for key in obj['modifications']['int_instances'].items():
+#             strand, idx = part.getModStrandIdx(key)
+#             try:
+#                 strand.addMods(mid, idx, use_undostack=False)
+#             except:
+#                 print(strand, idx)
+#                 raise
+#         # modstool.disconnectSignals(part)
+# # end def
 
 
 

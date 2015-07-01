@@ -448,6 +448,7 @@ class XoverItem(QGraphicsPathItem):
 
     ### EVENT HANDERS ###
     def mousePressEvent(self, event):
+        return
         """
         Special case for xovers and select tool, for now
         """
