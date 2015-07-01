@@ -29,7 +29,7 @@ if __name__ == '__main__':
     appendDomain(list, hyb_stap,scaf_linkedList,0,0)
     curr = scaf_linkedList._head
     while True:
-        print 'domain idx %d low base %d, high base %d, low index %d, high index %d, hybridized to staple number %d.' % (curr._index,curr._bs_low[0],curr._bs_high[0],curr._low_idx,curr._high_idx,curr._hyb_strand_idx)
+        print ('domain idx %d low base %d, high base %d, low index %d, high index %d, hybridized to staple number %d.' % (curr._index,curr._bs_low[0],curr._bs_high[0],curr._low_idx,curr._high_idx,curr._hyb_strand_idx))
         curr = curr._next
         if curr == None:
             break

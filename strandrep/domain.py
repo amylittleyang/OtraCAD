@@ -9,7 +9,7 @@ class Domain(ProxyObject):
         self._vh = linkedList._virtual_helix
         self._vhNum = self._vh._number
         self._name = string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
-#        self._length = bs_high-bs_low +1
+        self._length = high_idx-low_idx +1
         self._sequence = None
         self._bs_low  = bs_low
         self._bs_high = bs_high

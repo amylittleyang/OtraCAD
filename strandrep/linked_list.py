@@ -9,7 +9,6 @@ from cadnano.cnproxy import ProxyObject, ProxySignal
 from cadnano.strand import Strand
 from cadnano.oligo import Oligo
 
-
 class LinkedList(ProxyObject):
     def __init__(self, strand_type,vh):
         self._doc = vh.document()
@@ -19,7 +18,6 @@ class LinkedList(ProxyObject):
         self._last_strandset_idx = None
         self._strand_type = strand_type
         self._undoStack = None
-        self._last_strandset_idx = None
         self._name = str(strand_type)
 
         self._head = None
@@ -496,7 +494,7 @@ class LinkedList(ProxyObject):
             yield/return that strand.  If it's GREATER than the indexHigh, or
             you run out of strands to check, the generator terminates
         """
-        strand_list = self._strand_list
+        strand_list = self.getStrandList()
         len_strands = len(strand_list)
         if len_strands == 0:
             return
@@ -512,12 +510,17 @@ class LinkedList(ProxyObject):
             s_set_idx_low = self._last_strandset_idx
         else:
             s_set_idx_low = -1
+
+            #print ('last strandset index = ' + str(s_set_idx_low))
+
             while low < high:
                 mid = (low + high) // 2
                 midStrand = strand_list[mid]
 
                 # pre get indices from the currently tested strand
                 mLow, mHigh = midStrand.idxs()
+                mLow = mLow -1
+                mHigh = mHigh +1
 
                 if mHigh == qLow:
                     # match, break out of while loop
@@ -541,20 +544,26 @@ class LinkedList(ProxyObject):
         # Step 2: create a generator on matches
         # match on whether the temp_strand's lowIndex is
         # within the range of the qStrand
-        if s_set_idx_low > -1:
-            temp_strands = iter(strand_list[s_set_idx_low:])
-            temp_strand = next(temp_strands)
-            qHigh += 1  # bump it up for a more efficient comparison
-            i = 0   # use this to
-            while temp_strand and temp_strand.lowIdx() < qHigh:
+       # if s_set_idx_low > -1:
+        print('should have yielded something')
+        print('length = '+ str(len(strand_list)))
+        print('s_set_idx_low = '+str(s_set_idx_low))
+        temp_strands = iter(strand_list[s_set_idx_low:])
+        temp_strand = next(temp_strands)
+        qHigh += 1  # bump it up for a more efficient comparison
+        i = 0   # use this to
+        while temp_strand:
+            print(temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
+            if temp_strand.lowIdx() <= qHigh:
+                print('accepted: '+temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
                 yield temp_strand
                 # use a next and a default to cause a break condition
-                temp_strand = next(temp_strands, None)
-                i += 1
+            temp_strand = next(temp_strands, None)
+            i += 1
             # end while
 
             # cache the last index we left of at
-            i = s_set_idx_low + i
+      #      i = s_set_idx_low + i
             """
             if
             1. we ran out of strands to test adjust
@@ -569,7 +578,8 @@ class LinkedList(ProxyObject):
             # assign cache but double check it's a valid index
             self._last_strandset_idx = i if -1 < i < len_strands else None
             return
-        else:
+     #   else:
+            print('bastard went bad')
             # no strand was found
             # go ahead and clear the cache
             self._last_strandset_idx = None if len(self._strand_list) > 0 else 0

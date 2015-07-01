@@ -528,7 +528,7 @@ class StrandSet(ProxyObject):
             you run out of strands to check, the generator terminates
         """
         strand_list = self._strand_list
-        len_strands = len(strand_list)
+        len_strands = strand_list._length
         if len_strands == 0:
             return
         # end if
@@ -541,6 +541,7 @@ class StrandSet(ProxyObject):
         if use_cache:  # or self.doesLastSetIndexMatch(qstrand, strand_list):
             # cache match!
             s_set_idx_low = self._last_strandset_idx
+            print ('last strandset index = ' + str(s_set_idx_low))
         else:
             s_set_idx_low = -1
             while low < high:
