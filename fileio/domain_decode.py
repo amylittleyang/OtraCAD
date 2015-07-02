@@ -191,6 +191,7 @@ def decode(document,obj):
 
 ## nnodecode.py leftover
 
+
       # INSTALL XOVERS
     for helix in obj['vstrands']:
         vh_num = helix['num']
@@ -203,20 +204,20 @@ def decode(document,obj):
         from_vh = part.virtualHelixAtCoord((row, col))
         scaf_strand_set = from_vh.scaffoldStrandSet()
         stap_strand_set = from_vh.stapleStrandSet()
-        print ('helix number = '+str(vh_num))
         # install scaffold xovers
         for (idx5p, to_vh_num, idx3p) in scaf_xo[vh_num]:
-            # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
-            index = getStrandIdx(idx5p,scaf_seg,vh_num)
-            strand5p = scaf_strand_set.domainAtIndex(index)
-            print (strand5p._name +' at location '+ str(idx5p))
+            strand5p = scaf_strand_set.getStrand(idx5p)
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
-            print ('to virtual helix '+ str(to_vh._number))
-            #strand3p = to_vh.scaffoldStrandSet().domainAtIndex(0)
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
-            print (strand3p)
+            assert strand5p._vhNum == from_vh._number and strand3p._vhNum == to_vh_num
+            if not strand5p.idx3Prime() == idx5p and strand3p.idx5Prime()== idx3p:
+                print(scaf_strand_set._virtual_helix._number)
+                print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
+                print('strand5p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 5p= %d' % (strand5p._name,strand5p._vhNum,strand5p.idx5Prime(),strand5p.idx3Prime(),idx5p))
+                print('strand3p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 3p= %d' % (strand3p._name,strand3p._vhNum,strand3p.idx5Prime(),strand3p.idx3Prime(),idx3p))
             part.createXover(strand5p, idx5p, strand3p, idx3p,
-                update_oligo=False, use_undostack=False)
+                 update_oligo=False, use_undostack=False)
+    print('done done')
         # install staple xovers
         # for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
         #     # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
@@ -231,78 +232,78 @@ def decode(document,obj):
     RefreshOligosCommand(part, include_scaffold=True,
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
- #   #SET DEFAULT COLOR
- #    for oligo in part.oligos():
- #        if oligo.isStaple():
- #            default_color = prefs.DEFAULT_STAP_COLOR
- #        else:
- #            default_color = prefs.DEFAULT_SCAF_COLOR
- #        oligo.applyColor(default_color, use_undostack=False)
- #
- # #   COLORS, INSERTIONS, SKIPS
- #    for helix in obj['vstrands']:
- #        vh_num = helix['num']
- #        row = helix['row']
- #        col = helix['col']
- #        scaf = helix['scaf']
- #        stap = helix['stap']
- #        insertions = helix['loop']
- #        skips = helix['skip']
- #        vh = part.virtualHelixAtCoord((row, col))
- #        scaf_strand_set = vh.scaffoldStrandSet()
- #        stap_strand_set = vh.stapleStrandSet()
- #        # install insertions and skips
- #        for base_idx in range(len(stap)):
- #            sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
- #            if sum_of_insert_skip != 0:
- #                strand = scaf_strand_set.getStrand(base_idx)
- #                strand.addInsertion(base_idx, sum_of_insert_skip, use_undostack=False)
- #        # end for
- #        # populate colors
- #        for base_idx, color_number in helix['stap_colors']:
- #            color = Color(  (color_number >> 16) & 0xFF,
- #                            (color_number >> 8) & 0xFF,
- #                            color_number & 0xFF).name()
- #            strand = stap_strand_set.getStrand(base_idx)
- #            strand.oligo().applyColor(color, use_undostack=False)
- #
- #    if 'oligos' in obj:
- #        for oligo in obj['oligos']:
- #            vh_num = oligo['vh_num']
- #            idx = oligo['idx']
- #            seq = str(oligo['seq']) if oligo['seq'] is not None else ''
- #            if seq != '':
- #                coord = vh_num_to_coord[vhNum]
- #                vh = part.virtualHelixAtCoord(coord)
- #                scaf_ss = vh.scaffoldStrandSet()
- #                # stapStrandSet = vh.stapleStrandSet()
- #                strand = scaf_ss.getStrand(idx)
- #                # print "sequence", seq, vh, idx,  strand.oligo()._strand5p
- #                strand.oligo().applySequence(seq, use_undostack=False)
- #    if 'modifications' in obj:
- #        # print("AD", cadnano.app().activeDocument)
- #        # win = cadnano.app().activeDocument.win
- #        # modstool = win.pathToolManager.modsTool
- #        # modstool.connectSignals(part)
- #        for mod_id, item in obj['modifications'].items():
- #            if mod_id != 'int_instances' and mod_id != 'ext_instances':
- #                part.createMod(item, mod_id)
- #        for key, mid in obj['modifications']['ext_instances'].items():
- #            strand, idx = part.getModStrandIdx(key)
- #            try:
- #                strand.addMods(mid, idx, use_undostack=False)
- #            except:
- #                print(strand, idx)
- #                raise
- #        for key in obj['modifications']['int_instances'].items():
- #            strand, idx = part.getModStrandIdx(key)
- #            try:
- #                strand.addMods(mid, idx, use_undostack=False)
- #            except:
- #                print(strand, idx)
- #                raise
- #        # modstool.disconnectSignals(part)
- # # end def
+   #SET DEFAULT COLOR
+    for oligo in part.oligos():
+        if oligo.isStaple():
+            default_color = prefs.DEFAULT_STAP_COLOR
+        else:
+            default_color = prefs.DEFAULT_SCAF_COLOR
+        oligo.applyColor(default_color, use_undostack=False)
+
+ #   COLORS, INSERTIONS, SKIPS
+    for helix in obj['vstrands']:
+        vh_num = helix['num']
+        row = helix['row']
+        col = helix['col']
+        scaf = helix['scaf']
+        stap = helix['stap']
+        insertions = helix['loop']
+        skips = helix['skip']
+        vh = part.virtualHelixAtCoord((row, col))
+        scaf_strand_set = vh.scaffoldStrandSet()
+        stap_strand_set = vh.stapleStrandSet()
+        # install insertions and skips
+        for base_idx in range(len(stap)):
+            sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
+            if sum_of_insert_skip != 0:
+                strand = scaf_strand_set.getStrand(base_idx)
+                strand.addInsertion(base_idx, sum_of_insert_skip, use_undostack=False)
+        # end for
+        # populate colors
+        for base_idx, color_number in helix['stap_colors']:
+            color = Color(  (color_number >> 16) & 0xFF,
+                            (color_number >> 8) & 0xFF,
+                            color_number & 0xFF).name()
+            strand = stap_strand_set.getStrand(base_idx)
+            strand.oligo().applyColor(color, use_undostack=False)
+
+    if 'oligos' in obj:
+        for oligo in obj['oligos']:
+            vh_num = oligo['vh_num']
+            idx = oligo['idx']
+            seq = str(oligo['seq']) if oligo['seq'] is not None else ''
+            if seq != '':
+                coord = vh_num_to_coord[vh_num]
+                vh = part.virtualHelixAtCoord(coord)
+                scaf_ss = vh.scaffoldStrandSet()
+                # stapStrandSet = vh.stapleStrandSet()
+                strand = scaf_ss.getStrand(idx)
+                # print "sequence", seq, vh, idx,  strand.oligo()._strand5p
+                strand.oligo().applySequence(seq, use_undostack=False)
+    if 'modifications' in obj:
+        # print("AD", cadnano.app().activeDocument)
+        # win = cadnano.app().activeDocument.win
+        # modstool = win.pathToolManager.modsTool
+        # modstool.connectSignals(part)
+        for mod_id, item in obj['modifications'].items():
+            if mod_id != 'int_instances' and mod_id != 'ext_instances':
+                part.createMod(item, mod_id)
+        for key, mid in obj['modifications']['ext_instances'].items():
+            strand, idx = part.getModStrandIdx(key)
+            try:
+                strand.addMods(mid, idx, use_undostack=False)
+            except:
+                print(strand, idx)
+                raise
+        for key in obj['modifications']['int_instances'].items():
+            strand, idx = part.getModStrandIdx(key)
+            try:
+                strand.addMods(mid, idx, use_undostack=False)
+            except:
+                print(strand, idx)
+                raise
+        # modstool.disconnectSignals(part)
+ # end def
  #
 
 

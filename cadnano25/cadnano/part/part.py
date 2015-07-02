@@ -564,6 +564,7 @@ class Part(ProxyObject):
             strand5p.oligo().applySequence(None)
             strand3p.oligo().applySequence(None)
         if strand5p == strand3p:
+
             """
             This is a complicated case basically we need a truth table.
             1 strand becomes 1, 2 or 3 strands depending on where the xover is
@@ -655,6 +656,7 @@ class Part(ProxyObject):
             if strand3p.idx5Prime() == idx3p:  # yes, idx already matches
                 xo_strand3 = strand3p
             else:  # no, let's try to split
+                print('no else right')
                 offset3p = -1 if ss3p.isDrawn5to3() else 1
                 if ss3p.strandCanBeSplit(strand3p, idx3p + offset3p):
                     found, overlap, ss_idx = ss3p._findIndexOfRangeFor(strand3p)
@@ -675,6 +677,11 @@ class Part(ProxyObject):
                     return
 
             # is the 3' end ready for xover installation?
+            try:
+                assert strand5p.idx3Prime() == idx5p
+            except:
+                print('%d != %d'%(strand5p.idx3Prime(),idx5p))
+
             if strand5p.idx3Prime() == idx5p:  # yes, idx already matches
                 xo_strand5 = strand5p
             else:

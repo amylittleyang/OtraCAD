@@ -4,6 +4,7 @@ from cadnano.cnproxy import ProxyObject, ProxySignal
 class Domain(ProxyObject):
     def __init__(self,linkedList,low_idx,high_idx,bs_low = None, bs_high = None, hyb_strand=None):
         super(Domain, self).__init__(linkedList)
+        self._doc = linkedList.document()
         self._hyb_strand_idx = hyb_strand
         self._index = linkedList._length
         self._vh = linkedList._virtual_helix
@@ -20,8 +21,8 @@ class Domain(ProxyObject):
         self._domain_3p = None
         self._domain_5p = None
         self._hyb_domain = None
-        self._is_drawn_5_to_3 = self._linkedList._is_Drawn_5_to_3
-        if self._is_drawn_5_to_3:
+        self._is_drawn_5_to_3 = self._linkedList.isDrawn5to3()
+        if  self._is_drawn_5_to_3:
             self.idx5Prime = self.lowIdx
             self.idx3Prime = self.highIdx
             self.connectionLow = self.connection5p
@@ -103,3 +104,5 @@ class Domain(ProxyObject):
         return self._strand.insertionsOnStrand()
     def oligo(self):
         return self._strand.oligo()
+    def document(self):
+        return self._doc

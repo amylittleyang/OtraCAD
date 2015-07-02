@@ -22,13 +22,11 @@ class LinkedList(ProxyObject):
 
         self._head = None
         self._length = 0
-        self._strand_list = []
+        self._strand_list = self.getStrandList()
         self._is_Drawn_5_to_3 = self.isDrawn5to3()
 
     def finishAppend(self):
-        pass
-        if not self._is_Drawn_5_to_3:
-            self.reverse()
+        self._strand_list = self.getStrandList()
         ### questionable methods
     def __iter__(self):
         """Iterate over each strand in the strands list."""
@@ -439,15 +437,6 @@ class LinkedList(ProxyObject):
     # end def
 
     ### PRIVATE SUPPORT METHODS ###
-    def _addToStrandList(self, strand, idx):
-        """Inserts strand into the _strand_list at idx."""
-        self._strand_list.insert(idx, strand)
-
-    def _removeFromStrandList(self, strand):
-        """Remove strand from _strand_list."""
-        self._doc.removeStrandFromSelection(strand)  # make sure the strand is no longer selected
-        self._strand_list.remove(strand)
-
     def _couldStrandInsertAtLastIndex(self, strand):
         """Verification of insertability based on cached last index."""
         last_idx = self._last_strandset_idx
@@ -494,8 +483,13 @@ class LinkedList(ProxyObject):
             yield/return that strand.  If it's GREATER than the indexHigh, or
             you run out of strands to check, the generator terminates
         """
-        strand_list = self.getStrandList()
+        strand_list = self._strand_list
         len_strands = len(strand_list)
+        vhNum = self._virtual_helix._number
+        for s in strand_list:
+            if not s._vhNum == vhNum:
+                strand_list.remove(s)
+
         if len_strands == 0:
             return
         # end if
@@ -519,8 +513,8 @@ class LinkedList(ProxyObject):
 
                 # pre get indices from the currently tested strand
                 mLow, mHigh = midStrand.idxs()
-                mLow = mLow -1
-                mHigh = mHigh +1
+                mLow = mLow
+                mHigh = mHigh
 
                 if mHigh == qLow:
                     # match, break out of while loop
@@ -545,25 +539,25 @@ class LinkedList(ProxyObject):
         # match on whether the temp_strand's lowIndex is
         # within the range of the qStrand
        # if s_set_idx_low > -1:
-        print('should have yielded something')
-        print('length = '+ str(len(strand_list)))
-        print('s_set_idx_low = '+str(s_set_idx_low))
-        temp_strands = iter(strand_list[s_set_idx_low:])
-        temp_strand = next(temp_strands)
-        qHigh += 1  # bump it up for a more efficient comparison
-        i = 0   # use this to
-        while temp_strand:
-            print(temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
-            if temp_strand.lowIdx() <= qHigh:
-                print('accepted: '+temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
-                yield temp_strand
+
+        if s_set_idx_low > -1:
+
+            temp_strands = iter(strand_list[s_set_idx_low:])
+            temp_strand = next(temp_strands)
+            qHigh += 1  # bump it up for a more efficient comparison
+            i = 0 # use this to
+            while temp_strand:
+                #print(temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
+                if temp_strand.lowIdx() <= qHigh:
+                    #print('yielded: '+temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
+                    yield temp_strand
                 # use a next and a default to cause a break condition
-            temp_strand = next(temp_strands, None)
-            i += 1
+                temp_strand = next(temp_strands, None)
+                i += 1
             # end while
 
             # cache the last index we left of at
-      #      i = s_set_idx_low + i
+            i = s_set_idx_low + i
             """
             if
             1. we ran out of strands to test adjust
@@ -578,8 +572,8 @@ class LinkedList(ProxyObject):
             # assign cache but double check it's a valid index
             self._last_strandset_idx = i if -1 < i < len_strands else None
             return
-     #   else:
-            print('bastard went bad')
+        else:
+            #print('bastard went bad')
             # no strand was found
             # go ahead and clear the cache
             self._last_strandset_idx = None if len(self._strand_list) > 0 else 0
