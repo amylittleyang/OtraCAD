@@ -106,3 +106,5 @@ class Domain(ProxyObject):
         return self._strand.oligo()
     def document(self):
         return self._doc
+    def sequence(self):
+        return self._strand.sequece()
