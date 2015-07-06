@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Notes:&#10;- this code is behaving extremely wierd; createXover function somehow modifies linkedlist and can add node in the middle although I didn't write any linked list insertion code; To prevent _findOverlappingRanges return a domain not supposed to be on the helix, I added a filter to the function to remove any domain that is not on the helix; then the program freezed after processing all scaffold xovers;&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Notes:&#10;just double checking&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/smiley.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" afterPath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -78,8 +79,8 @@
       <file leaf-file-name="linked_list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32934132">
-              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.059880238">
+              <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
               <folding>
                 <element signature="e#19#54#0" expanded="true" />
               </folding>
@@ -204,7 +205,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1118" />
+    <option name="x" value="-1102" />
     <option name="y" value="23" />
     <option name="width" value="1087" />
     <option name="height" value="806" />
@@ -279,6 +280,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -288,7 +303,7 @@
     <property name="last_opened_file_path" value="/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistoryKey" value="domain&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;nnode&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;random te&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/tests/random_test.py&#10;linked&#9;null&#9;null&#10;nno&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strand/strand.py&#10;linkedlis&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;doma&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;strandset&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/strandset.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;stra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;virtualh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;strandtype&#9;null&#9;null&#10;mainwindow&#9;null&#9;null&#10;document&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/document.py&#10;documentcontro&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/gui/controllers/documentcontroller.py&#10;createStrand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strandset/createstrandcmd.py&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;virtua&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/virtualhelix/virtualhelix.py&#10;domain_de&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/virtualhelixitem.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/partitem.py&#10;clickhandler&#9;null&#9;null&#10;clickHandler&#9;null&#9;null" />
@@ -311,11 +326,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/bin" />
       <recent name="$PROJECT_DIR$/cadnano25/cadnano" />
       <recent name="$PROJECT_DIR$/cadnano25" />
       <recent name="$PROJECT_DIR$/initialization" />
-      <recent name="$PROJECT_DIR$/UI_units" />
     </key>
   </component>
   <component name="RunManager" selected="Python.AnimDNA_main">
@@ -726,7 +741,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436198123761</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Notes:&#10;just double checking&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <created>1436198171683</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1436198171683</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -739,17 +760,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1118" y="23" width="1087" height="806" extended-state="0" />
+    <frame x="-1102" y="23" width="1087" height="806" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676056" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16099356" sideWeight="0.4692623" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21800281" sideWeight="0.48528016" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2820513" sideWeight="0.5307377" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27323943" sideWeight="0.51471984" order="8" side_tool="true" content_ui="tabs" />
@@ -797,7 +818,8 @@
     <MESSAGE value="Notes:&#10;- bugs in two functions in domain_decode.py ruined the installation of xovers at lines 216 and 218;&#10;- staple xover disabled for the sake of debugging xover installation;&#10;- configured python 3.4 as the project interpretor;&#10;&#10;To do:&#10;- selectively import linked list methods; important methods modified to fit linked list property; use debugger to adapt?&#10;- domain needs to have equivalent methods from strand.py&#10;&#10;- complete helper methods in linked_list.py ( when necessary)&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Notes:&#10;- in the process of debugging xover installation; binary search completely messed up; added numerous print statement to aid with debugging;&#10;- bugs in two functions in domain_decode.py ruined the installation of xovers at lines 216 and 218;&#10;- staple xover disabled for the sake of debugging xover installation;&#10;&#10;&#10;To do:&#10;- selectively import linked list methods; important methods modified to fit linked list property; use debugger to adapt?&#10;- domain needs to have equivalent methods from strand.py&#10;&#10;- complete helper methods in linked_list.py ( when necessary)&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Notes:&#10;- this code is behaving extremely wierd; createXover function somehow modifies linkedlist and can add node in the middle although I didn't write any linked list insertion code; To prevent _findOverlappingRanges return a domain not supposed to be on the helix, I added a filter to the function to remove any domain that is not on the helix; then the program freezed after processing all scaffold xovers;&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notes:&#10;- this code is behaving extremely wierd; createXover function somehow modifies linkedlist and can add node in the middle although I didn't write any linked list insertion code; To prevent _findOverlappingRanges return a domain not supposed to be on the helix, I added a filter to the function to remove any domain that is not on the helix; then the program freezed after processing all scaffold xovers;&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <MESSAGE value="Notes:&#10;just double checking&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Notes:&#10;just double checking&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -944,13 +966,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/cadnano/cadnano2.5/cadnano/strand/strand.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI_units/ui_window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.60685486">
@@ -1154,6 +1169,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,10 +1330,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/smiley.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32934132">
-          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.059880238">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding>
             <element signature="e#19#54#0" expanded="true" />
           </folding>
