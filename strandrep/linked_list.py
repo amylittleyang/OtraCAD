@@ -30,7 +30,7 @@ class LinkedList(ProxyObject):
         ### questionable methods
     def __iter__(self):
         """Iterate over each strand in the strands list."""
-        self._strand_list = self.getStrandList()
+#        self._strand_list = self.getStrandList()
 #        print 'strand list is ' + str(self._strand_list)
         return self._strand_list.__iter__()
     # end def
@@ -485,10 +485,10 @@ class LinkedList(ProxyObject):
         """
         strand_list = self._strand_list
         len_strands = len(strand_list)
-        vhNum = self._virtual_helix._number
-        for s in strand_list:
-            if not s._vhNum == vhNum:
-                strand_list.remove(s)
+        # vhNum = self._virtual_helix._number
+        # for s in strand_list:
+        #     if not s._vhNum == vhNum:
+        #         strand_list.remove (s)
 
         if len_strands == 0:
             return

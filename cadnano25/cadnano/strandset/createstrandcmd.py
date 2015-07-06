@@ -35,7 +35,7 @@ class CreateStrandCommand(UndoCommand):
         strand.setOligo(oligo)
 
         if strandset.isStaple():
-            strand.reapplySequence()
+             strand.reapplySequence()
         # Emit a signal to notify on completion
         strandset.strandsetStrandAddedSignal.emit(strandset, strand)
         # for updating the Slice View displayed helices
