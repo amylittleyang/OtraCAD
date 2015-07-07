@@ -59,6 +59,7 @@ class RefreshOligosCommand(UndoCommand):
             # this gets the oligo and burns a strand in the generator
             strand5 = next(strand5gen)
             print('strand5p = %s' % strand5._name)
+            print('5p type = %d' % strand5._linkedList._strand_type)
             for strand5 in strand5gen:
                 print('strand5p = %s' % strand5._name)
 
