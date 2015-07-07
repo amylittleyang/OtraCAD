@@ -179,15 +179,12 @@ def decode(document,obj):
 
         # get complement domain references for scaf_linkedlist
         curr = scaf_strand_LinkedList._head
-        if curr is not None:
-         while True:
+        while curr:
             index = curr._hyb_strand_idx
 #            print 'index = ' + str(index)
 #            print 'length = ' + str(scaf_strand_LinkedList._virtual_helix._stap_LinkedList._length)
             curr._hyb_domain = scaf_strand_LinkedList._virtual_helix._stap_LinkedList.domainAtIndex(index)
             curr = curr._domain_3p
-            if curr == None:
-                break
 
 ## nnodecode.py leftover
 
@@ -210,25 +207,27 @@ def decode(document,obj):
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
             assert strand5p._vhNum == from_vh._number and strand3p._vhNum == to_vh_num
-            if not strand5p.idx3Prime() == idx5p and strand3p.idx5Prime()== idx3p:
-                print(scaf_strand_set._virtual_helix._number)
-                print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
-                print('strand5p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 5p= %d' % (strand5p._name,strand5p._vhNum,strand5p.idx5Prime(),strand5p.idx3Prime(),idx5p))
-                print('strand3p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 3p= %d' % (strand3p._name,strand3p._vhNum,strand3p.idx5Prime(),strand3p.idx3Prime(),idx3p))
+            print(scaf_strand_set._virtual_helix._number)
+            print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
+            print('strand5p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 5p= %d' % (strand5p._name,strand5p._vhNum,strand5p.idx5Prime(),strand5p.idx3Prime(),idx5p))
+            print('strand3p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 3p= %d' % (strand3p._name,strand3p._vhNum,strand3p.idx5Prime(),strand3p.idx3Prime(),idx3p))
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                  update_oligo=False, use_undostack=False)
     #print('done done')
          # install staple xovers
+        #print('installing staple xovers')
         for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
             # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
             strand5p = stap_strand_set.getStrand(idx5p)
+            print('strand 5p = %s, going to helix %d, at idx %d' %(strand5p._name,to_vh_num,idx5p))
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.stapleStrandSet().getStrand(idx3p)
+            print('strand 3p = %s, going to helix %d, at idx %d' %(strand3p._name,to_vh_num,idx3p))
+
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                 update_oligo=False, use_undostack=False)
 
-    # need to heal all oligo connections into a continuous
-    # oligo for the next steps
+
     RefreshOligosCommand(part, include_scaffold=True,
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
@@ -329,6 +328,10 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
 #        print(strand_linkedList._length)
         domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
+        domain_high = strand_linkedList.domainAtIndex(-2)
+        if domain_high:
+            domain_high.setConnectionHigh(domain)
+            domain.setConnectionLow(domain_high)
         low = low + idx
         appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
     else:

@@ -1,6 +1,5 @@
 from cadnano.cnproxy import UndoCommand
-from cadnano.strand import Strand
-
+from strandrep.domain import Domain
 class RefreshOligosCommand(UndoCommand):
     """
     RefreshOligosCommand is a post-processing step for AutoStaple.
@@ -63,7 +62,7 @@ class RefreshOligosCommand(UndoCommand):
                 oligo5 = strand5.oligo()
                 if oligo5 != start_oligo:
                     oligo5.removeFromPart()
-                    Strand.setOligo(strand5, start_oligo)  # emits strandHasNewOligoSignal
+                    Domain.setOligo(strand5, start_oligo)  # emits strandHasNewOligoSignal
                 visited[strand5] = True
             # end for
             start_oligo.setStrand5p(strand5)
@@ -77,10 +76,16 @@ class RefreshOligosCommand(UndoCommand):
                     oligo3 = strand3.oligo()
                     if oligo3 != start_oligo:
                         oligo3.removeFromPart()
-                        Strand.setOligo(strand3, start_oligo)  # emits strandHasNewOligoSignal
+                        Domain.setOligo(strand3, start_oligo)  # emits strandHasNewOligoSignal
                     visited[strand3] = True
                 # end for
             start_oligo.refreshLength()
+            strand = start_oligo._strand5p
+            strand3gen = strand.generator3pStrand()
+            st = next(strand3gen)
+            print(st._name)
+            for st in strand3gen:
+                print(st._name)
         # end for
 
         for strand in visited.keys():

@@ -53,6 +53,7 @@ class CreateXoverCommand(UndoCommand):
         # 3. install the Xover
         strand5p.setConnection3p(strand3p)
         strand3p.setConnection5p(strand5p)
+        #print('strand5p = %s, connection3p = %s'%(strand5p._name, strand3p._name))
 
         ss5 = strand5p.strandSet()
         vh5p = ss5.virtualHelix()

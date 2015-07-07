@@ -182,8 +182,8 @@ class LinkedList(ProxyObject):
             curr = self._head
             while curr._domain_3p is not None:
                 curr = curr._domain_3p
-            curr._domain_3p = domain
-            domain._domain_5p = curr
+            curr.setDomain3p(domain)
+            domain.setDomain5p(curr)
 
         self._length += 1
 
@@ -196,8 +196,10 @@ class LinkedList(ProxyObject):
 
     def domainAtIndex(self,index):
         # return domain at the index (starting at 0)
+        if not index:
+            return
         if index < 0:
-            return None
+            index = self._length+index
         assert index < self._length
         curr = self._head
         while True:
@@ -223,13 +225,14 @@ class LinkedList(ProxyObject):
             if curr == None:
                 break
         curr = stack.pop()
-        curr._domain_5p = None
+        curr.setDomain5p(None)
         self._head = curr
         while stack:
-            curr._domain_3p = stack.pop()
-            curr._domain_3p._domain_5p = curr
+            curr.setDomain3p(stack.pop())
+            d3p = curr._domain_3p
+            d3p.setDomain5p(curr)
             curr = curr._domain_3p
-        curr._domain_3p = None
+        curr.setDomain3p(None)
 
 
     def __len__(self):

@@ -686,7 +686,7 @@ class StrandItem(QGraphicsLineItem):
     # end def
 
     def itemChange(self, change, value):
-        return
+        return QGraphicsItem.itemChange(self, change, value)
         # for selection changes test against QGraphicsItem.ItemSelectedChange
         # intercept the change instead of the has changed to enable features.
         if change == QGraphicsItem.ItemSelectedChange and self.scene():

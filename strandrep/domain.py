@@ -1,5 +1,7 @@
 __author__ = 'jie'
 import string
+from operator import attrgetter
+
 from cadnano.cnproxy import ProxyObject, ProxySignal
 class Domain(ProxyObject):
     def __init__(self,linkedList,low_idx,high_idx,bs_low = None, bs_high = None, hyb_strand=None):
@@ -20,6 +22,8 @@ class Domain(ProxyObject):
         self._length = high_idx-low_idx+1
         self._domain_3p = None
         self._domain_5p = None
+        self._connection_5p = None
+        self._connection_3p = None
         self._hyb_domain = None
         self._is_drawn_5_to_3 = self._linkedList.isDrawn5to3()
         if  self._is_drawn_5_to_3:
@@ -66,10 +70,33 @@ class Domain(ProxyObject):
         return self._linkedList._strand_type == 1
 
     def generator5pStrand(self):
-        return self._strand.generator5pStrand()
+        node0 = node = self
+        f = attrgetter('_connection_5p')
+        # while node and originalCount == 0:
+        #     yield node  # equivalent to: node = node._strand5p
+        #     node = f(node)
+        #     if node0 == self:
+        #         originalCount += 1
+        while node:
+            yield node  # equivalent to: node = node._strand5p
+            node = f(node)
+            if node0 == node:
+                break
+
 
     def generator3pStrand(self):
-        return self._strand.generator3pStrand()
+        node0 = node = self
+        f = attrgetter('_connection_3p')
+        # while node and originalCount == 0:
+        #     yield node  # equivalent to: node = node._strand5p
+        #     node = f(node)
+        #     if node0 == self:
+        #         originalCount += 1
+        while node:
+            yield node  # equivalent to: node = node._strand5p
+            node = f(node)
+            if node0 == node:
+                break
 
     def connection3p(self):
         return self._domain_3p
@@ -90,11 +117,11 @@ class Domain(ProxyObject):
     def strandSet(self):
         return self._linkedList
     def setConnection3p(self, strand):
-        self._domain_3p = strand
+        self._connection_3p = strand
     # end def
 
     def setConnection5p(self, strand):
-        self._domain_5p = strand
+        self._connection_5p = strand
     # end def
     def length(self):
         return self._length
@@ -103,8 +130,36 @@ class Domain(ProxyObject):
     def insertionsOnStrand(self):
         return self._strand.insertionsOnStrand()
     def oligo(self):
-        return self._strand.oligo()
+        return self._oligo
     def document(self):
         return self._doc
     def sequence(self):
-        return self._strand.sequece()
+        return self._strand.sequence()
+    def insertionLengthBetweenIdxs(self, idxL, idxH):
+        return self._strand.insertionLengthBetweenIdxs(idxL, idxH)
+    def setDomain5p(self,domain):
+        self._domain_5p = domain
+    def setDomain3p(self,domain):
+        self._domain_3p = domain
+
+    def setOligo(self, new_oligo, emit_signal=True):
+        self._oligo = new_oligo
+        if emit_signal:
+            self.strandHasNewOligoSignal.emit(self)
+
+    ### Singals
+
+    strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') #pyqtSignal(QObject)  # strand
+
+    def totalLength(self):
+        """
+        includes the length of insertions in addition to the bases
+        """
+        tL = 0
+        insertions = self.insertionsOnStrand()
+
+        for insertion in insertions:
+            tL += insertion.length()
+        return tL + self.length()
+    def isScaffold(self):
+        return self._linkedList.isScaffold()

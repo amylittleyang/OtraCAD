@@ -55,6 +55,8 @@ class Strand(ProxyObject):
         self._strand5p = None  # 5' connection to another strand
         self._strand3p = None  # 3' connection to another strand
         self._sequence = None
+        self._c5p = None
+        self._c3p = None
 
         self._decorators = {}
         self._modifiers = {}

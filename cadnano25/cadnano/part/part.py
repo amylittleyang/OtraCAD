@@ -677,11 +677,6 @@ class Part(ProxyObject):
                     return
 
             # is the 3' end ready for xover installation?
-            try:
-                assert strand5p.idx3Prime() == idx5p
-            except:
-                print('%d != %d'%(strand5p.idx3Prime(),idx5p))
-
             if strand5p.idx3Prime() == idx5p:  # yes, idx already matches
                 xo_strand5 = strand5p
             else:
@@ -704,7 +699,7 @@ class Part(ProxyObject):
                     return
         # end else
 
-        e = CreateXoverCommand(self, xo_strand5, idx5p, 
+        e = CreateXoverCommand(self, xo_strand5, idx5p,
                 xo_strand3, idx3p, update_oligo=update_oligo)
         if use_undostack:
             self.undoStack().push(e)
@@ -805,6 +800,7 @@ class Part(ProxyObject):
         # Not a designated method
         # (there exist methods that also directly
         # remove parts from self._oligos)
+       # print (self._oligos)
         try:
             self._oligos.remove(oligo)
         except KeyError:
