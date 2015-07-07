@@ -14,6 +14,7 @@ class Domain(ProxyObject):
         self._name = string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         self._length = high_idx-low_idx +1
         self._sequence = None
+        #coordinate of the lowest base
         self._bs_low  = bs_low
         self._bs_high = bs_high
         self._linkedList = linkedList

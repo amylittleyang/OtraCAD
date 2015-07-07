@@ -12,13 +12,6 @@ from cadnano import setBatch, getReopen, setReopen
 from cadnano.part.refresholigoscmd import RefreshOligosCommand
 from strandrep.domain import Domain
 
-def decodeFile(filename, document=None):
-    with io.open(filename, 'r', encoding='utf-8') as fd:
-        nno_dict = json.load(fd)
-    if document is None:
-        document = Document()
-    decode(document, nno_dict)
-    return document
 
 def decode(document,obj):
     num_bases = len(obj['vstrands'][0]['scaf'])
