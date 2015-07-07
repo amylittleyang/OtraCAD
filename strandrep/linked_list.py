@@ -213,7 +213,6 @@ class LinkedList(ProxyObject):
     def insertAt(self,domain,idx):
         # insert domain at specified index. Index numbered 5' to 3'
         self._length += 1
-        pass
 
     def reverse(self):
         # reverse linked list to go 5' to 3' if necessary. hint: queue/stack

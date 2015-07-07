@@ -207,10 +207,14 @@ def decode(document,obj):
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
             assert strand5p._vhNum == from_vh._number and strand3p._vhNum == to_vh_num
-            print(scaf_strand_set._virtual_helix._number)
-            print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
-            print('strand5p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 5p= %d' % (strand5p._name,strand5p._vhNum,strand5p.idx5Prime(),strand5p.idx3Prime(),idx5p))
-            print('strand3p %s, on virtual helix %d, idx5Prime = %d, idx3Prime = %d, idx 3p= %d' % (strand3p._name,strand3p._vhNum,strand3p.idx5Prime(),strand3p.idx3Prime(),idx3p))
+            #print(scaf_strand_set._virtual_helix._number)
+            #print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
+            #c3p = strand5p._connection_3p
+            #c5p = strand5p._connection_5p
+            #list0 = [c3p,c5p,strand3p._connection_3p,strand3p._connection_5p]
+            #for i in range(len(list0)):
+            #    if list0[i]:
+            #        print('strand= %s, %d, %s' % (strand5p._name,i,list0[i]._name))
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                  update_oligo=False, use_undostack=False)
     #print('done done')
@@ -219,10 +223,10 @@ def decode(document,obj):
         for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
             # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
             strand5p = stap_strand_set.getStrand(idx5p)
-            print('strand 5p = %s, going to helix %d, at idx %d' %(strand5p._name,to_vh_num,idx5p))
+            #print('strand 5p = %s, going to helix %d, at idx %d' %(strand5p._name,to_vh_num,idx5p))
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.stapleStrandSet().getStrand(idx3p)
-            print('strand 3p = %s, going to helix %d, at idx %d' %(strand3p._name,to_vh_num,idx3p))
+            #print('strand 3p = %s, going to helix %d, at idx %d' %(strand3p._name,to_vh_num,idx3p))
 
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                 update_oligo=False, use_undostack=False)
@@ -322,16 +326,20 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
     if idx == len(list) or len(list) == 0:
         domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
+        domain_high = strand_linkedList.domainAtIndex(-2)
+        if domain_high:
+            domain_high.setConnectionHigh(domain)
+            domain.setConnectionLow(domain_high)
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
 #        print(strand_linkedList._length)
         domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
         strand_linkedList.append(domain)
-        domain_high = strand_linkedList.domainAtIndex(-2)
-        if domain_high:
-            domain_high.setConnectionHigh(domain)
-            domain.setConnectionLow(domain_high)
+        # domain_high = strand_linkedList.domainAtIndex(-2)
+        # if domain_high:
+        #     domain_high.setConnectionHigh(domain)
+        #     domain.setConnectionLow(domain_high)
         low = low + idx
         appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
     else:

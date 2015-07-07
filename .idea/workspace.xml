@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;-&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;-debugging createXover and refresh oligo cmd&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" afterPath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AnimDNA.iml" afterPath="$PROJECT_DIR$/.idea/AnimDNA.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/domain.py" afterPath="$PROJECT_DIR$/strandrep/domain.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileio/domain_decode.py" afterPath="$PROJECT_DIR$/fileio/domain_decode.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/linked_list.py" afterPath="$PROJECT_DIR$/strandrep/linked_list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/part/part.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/part/part.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/strand/strand.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/strand/strand.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py" />
     </list>
     <ignored path="AnimDNA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,14 +29,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="domain_decode.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="domain_decode.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="333" column="46" selection-start-line="333" selection-start-column="46" selection-end-line="333" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.5626374">
+              <caret line="338" column="20" selection-start-line="338" selection-start-column="20" selection-end-line="338" selection-end-column="20" />
               <folding>
                 <element signature="e#44#55#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="enum.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/enum.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,43 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stranditem.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="xovercmds.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="refresholigoscmd.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07645875">
-              <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="refresholigoscmd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano_copy/cadnano2.5/cadnano/part/refresholigoscmd.py">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="62" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="62" />
+              <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -113,8 +96,8 @@
       <file leaf-file-name="linked_list.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="197" column="52" selection-start-line="197" selection-start-column="52" selection-end-line="197" selection-end-column="52" />
+            <state vertical-scroll-proportion="-95.55556">
+              <caret line="176" column="14" selection-start-line="176" selection-start-column="8" selection-end-line="176" selection-end-column="14" />
               <folding>
                 <element signature="e#19#54#0" expanded="true" />
               </folding>
@@ -126,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
               <folding>
                 <element signature="e#19#32#0" expanded="true" />
               </folding>
@@ -217,11 +200,11 @@
         <option value="$PROJECT_DIR$/cadnano25/cadnano/strand/strand.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/oligo/oligo.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/part/part.py" />
-        <option value="$PROJECT_DIR$/strandrep/linked_list.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py" />
-        <option value="$PROJECT_DIR$/strandrep/domain.py" />
-        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py" />
+        <option value="$PROJECT_DIR$/strandrep/domain.py" />
+        <option value="$PROJECT_DIR$/strandrep/linked_list.py" />
+        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
       </list>
     </option>
   </component>
@@ -229,7 +212,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1115" />
+    <option name="x" value="-1124" />
     <option name="y" value="23" />
     <option name="width" value="1087" />
     <option name="height" value="806" />
@@ -320,7 +303,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="refresholigo&#9;null&#9;null&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;domain&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;linkedlis&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;domain_decod&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;nnodecode&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;document&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;endpoint&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py&#10;xoverit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py&#10;nnode&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;random te&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/tests/random_test.py&#10;linked&#9;null&#9;null&#10;nno&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;doma&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;strandset&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/strandset.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;stra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;virtualh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;strandtype&#9;null&#9;null&#10;mainwindow&#9;null&#9;null&#10;documentcontro&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/gui/controllers/documentcontroller.py&#10;createStrand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strandset/createstrandcmd.py&#10;virtua&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/virtualhelix/virtualhelix.py&#10;domain_de&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/virtualhelixitem.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/partitem.py&#10;clickhandler&#9;null&#9;null&#10;clickHandler&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="num&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/enum.py&#10;refres&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;refresholigo&#9;null&#9;null&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;domain&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;linkedlis&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;domain_decod&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;nnodecode&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;document&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;endpoint&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py&#10;xoverit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py&#10;nnode&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;random te&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/tests/random_test.py&#10;linked&#9;null&#9;null&#10;nno&#9;FILE&#9;file:///Users/jie/cadnano/cadnano2.5/cadnano/fileio/nnodecode.py&#10;doma&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;strandset&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/strandset.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;stra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;virtualh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/virtualhelix/virtualhelix.py&#10;strandtype&#9;null&#9;null&#10;mainwindow&#9;null&#9;null&#10;documentcontro&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/cadnano2.5/cadnano/gui/controllers/documentcontroller.py&#10;createStrand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/strandset/createstrandcmd.py&#10;virtua&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano_copy/cadnano2.5/cadnano/virtualhelix/virtualhelix.py&#10;domain_de&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/fileio/domain_decode.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/virtualhelixitem.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano2.5/cadnano/gui/views/pathview/partitem.py&#10;clickhandler&#9;null&#9;null&#10;clickHandler&#9;null&#9;null" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="151" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="153" />
@@ -773,7 +756,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436200433795</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Note:&#10;-debugging createXover and refresh oligo cmd&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <created>1436288083118</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1436288083118</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -786,17 +775,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1115" y="23" width="1087" height="806" extended-state="0" />
+    <frame x="-1124" y="23" width="1087" height="806" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32630098" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16099356" sideWeight="0.4552381" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16099356" sideWeight="0.4552381" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3164557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2616034" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3206751" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16099356" sideWeight="0.5447619" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41068918" sideWeight="0.51793927" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1997187" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -804,7 +794,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2742616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -846,7 +835,8 @@
     <MESSAGE value="Notes:&#10;- this code is behaving extremely wierd; createXover function somehow modifies linkedlist and can add node in the middle although I didn't write any linked list insertion code; To prevent _findOverlappingRanges return a domain not supposed to be on the helix, I added a filter to the function to remove any domain that is not on the helix; then the program freezed after processing all scaffold xovers;&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Notes:&#10;just double checking&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- added return in xoveritem&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- added return in xoveritem&#10;&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <MESSAGE value="Note:&#10;-debugging createXover and refresh oligo cmd&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;-debugging createXover and refresh oligo cmd&#10;To do:&#10;- figure out what is modifying linked list without permission; why the screen freezes;&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -979,7 +969,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/fileio/domain_decode.py</url>
-          <line>230</line>
+          <line>234</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint type="python-line">
@@ -1048,13 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/enum.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1312,26 +1295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="197" column="52" selection-start-line="197" selection-start-column="52" selection-end-line="197" selection-end-column="52" />
-          <folding>
-            <element signature="e#19#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="e#19#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1356,24 +1319,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="333" column="46" selection-start-line="333" selection-start-column="46" selection-end-line="333" selection-end-column="46" />
-          <folding>
-            <element signature="e#44#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cadnano_copy/cadnano2.5/cadnano/part/refresholigoscmd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1384,12 +1329,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07645875">
-          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/linked_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-95.55556">
+          <caret line="176" column="14" selection-start-line="176" selection-start-column="8" selection-end-line="176" selection-end-column="14" />
+          <folding>
+            <element signature="e#19#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/enum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5626374">
+          <caret line="338" column="20" selection-start-line="338" selection-start-column="20" selection-end-line="338" selection-end-column="20" />
+          <folding>
+            <element signature="e#44#55#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -99,10 +99,10 @@ class Domain(ProxyObject):
                 break
 
     def connection3p(self):
-        return self._domain_3p
+        return self._connection_3p
 
     def connection5p(self):
-        return self._domain_5p
+        return self._connection_5p
 
     def idxs(self):
         return (self._low_idx, self._high_idx)
