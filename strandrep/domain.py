@@ -45,7 +45,7 @@ class Domain(ProxyObject):
 
 
 
-        cmd = linkedList.createStrand(low_idx, high_idx, use_undostack=True)
+        cmd = linkedList.createStrand(self,low_idx, high_idx, use_undostack=True)
         if cmd == -1:
             self._oligo = None
             self._strand = None

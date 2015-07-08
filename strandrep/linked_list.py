@@ -708,7 +708,7 @@ class LinkedList(ProxyObject):
         """docstring for deepCopy"""
         pass
 
-    def createStrand(self, base_idx_low, base_idx_high, use_undostack=True):
+    def createStrand(self,domain, base_idx_low, base_idx_high, use_undostack=True):
         """
         Assumes a strand is being created at a valid set of indices.
         """
@@ -717,7 +717,7 @@ class LinkedList(ProxyObject):
         can_insert, strandset_idx = \
                                 self.getIndexToInsert(base_idx_low, base_idx_high)
         if can_insert:
-            c = CreateStrandCommand(self,
+            c = CreateStrandCommand(self,domain,
                                         base_idx_low, base_idx_high, strandset_idx)
             row, col = self._virtual_helix.coord()
             # d = "(%d,%d).%d + [%d,%d]" % \

@@ -43,6 +43,7 @@ class StrandItem(QGraphicsLineItem):
 
         self._insertion_items = {}
         # caps
+        #TODO: create another EndPointItem to handle the gap btw two domains, item takes two spaces horizontally
         self._low_cap = EndpointItem(self, 'low', is_drawn_5to3)
         self._high_cap = EndpointItem(self, 'high', is_drawn_5to3)
         # self._high_cap = None
@@ -372,9 +373,16 @@ class StrandItem(QGraphicsLineItem):
 
         # 2. Xover drawing
         xo = self._xover3pEnd
-        if strand.connection3p():
-            xo.update(strand)
-            xo.showIt()
+        c3p = strand.connection3p()
+        if c3p:
+            #TODO find something to fill the gap
+            if c3p._vhNum == strand._vhNum:
+                #print('c3p vh = %d, strand vh = %d' %(c3p._vhNum,strand._vhNum))
+                xo.restoreParent()
+                xo.hideIt()
+            else:
+                xo.update(strand)
+                xo.showIt()
         else:
             xo.restoreParent()
             xo.hideIt()

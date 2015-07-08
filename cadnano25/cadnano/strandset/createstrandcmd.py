@@ -11,12 +11,12 @@ class CreateStrandCommand(UndoCommand):
     create a new Oligo, add it to the Part, and point the new Strand
     at the oligo.
     """
-    def __init__(self, strandset, base_idx_low, base_idx_high, strandset_idx):
+    def __init__(self, strandset, domain, base_idx_low, base_idx_high, strandset_idx):
         super(CreateStrandCommand, self).__init__("create strand")
         self._strandset = strandset
         self._s_set_idx = strandset_idx
         doc = strandset.document()
-        self._strand = Strand(strandset, base_idx_low, base_idx_high)
+        self._strand = Strand(strandset, base_idx_low, base_idx_high,domain=domain)
         colorList = prefs.STAP_COLORS if strandset.isStaple() else prefs.SCAF_COLORS
         color = random.choice(colorList).name()
         self._new_oligo = Oligo(None, color)  # redo will set part

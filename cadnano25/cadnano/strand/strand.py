@@ -45,9 +45,10 @@ class Strand(ProxyObject):
     connectionHigh) are bound during the init for convenience.
     """
 
-    def __init__(self, strandset, base_idx_low, base_idx_high, oligo=None):
+    def __init__(self, strandset, base_idx_low, base_idx_high, oligo=None,domain=None):
         self._doc = strandset.document()
         super(Strand, self).__init__(strandset)
+        self._domain = domain
         self._strandset = strandset
         self._base_idx_low = base_idx_low  # base index of the strand's left bound
         self._base_idx_high = base_idx_high  # base index of the right bound
@@ -60,6 +61,9 @@ class Strand(ProxyObject):
 
         self._decorators = {}
         self._modifiers = {}
+        if self._domain:
+            self._vhNum = self._domain._vhNum
+
 
         # dynamic methods for mapping high/low connection /indices
         # to corresponding 3Prime 5Prime

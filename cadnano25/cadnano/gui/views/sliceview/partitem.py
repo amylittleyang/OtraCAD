@@ -137,7 +137,6 @@ class PartItem(QGraphicsItem):
         coords = vh.coord()
 
         empty_helix_item = self._empty_helix_hash[coords]
-        # TODO test to see if self._virtual_helix_hash is necessary
         vhi = VirtualHelixItem(vh, empty_helix_item)
         self._virtual_helix_hash[coords] = vhi
     # end def

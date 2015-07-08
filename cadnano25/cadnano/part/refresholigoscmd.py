@@ -58,10 +58,10 @@ class RefreshOligosCommand(UndoCommand):
             strand5gen = strand.generator5pStrand()
             # this gets the oligo and burns a strand in the generator
             strand5 = next(strand5gen)
-            print('strand5p = %s' % strand5._name)
-            print('5p type = %d' % strand5._linkedList._strand_type)
+            #print('strand5p = %s' % strand5._name)
+            #print('5p type = %d' % strand5._linkedList._strand_type)
             for strand5 in strand5gen:
-                print('strand5p = %s' % strand5._name)
+                #print('strand5p = %s' % strand5._name)
 
                 oligo5 = strand5.oligo()
                 if oligo5 != start_oligo:
@@ -76,9 +76,9 @@ class RefreshOligosCommand(UndoCommand):
             else:
                 strand3gen = strand.generator3pStrand()
                 strand3 = next(strand3gen)   # burn one
-                print('strand3p = %s' % strand3._name)
+               # print('strand3p = %s' % strand3._name)
                 for strand3 in strand3gen:
-                    print('strand3p = %s' % strand3._name)
+                #    print('strand3p = %s' % strand3._name)
                     oligo3 = strand3.oligo()
                     if oligo3 != start_oligo:
                         oligo3.removeFromPart()
