@@ -95,6 +95,7 @@ class Part(ProxyObject):
         self._active_base_index = self._STEP
         self._active_virtual_helix = None
         self._active_virtual_helix_idx = None
+        self._active_domain = self._document._active_domain
 
     # end def
 
@@ -204,6 +205,8 @@ class Part(ProxyObject):
         return self._active_base_index
     # end def
 
+    def activeDomain(self):
+        return self._active_domain
 
     def activeVirtualHelix(self):
         return self._active_virtual_helix
@@ -837,6 +840,7 @@ class Part(ProxyObject):
         self._active_base_index = idx
         self.partActiveSliceIndexSignal.emit(self, idx)
     # end def
+
 
 
     def setActiveVirtualHelix(self, virtual_helix, idx=None):

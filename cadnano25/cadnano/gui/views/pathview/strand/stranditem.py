@@ -223,6 +223,10 @@ class StrandItem(QGraphicsLineItem):
         self.selectIfRequired(self.partItem().document(), indices)
     # end def
 
+    def toeholdAddedSlot(self,toehold):
+        #TODO: render toehold on view
+        pass
+
     ### ACCESSORS ###
     def viewroot(self):
         return self._viewroot
@@ -485,7 +489,7 @@ class StrandItem(QGraphicsLineItem):
     def mousePressEvent(self, event):
         strand = self._model_strand
         domain = strand._domain
-
+        domain._doc._active_domain = domain
         #print('active domain = %s' % domain._name)
         """
         Parses a mousePressEvent to extract strandSet and base index,

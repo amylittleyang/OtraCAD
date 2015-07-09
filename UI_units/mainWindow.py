@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         uic.loadUi('ui_window.ui', self)
-
+        self.doc = None
         self.setupUI()
 
     def setupUI(self):
@@ -35,8 +35,6 @@ class MainWindow(QMainWindow):
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
         self.path_splitter = QtWidgets.QSplitter(self.main_splitter)
         self.renderView = CustomQGraphicsView(self.path_splitter)
-
-        #TODO: set min renderView width & dock width(to display complete tool box)
 
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -79,6 +77,9 @@ class MainWindow(QMainWindow):
 #         self.path_tool_manager = PathToolManager(self,self.path_toolbar)
     #end def
 
-
+    def setDoc(self,doc):
+        self.doc = doc
+        self.dockWidget.doc = doc
+        self.toolBar.doc = doc
 
 

@@ -1,13 +1,18 @@
 __author__ = 'jie'
 from PyQt5.QtGui import QIcon
-from fileio.decode import Decoder
-from PyQt5.QtWidgets import QToolBar,QMessageBox,QWidget,QFileDialog,QCheckBox,QFormLayout,QDialogButtonBox,QGroupBox,QVBoxLayout
+from cadnano.document import Document
+from fileio import domain_decode
+import io
+from cadnano.gui.controllers.documentcontroller import DocumentController
+from PyQt5.QtWidgets import QToolBar,QMessageBox,QFileDialog
 from PyQt5.QtCore import QFileInfo
+import json
 
 class ToolBar(QToolBar):
     def __init__(self,mainWindow):
         super(ToolBar, self).__init__(None)
         self.mainWindow = mainWindow
+        self.doc = mainWindow.doc
         self.actionOpen = mainWindow.actionOpen
         self.actionSave = mainWindow.actionSave
         self.actionCreate_toehold = mainWindow.actionCreate_toehold
@@ -39,7 +44,15 @@ class ToolBar(QToolBar):
             messageBox.setText(myFile +' selected')
             messageBox.exec_()
             path = myFile
-            decoder = Decoder(toolBarController = self, path = path) # parse json file, create new document
+
+            with io.open(path, 'r', encoding='utf-8') as fd:
+                dict = json.load(fd)
+                doc = Document()
+                doc.mainWindow = self.mainWindow
+                doc.dc = DocumentController(doc)
+                domain_decode.decode(doc,dict)
+                self.mainWindow.setDoc(doc)
+
             messageBox = QMessageBox()
             messageBox.setText('parsed')
             messageBox.exec_()

@@ -3,6 +3,7 @@ from cadnano.enum import StrandType
 import cadnano.preferences as prefs
 import cadnano.util as util
 from cadnano.strandset.createstrandcmd import CreateStrandCommand
+from cadnano.strandset.removestrandcmd import RemoveStrandCommand
 from cadnano.cnproxy import UndoStack, UndoCommand
 from cadnano.cnproxy import ProxyObject, ProxySignal
 
@@ -239,8 +240,7 @@ class LinkedList(ProxyObject):
     def getStrandList(self):
         strandList = []
         curr = self._head
-        if curr is not None:
-            while True:
+        while curr:
                 strandList.append(curr)
                 curr = curr._domain_3p
                 if curr == None:
@@ -743,3 +743,23 @@ class LinkedList(ProxyObject):
             return False
         elif abs(base_idx - strand.idx3Prime()) > 1:
             return True
+
+    def removeDomainAt(self,idx):
+        curr = self._head
+        precur = curr
+        if curr._index == idx:
+            self._head = curr._domain_3p
+            if self._head:
+                self._head.setDomain5p(None)
+            return
+        while curr:
+            curridx = curr._index
+            if curridx == idx:
+                precur.setDomain3p(curr._domain_3p)
+                curr._domain_3p._domain_5p = precur
+                break
+            else:
+                precur = curr._domain_3p
+                curr = curr._domain_3p
+
+        self._strand_list = self.getStrandList()

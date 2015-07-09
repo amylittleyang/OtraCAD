@@ -34,6 +34,7 @@ class Document(ProxyObject):
         self._assemblies = []
         self._controller = None
         self._selected_part = None
+        self._active_domain = None
         # the dictionary maintains what is selected
         self._selection_dict = {}
         # the added list is what was recently selected or deselected
@@ -489,6 +490,12 @@ class Document(ProxyObject):
             return
         self._selected_part = newPart
     # end def
+
+    def activeDomain(self):
+        return self._active_domain
+
+    def setActiveDomain(self,domain):
+        self._active_domain = domain
 
     ### PRIVATE SUPPORT METHODS ###
     def _addPart(self, part, use_undostack=True):

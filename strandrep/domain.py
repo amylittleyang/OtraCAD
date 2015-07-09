@@ -1,8 +1,13 @@
 __author__ = 'jie'
 import string
 from operator import attrgetter
+from collections import defaultdict
 
+from strandrep.createToeholdCmd import CreateToeholdCommand
+import cadnano.util as util
 from cadnano.cnproxy import ProxyObject, ProxySignal
+
+
 class Domain(ProxyObject):
     def __init__(self,linkedList,low_idx,high_idx,bs_low = None, bs_high = None, hyb_strand=None):
         super(Domain, self).__init__(linkedList)
@@ -14,11 +19,13 @@ class Domain(ProxyObject):
         self._type = linkedList._strand_type
         if self._type == 0:
             self._type_str = 'scaf'
+            self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         elif self._type == 1:
             self._type_str ='stap'
+            self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         else:
             self._type = 'overhang'
-        self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
+            self._name = 't'+ str(self._vhNum)+str(self._index)     # fix naming
         self._length = high_idx-low_idx +1
         self._sequence = None
         #coordinate of the lowest base
@@ -77,6 +84,10 @@ class Domain(ProxyObject):
             self._loop = True
 
         self.strandUpdateSignal = self._strand.strandUpdateSignal
+        self._toehold_3p = None
+        self._toehold_5p = None
+        self._last_toehold_cmd = None
+        self._toehold_cmd_dict = defaultdict()
 
     def getName(self):
         return self._name
@@ -124,6 +135,7 @@ class Domain(ProxyObject):
 
     def idxs(self):
         return (self._low_idx, self._high_idx)
+
     def lowIdx(self):
         return self._low_idx
     # end def
@@ -134,6 +146,7 @@ class Domain(ProxyObject):
 
     def strandSet(self):
         return self._linkedList
+
     def setConnection3p(self, strand):
         self._connection_3p = strand
     # end def
@@ -143,20 +156,28 @@ class Domain(ProxyObject):
     # end def
     def length(self):
         return self._length
+
     def virtualHelix(self):
         return self._vh
+
     def insertionsOnStrand(self):
         return self._strand.insertionsOnStrand()
+
     def oligo(self):
         return self._oligo
+
     def document(self):
         return self._doc
+
     def sequence(self):
         return self._strand.sequence()
+
     def insertionLengthBetweenIdxs(self, idxL, idxH):
         return self._strand.insertionLengthBetweenIdxs(idxL, idxH)
+
     def setDomain5p(self,domain):
         self._domain_5p = domain
+
     def setDomain3p(self,domain):
         self._domain_3p = domain
 
@@ -167,6 +188,7 @@ class Domain(ProxyObject):
 
     ### Singals
 
+    toeholdAddedSignal = ProxySignal(ProxyObject,name = 'toeholdAddedSignal')
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') #pyqtSignal(QObject)  # strand
 
     def totalLength(self):
@@ -179,20 +201,73 @@ class Domain(ProxyObject):
         for insertion in insertions:
             tL += insertion.length()
         return tL + self.length()
+
     def isScaffold(self):
         return self._linkedList.isScaffold()
+
     def is5pConnectionXover(self):
         if self._is_5p_connection_xover is not None:
             return self._is_5p_connection_xover
         else:
             return False
+
     def is3pConnectionXover(self):
         if self._is_3p_connection_xover is not None:
             return self._is_3p_connection_xover
         else:
             return False
+
     def setIs5pConnectionXover(self,bool):
         self._is_5p_connection_xover = bool
 
     def setIs3pConnectionXover(self,bool):
         self._is_3p_connection_xover = bool
+
+    def toehold3p(self):
+        return self._toehold_3p
+
+    def toehold5p(self):
+        return self._toehold_5p
+
+    def toeholdChanged(self,prime,checked=True):
+        dict = self._toehold_cmd_dict
+        cmd = CreateToeholdCommand(self._vh,self,prime)
+        if checked: #create new toehold at prime
+            cmd.redo()
+            dict[prime] = cmd
+        else: # remove a toehold at a prime
+            cmd.undo()
+            dict[prime] = None
+
+    def canCreateToeholdAt(self,prime):
+        if prime == 3:
+            return self.connection3p() is None and self.toehold3p() is None
+        elif prime == 5:
+            return self.connection5p() is None and self.toehold5p() is None
+
+    def toeholdChangeAccepted(self):
+        print('accepted')
+        dict = self._toehold_cmd_dict
+        print(dict)
+        stack = []
+        for prime,cmd in dict.iteritems():
+            if cmd is not None:
+                stack.append(cmd)
+                cmd.undo()
+                dict[prime] = None
+        d = '%s create toehold' % self._name
+        util.execCommandList(self,stack,d,use_undostack=True)
+
+
+    def toeholdChangeRejected(self):
+        print('rejected')
+        dict = self._toehold_cmd_dict
+        for prime,cmd in dict.iteritems():
+            if cmd is not None:
+                cmd.undo()
+                dict[prime] = None
+
+
+    def undoStack(self):
+        return self._linkedList.undoStack()
+

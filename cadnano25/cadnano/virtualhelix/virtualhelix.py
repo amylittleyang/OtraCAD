@@ -27,7 +27,7 @@ class VirtualHelix(ProxyObject):
         self._part = part
         self._scaf_LinkedList = LinkedList(StrandType.SCAFFOLD, self)
         self._stap_LinkedList = LinkedList(StrandType.STAPLE, self)
-        self._overHang_LinkedList = LinkedList(StrandType.OVERHANG,self)
+        self._overhang_LinkedList = LinkedList(StrandType.OVERHANG,self)
         # If self._part exists, it owns self._number
         # in that only it may modify it through the
         # private interface. The public interface for
@@ -133,7 +133,7 @@ class VirtualHelix(ProxyObject):
 
     def getStrandSets(self):
         """Return a tuple of the scaffold and staple StrandSets."""
-        return self._scaf_LinkedList, self._stap_LinkedList, self._overHang_LinkedList
+        return self._scaf_LinkedList, self._stap_LinkedList, self._overhang_LinkedList
     # end def
 
     def hasStrandAtIdx(self, idx):
