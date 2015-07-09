@@ -483,19 +483,23 @@ class StrandItem(QGraphicsLineItem):
 
     ### EVENT HANDLERS ###
     def mousePressEvent(self, event):
+        strand = self._model_strand
+        domain = strand._domain
+
+        #print('active domain = %s' % domain._name)
         """
         Parses a mousePressEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.
         """
 #        active_tool_str = self._getActiveTool().methodPrefix()
-        self.scene().views()[0].addToPressList(self)
-        idx = int(floor((event.pos().x()) / _BASE_WIDTH))
-        self._virtual_helix_item.setActive(idx)
+#         self.scene().views()[0].addToPressList(self)
+#         idx = int(floor((event.pos().x()) / _BASE_WIDTH))
+#         self._virtual_helix_item.setActive(idx)
 #        tool_method_name =  active_tool_str + "MousePress"
 #        if hasattr(self, tool_method_name):
 #            getattr(self, tool_method_name)(event, idx)
 #        else:
-        event.setAccepted(False)
+#         event.setAccepted(False)
     # end def
 
     def mouseMoveEvent(self, event):

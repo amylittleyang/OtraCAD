@@ -4,13 +4,15 @@ from cadnano.gui.views.pathview.tools.pathtoolmanager import PathToolManager
 from cadnano.gui.views.pathview.pathrootitem import PathRootItem
 from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QGraphicsScene
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QGraphicsScene,QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow,QWidget
 from PyQt5.QtWidgets import QGraphicsItem
 from cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
 from PyQt5.QtWidgets import QDockWidget
 from PyQt5 import QtWidgets,QtCore,QtGui
-from PyQt5 import Qt
+from UI_units.toolbar import ToolBar
+from UI_units.dockWidget import DockWidget
+
 class MainWindow(QMainWindow):
 
 
@@ -19,29 +21,23 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         uic.loadUi('ui_window.ui', self)
+
         self.setupUI()
 
     def setupUI(self):
+        self.dockWidget = DockWidget(self)
+
+        self.toolBar = ToolBar(self)
+        self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
         root = QFileInfo(__file__).absolutePath()
-        self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
-        self.actionSave.setIcon(QIcon(root+'/images/489751-Floppy_Disk-128.png'))
-        self.actionSelect.setIcon(QIcon(root+'/images/mouse.png'))
-        self.actionRip_off.setIcon(QIcon(root+'/images/rip_off.png'))
         self.setWindowTitle('AnimDNA')
-        self.actionCreate_toehold.setIcon(QIcon(root+'/images/transformation.png'))
         self.setWindowIcon((QIcon(root+'/images/bug.png')))
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
         self.path_splitter = QtWidgets.QSplitter(self.main_splitter)
         self.renderView = CustomQGraphicsView(self.path_splitter)
 
         #TODO: set min renderView width & dock width(to display complete tool box)
-        dock = QDockWidget('An Example')
-        dock.setAllowedAreas(QtCore.Qt.RightDockWidgetArea)
-        dock.setFeatures(QDockWidget.DockWidgetClosable)
-        self.dockWidget = dock
-        self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
-        # show after user wants new transformation
-        self.dockWidget.hide()
+
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)

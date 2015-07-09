@@ -11,8 +11,7 @@ DocumentController = None
 
 
 from PyQt5.QtCore import QObject, QCoreApplication, pyqtSignal, Qt, QEventLoop, QSize
-
-from PyQt5.QtGui import QIcon
+from UI_units.mainWindow import MainWindow
 from PyQt5.QtWidgets import qApp, QApplication, QUndoGroup
 
 __author__ = 'jie'
@@ -45,9 +44,8 @@ class AppDecorator(QObject):
 
     def exec_(self):
         if hasattr(self, 'qApp'):
-            from initialization.ui_loader import UiLoader
-            loader = UiLoader()
-            loader.mainWindow.show()
+            mainWindow = MainWindow()
+            mainWindow.show()
             self.mainEventLoop = QEventLoop()
             self.mainEventLoop.exec_()
             #self.qApp.exec_()

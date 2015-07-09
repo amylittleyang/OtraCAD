@@ -103,6 +103,7 @@ class Part(ProxyObject):
         return "<%s %s>" % (cls_name, str(id(self))[-4:])
 
     ### SIGNALS ###
+
     partActiveSliceIndexSignal = ProxySignal(ProxyObject, int, 
                         name='partActiveSliceIndexSignal')      #(self, index)
     partActiveSliceResizeSignal = ProxySignal(ProxyObject,
@@ -202,6 +203,7 @@ class Part(ProxyObject):
     def activeBaseIndex(self):
         return self._active_base_index
     # end def
+
 
     def activeVirtualHelix(self):
         return self._active_virtual_helix
@@ -835,6 +837,7 @@ class Part(ProxyObject):
         self._active_base_index = idx
         self.partActiveSliceIndexSignal.emit(self, idx)
     # end def
+
 
     def setActiveVirtualHelix(self, virtual_helix, idx=None):
         self._active_virtual_helix = virtual_helix

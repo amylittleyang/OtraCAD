@@ -11,7 +11,14 @@ class Domain(ProxyObject):
         self._index = linkedList._length
         self._vh = linkedList._virtual_helix
         self._vhNum = self._vh._number
-        self._name = string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
+        self._type = linkedList._strand_type
+        if self._type == 0:
+            self._type_str = 'scaf'
+        elif self._type == 1:
+            self._type_str ='stap'
+        else:
+            self._type = 'overhang'
+        self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         self._length = high_idx-low_idx +1
         self._sequence = None
         #coordinate of the lowest base
