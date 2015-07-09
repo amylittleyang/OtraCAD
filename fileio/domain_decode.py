@@ -322,7 +322,10 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
         domain_low = strand_linkedList.domainAtIndex(-2)
         if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
             domain_low.setConnectionHigh(domain)
+            domain_low.setIsConnectionHighXover(True)
             domain.setConnectionLow(domain_low)
+            domain.setIsConnectionLowXover(True)
+            #print ('domain %s connectionhigh to domain %s = %s' %(domain_low._name,domain._name,domain_low.isConnectionHighXover()))
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
@@ -332,7 +335,9 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
         domain_low = strand_linkedList.domainAtIndex(-2)
         if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
             domain_low.setConnectionHigh(domain)
+            domain_low.setIsConnectionHighXover(True)
             domain.setConnectionLow(domain_low)
+            domain.setIsConnectionLowXover(True)
         low = low + idx
         appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
     else:

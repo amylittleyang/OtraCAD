@@ -314,17 +314,8 @@ class XoverItem(QGraphicsPathItem):
         # This condition is for floating xovers
         idx_3_prime = idx if idx else strand5p.idx3Prime()
         if self._node5 == None:
-            #TODO: rm xover node5
-            '''TODO is this part of a continuous strand? Check, and if not, continue.
-            If yes, then do not pass strand5p, because it will create a floating
-            crossover'''
             self._node5 = XoverNode5(vhi5p, self, strand5p, idx_3_prime)
         if strand3p != None:
-            #TODO: rm xover node3
-
-            '''TODO is this part of a continuous strand? Check, and if not, continue.
-            If yes, then do not pass strand5p, because it will create a floating
-            crossover'''
             if self._node3 == None:
                 vhi3p = partItem.itemForVirtualHelix(strand3p.virtualHelix())
                 self._node3 = XoverNode3(vhi3p, self, strand3p, strand3p.idx5Prime())

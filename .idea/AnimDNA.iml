@@ -11,6 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cadnano_copy" />
     <orderEntry type="module" module-name="cadnano" />
+    <orderEntry type="module" module-name="examples" />
   </component>
   <component name="ReSTService">
     <option name="workdir" value="$MODULE_DIR$" />

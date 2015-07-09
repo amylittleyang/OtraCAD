@@ -55,7 +55,7 @@ class PathRootItem(QGraphicsRectItem):
                             viewroot=self,\
                             parent=self)
         self._part_item_for_part[model_part] = part_item
-        win.path_tool_manager.setActivePart(part_item)
+        #win.path_tool_manager.setActivePart(part_item)
         self.setModifyState(win.action_modify.isChecked())
     # end def
 

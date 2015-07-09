@@ -25,6 +25,8 @@ class Domain(ProxyObject):
         self._domain_5p = None
         self._connection_5p = None
         self._connection_3p = None
+        self._is_5p_connection_xover = None
+        self._is_3p_connection_xover = None
         self._hyb_domain = None
         self._is_drawn_5_to_3 = self._linkedList.isDrawn5to3()
         if  self._is_drawn_5_to_3:
@@ -34,6 +36,10 @@ class Domain(ProxyObject):
             self.connectionHigh = self.connection3p
             self.setConnectionLow = self.setConnection5p
             self.setConnectionHigh = self.setConnection3p
+            self.setIsConnectionHighXover = self.setIs3pConnectionXover
+            self.setIsConnectionLowXover = self.setIs5pConnectionXover
+            self.isConnectionHighXover = self.is3pConnectionXover
+            self.isConnectionLowXover = self.is5pConnectionXover
         else:
             self.idx5Prime = self.highIdx
             self.idx3Prime = self.lowIdx
@@ -41,6 +47,10 @@ class Domain(ProxyObject):
             self.connectionHigh = self.connection5p
             self.setConnectionLow = self.setConnection3p
             self.setConnectionHigh = self.setConnection5p
+            self.setIsConnectionHighXover = self.setIs5pConnectionXover
+            self.setIsConnectionLowXover = self.setIs3pConnectionXover
+            self.isConnectionHighXover = self.is5pConnectionXover
+            self.isConnectionLowXover = self.is3pConnectionXover
 
 
 
@@ -164,3 +174,18 @@ class Domain(ProxyObject):
         return tL + self.length()
     def isScaffold(self):
         return self._linkedList.isScaffold()
+    def is5pConnectionXover(self):
+        if self._is_5p_connection_xover is not None:
+            return self._is_5p_connection_xover
+        else:
+            return False
+    def is3pConnectionXover(self):
+        if self._is_3p_connection_xover is not None:
+            return self._is_3p_connection_xover
+        else:
+            return False
+    def setIs5pConnectionXover(self,bool):
+        self._is_5p_connection_xover = bool
+
+    def setIs3pConnectionXover(self,bool):
+        self._is_3p_connection_xover = bool

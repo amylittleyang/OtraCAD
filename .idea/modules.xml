@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AnimDNA.iml" filepath="$PROJECT_DIR$/.idea/AnimDNA.iml" />
+      <module fileurl="file://$USER_HOME$/PyQt-gpl-5.4/examples/.idea/examples.iml" filepath="$USER_HOME$/PyQt-gpl-5.4/examples/.idea/examples.iml" />
     </modules>
   </component>
 </project>

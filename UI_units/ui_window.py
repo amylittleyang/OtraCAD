@@ -8,7 +8,12 @@ from PyQt5.QtWidgets import QGraphicsScene
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QGraphicsItem
 from cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
+from PyQt5.QtWidgets import QDockWidget
+from PyQt5 import QtWidgets,QtCore,QtGui
+from PyQt5 import Qt
 class MainWindow(QMainWindow):
+
+
 
     #somewhere in constructor:
     def __init__(self):
@@ -23,12 +28,21 @@ class MainWindow(QMainWindow):
         self.actionSelect.setIcon(QIcon(root+'/images/mouse.png'))
         self.actionRip_off.setIcon(QIcon(root+'/images/rip_off.png'))
         self.setWindowTitle('AnimDNA')
-        self.actionAnalyze_structure.setIcon(QIcon(root+'/images/transformation.png'))
+        self.actionCreate_toehold.setIcon(QIcon(root+'/images/transformation.png'))
         self.setWindowIcon((QIcon(root+'/images/bug.png')))
-        from PyQt5 import QtCore, QtGui, QtWidgets
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
         self.path_splitter = QtWidgets.QSplitter(self.main_splitter)
         self.renderView = CustomQGraphicsView(self.path_splitter)
+
+        #TODO: set min renderView width & dock width(to display complete tool box)
+        dock = QDockWidget('An Example')
+        dock.setAllowedAreas(QtCore.Qt.RightDockWidgetArea)
+        dock.setFeatures(QDockWidget.DockWidgetClosable)
+        self.dockWidget = dock
+        self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
+        # show after user wants new transformation
+        self.dockWidget.hide()
+
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -66,7 +80,7 @@ class MainWindow(QMainWindow):
          self.renderView.scene_root_item = self.pathroot
          self.renderView._scale_fit_factor = 0.9
          self.renderView._name = 'renderView'
-         self.path_tool_manager = PathToolManager(self,self.path_toolbar)
+#         self.path_tool_manager = PathToolManager(self,self.path_toolbar)
     #end def
 
 
