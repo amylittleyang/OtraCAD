@@ -60,6 +60,8 @@ class CreateToeholdCommand(UndoCommand):
             toehold = self._domain.toehold5p()
         #TODO: code removeToehold() in linked_list; need removeToeholdCommand for undo stack
         # self._overhang_linkedlist.removeDomainAt(toehold._index)
+        if toehold is None:
+            return
         self._overhang_linkedlist.removeStrand(toehold._strand,toehold._linkedList)
         if self._prime == 3:
             toehold.setConnection5p(None)

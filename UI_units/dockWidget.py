@@ -7,6 +7,7 @@ class DockWidget(QDockWidget):
         self.mainWindow = mainWindow
         self.doc = mainWindow.doc
         self.setupUI()
+        self.activeDomain = None
 
     def setupUI(self):
         self.setAllowedAreas(QtCore.Qt.RightDockWidgetArea)
@@ -28,8 +29,8 @@ class DockWidget(QDockWidget):
             self.checkBox_5p.stateChanged.connect(lambda:self.checkBoxStateChangedSlot(self.checkBox_5p))
             self.checkBox_3p.setCheckable(False)
             self.checkBox_5p.setCheckable(False)
-            self.checkBox_3p.setStyleSheet("background-color:#eee")
-            self.checkBox_5p.setStyleSheet("background-color:#eee")
+            self.checkBox_3p.setStyleSheet("background-color:#ddd")
+            self.checkBox_5p.setStyleSheet("background-color:#ddd")
 
             self.buttonBox = QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
             self.buttonBox.accepted.connect(self.buttonBoxAcceptedSlot)
@@ -48,6 +49,17 @@ class DockWidget(QDockWidget):
             newLayout.addWidget(self.buttonBox)
             dockWidgetContents.setLayout(newLayout)
             self.show()
+            self.updateCheckBoxState()
+
+    def updateCheckBoxState(self):
+            if self.activeDomain is not None:
+                 if self.activeDomain.canCreateToeholdAt(3):
+                    self.checkBox_3p.setCheckable(True)
+                    self.checkBox_3p.setStyleSheet("background-color:#eee")
+                 if self.activeDomain.canCreateToeholdAt(5):
+                    self.checkBox_5p.setCheckable(True)
+                    self.checkBox_5p.setStyleSheet("background-color:#eee")
+
 
     def buttonBoxAcceptedSlot(self):
         # undo all commands then add to undo_stack
@@ -56,34 +68,34 @@ class DockWidget(QDockWidget):
             activeDomain.toeholdChangeAccepted()
             self.checkBox_3p.setCheckable(False)
             self.checkBox_5p.setCheckable(False)
-            self.checkBox_3p.setStyleSheet("background-color:#eee")
-            self.checkBox_5p.setStyleSheet("background-color:#eee")
+            self.checkBox_3p.setStyleSheet("background-color:#ddd")
+            self.checkBox_5p.setStyleSheet("background-color:#ddd")
+            self.activeDomain = None
         self.hide()
 
 
     def buttonBoxRejectedSlot(self):
         # undo all commands in domain dict
-        if self.doc is None:
-            self.hide()
-        elif self.doc.activeDomain() is None:
-            self.hide()
-        else:
+        if self.activeDomain is not None:
             activeDomain = self.doc.activeDomain()
             activeDomain.toeholdChangeRejected()
             self.checkBox_3p.setCheckable(False)
             self.checkBox_5p.setCheckable(False)
-            self.checkBox_3p.setStyleSheet("background-color:#eee")
-            self.checkBox_5p.setStyleSheet("background-color:#eee")
-            self.hide()
-
-    def setCheckable(self,domain):
-        activeDomain = domain
-        if activeDomain.canCreateToeholdAt(3):
-            self.checkBox_3p.setCheckable(True)
             self.checkBox_3p.setStyleSheet("background-color:#ddd")
-        if activeDomain.canCreateToeholdAt(5):
-            self.checkBox_5p.setCheckable(True)
             self.checkBox_5p.setStyleSheet("background-color:#ddd")
+            self.activeDomain = None
+        self.hide()
+
+    def updateActiveDomain(self,domain):
+        if self.activeDomain is not None:
+            self.activeDomain.toeholdChangeRejected()
+            self.checkBox_3p.setCheckable(False)
+            self.checkBox_5p.setCheckable(False)
+            self.checkBox_3p.setStyleSheet("background-color:#ddd")
+            self.checkBox_5p.setStyleSheet("background-color:#ddd")
+        self.activeDomain = domain
+        if not self.isHidden():
+            self.updateCheckBoxState()
 
 
 
@@ -102,10 +114,7 @@ class DockWidget(QDockWidget):
             checkbox.setChecked(False)
             return
 
-        activeDomain = self.doc.activeDomain()
-        print('active domain = %s' % activeDomain._name)
-
-        if activeDomain is None:
+        if self.activeDomain is None:
             msg = QMessageBox()
             msg.setText('Select a domain')
             msg.exec_()
@@ -118,14 +127,14 @@ class DockWidget(QDockWidget):
             prime = 5
 
         if checked:
-            if not activeDomain.canCreateToeholdAt(prime):
+            if not self.activeDomain.canCreateToeholdAt(prime):
                 msg = QMessageBox()
                 msg.setText('Toehold already exists or not an end point')
                 msg.exec_()
                 checkbox.setChecked(False)
                 return
             else:
-                activeDomain.toeholdChanged(prime,checked)
+                self.activeDomain.toeholdChanged(prime,checked)
         else:
-            activeDomain.toeholdChanged(prime,checked)
+            self.activeDomain.toeholdChanged(prime,checked)
 

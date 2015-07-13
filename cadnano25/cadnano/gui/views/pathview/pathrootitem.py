@@ -44,7 +44,7 @@ class PathRootItem(QGraphicsRectItem):
 
     def activeDomainAddedSlot(self,domain):
         dock = self._window.dockWidget
-        dock.setCheckable(domain)
+        dock.updateActiveDomain(domain)
 
     def partAddedSlot(self, sender, model_part):
         """

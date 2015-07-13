@@ -276,3 +276,4 @@ class Domain(ProxyObject):
     def undoStack(self):
         return self._linkedList.undoStack()
 
+

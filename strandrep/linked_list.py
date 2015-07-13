@@ -746,7 +746,9 @@ class LinkedList(ProxyObject):
             return True
 
     def removeDomainAt(self,idx):
-        self._strand_list.pop(idx);
+        print(len(self._strand_list))
+        self.removeDomainFromStrandList(self._strand_list,idx)
+        print('pop idx = %d' % idx)
         curr = self._head
         precur = curr
         if curr._index == idx:
@@ -758,10 +760,16 @@ class LinkedList(ProxyObject):
             curridx = curr._index
             if curridx == idx:
                 precur.setDomain3p(curr._domain_3p)
-                curr._domain_3p._domain_5p = precur
+                if curr._domain_3p is not None:
+                    curr._domain_3p.setDomain5p(precur)
                 break
             else:
                 precur = curr._domain_3p
                 curr = curr._domain_3p
 
         self._strand_list = self.getStrandList()
+
+    def removeDomainFromStrandList(self,strand_list,domain_idx):
+        for domain in strand_list:
+            if domain._index == domain_idx:
+                strand_list.remove(domain)
