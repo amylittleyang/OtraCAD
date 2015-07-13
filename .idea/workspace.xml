@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- staple coloring corrected;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- domain connection tick mark added;&#10;- domain name displayed in status bar at window bottom when hovered over&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" afterPath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/dockWidget.py" afterPath="$PROJECT_DIR$/UI_units/dockWidget.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/document.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/document.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/domain.py" afterPath="$PROJECT_DIR$/strandrep/domain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/pathrootitem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/pathrootitem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/viewrootcontroller.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/viewrootcontroller.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AnimDNA.iws" />
@@ -894,7 +887,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436813611923</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Note:&#10;- domain connection tick mark added;&#10;- domain name displayed in status bar at window bottom when hovered over&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <created>1436820644267</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1436820644267</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -947,7 +946,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
     </ignored-roots>
-    <MESSAGE value="render completed, awaiting to incorporate scale_to_fit" />
     <MESSAGE value="scale_to_fit feature added; problem with zoom limit: can't zoom fully out" />
     <MESSAGE value="*zoom limit solved; change scale_limit_max/min in customqgraphicsview.py to adjust zoom limit.&#10;*path_toolbar_controller, rip_off_tool QDialog ui added.&#10;" />
     <MESSAGE value="nice clean cadnano render of imported old json file." />
@@ -972,7 +970,8 @@
     <MESSAGE value="Note:&#10;- undo for createToeholdCmd debugged; all logics for create toehold command tested;&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- inter-domain gap filled with straight line;&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- staple coloring corrected;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- staple coloring corrected;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <MESSAGE value="Note:&#10;- domain connection tick mark added;&#10;- domain name displayed in status bar at window bottom when hovered over&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- domain connection tick mark added;&#10;- domain name displayed in status bar at window bottom when hovered over&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
