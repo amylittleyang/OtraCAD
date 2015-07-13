@@ -350,6 +350,8 @@ class StrandItem(QGraphicsLineItem):
             # if we are hiding it, we might as well make sure it is reparented to the StrandItem
             low_cap.restoreParent()
             low_cap.hide()
+            if strand.connectionLow()._vhNum == strand._vhNum:
+                lx = l_upper_left_x
         else:  # has low cap
             if not low_cap.isVisible():
                 low_cap.show()
@@ -360,6 +362,8 @@ class StrandItem(QGraphicsLineItem):
             # if we are hiding it, we might as well make sure it is reparented to the StrandItem
             high_cap.restoreParent()
             high_cap.hide()
+            if strand.connectionHigh()._vhNum == strand._vhNum:
+                hx = h_upper_left_x+bw
         else:  # has high cap
             if not high_cap.isVisible():
                 high_cap.show()
@@ -384,6 +388,7 @@ class StrandItem(QGraphicsLineItem):
                 #print('c3p vh = %d, strand vh = %d' %(c3p._vhNum,strand._vhNum))
                 xo.restoreParent()
                 xo.hideIt()
+
             else:
                 xo.update(strand)
                 xo.showIt()
@@ -397,7 +402,7 @@ class StrandItem(QGraphicsLineItem):
         # 4. Line drawing
         hy = ly = l_upper_left_y + half_base_width
         self.setLine(lx, ly, hx, hy)
-        rectf = QRectF(l_upper_left_x + bw, l_upper_left_y, bw*(high_idx - low_idx - 1), bw)
+        rectf = QRectF(lx, ly, bw*(high_idx - low_idx - 1), bw)
         self._click_area.setRect(rectf)
         # self._updateHighlight(self.pen().color())
         self._updateColor(strand)

@@ -229,25 +229,25 @@ def decode(document,obj):
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
    #SET DEFAULT COLOR
-    # for oligo in part.oligos():
-    #     if oligo.isStaple():
-    #         default_color = prefs.DEFAULT_STAP_COLOR
-    #     else:
-    #         default_color = prefs.DEFAULT_SCAF_COLOR
-    #     oligo.applyColor(default_color, use_undostack=False)
+    for oligo in part.oligos():
+        if oligo.isStaple():
+            default_color = prefs.DEFAULT_STAP_COLOR
+        else:
+            default_color = prefs.DEFAULT_SCAF_COLOR
+        oligo.applyColor(default_color, use_undostack=False)
 
  #   COLORS, INSERTIONS, SKIPS
- #    for helix in obj['vstrands']:
- #        vh_num = helix['num']
- #        row = helix['row']
- #        col = helix['col']
- #        scaf = helix['scaf']
- #        stap = helix['stap']
- #        insertions = helix['loop']
- #        skips = helix['skip']
- #        vh = part.virtualHelixAtCoord((row, col))
- #        scaf_strand_set = vh.scaffoldStrandSet()
- #        stap_strand_set = vh.stapleStrandSet()
+    for helix in obj['vstrands']:
+        vh_num = helix['num']
+        row = helix['row']
+        col = helix['col']
+        scaf = helix['scaf']
+        stap = helix['stap']
+        insertions = helix['loop']
+        skips = helix['skip']
+        vh = part.virtualHelixAtCoord((row, col))
+        scaf_strand_set = vh.scaffoldStrandSet()
+        stap_strand_set = vh.stapleStrandSet()
         # install insertions and skips
     #     for base_idx in range(len(stap)):
     #         sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
@@ -256,12 +256,12 @@ def decode(document,obj):
     #             strand.addInsertion(base_idx, sum_of_insert_skip, use_undostack=False)
     #     # end for
     #     # populate colors
-    #     for base_idx, color_number in helix['stap_colors']:
-    #         color = Color(  (color_number >> 16) & 0xFF,
-    #                         (color_number >> 8) & 0xFF,
-    #                         color_number & 0xFF).name()
-    #         strand = stap_strand_set.getStrand(base_idx)
-    #         strand.oligo().applyColor(color, use_undostack=False)
+        for base_idx, color_number in helix['stap_colors']:
+            color = Color(  (color_number >> 16) & 0xFF,
+                            (color_number >> 8) & 0xFF,
+                            color_number & 0xFF).name()
+            strand = stap_strand_set.getStrand(base_idx)
+            strand.oligo().applyColor(color, use_undostack=False)
     #
     # if 'oligos' in obj:
     #     for oligo in obj['oligos']:
