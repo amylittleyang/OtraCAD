@@ -248,7 +248,7 @@ class LinkedList(ProxyObject):
         return strandList
 
     ### PUBLIC METHODS FOR EDITING THE MODEL ###
-    def removeStrand(self, strand, strandset_idx=None, use_undostack=True, solo=True):
+    def removeStrand(self, strand, strandset_idx=None, use_undostack=False, solo=True):
         """
         solo is an argument to enable limiting signals emiting from
         the command in the case the command is instantiated part of a larger
@@ -264,6 +264,7 @@ class LinkedList(ProxyObject):
         cmds += strand.clearDecoratorCommands()
         cmds.append(RemoveStrandCommand(self, strand, strandset_idx, solo))
         util.execCommandList(self, cmds, desc="Remove strand", use_undostack=use_undostack)
+        self._length += -1
         return strandset_idx
     # end def
 
@@ -745,6 +746,7 @@ class LinkedList(ProxyObject):
             return True
 
     def removeDomainAt(self,idx):
+        self._strand_list.pop(idx);
         curr = self._head
         precur = curr
         if curr._index == idx:

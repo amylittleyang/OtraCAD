@@ -26,24 +26,46 @@ class CreateToeholdCommand(UndoCommand):
         '''
         from domain import Domain
         idx = self._insert_index()
-        toehold = Domain(self._overhang_linkedlist,idx,idx+8)
+        if self._overhang_linkedlist._is_Drawn_5_to_3:
+            if self._prime == 5:
+                toehold = Domain(self._overhang_linkedlist,idx-5,idx)
+
+            elif self._prime == 3:
+                toehold = Domain(self._overhang_linkedlist,idx,idx+5)
+        else:
+            if self._prime == 5:
+                toehold = Domain(self._overhang_linkedlist,idx,idx+5)
+
+            elif self._prime == 3:
+                toehold = Domain(self._overhang_linkedlist,idx-5,idx)
         self._toehold = toehold
         self._overhang_linkedlist.append(toehold)
         if self._prime == 3:
             self._domain.setConnection3p(toehold)
+            self._domain.setToehold3p(toehold)
             toehold.setConnection5p(self._domain)
         else:
             self._domain.setConnection5p(toehold)
+            self._domain.setToehold5p(toehold)
             toehold.setConnection3p(self._domain)
 
+        self._overhang_linkedlist.finishAppend()
+
+
     def undo(self):
+        print('undo')
         if self._prime == 3:
-            self._domain.setConnection3p(None)
-            self._toehold.setConnection5p(None)
+            toehold = self._domain.toehold3p()
         else:
-            self._domain.setConnection5p(None)
-            self._toehold.setConnection3p(None)
-        print(self._toehold._name)
+            toehold = self._domain.toehold5p()
         #TODO: code removeToehold() in linked_list; need removeToeholdCommand for undo stack
-        self._overhang_linkedlist.removeDomainAt(self._toehold._index)
-        self._toehold = None
+        # self._overhang_linkedlist.removeDomainAt(toehold._index)
+        self._overhang_linkedlist.removeStrand(toehold._strand,toehold._linkedList)
+        if self._prime == 3:
+            toehold.setConnection5p(None)
+            self._domain.setConnection3p(None)
+            self._domain.setToehold3p(None)
+        else:
+            toehold.setConnection3p(None)
+            self._domain.setConnection5p(None)
+            self._domain.setToehold5p(None)

@@ -490,7 +490,7 @@ class StrandItem(QGraphicsLineItem):
         strand = self._model_strand
         domain = strand._domain
         domain._doc._active_domain = domain
-        #print('active domain = %s' % domain._name)
+        print('active domain = %s' % domain._name)
         """
         Parses a mousePressEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.

@@ -87,6 +87,7 @@ class Domain(ProxyObject):
         self._toehold_3p = None
         self._toehold_5p = None
         self._last_toehold_cmd = None
+        #TODO:upgrade to global temporal stack
         self._toehold_cmd_dict = defaultdict()
 
     def getName(self):
@@ -180,6 +181,11 @@ class Domain(ProxyObject):
 
     def setDomain3p(self,domain):
         self._domain_3p = domain
+    def setToehold3p(self,toehold):
+        self._toehold_3p = toehold
+
+    def setToehold5p(self,toehold):
+        self._toehold_5p = toehold
 
     def setOligo(self, new_oligo, emit_signal=True):
         self._oligo = new_oligo

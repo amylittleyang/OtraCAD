@@ -10,7 +10,5 @@ def testYield(list):
 
 if __name__ == '__main__':
     a = [1,2,3,2]
-    for num in a:
-        if num == 1:
-            a.remove(1)
+    a.pop(0)
     print (a)

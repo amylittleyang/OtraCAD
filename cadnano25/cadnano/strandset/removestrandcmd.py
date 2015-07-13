@@ -42,7 +42,7 @@ class RemoveStrandCommand(UndoCommand):
         # strandset._removeFromStrandList(strand)
         doc = strandset._doc
         doc.removeStrandFromSelection(strand)
-        strandset._strand_list.pop(self._s_set_idx)
+        strandset.removeDomainAt(strand._domain._index)
         strand5p = self._old_strand5p
         strand3p = self._old_strand3p
         oligo = self._oligo
