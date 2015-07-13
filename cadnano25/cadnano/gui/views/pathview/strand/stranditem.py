@@ -7,7 +7,6 @@ from .endpointitem import EndpointItem
 from cadnano.gui.views.pathview import pathstyles as styles
 from .xoveritem import XoverItem
 from .decorators.insertionitem import InsertionItem
-
 import cadnano.gui.views.pathview.pathselection as pathselection
 
 import cadnano.util as util
@@ -46,6 +45,7 @@ class StrandItem(QGraphicsLineItem):
         #TODO: create another EndPointItem to handle the gap btw two domains, item takes two spaces horizontally
         self._low_cap = EndpointItem(self, 'low', is_drawn_5to3)
         self._high_cap = EndpointItem(self, 'high', is_drawn_5to3)
+        self._tick = EndpointItem(self,'tick',is_drawn_5to3)
         # self._high_cap = None
         self._dual_cap = EndpointItem(self, 'dual', is_drawn_5to3)
 
@@ -364,7 +364,12 @@ class StrandItem(QGraphicsLineItem):
             high_cap.hide()
             if strand.connectionHigh()._vhNum == strand._vhNum:
                 hx = h_upper_left_x+bw
+                self._tick.safeSetPos(hx,h_upper_left_y)
+                self._tick.show()
+            else:
+                self._tick.hide()
         else:  # has high cap
+            self._tick.hide()
             if not high_cap.isVisible():
                 high_cap.show()
 
@@ -385,9 +390,9 @@ class StrandItem(QGraphicsLineItem):
         if c3p:
             #TODO find something to fill the gap
             if c3p._vhNum == strand._vhNum:
-                #print('c3p vh = %d, strand vh = %d' %(c3p._vhNum,strand._vhNum))
                 xo.restoreParent()
                 xo.hideIt()
+
 
             else:
                 xo.update(strand)
@@ -431,6 +436,7 @@ class StrandItem(QGraphicsLineItem):
         self._low_cap.updateHighlight(brush)
         self._high_cap.updateHighlight(brush)
         self._dual_cap.updateHighlight(brush)
+        self._tick.updateHighlight(brush)
     # end def
 
     def _updateSequenceText(self):
@@ -494,7 +500,7 @@ class StrandItem(QGraphicsLineItem):
     def mousePressEvent(self, event):
         strand = self._model_strand
         domain = strand._domain
-        domain._doc._active_domain = domain
+        domain._doc.setActiveDomain(domain)
         print('active domain = %s' % domain._name)
         """
         Parses a mousePressEvent to extract strandSet and base index,
@@ -537,7 +543,7 @@ class StrandItem(QGraphicsLineItem):
         vhi_num = self._virtual_helix_item.number()
         idx = int(floor((event.pos().x()) / _BASE_WIDTH))
         oligo_length = self._model_strand.oligo().length()
-        self.partItem().updateStatusBar("%d[%d]\tlength: %d" % (vhi_num, idx, oligo_length))
+        self.partItem().updateStatusBar("%s at %d[%d]\tlength: %d" % (self._model_strand._domain._name, vhi_num, idx, oligo_length))
 #        tool_method_name = self._getActiveTool().methodPrefix() + "HoverMove"
 #        if hasattr(self, tool_method_name):
 #            getattr(self, tool_method_name)(event, idx)

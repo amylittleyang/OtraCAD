@@ -43,6 +43,7 @@ class Document(ProxyObject):
     # end def
             
     ### SIGNALS ###
+    documentActiveDomainAddedSignal = ProxySignal(object,name="documentActiveDomainAddedSignal")
     documentPartAddedSignal =  ProxySignal(object, 
                                         ProxyObject,
                                         name='documentPartAddedSignal') # doc, part
@@ -496,6 +497,7 @@ class Document(ProxyObject):
 
     def setActiveDomain(self,domain):
         self._active_domain = domain
+        self.documentActiveDomainAddedSignal.emit(domain)
 
     ### PRIVATE SUPPORT METHODS ###
     def _addPart(self, part, use_undostack=True):

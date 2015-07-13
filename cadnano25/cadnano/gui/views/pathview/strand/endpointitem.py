@@ -21,7 +21,9 @@ PP_L3 = QPainterPath()  # Left 3' PainterPath
 PP_R3 = QPainterPath()  # Right 3' PainterPath
 PP_53 = QPainterPath()  # Left 5', Right 3' PainterPath
 PP_35 = QPainterPath()  # Left 5', Right 3' PainterPath
+TickMark = QPainterPath()
 # set up PP_L5 (left 5' blue square)
+TickMark.addRect(-0.125 * _BASE_WIDTH,0.125 * _BASE_WIDTH, 0.25 * _BASE_WIDTH, 0.75 * _BASE_WIDTH)
 PP_L5.addRect(0.25 * _BASE_WIDTH,
             0.125 * _BASE_WIDTH,
             0.75 * _BASE_WIDTH,
@@ -191,6 +193,8 @@ class EndpointItem(QGraphicsPathItem):
             path = PP_R3 if is_drawn5to3 else PP_R5
         elif c_t == 'dual':
             path = PP_53 if is_drawn5to3 else PP_35
+        elif c_t == 'tick':
+            path = TickMark
         self.setPath(path)
     # end def
 

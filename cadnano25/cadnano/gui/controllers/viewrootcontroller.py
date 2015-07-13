@@ -7,6 +7,7 @@ class ViewRootController():
     def connectSignals(self):
         m_d = self._model_document
         v_r = self._view_root
+        m_d.documentActiveDomainAddedSignal.connect(v_r.activeDomainAddedSlot)
         m_d.documentPartAddedSignal.connect(v_r.partAddedSlot)
         m_d.documentClearSelectionsSignal.connect(v_r.clearSelectionsSlot)
         m_d.documentSelectionFilterChangedSignal.connect(v_r.selectionFilterChangedSlot)

@@ -19,13 +19,13 @@ class Domain(ProxyObject):
         self._type = linkedList._strand_type
         if self._type == 0:
             self._type_str = 'scaf'
-            self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
+            self._name = string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         elif self._type == 1:
             self._type_str ='stap'
-            self._name = self._type_str+' '+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
+            self._name = 'C'+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         else:
             self._type = 'overhang'
-            self._name = 't'+ str(self._vhNum)+str(self._index)     # fix naming
+            self._name = 'T'+ str(self._vhNum)+str(self._index)     # fix naming
         self._length = high_idx-low_idx +1
         self._sequence = None
         #coordinate of the lowest base
@@ -246,9 +246,9 @@ class Domain(ProxyObject):
 
     def canCreateToeholdAt(self,prime):
         if prime == 3:
-            return self.connection3p() is None and self.toehold3p() is None
+            return (self.connection3p() is None) and (self.toehold3p() is None)
         elif prime == 5:
-            return self.connection5p() is None and self.toehold5p() is None
+            return (self.connection5p() is None) and (self.toehold5p() is None)
 
     def toeholdChangeAccepted(self):
         print('accepted')
