@@ -146,7 +146,7 @@ class StrandItem(QGraphicsLineItem):
     def oligoAppearanceChangedSlot(self, oligo):
         strand = self._model_strand
         self._updateColor(strand)
-        if strand.connection3p():
+        if strand._domain.connection3p():
             self._xover3pEnd._updateColor(strand)
         for insertion in self.insertionItems().values():
             insertion.updateItem()

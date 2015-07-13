@@ -189,8 +189,7 @@ class Domain(ProxyObject):
 
     def setOligo(self, new_oligo, emit_signal=True):
         self._oligo = new_oligo
-        if emit_signal:
-            self.strandHasNewOligoSignal.emit(self)
+        self._strand.setOligo(new_oligo,emit_signal)
 
     ### Singals
 
