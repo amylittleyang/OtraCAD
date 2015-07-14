@@ -41,12 +41,12 @@ class CreateToeholdCommand(UndoCommand):
         self._toehold = toehold
         self._overhang_linkedlist.append(toehold)
         if self._prime == 3:
-            self._domain.setConnection3p(toehold)
-            self._domain.setToehold3p(toehold)
+            self._domain._oligo._domain3p.setConnection3p(toehold)
+            self._domain._oligo._domain3p.setToehold3p(toehold)
             toehold.setConnection5p(self._domain)
         else:
-            self._domain.setConnection5p(toehold)
-            self._domain.setToehold5p(toehold)
+            self._domain._oligo._domain5p.setConnection5p(toehold)
+            self._domain._oligo._domain5p.setToehold5p(toehold)
             toehold.setConnection3p(self._domain)
 
         self._overhang_linkedlist.finishAppend()
@@ -55,9 +55,9 @@ class CreateToeholdCommand(UndoCommand):
     def undo(self):
         print('undo')
         if self._prime == 3:
-            toehold = self._domain.toehold3p()
+            toehold = self._domain._oligo._domain3p.toehold3p()
         else:
-            toehold = self._domain.toehold5p()
+            toehold = self._domain._oligo._domain5p.toehold5p()
         #TODO: code removeToehold() in linked_list; need removeToeholdCommand for undo stack
         # self._overhang_linkedlist.removeDomainAt(toehold._index)
         if toehold is None:
@@ -65,9 +65,9 @@ class CreateToeholdCommand(UndoCommand):
         self._overhang_linkedlist.removeStrand(toehold._strand,toehold._linkedList)
         if self._prime == 3:
             toehold.setConnection5p(None)
-            self._domain.setConnection3p(None)
-            self._domain.setToehold3p(None)
+            self._domain._oligo._domain3p.setConnection3p(None)
+            self._domain._oligo._domain3p.setToehold3p(None)
         else:
             toehold.setConnection3p(None)
-            self._domain.setConnection5p(None)
-            self._domain.setToehold5p(None)
+            self._domain._oligo._domain5p.setConnection5p(None)
+            self._domain._oligo._domain5p.setToehold5p(None)

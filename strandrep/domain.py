@@ -235,8 +235,13 @@ class Domain(ProxyObject):
         return self._toehold_5p
 
     def toeholdChanged(self,prime,checked=True):
-        dict = self._toehold_cmd_dict
-        cmd = CreateToeholdCommand(self._vh,self,prime)
+        if prime == 3:
+            endDomain = self._oligo._domain3p
+        else:
+            endDomain = self._oligo._domain5p
+        self._endDomain = endDomain
+        dict = endDomain._toehold_cmd_dict
+        cmd = CreateToeholdCommand(self._vh,endDomain,prime)
         if checked: #create new toehold at prime
             cmd.redo()
             dict[prime] = cmd
@@ -245,15 +250,28 @@ class Domain(ProxyObject):
             dict[prime] = None
 
     def canCreateToeholdAt(self,prime):
+        if self._oligo._is_loop:
+                return False
         if prime == 3:
-            return (self.connection3p() is None) and (self.toehold3p() is None)
+            curr = curr0 = self
+            while curr._connection_3p is not None:
+                curr = curr._connection_3p
+                if curr == curr0:
+                    break
+            self._oligo._domain3p = curr
+            return (curr.connection3p() is None) and (curr.toehold3p() is None)
         elif prime == 5:
-            return (self.connection5p() is None) and (self.toehold5p() is None)
+            curr = curr0 = self
+            while curr._connection_5p is not None:
+                curr = curr._connection_5p
+                if curr == curr0:
+                    break
+            self._oligo._domain5p = curr
+            return (curr.connection5p() is None) and (curr.toehold5p() is None)
 
     def toeholdChangeAccepted(self):
         print('accepted')
-        dict = self._toehold_cmd_dict
-        print(dict)
+        dict = self._endDomain._toehold_cmd_dict
         stack = []
         for prime,cmd in dict.iteritems():
             if cmd is not None:
@@ -266,7 +284,7 @@ class Domain(ProxyObject):
 
     def toeholdChangeRejected(self):
         print('rejected')
-        dict = self._toehold_cmd_dict
+        dict = self._endDomain._toehold_cmd_dict
         for prime,cmd in dict.iteritems():
             if cmd is not None:
                 cmd.undo()
@@ -275,5 +293,3 @@ class Domain(ProxyObject):
 
     def undoStack(self):
         return self._linkedList.undoStack()
-
-

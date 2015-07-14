@@ -26,6 +26,8 @@ class Oligo(ProxyObject):
         super(Oligo, self).__init__(part)
         self._part = part
         self._strand5p = None
+        self._domain3p = None
+        self._domain5p = None
         self._length = 0
         self._is_loop = False
         self._color = color if color else "#0066cc"
