@@ -3,7 +3,7 @@ import string
 from operator import attrgetter
 from collections import defaultdict
 
-from strandrep.createToeholdCmd import CreateToeholdCommand
+from strandrep.create_toehold_command import CreateToeholdCommand
 import cadnano.util as util
 from cadnano.cnproxy import ProxyObject, ProxySignal
 
@@ -22,7 +22,7 @@ class Domain(ProxyObject):
             self._name = string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
         elif self._type == 1:
             self._type_str ='stap'
-            self._name = 'C'+string.ascii_lowercase[self._index]+str(self._vhNum)     # fix naming
+            self._name = string.ascii_lowercase[self._index]+str(self._vhNum)+'*'     # fix naming
         else:
             self._type = 'overhang'
             self._name = 'T'+ str(self._vhNum)+str(self._index)     # fix naming

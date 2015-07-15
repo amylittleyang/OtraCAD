@@ -100,7 +100,6 @@ class DockWidget(QDockWidget):
 
 
     def checkBoxStateChangedSlot(self,checkbox):
-        print('state changed')
         state = checkbox.checkState()
         if state == 0:
             checked = False
@@ -126,15 +125,5 @@ class DockWidget(QDockWidget):
         else:
             prime = 5
 
-        if checked:
-            if not self.activeDomain.canCreateToeholdAt(prime):
-                msg = QMessageBox()
-                msg.setText('Toehold already exists or not an end point')
-                msg.exec_()
-                checkbox.setChecked(False)
-                return
-            else:
-                self.activeDomain.toeholdChanged(prime,checked)
-        else:
-            self.activeDomain.toeholdChanged(prime,checked)
+        self.activeDomain.toeholdChanged(prime,checked)
 
