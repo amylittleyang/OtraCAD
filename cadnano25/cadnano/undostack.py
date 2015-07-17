@@ -13,6 +13,10 @@ class UndoStack(object):
         self.macro_stack = []
         self.macro_count = 0
     # end def
+    def clear(self):
+        self.undostack = deque()
+        self.redostack = []
+        print('undostack cleared')
 
     def push(self, undocommand):
         if self.macro_count > 0:
@@ -49,6 +53,7 @@ class UndoStack(object):
         # print('e', self.current_macro self.macro_count)
         if self.macro_count == 0:
             self.appendUndoStack(self.top_macro)
+
     # end def
 
     def undo(self):

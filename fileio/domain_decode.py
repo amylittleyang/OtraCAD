@@ -301,7 +301,7 @@ def decode(document,obj):
         #modstool.disconnectSignals(part)
  #end def
  #
-
+    document.undoStack().clear()
 
 # calls recursive function
 def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):

@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/create_toehold_command.py" afterPath="$PROJECT_DIR$/strandrep/create_toehold_command.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/domain.py" afterPath="$PROJECT_DIR$/strandrep/domain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold.py" afterPath="$PROJECT_DIR$/strandrep/toehold.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold_item.py" afterPath="$PROJECT_DIR$/strandrep/toehold_item.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold_list.py" afterPath="$PROJECT_DIR$/strandrep/toehold_list.py" />
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- new create toehold command debugged, more stable&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI_units/menu_bar.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/.idea/cadnano_copy.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cadnano_copy/cadnano2.5" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AnimDNA.iml" afterPath="$PROJECT_DIR$/.idea/AnimDNA.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileio/domain_decode.py" afterPath="$PROJECT_DIR$/fileio/domain_decode.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/mainWindow.py" afterPath="$PROJECT_DIR$/UI_units/mainWindow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI_units/toolbar.py" afterPath="$PROJECT_DIR$/UI_units/toolbar.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/ui_window.ui" afterPath="$PROJECT_DIR$/bin/ui_window.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/undostack.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/undostack.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AnimDNA.iws" />
@@ -29,7 +37,102 @@
     <favorites_list name="AnimDNA" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="create_toehold_command.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/strandrep/create_toehold_command.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="domain.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="282" column="0" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+              <folding>
+                <element signature="e#19#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="116" column="40" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainWindow.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_units/mainWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="e#19#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="documentcontroller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="domain_decode.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="303" column="30" selection-start-line="303" selection-start-column="30" selection-end-line="303" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="document.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/document.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.3333335">
+              <caret line="480" column="11" selection-start-line="480" selection-start-column="11" selection-end-line="480" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="undostack.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/undostack.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.15923567">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="undocommand.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/undocommand.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,11 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/queue_test.py" />
-        <option value="$PROJECT_DIR$/cadnano_copy/cadnano2.5/cadnano/strand/strand.py" />
-        <option value="$PROJECT_DIR$/cadnano25/cadnano/strandset/strandset.py" />
-        <option value="$PROJECT_DIR$/tests/append_Domain_test.py" />
-        <option value="$PROJECT_DIR$/cadnano25/cadnano/part/xovercmds.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/tools/penciltool.py" />
         <option value="$PROJECT_DIR$/conf.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/strand/strand.py" />
@@ -76,13 +174,10 @@
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/sliceview/partitem.py" />
         <option value="$PROJECT_DIR$/fileio/decode.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/part/part.py" />
-        <option value="$PROJECT_DIR$/UI_units/mainWindow.py" />
-        <option value="$PROJECT_DIR$/UI_units/toolbar.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/virtualhelix/virtualhelix.py" />
         <option value="$PROJECT_DIR$/command/createToeholdCmd.py" />
         <option value="$PROJECT_DIR$/tests/random_test.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/strandset/removestrandcmd.py" />
-        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/xoveritem.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/part/refresholigoscmd.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py" />
@@ -107,6 +202,14 @@
         <option value="$PROJECT_DIR$/strandrep/create_toehold_command.py" />
         <option value="$PROJECT_DIR$/strandrep/toehold_item.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
+        <option value="$PROJECT_DIR$/UI_units/mainWindow.py" />
+        <option value="$PROJECT_DIR$/UI_units/controller/document_controller.py" />
+        <option value="$PROJECT_DIR$/UI_units/menu_bar.py" />
+        <option value="$PROJECT_DIR$/UI_units/toolbar.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/undocommand.py" />
+        <option value="$PROJECT_DIR$/fileio/domain_decode.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/undostack.py" />
       </list>
     </option>
   </component>
@@ -114,10 +217,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1116" />
-    <option name="y" value="33" />
-    <option name="width" value="1121" />
-    <option name="height" value="759" />
+    <option name="x" value="-1163" />
+    <option name="y" value="34" />
+    <option name="width" value="1178" />
+    <option name="height" value="783" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -157,7 +260,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="AnimDNA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -167,11 +270,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="AnimDNA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="quick" />
+              <option name="myItemId" value="cadnano25" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -181,15 +284,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="AnimDNA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="quick" />
+              <option name="myItemId" value="cadnano25" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="canvas" />
+              <option name="myItemId" value="cadnano" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -199,19 +302,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="AnimDNA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="quick" />
+              <option name="myItemId" value="cadnano25" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="canvas" />
+              <option name="myItemId" value="cadnano" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="roundedrect" />
+              <option name="myItemId" value="gui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -221,19 +324,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="AnimDNA" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="quick" />
+              <option name="myItemId" value="cadnano25" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="canvas" />
+              <option name="myItemId" value="cadnano" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bezierCurve" />
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI_units" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AnimDNA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI_units" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -243,13 +382,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PyQt-gpl-5.4/examples" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cadnano_copy" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;domain&#9;null&#9;null&#10;toehold&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold.py&#10;dockwid&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;stranditem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;creat&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/create_toehold_command.py&#10;dock&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;insertionit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;toeho&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;toeholditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;oli&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/virtualhelixitemcontroller.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py&#10;virtuali&#9;null&#9;null&#10;insertionitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;stranditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py&#10;linked list&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;dockw&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;refresh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;insertion&#9;null&#9;null&#10;inser&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/decorators/insertion.py&#10;insertio&#9;null&#9;null&#10;selec&#9;null&#9;null&#10;dom&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;strandit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;mainwindow&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;docum&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/sliceview/partitem.py&#10;strandi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;doc&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;refresholi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;refresholigo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;test&#9;null&#9;null&#10;util&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/util.py&#10;linked&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;create&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/command/createToeholdCmd.py&#10;createstra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/createstrandcmd.py&#10;toolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;tool&#9;null&#9;null&#10;toolb&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;dockwi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;too&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;mainwin&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;part&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/part.py&#10;document&#9;null&#9;null&#10;path&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;pathtoolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;controller&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/partitemcontroller.py" />
+    <property name="SearchEverywhereHistoryKey" value="undostack&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/undostack.py&#10;domain&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;createto&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/create_toehold_command.py&#10;undo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/undostack.py&#10;undost&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/undostack.py&#10;docum&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;toolb&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;document&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;window&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;toehold&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold.py&#10;dockwid&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;stranditem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;creat&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/create_toehold_command.py&#10;dock&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;insertionit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;toeho&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;toeholditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;oli&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/virtualhelixitemcontroller.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py&#10;virtuali&#9;null&#9;null&#10;insertionitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;stranditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py&#10;linked list&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;dockw&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;refresh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;insertion&#9;null&#9;null&#10;inser&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/decorators/insertion.py&#10;insertio&#9;null&#9;null&#10;selec&#9;null&#9;null&#10;dom&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;strandit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;mainwindow&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/sliceview/partitem.py&#10;strandi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;doc&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;refresholi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;refresholigo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;test&#9;null&#9;null&#10;util&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/util.py&#10;linked&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;create&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/command/createToeholdCmd.py&#10;createstra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/createstrandcmd.py&#10;toolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;tool&#9;null&#9;null&#10;dockwi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;too&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="151" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="153" />
@@ -529,12 +668,6 @@
       <created>1433959050513</created>
       <option name="number" value="Default" />
       <updated>1433959050513</updated>
-    </task>
-    <task id="LOCAL-00001" summary="I typed Hi Reem">
-      <created>1433959230434</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1433959230434</updated>
     </task>
     <task id="LOCAL-00002" summary="Added in caDNAno subdirectory with cadnano2.5 code.">
       <created>1434395001722</created>
@@ -824,7 +957,13 @@
       <option name="project" value="LOCAL" />
       <updated>1437147132818</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Note:&#10;- new create toehold command debugged, more stable&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <created>1437156939366</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1437156939370</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView">
@@ -837,12 +976,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1116" y="33" width="1121" height="759" extended-state="0" />
+    <frame x="-1163" y="34" width="1178" height="783" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38855422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811828" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.69728917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41068918" sideWeight="0.51793927" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2143402" sideWeight="0.5514706" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1997187" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -850,9 +989,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252688" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19982159" sideWeight="0.44852942" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27334467" sideWeight="0.44852942" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26656628" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2747093" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -877,7 +1016,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
     </ignored-roots>
-    <MESSAGE value="all" />
     <MESSAGE value="Notes:&#10;added hybridized/unhybridized region attribute to Scaffold strand on a virtual helix when decoding json in domainDecode.py; &#10;added domainList as an attribute of scaffold strand that stores all domain in ascending base order;&#10; domains have a naming convention with letter denoting the placement on the virtual helix and a number denoting the number of the virtual helix;&#10;both hybridized and unhybridized region have a domain representation on scaffold under the same naming convention.&#10;&#10;To do:&#10;1. add domainList attribute to staple strands&#10;2. substitute nnodecode with domainDecode in decode.py to test new code&#10;3. figure out how to have hybridized domain reference each other-&gt; for naming and for getting comeplement sequence.&#10;" />
     <MESSAGE value="Notes:&#10;changed strandsets into linkedlists;&#10;parse and install scaffold/staple strands from .json as linkedlists of domains;&#10;&#10;&#10;To do:&#10;- test new code, esp recursive function;&#10;- consider scaffold xovers when installing staple domains;&#10;- figure out how to have hybridized domain reference each other (possibly by domain name when staple split is fixed)&#10;- complete helper methods in linked_list.py&#10;- code strand_type_OVERHANG&#10;" />
     <MESSAGE value="Notes:&#10;debugged domainDecode.py code;&#10;able to parse .json into two sets of linkedlists, with domains as nodes. &#10;&#10;To do:&#10;- consider scaffold xovers when installing staple domains;&#10;- figure out how to have hybridized domain reference each other (possibly by domain name when staple split is fixed)&#10;- complete helper methods in linked_list.py ( when necessary)&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
@@ -902,7 +1040,8 @@
     <MESSAGE value="Note:&#10;- able to select oligo by domain&#10;- worked out new toehold representation module&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- new create toehold architecture&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <MESSAGE value="Note:&#10;- new create toehold command debugged, more stable&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- new create toehold command debugged, more stable&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1064,7 +1203,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="132" />
+      <option name="time" value="134" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -1073,59 +1212,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/sliceview/activesliceitem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0370371">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/plugins/autobreak/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6296296">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/toolbar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/undostack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5221402">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/strandset/strandset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1151,16 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35977858">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.458891">
-          <caret line="263" column="34" selection-start-line="263" selection-start-column="34" selection-end-line="263" selection-end-column="34" />
-          <folding>
-            <element signature="e#44#55#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,14 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/document.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="495" column="18" selection-start-line="495" selection-start-column="18" selection-end-line="495" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/endpointitem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1214,13 +1282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/mainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1232,14 +1293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1406,22 +1459,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5555553">
-          <caret line="242" column="14" selection-start-line="242" selection-start-column="14" selection-end-line="242" selection-end-column="14" />
-          <folding>
-            <element signature="e#19#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/toehold_list.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding>
-            <element signature="e#19#65#0" expanded="true" />
+            <element signature="e#19#65#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1454,18 +1497,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UI_units/dockWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9019608">
+          <caret line="127" column="33" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/ui/mainwindow/ui_mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2291667">
+          <caret line="369" column="22" selection-start-line="369" selection-start-column="22" selection-end-line="369" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/cnproxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4509804">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_units/toolbar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+          <folding>
+            <element signature="e#19#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_units/mainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#19#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_units/menu_bar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/document.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3333335">
+          <caret line="480" column="11" selection-start-line="480" selection-start-column="11" selection-end-line="480" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/create_toehold_command.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21568628">
+        <state vertical-scroll-proportion="0.0">
           <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/dockWidget.py">
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9019608">
-          <caret line="127" column="33" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="40" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/undocommand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/documentcontroller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="282" column="0" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileio/domain_decode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="303" column="30" selection-start-line="303" selection-start-column="30" selection-end-line="303" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/undostack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15923567">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
           <folding />
         </state>
       </provider>

@@ -4,7 +4,7 @@ from cadnano.document import Document
 from fileio import domain_decode
 import io
 from cadnano.gui.controllers.documentcontroller import DocumentController
-from PyQt5.QtWidgets import QToolBar,QMessageBox,QFileDialog
+from PyQt5.QtWidgets import QToolBar,QMessageBox,QFileDialog,QAction
 from PyQt5.QtCore import QFileInfo
 import json
 
@@ -26,6 +26,7 @@ class ToolBar(QToolBar):
         self.actionSave.triggered.connect(self.actionSaveTriggeredSlot)
         self.actionCreate_toehold.setIcon(QIcon(root+'/images/transformation.png'))
         self.actionCreate_toehold.triggered.connect(self.mainWindow.dockWidget.actionCreate_toeholdTriggeredSlot)
+
 
     def actionOpenTriggeredSlot(self):
         file_dialog = QFileDialog()
@@ -50,6 +51,7 @@ class ToolBar(QToolBar):
                 doc = Document()
                 doc.mainWindow = self.mainWindow
                 doc.dc = DocumentController(doc)
+                doc.dc._connectWindowSignalsToSelf()
                 domain_decode.decode(doc,dict)
                 self.mainWindow.setDoc(doc)
 

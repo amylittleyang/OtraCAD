@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QDockWidget
 from PyQt5 import QtWidgets,QtCore,QtGui
 from UI_units.toolbar import ToolBar
 from UI_units.dockWidget import DockWidget
-
+from UI_units.menu_bar import MenuBar
 class MainWindow(QMainWindow):
 
 
@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
     def setupUI(self):
         self.dockWidget = DockWidget(self)
-
+        self.menuBar = MenuBar(self)
         self.toolBar = ToolBar(self)
         self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
         root = QFileInfo(__file__).absolutePath()

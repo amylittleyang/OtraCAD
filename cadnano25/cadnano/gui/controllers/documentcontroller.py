@@ -87,33 +87,17 @@ class DocumentController():
     def _connectWindowSignalsToSelf(self):
         """This method serves to group all the signal & slot connections
         made by DocumentController"""
-        self.win.action_new.triggered.connect(self.actionNewSlot)
-        self.win.action_open.triggered.connect(self.actionOpenSlot)
-        self.win.action_close.triggered.connect(self.actionCloseSlot)
-        self.win.action_save.triggered.connect(self.actionSaveSlot)
-        self.win.action_save_as.triggered.connect(self.actionSaveAsSlot)
-        # self.win.action_SVG.triggered.connect(self.actionSVGSlot)
-        # self.win.action_autostaple.triggered.connect(self.actionAutostapleSlot)
-        # self.win.action_export_staples.triggered.connect(self.actionExportSequencesSlot)
-        self.win.action_preferences.triggered.connect(self.actionPrefsSlot)
-        self.win.action_modify.triggered.connect(self.actionModifySlot)
-        self.win.action_new_honeycomb_part.triggered.connect(\
-            self.actionAddHoneycombPartSlot)
-        self.win.action_new_square_part.triggered.connect(\
-            self.actionAddSquarePartSlot)
-        self.win.closeEvent = self.windowCloseEventHandler
-        self.win.action_about.triggered.connect(self.actionAboutSlot)
-#        self.win.action_cadnano_website.triggered.connect(self.actionCadnanoWebsiteSlot)
-#        self.win.action_feedback.triggered.connect(self.actionFeedbackSlot)
-        self.win.action_filter_handle.triggered.connect(self.actionFilterHandleSlot)
-        self.win.action_filter_endpoint.triggered.connect(self.actionFilterEndpointSlot)
-        self.win.action_filter_strand.triggered.connect(self.actionFilterStrandSlot)
-        self.win.action_filter_xover.triggered.connect(self.actionFilterXoverSlot)
-        self.win.action_filter_scaf.triggered.connect(self.actionFilterScafSlot)
-        self.win.action_filter_stap.triggered.connect(self.actionFilterStapSlot)
+        self.win.actionUndo.triggered.connect(self.actionUndoSlot)
+        self.win.actionRedo.triggered.connect(self.actionRedoSlot)
 
 
-    ### SLOTS ###
+    ### SLOTS###
+    def actionUndoSlot(self):
+        self.undoStack().undo()
+
+    def actionRedoSlot(self):
+        self.undoStack().redo()
+
     def undoStackCleanChangedSlot(self):
         """The title changes to include [*] on modification."""
         self.win.setWindowModified(not self.undoStack().isClean())
