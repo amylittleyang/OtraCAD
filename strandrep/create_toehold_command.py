@@ -21,29 +21,31 @@ class CreateToeholdCommand(UndoCommand):
     def redo(self):
         print('redo')
         #TODO: substitute 5 with user length input
-        toehold = Toehold(5,self._domain)
+        toehold = Toehold(5,self._domain,self._prime)
         self._toehold = toehold
         toeholdList = ToeholdList(self._domain,toehold)
         if self._prime == 3:
             self._domain.setToehold3p(toeholdList)
         elif self._prime == 5:
             self._domain.setToehold5p(toeholdList)
-        self._domain.toeholdAddedSignal.emit(self._domain)
+        self._domain.toeholdAddedSignal.emit(self._domain,self._prime)
 
     #     #TODO: update domain oligo length
     def undo(self):
         print('undo')
         if self._prime == 5:
             toeholdList = self._domain.toehold5p()
+            toehold_name = 'T5'+self._domain._name
         if self._prime == 3:
             toeholdList = self._domain.toehold3p()
-        toeholdList.removeLast()
+            toehold_name = 'T3'+self._domain._name
+        toeholdList.removeToehold(toehold_name)
         if len(toeholdList._toehold_list) == 0:
             if self._prime == 5:
                 self._domain.setToehold5p(None)
             if self._prime == 3:
                 self._domain.setToehold3p(None)
-            self._domain.toeholdRemovedSignal.emit(self._domain)
+            self._domain.toeholdRemovedSignal.emit(self._domain,self._prime )
 
 
 

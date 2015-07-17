@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="1c034171-2ca7-48eb-adb3-8ca3c193a32c" name="Default" comment="Domain branch test" />
-    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- new create toehold architecture&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py" />
+    <list default="true" id="8dd37015-6e24-420a-9699-e0d31cd74b68" name="all" comment="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/create_toehold_command.py" afterPath="$PROJECT_DIR$/strandrep/create_toehold_command.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/domain.py" afterPath="$PROJECT_DIR$/strandrep/domain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/oligo/oligo.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/oligo/oligo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/stranditemcontroller.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/stranditemcontroller.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold.py" afterPath="$PROJECT_DIR$/strandrep/toehold.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold_item.py" afterPath="$PROJECT_DIR$/strandrep/toehold_item.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strandrep/toehold_list.py" afterPath="$PROJECT_DIR$/strandrep/toehold_list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py" afterPath="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AnimDNA.iws" />
@@ -34,118 +29,7 @@
     <favorites_list name="AnimDNA" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="create_toehold_command.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/strandrep/create_toehold_command.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dockWidget.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI_units/dockWidget.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="domain.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1180556">
-              <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
-              <folding>
-                <element signature="e#19#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toehold_list.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/strandrep/toehold_list.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-              <folding>
-                <element signature="e#19#65#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toehold.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/strandrep/toehold.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oligo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/oligo/oligo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding>
-                <element signature="e#41#52#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toehold_item_controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/strandrep/toehold_item_controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toehold_item.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/strandrep/toehold_item.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
-              <folding>
-                <element signature="e#19#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stranditem.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5555553">
-              <caret line="230" column="30" selection-start-line="230" selection-start-column="30" selection-end-line="230" selection-end-column="30" />
-              <folding>
-                <element signature="e#41#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="abstractstranditemcontroller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -216,13 +100,13 @@
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/abstractstranditem.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py" />
-        <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
-        <option value="$PROJECT_DIR$/strandrep/toehold_item.py" />
-        <option value="$PROJECT_DIR$/strandrep/toehold.py" />
-        <option value="$PROJECT_DIR$/strandrep/create_toehold_command.py" />
-        <option value="$PROJECT_DIR$/strandrep/toehold_list.py" />
         <option value="$PROJECT_DIR$/cadnano25/cadnano/oligo/oligo.py" />
+        <option value="$PROJECT_DIR$/strandrep/toehold.py" />
+        <option value="$PROJECT_DIR$/strandrep/toehold_list.py" />
         <option value="$PROJECT_DIR$/strandrep/domain.py" />
+        <option value="$PROJECT_DIR$/strandrep/create_toehold_command.py" />
+        <option value="$PROJECT_DIR$/strandrep/toehold_item.py" />
+        <option value="$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py" />
       </list>
     </option>
   </component>
@@ -230,8 +114,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1136" />
-    <option name="y" value="45" />
+    <option name="x" value="-1116" />
+    <option name="y" value="33" />
     <option name="width" value="1121" />
     <option name="height" value="759" />
   </component>
@@ -365,7 +249,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;domain&#9;null&#9;null&#10;toehold&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold.py&#10;dockwid&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;stranditem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;creat&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/create_toehold_command.py&#10;dock&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;insertionit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;toeho&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;toeholditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;oli&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/virtualhelixitemcontroller.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py&#10;virtuali&#9;null&#9;null&#10;strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strand/strand.py&#10;insertionitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;stranditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py&#10;linked list&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;dockw&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;refresh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;insertion&#9;null&#9;null&#10;inser&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/decorators/insertion.py&#10;insertio&#9;null&#9;null&#10;selec&#9;null&#9;null&#10;dom&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;strandit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;mainwindow&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;docum&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/sliceview/partitem.py&#10;strandi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;doc&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;refresholi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;refresholigo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;test&#9;null&#9;null&#10;util&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/util.py&#10;linked&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;create&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/command/createToeholdCmd.py&#10;createstra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/createstrandcmd.py&#10;toolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;tool&#9;null&#9;null&#10;toolb&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;dockwi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;too&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;mainwin&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;part&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/part.py&#10;document&#9;null&#9;null&#10;path&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;pathtoolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;controller&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/partitemcontroller.py" />
+    <property name="SearchEverywhereHistoryKey" value="strand&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;oligo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;domain&#9;null&#9;null&#10;toehold&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold.py&#10;dockwid&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;stranditem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;creat&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/create_toehold_command.py&#10;dock&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;insertionit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;toeho&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;toeholditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/toehold_item_controller.py&#10;oli&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/oligo/oligo.py&#10;virtual&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/virtualhelixitemcontroller.py&#10;virtu&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/virtualhelixitem.py&#10;virtuali&#9;null&#9;null&#10;insertionitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/decorators/insertionitem.py&#10;stranditemcon&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py&#10;linked list&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;dockw&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;refresh&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;link&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;insertion&#9;null&#9;null&#10;inser&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/decorators/insertion.py&#10;insertio&#9;null&#9;null&#10;selec&#9;null&#9;null&#10;dom&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/domain.py&#10;strandit&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;mainwindow&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;docum&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;partitem&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/sliceview/partitem.py&#10;strandi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py&#10;doc&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/document.py&#10;refresholi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;refresholigo&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/refresholigoscmd.py&#10;test&#9;null&#9;null&#10;util&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/util.py&#10;linked&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/strandrep/linked_list.py&#10;create&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/command/createToeholdCmd.py&#10;createstra&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/strandset/createstrandcmd.py&#10;toolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;tool&#9;null&#9;null&#10;toolb&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;dockwi&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/dockWidget.py&#10;too&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/toolbar.py&#10;mainwin&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/UI_units/mainWindow.py&#10;part&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/part/part.py&#10;document&#9;null&#9;null&#10;path&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;pathtoolbar&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/views/pathview/pathtoolbar.py&#10;controller&#9;FILE&#9;file:///Users/jie/Documents/Duke/Intern/Reif_Lab/Workspace/AnimDNA/cadnano25/cadnano/gui/controllers/itemcontrollers/partitemcontroller.py" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="151" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="153" />
@@ -934,7 +818,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436974765167</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;">
+      <created>1437147132817</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1437147132818</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -947,25 +837,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1136" y="45" width="1121" height="759" extended-state="0" />
+    <frame x="-1116" y="33" width="1121" height="759" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252688" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38855422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811828" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41068918" sideWeight="0.51793927" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2143402" sideWeight="0.5514706" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1997187" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252688" sideWeight="0.49287748" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19982159" sideWeight="0.44852942" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34811828" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19982159" sideWeight="0.44852942" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26656628" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2143402" sideWeight="0.5514706" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41068918" sideWeight="0.51793927" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1997187" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26656628" sideWeight="0.48206073" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32816902" sideWeight="0.49287748" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -987,7 +877,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/cadnano_copy/cadnano2.5" />
     </ignored-roots>
-    <MESSAGE value="Domain branch test" />
     <MESSAGE value="all" />
     <MESSAGE value="Notes:&#10;added hybridized/unhybridized region attribute to Scaffold strand on a virtual helix when decoding json in domainDecode.py; &#10;added domainList as an attribute of scaffold strand that stores all domain in ascending base order;&#10; domains have a naming convention with letter denoting the placement on the virtual helix and a number denoting the number of the virtual helix;&#10;both hybridized and unhybridized region have a domain representation on scaffold under the same naming convention.&#10;&#10;To do:&#10;1. add domainList attribute to staple strands&#10;2. substitute nnodecode with domainDecode in decode.py to test new code&#10;3. figure out how to have hybridized domain reference each other-&gt; for naming and for getting comeplement sequence.&#10;" />
     <MESSAGE value="Notes:&#10;changed strandsets into linkedlists;&#10;parse and install scaffold/staple strands from .json as linkedlists of domains;&#10;&#10;&#10;To do:&#10;- test new code, esp recursive function;&#10;- consider scaffold xovers when installing staple domains;&#10;- figure out how to have hybridized domain reference each other (possibly by domain name when staple split is fixed)&#10;- complete helper methods in linked_list.py&#10;- code strand_type_OVERHANG&#10;" />
@@ -1012,7 +901,8 @@
     <MESSAGE value="Note:&#10;- domain connection tick mark added;&#10;- domain name displayed in status bar at window bottom when hovered over&#10;- dockWidget checkbox interaction bug fixed;&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- able to select oligo by domain&#10;- worked out new toehold representation module&#10;&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <MESSAGE value="Note:&#10;- new create toehold architecture&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- new create toehold architecture&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <MESSAGE value="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Note:&#10;- new create toehold command completed and tested&#10;To do:&#10;- investigate remove strand; needs to remove created toehold completely from linked list to allow redo() to add toehold again&#10;- fill in the gap of connection btw domains&#10;- code strand_type_OVERHANG (when developing gui)&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1439,6 +1329,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1489,72 +1380,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5555553">
-          <caret line="230" column="30" selection-start-line="230" selection-start-column="30" selection-end-line="230" selection-end-column="30" />
-          <folding>
-            <element signature="e#41#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/toehold_item.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
-          <folding>
-            <element signature="e#19#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/toehold_item_controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/toehold.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/create_toehold_command.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/strandrep/toehold_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="e#19#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI_units/dockWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1569,13 +1398,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/controllers/itemcontrollers/strand/abstractstranditemcontroller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/strandrep/domain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1180556">
-          <caret line="242" column="26" selection-start-line="242" selection-start-column="26" selection-end-line="242" selection-end-column="26" />
+        <state vertical-scroll-proportion="-7.5555553">
+          <caret line="242" column="14" selection-start-line="242" selection-start-column="14" selection-end-line="242" selection-end-column="14" />
           <folding>
             <element signature="e#19#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/toehold_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <element signature="e#19#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/toehold.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/toehold_item.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="64" selection-start-line="93" selection-start-column="64" selection-end-line="93" selection-end-column="64" />
+          <folding>
+            <element signature="e#19#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadnano25/cadnano/gui/views/pathview/strand/stranditem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47916666">
+          <caret line="229" column="45" selection-start-line="229" selection-start-column="45" selection-end-line="229" selection-end-column="45" />
+          <folding>
+            <element signature="e#41#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strandrep/create_toehold_command.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21568628">
+          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_units/dockWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9019608">
+          <caret line="127" column="33" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

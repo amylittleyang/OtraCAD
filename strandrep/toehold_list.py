@@ -23,5 +23,7 @@ class ToeholdList(ProxyObject):
         pass first toehold object as argument to the initialization function
         '''
         self._toehold_list.append(toehold)
-    def removeLast(self):
-        self._toehold_list.pop(-1)
+    def removeToehold(self,toehold_name):
+        for t in self._toehold_list:
+            if t._name == toehold_name:
+                self._toehold_list.remove(t)

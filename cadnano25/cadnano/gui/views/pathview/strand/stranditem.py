@@ -224,11 +224,17 @@ class StrandItem(QGraphicsLineItem):
         self.selectIfRequired(self.partItem().document(), indices)
     # end def
 
-    def toeholdAddedSlot(self,domain):
+    def toeholdAddedSlot(self,domain,prime):
         #TODO: update toehold appearance
-        self.toeholdItem = ToeholdItem(domain,self._virtual_helix_item)
-    def toeholdRemovedSlot(self,domain):
-        self.toeholdItem.deleteItem(domain)
+        if prime == 3:
+            self._toehold_item_3p = ToeholdItem(domain,self._virtual_helix_item,3)
+        if prime == 5:
+            self._toehold_item_5p = ToeholdItem(domain,self._virtual_helix_item,5)
+    def toeholdRemovedSlot(self,domain,prime):
+        if prime == 3:
+            self._toehold_item_3p.deleteItem(domain)
+        if prime == 5:
+            self._toehold_item_5p.deleteItem(domain)
     ### ACCESSORS ###
     def viewroot(self):
         return self._viewroot

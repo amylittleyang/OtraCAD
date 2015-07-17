@@ -81,16 +81,17 @@ class InsertionPath(object):
 # end class
 
 class ToeholdItem(QGraphicsPathItem):
-    def __init__(self,domain,virtual_helix_item):
+    def __init__(self,domain,virtual_helix_item,prime):
         super(ToeholdItem, self).__init__(virtual_helix_item)
         self._virtual_helix_item = virtual_helix_item
         self._domain = domain
+        self._prime = prime
         self.hide()
         _insert_path = InsertionPath()
         self._is_on_top = is_on_top = self._virtual_helix_item.isStrandOnTop(domain)
         y = 0 if is_on_top else _BW
-        if (domain._is_drawn_5_to_3 and domain.toehold3p() is not None) \
-            or ((not domain._is_drawn_5_to_3) and domain.toehold5p() is not None):
+        if ((not domain._is_drawn_5_to_3) and (self._prime == 5)) or\
+                (domain._is_drawn_5_to_3 and (self._prime == 3)):
             self.setPos(_BW*self._domain._high_idx, y)
         else:
             self.setPos(_BW*self._domain._low_idx, y)

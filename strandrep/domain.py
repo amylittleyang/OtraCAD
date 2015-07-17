@@ -192,8 +192,8 @@ class Domain(ProxyObject):
         self._strand.setOligo(new_oligo,emit_signal)
 
     ### Singals
-    toeholdremovedSignal = ProxySignal(ProxyObject,name='toeholdRemovedSignal')
-    toeholdAddedSignal = ProxySignal(ProxyObject,name = 'toeholdAddedSignal') #pass in self
+    toeholdremovedSignal = ProxySignal(ProxyObject,object,name='toeholdRemovedSignal')
+    toeholdAddedSignal = ProxySignal(ProxyObject,object,name = 'toeholdAddedSignal') #pass in self
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') #pyqtSignal(QObject)  # strand
 
     def totalLength(self):
