@@ -61,7 +61,8 @@ class VirtualHelixItem(QGraphicsPathItem):
         pen.setCosmetic(boolval)
         self.setPen(pen)
     # end def
-    
+
+
     def strandAddedSlot(self, sender, strand):
         """
         Instantiates a StrandItem upon notification that the model has a

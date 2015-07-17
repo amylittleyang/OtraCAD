@@ -84,11 +84,11 @@ class Domain(ProxyObject):
             self._loop = True
 
         self.strandUpdateSignal = self._strand.strandUpdateSignal
-        self._toehold_3p = None
-        self._toehold_5p = None
+        self._toehold_list_3p = None
+        self._toehold_list_5p = None
         self._last_toehold_cmd = None
         #TODO:upgrade to global temporal stack
-        self._toehold_cmd_dict = defaultdict()
+        self._endDomain = None
 
     def getName(self):
         return self._name
@@ -181,19 +181,19 @@ class Domain(ProxyObject):
 
     def setDomain3p(self,domain):
         self._domain_3p = domain
-    def setToehold3p(self,toehold):
-        self._toehold_3p = toehold
+    def setToehold3p(self,toeholdList):
+        self._toehold_list_3p = toeholdList
 
-    def setToehold5p(self,toehold):
-        self._toehold_5p = toehold
+    def setToehold5p(self,toeholdList):
+        self._toehold_list_5p = toeholdList
 
     def setOligo(self, new_oligo, emit_signal=True):
         self._oligo = new_oligo
         self._strand.setOligo(new_oligo,emit_signal)
 
     ### Singals
-
-    toeholdAddedSignal = ProxySignal(ProxyObject,name = 'toeholdAddedSignal')
+    toeholdremovedSignal = ProxySignal(ProxyObject,name='toeholdRemovedSignal')
+    toeholdAddedSignal = ProxySignal(ProxyObject,name = 'toeholdAddedSignal') #pass in self
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') #pyqtSignal(QObject)  # strand
 
     def totalLength(self):
@@ -229,10 +229,10 @@ class Domain(ProxyObject):
         self._is_3p_connection_xover = bool
 
     def toehold3p(self):
-        return self._toehold_3p
+        return self._toehold_list_3p
 
     def toehold5p(self):
-        return self._toehold_5p
+        return self._toehold_list_5p
 
     def toeholdChanged(self,prime,checked=True):
         if prime == 3:
@@ -240,7 +240,7 @@ class Domain(ProxyObject):
         else:
             endDomain = self._oligo._domain5p
         self._endDomain = endDomain
-        dict = endDomain._toehold_cmd_dict
+        dict = self._oligo._toehold_cmd_dict
         cmd = CreateToeholdCommand(self._vh,endDomain,prime)
         if checked: #create new toehold at prime
             cmd.redo()
@@ -271,7 +271,7 @@ class Domain(ProxyObject):
 
     def toeholdChangeAccepted(self):
         print('accepted')
-        dict = self._endDomain._toehold_cmd_dict
+        dict = self._oligo._toehold_cmd_dict
         stack = []
         for prime,cmd in dict.iteritems():
             if cmd is not None:
@@ -284,7 +284,9 @@ class Domain(ProxyObject):
 
     def toeholdChangeRejected(self):
         print('rejected')
-        dict = self._endDomain._toehold_cmd_dict
+        if self._endDomain is None:
+            return
+        dict = self._oligo._toehold_cmd_dict
         for prime,cmd in dict.iteritems():
             if cmd is not None:
                 cmd.undo()

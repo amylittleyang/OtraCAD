@@ -29,7 +29,8 @@ class AbstractStrandItemController(object):
         AbstractStrandItemController.connectOligoSignals(self)
         m_s.strandHasNewOligoSignal.connect(s_i.strandHasNewOligoSlot)
         m_s.strandRemovedSignal.connect(s_i.strandRemovedSlot)
-
+        m_s._domain.toeholdAddedSignal.connect(s_i.toeholdAddedSlot)
+        m_s._domain.toeholdRemovedSignal.connect(s_i.toeholdRemovedSlot)
         m_s.strandInsertionAddedSignal.connect(s_i.strandInsertionAddedSlot)
         m_s.strandInsertionChangedSignal.connect(s_i.strandInsertionChangedSlot)
         m_s.strandInsertionRemovedSignal.connect(s_i.strandInsertionRemovedSlot)

@@ -1,16 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 from cadnano.gui.views.pathview import pathstyles as styles
-from cadnano.enum import StrandType
-
-import cadnano.util as util
-
 from PyQt5.QtCore import QRectF, Qt, QPointF, QEvent
 
-from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QFontMetricsF, QPainterPath
+from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QPainterPath
 from PyQt5.QtGui import QTransform, QTextCursor
-from PyQt5.QtWidgets  import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem
-from PyQt5.QtWidgets  import QGraphicsTextItem, QLabel
+from PyQt5.QtWidgets  import QGraphicsPathItem, QGraphicsRectItem
+from PyQt5.QtWidgets  import QGraphicsTextItem
 
 _BASE_WIDTH = _BW = styles.PATH_BASE_WIDTH
 _HALF_BASE_WIDTH = _HBW = _BASE_WIDTH / 2
@@ -123,7 +119,7 @@ class InsertionItem(QGraphicsPathItem):
         self.hide()
         self._strand = strand
         self._insertion = insertion
-        self._seq_item = QGraphicsPathItem(parent=self)
+        self._seq_item = QGrzaphicsPathItem(parent=self)
         self._is_on_top = is_on_top = virtual_helix_item.isStrandOnTop(strand)
         y = 0 if is_on_top else _BW
         self.setPos(_BW*insertion.idx(), y)

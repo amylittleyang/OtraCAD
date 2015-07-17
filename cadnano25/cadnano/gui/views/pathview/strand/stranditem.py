@@ -7,6 +7,7 @@ from .endpointitem import EndpointItem
 from cadnano.gui.views.pathview import pathstyles as styles
 from .xoveritem import XoverItem
 from .decorators.insertionitem import InsertionItem
+from strandrep.toehold_item import ToeholdItem
 import cadnano.gui.views.pathview.pathselection as pathselection
 
 import cadnano.util as util
@@ -223,10 +224,11 @@ class StrandItem(QGraphicsLineItem):
         self.selectIfRequired(self.partItem().document(), indices)
     # end def
 
-    def toeholdAddedSlot(self,toehold):
-        #TODO: render toehold on view
-        pass
-
+    def toeholdAddedSlot(self,domain):
+        #TODO: update toehold appearance
+        self.toeholdItem = ToeholdItem(domain,self._virtual_helix_item)
+    def toeholdRemovedSlot(self,domain):
+        self.toeholdItem.deleteItem(domain)
     ### ACCESSORS ###
     def viewroot(self):
         return self._viewroot

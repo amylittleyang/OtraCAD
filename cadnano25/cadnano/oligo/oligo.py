@@ -6,6 +6,7 @@ import copy
 import cadnano.util as util
 from cadnano.strand import Strand
 from cadnano.cnproxy import ProxyObject, ProxySignal, UndoCommand
+from collections import defaultdict
 
 from .applycolorcmd import ApplyColorCommand
 from .applysequencecmd import ApplySequenceCommand
@@ -31,6 +32,8 @@ class Oligo(ProxyObject):
         self._length = 0
         self._is_loop = False
         self._color = color if color else "#0066cc"
+        self._toehold_cmd_dict = defaultdict()
+
     # end def
 
     def __repr__(self):
@@ -69,6 +72,7 @@ class Oligo(ProxyObject):
     oligoAppearanceChangedSignal = ProxySignal(ProxyObject, name='oligoAppearanceChangedSignalpyqtSignal')  # self
     oligoSequenceAddedSignal = ProxySignal(ProxyObject, name='oligoSequenceAddedSignal') # self
     oligoSequenceClearedSignal = ProxySignal(ProxyObject, name='oligoSequenceClearedSignal')  # self
+
 
     ### SLOTS ###
 
