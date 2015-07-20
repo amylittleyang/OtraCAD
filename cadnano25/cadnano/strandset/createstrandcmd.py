@@ -36,8 +36,8 @@ class CreateStrandCommand(UndoCommand):
 
         if strandset.isStaple():
              strand.reapplySequence()
-        # Emit a signal to notify on completion
-        strandset.strandsetStrandAddedSignal.emit(strandset, strand)
+        # Emit signal to virtual helix item upon completion
+        strandset.strandsetStrandAddedSignal.emit(strandset, strand) #vhitem strandAddedSlot
         # for updating the Slice View displayed helices
         strandset.part().partStrandChangedSignal.emit(strandset.part(), strandset.virtualHelix())
     # end def

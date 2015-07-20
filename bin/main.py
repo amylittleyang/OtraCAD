@@ -1,9 +1,9 @@
 __author__ = 'jie'
 import sys
-
-from initialization import initAppWithGui
+from bin import initAppWithGui
 
 def main(args):
+    # use cadnano initialization function
     app = initAppWithGui(args)
     sys.exit(app.exec_())
 

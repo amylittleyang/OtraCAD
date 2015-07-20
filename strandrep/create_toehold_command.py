@@ -3,6 +3,9 @@ from cadnano.cnproxy import UndoCommand
 from strandrep.toehold_list import ToeholdList
 from strandrep.toehold import Toehold
 class CreateToeholdCommand(UndoCommand):
+    '''
+    called by Domain to create toehold on an end of an oligo
+    '''
     def __init__(self,vh,domain,end):
         # domain = domain to operate on
         super(CreateToeholdCommand,self).__init__('create strand')
@@ -19,20 +22,20 @@ class CreateToeholdCommand(UndoCommand):
             self._insert_index = domain.idx5Prime
 
     def redo(self):
-        print('redo')
-        #TODO: substitute 5 with user length input
-        toehold = Toehold(5,self._domain,self._prime)
+        # create model toehold
+        #TODO: substitute 5 with userlength input
+        toehold = Toehold(5,self._domain,self._prime) # model toehold
         self._toehold = toehold
         toeholdList = ToeholdList(self._domain,toehold)
         if self._prime == 3:
             self._domain.setToehold3p(toeholdList)
         elif self._prime == 5:
             self._domain.setToehold5p(toeholdList)
-        self._domain.toeholdAddedSignal.emit(self._domain,self._prime)
+        self._domain.toeholdAddedSignal.emit(self._domain,self._prime) # emitted by end domain; notifies strand item of end domain to create toehold item
 
-    #     #TODO: update domain oligo length
+    #TODO: update domain oligo length
     def undo(self):
-        print('undo')
+        # undo create model toehold and view toehold item
         if self._prime == 5:
             toeholdList = self._domain.toehold5p()
             toehold_name = 'T5'+self._domain._name
@@ -45,7 +48,7 @@ class CreateToeholdCommand(UndoCommand):
                 self._domain.setToehold5p(None)
             if self._prime == 3:
                 self._domain.setToehold3p(None)
-            self._domain.toeholdRemovedSignal.emit(self._domain,self._prime )
+            self._domain.toeholdRemovedSignal.emit(self._domain,self._prime) # notifies end domain strand item to hide toehold item
 
 
 

@@ -1,6 +1,5 @@
 __author__ = 'jie'
 from PyQt5 import uic
-from cadnano.gui.views.pathview.tools.pathtoolmanager import PathToolManager
 from cadnano.gui.views.pathview.pathrootitem import PathRootItem
 from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon
@@ -8,7 +7,6 @@ from PyQt5.QtWidgets import QGraphicsScene,QVBoxLayout
 from PyQt5.QtWidgets import QMainWindow,QWidget
 from PyQt5.QtWidgets import QGraphicsItem
 from cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
-from PyQt5.QtWidgets import QDockWidget
 from PyQt5 import QtWidgets,QtCore,QtGui
 from UI_units.toolbar import ToolBar
 from UI_units.dockWidget import DockWidget
@@ -17,23 +15,28 @@ class MainWindow(QMainWindow):
 
 
 
-    #somewhere in constructor:
     def __init__(self):
         super(MainWindow, self).__init__()
+        # read .ui file from QtDesigner
         uic.loadUi('ui_window.ui', self)
         self.doc = None
         self.setupUI()
 
     def setupUI(self):
+        # connect menuBar, toolBar, dockWidget to self(mainWindow)
         self.dockWidget = DockWidget(self)
         self.menuBar = MenuBar(self)
         self.toolBar = ToolBar(self)
         self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
+
         root = QFileInfo(__file__).absolutePath()
         self.setWindowTitle('AnimDNA')
         self.setWindowIcon((QIcon(root+'/images/bug.png')))
+        # splitter allows user control the size of child widgets by dragging the boundary between the children
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
         self.path_splitter = QtWidgets.QSplitter(self.main_splitter)
+        # renderView is where .json file is rendered in the window;
+        # CustomQGraphicsView extends QGraphicsView, allow zooming in/out and drag by using "command+click"
         self.renderView = CustomQGraphicsView(self.path_splitter)
 
 
@@ -54,8 +57,6 @@ class MainWindow(QMainWindow):
         self.renderView.setObjectName("renderView")
         self.renderView.setupGL(self)
         self.gridLayout.addWidget(self.main_splitter, 0, 0, 1, 1)
-        self.action_modify = QtWidgets.QAction(self)
-        self.action_modify.setCheckable(True)
 
 
 

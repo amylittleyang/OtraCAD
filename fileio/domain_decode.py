@@ -66,7 +66,6 @@ def decode(document,obj):
         vh_num = helix['num']
         row = helix['row']
         col = helix['col']
-        scaf= helix['scaf']
         coord = (row, col)
         vh_num_to_coord[vh_num] = coord
         ordered_coord_list.append(coord)
@@ -88,7 +87,6 @@ def decode(document,obj):
 
     for helix in obj['vstrands']:
         vh_num = helix['num']
-#        print 'helix =' + str(vh_num)
         row = helix['row']
         col = helix['col']
         scaf = helix['scaf']
@@ -98,8 +96,6 @@ def decode(document,obj):
         vh = part.virtualHelixAtCoord((row, col))
         scaf_strand_LinkedList = vh._scaf_LinkedList
         stap_strand_LinkedList = vh._stap_LinkedList
-        scaf_update = []
-        stap_update = []
 
         # read scaf segments and xovers
 
@@ -117,14 +113,17 @@ def decode(document,obj):
             # read staple segments and xovers; update stap .json
         for i in range(len(stap)):
                 five_vh, five_idx, three_vh, three_idx = stap[i]
+                '''
+                append a fifth element to coordinate list; if staple is hybridized to a scaffold
+                domain at the location, get the index of the scaffold domain on scaffold
+                strandset and append it; if not hybridized to any scaffold domain, append -1.
+                '''
                 if five_vh == -1 and three_vh == -1:
-                    stap[i].append(-1)
-                    stap_update.append(stap[i])
+                    stap[i].append(-1) # null base, cannot hybridize to any domain
                     continue  # null base
-                elif hybridized(scaf[i]):
-                    scafNum = getStrandIdx(i,scaf_seg,vh_num)
+                elif hybridized(scaf[i]): # true if hybridized to scaffold at the position
+                    scafNum = getStrandIdx(i,scaf_seg,vh_num=vh_num) # get hybridized scaffold domain index
                     stap[i].append(scafNum)
-                stap_update.append(stap[i])
 
                 if isSegmentStartOrEnd(StrandType.STAPLE, vh_num, i, five_vh,\
                                        five_idx, three_vh, three_idx):
@@ -135,51 +134,39 @@ def decode(document,obj):
                     stap_xo[vh_num].append((i, three_vh, three_idx))
 
         assert (len(stap_seg[vh_num]) % 2 == 0)
-        #update scaf .json
+        # update scaf .json, append hybridized strand index to coordinate
         for i in range(len(scaf)):
                 five_vh, five_idx, three_vh, three_idx = scaf[i]
                 if five_vh == -1 and three_vh == -1:
                     scaf[i].append(-1)
-                    scaf_update.append(scaf[i])
                     continue  # null base
                 elif hybridized(stap[i]):
-                    stapNum = getStrandIdx(i,stap_seg,vh_num)
+                    stapNum = getStrandIdx(i,stap_seg,vh_num=vh_num)
                     scaf[i].append(stapNum)
-                    scaf_update.append(scaf[i])
-            # install scaffold segments
+
+        new_scaf_seg = []
+        # install scaffold segments
         for i in range(0, len(scaf_seg[vh_num]), 2):
             low_idx = scaf_seg[vh_num][i]
             high_idx = scaf_seg[vh_num][i + 1]
-            installLinkedList(low_idx,high_idx,scaf_update,scaf_strand_LinkedList)
+            # split scaffold domain based on staple domain hybridized to
+            installLinkedList(low_idx,high_idx,scaf,scaf_strand_LinkedList,new_scaf_seg)
 
-
-        #install staple segments -> modify to incorporate scaffold xover?
+        new_stap_seg = []
+        #install staple segments
         for i in range(0, len(stap_seg[vh_num]), 2):
             low_idx = stap_seg[vh_num][i]
             high_idx = stap_seg[vh_num][i + 1]
-            installLinkedList(low_idx,high_idx,stap_update,stap_strand_LinkedList)
-            ## low_idx and high_idx should be coordinates; need hybridized domain on scaf as last parameter
+            # split staple domain based on scaffold domain hybridized to
+            installLinkedList(low_idx,high_idx,stap,stap_strand_LinkedList,new_stap_seg)
 
-        # get complement domain references for stap_linkedlist
-        curr = stap_strand_LinkedList._head
-        if curr is not None:
-         while True:
-            index = curr._hyb_strand_idx
-            curr._hyb_domain = stap_strand_LinkedList._virtual_helix._scaf_LinkedList.domainAtIndex(index)
-            curr = curr._domain_3p
-            if curr == None:
-                break
-
-        # get complement domain references for scaf_linkedlist
-        curr = scaf_strand_LinkedList._head
+        # rename staple based on complement domain on scaffold
+        curr0 = curr = vh._stap_LinkedList._head
         while curr:
-            index = curr._hyb_strand_idx
-#            print 'index = ' + str(index)
-#            print 'length = ' + str(scaf_strand_LinkedList._virtual_helix._stap_LinkedList._length)
-            curr._hyb_domain = scaf_strand_LinkedList._virtual_helix._stap_LinkedList.domainAtIndex(index)
+            stap_idx = curr._low_idx
+            scaf_domain_idx = getStrandIdx(stap_idx,new_scaf_seg)
+            curr.setName(scaf_domain_idx)
             curr = curr._domain_3p
-
-## nnodecode.py leftover
 
 
       # INSTALL XOVERS
@@ -187,10 +174,6 @@ def decode(document,obj):
         vh_num = helix['num']
         row = helix['row']
         col = helix['col']
-        scaf = helix['scaf']
-        stap = helix['stap']
-        insertions = helix['loop']
-        skips = helix['skip']
         from_vh = part.virtualHelixAtCoord((row, col))
         scaf_strand_set = from_vh.scaffoldStrandSet()
         stap_strand_set = from_vh.stapleStrandSet()
@@ -200,31 +183,18 @@ def decode(document,obj):
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.scaffoldStrandSet().getStrand(idx3p)
             assert strand5p._vhNum == from_vh._number and strand3p._vhNum == to_vh_num
-            #print(scaf_strand_set._virtual_helix._number)
-            #print('from vh %d to vh %d'%(from_vh._number, to_vh_num))
-            #c3p = strand5p._connection_3p
-            #c5p = strand5p._connection_5p
-            #list0 = [c3p,c5p,strand3p._connection_3p,strand3p._connection_5p]
-            #for i in range(len(list0)):
-            #    if list0[i]:
-            #        print('strand= %s, %d, %s' % (strand5p._name,i,list0[i]._name))
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                  update_oligo=False, use_undostack=False)
-    #print('done done')
-         # install staple xovers
-        #print('installing staple xovers')
+
         for (idx5p, to_vh_num, idx3p) in stap_xo[vh_num]:
-            # idx3p is 3' end of strand5p, idx5p is 5' end of strand3p
             strand5p = stap_strand_set.getStrand(idx5p)
-            #print('strand 5p = %s, going to helix %d, at idx %d' %(strand5p._name,to_vh_num,idx5p))
             to_vh = part.virtualHelixAtCoord(vh_num_to_coord[to_vh_num])
             strand3p = to_vh.stapleStrandSet().getStrand(idx3p)
-            #print('strand 3p = %s, going to helix %d, at idx %d' %(strand3p._name,to_vh_num,idx3p))
 
             part.createXover(strand5p, idx5p, strand3p, idx3p,
                 update_oligo=False, use_undostack=False)
 
-
+    # connect domains into oligos; domains linked by xovers will be on the same oligo
     RefreshOligosCommand(part, include_scaffold=True,
         colors=(prefs.DEFAULT_SCAF_COLOR, prefs.DEFAULT_STAP_COLOR)).redo()
 
@@ -301,36 +271,44 @@ def decode(document,obj):
         #modstool.disconnectSignals(part)
  #end def
  #
+    # user not allowed to modify file after import
     document.undoStack().clear()
 
 # calls recursive function
-def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList):
+def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList,new_strand_seg):
+    '''
+    get strand coordinates from low_idx to high_idx; pass all coordinates included
+    to recursive function to split domain based on hybridized strand index.
+    '''
     list = []
-#    print 'low idx = '+ str(low_idx) + ', high idx = '+ str(high_idx)
     for i in range(low_idx,high_idx+1):
-#        print 'i = '+ str(i)
         list.append(strand_update[i])
     hyb_strand = list[0][4]
-    appendDomain(list, hyb_strand,strand_linkedList,0,low_idx)
+    # appendDomain split strand into domains and append domains to strandset
+    appendDomain(list, hyb_strand,strand_linkedList,0,low_idx,new_strand_seg)
+    # put domains in strandlist after all domains are appended
     strand_linkedList.finishAppend()
 
-# recursion, tested
-def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
+# split strand into domains and append domains to strand_linkedList
+def appendDomain(list,hyb_stap,strand_linkedList,idx,low,new_strand_seg):
     if idx == len(list) or len(list) == 0:
-        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1],hyb_strand=hyb_stap)
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1])
+        new_strand_seg.append(low)
+        new_strand_seg.append(low+idx-1)
         strand_linkedList.append(domain)
         domain_low = strand_linkedList.domainAtIndex(-2)
-        if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
+        if domain_low and (not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]) or len(list)==1):
+            # adjacent domains on the same strand are connected by connection3p and connection5p (same as connectionLow and connectionHigh)
             domain_low.setConnectionHigh(domain)
             domain_low.setIsConnectionHighXover(True)
             domain.setConnectionLow(domain_low)
             domain.setIsConnectionLowXover(True)
-            #print ('domain %s connectionhigh to domain %s = %s' %(domain_low._name,domain._name,domain_low.isConnectionHighXover()))
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-#        print(strand_linkedList._length)
-        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1],hyb_strand=hyb_stap)
+        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1])
+        new_strand_seg.append(low)
+        new_strand_seg.append(low+idx-1)
         strand_linkedList.append(domain)
         domain_low = strand_linkedList.domainAtIndex(-2)
         if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
@@ -339,22 +317,33 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low):
             domain.setConnectionLow(domain_low)
             domain.setIsConnectionLowXover(True)
         low = low + idx
-        appendDomain(list[idx:],now_stap,strand_linkedList,0,low)
+        # truncate list and pass back
+        appendDomain(list[idx:],now_stap,strand_linkedList,0,low,new_strand_seg)
     else:
-        appendDomain(list,hyb_stap,strand_linkedList,idx+1,low)
+        appendDomain(list,hyb_stap,strand_linkedList,idx+1,low,new_strand_seg)
 
 
 def hybridized(list):
+    # return true if the complement strandset has strand at the query position
     list_copy = []
     for i in range(len(list)):
+        print i
         list_copy.append(list[i]+1)
     return any(list)
 
 
-def getStrandIdx(idx,strand_seg,vh_num):
-    for i in range(0,len(strand_seg[vh_num]),2):
-        l = strand_seg[vh_num][i]
-        h = strand_seg[vh_num][i+1]
+def getStrandIdx(idx,strand_seg,vh_num = None):
+    '''
+    strad_seg has the start and end coordinate of all strands on all helices;
+    find the strand whose start and end position bands the query index and return its index on the helix.
+    '''
+    if vh_num is not None:
+        seg = strand_seg[vh_num]
+    else:
+        seg = strand_seg
+    for i in range(0,len(seg),2):
+        l = seg[i]
+        h = seg[i+1]
         if l <= idx and idx <= h:
             return i/2
 

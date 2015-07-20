@@ -8,15 +8,15 @@ CustomQGraphicsView.py
    :synopsis: A Custom QGraphicsView module to allow focus input events
    like mouse clicks and panning and zooming
 """
-from initialization import app
+from bin import app
 
 from cadnano.gui.views.pathview import pathstyles as styles
 import cadnano.util as util
 
-from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QTimeLine
+from PyQt5.QtCore import pyqtSignal, Qt, QTimer
 
-from PyQt5.QtGui import QPaintEngine, QPen
-from PyQt5.QtWidgets import qApp, QGraphicsView, QGraphicsScene, QWidget
+from PyQt5.QtGui import QPaintEngine
+from PyQt5.QtWidgets import qApp, QGraphicsView
 
 # for OpenGL mode
 try:

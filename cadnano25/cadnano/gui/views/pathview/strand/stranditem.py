@@ -27,6 +27,12 @@ _NO_PEN = QPen(Qt.NoPen)
 
 class StrandItem(QGraphicsLineItem):
     _filter_name = "strand"
+    '''
+    renders a continuous sequence of bases on a helix on renderView;
+    a strand item is created when a model strand is added to a strandset;
+    model domain created --> model strand created --> create strand item;
+    handle events for strand and domain;
+    '''
     
     def __init__(self, model_strand, virtual_helix_item, viewroot):
         """The parent should be a VirtualHelixItem."""
@@ -34,7 +40,6 @@ class StrandItem(QGraphicsLineItem):
         self._model_strand = model_strand
         self._virtual_helix_item = virtual_helix_item
         self._viewroot = viewroot
-#        self._getActiveTool = virtual_helix_item._getActiveTool
 
         self._controller = StrandItemController(self, model_strand)
         is_drawn_5to3 = model_strand.strandSet().isDrawn5to3()
@@ -42,10 +47,10 @@ class StrandItem(QGraphicsLineItem):
         self._strand_filter = model_strand.strandFilter()
 
         self._insertion_items = {}
-        # caps
-        #TODO: create another EndPointItem to handle the gap btw two domains, item takes two spaces horizontally
+        # end point squares and arrows
         self._low_cap = EndpointItem(self, 'low', is_drawn_5to3)
         self._high_cap = EndpointItem(self, 'high', is_drawn_5to3)
+        # tick mark for connection btw two adjacent domains on the same helix
         self._tick = EndpointItem(self,'tick',is_drawn_5to3)
         # self._high_cap = None
         self._dual_cap = EndpointItem(self, 'dual', is_drawn_5to3)
@@ -79,6 +84,8 @@ class StrandItem(QGraphicsLineItem):
 
         self.setZValue(styles.ZSTRANDITEM)
         self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self._toehold_item_3p = None
+        self._toehold_item_5p = None
     # end def
 
     ### SIGNALS ###
@@ -225,12 +232,19 @@ class StrandItem(QGraphicsLineItem):
     # end def
 
     def toeholdAddedSlot(self,domain,prime):
-        #TODO: update toehold appearance
+        # create toehold item after model toehold is added to domain
         if prime == 3:
-            self._toehold_item_3p = ToeholdItem(domain,self._virtual_helix_item,3)
+            if self._toehold_item_3p is not None:
+                self._toehold_item_3p.show()
+            else:
+                self._toehold_item_3p = ToeholdItem(domain,self._virtual_helix_item,3)
         if prime == 5:
-            self._toehold_item_5p = ToeholdItem(domain,self._virtual_helix_item,5)
+            if self._toehold_item_5p is not None:
+                self._toehold_item_5p.show()
+            else:
+                self._toehold_item_5p = ToeholdItem(domain,self._virtual_helix_item,5)
     def toeholdRemovedSlot(self,domain,prime):
+         # hide toehold items
         if prime == 3:
             self._toehold_item_3p.deleteItem(domain)
         if prime == 5:
@@ -370,6 +384,7 @@ class StrandItem(QGraphicsLineItem):
             # if we are hiding it, we might as well make sure it is reparented to the StrandItem
             high_cap.restoreParent()
             high_cap.hide()
+            # if xovering to the same helix, extend straight line to bridge gap
             if strand.connectionHigh()._vhNum == strand._vhNum:
                 hx = h_upper_left_x+bw
                 self._tick.safeSetPos(hx,h_upper_left_y)
@@ -396,7 +411,7 @@ class StrandItem(QGraphicsLineItem):
         xo = self._xover3pEnd
         c3p = strand.connection3p()
         if c3p:
-            #TODO find something to fill the gap
+            # if xovering to same strandset, hide xover
             if c3p._vhNum == strand._vhNum:
                 xo.restoreParent()
                 xo.hideIt()
@@ -417,7 +432,7 @@ class StrandItem(QGraphicsLineItem):
         self.setLine(lx, ly, hx, hy)
         rectf = QRectF(lx, ly, bw*(high_idx - low_idx - 1), bw)
         self._click_area.setRect(rectf)
-        # self._updateHighlight(self.pen().color())
+        self._updateHighlight(self.pen().color())
         self._updateColor(strand)
     # end def
 
@@ -434,8 +449,8 @@ class StrandItem(QGraphicsLineItem):
         oligo = self._model_strand.oligo()
         pen_width = styles.PATH_STRAND_STROKE_WIDTH
         if oligo.shouldHighlight():
-            color.setAlpha(128)
-            pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
+            #color.setAlpha(128)
+            pen_width = styles.PATH_STRAND_STROKE_WIDTH
         pen = QPen(color, pen_width)
         # pen.setCosmetic(True)
         brush = QBrush(color)

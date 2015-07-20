@@ -27,14 +27,16 @@ class RefreshOligosCommand(UndoCommand):
     # end def
 
     def redo(self):
+        '''
+        domains connected by connection3p or connection5p will have the same oligo;
+        connection3p and connection5p are pointers to domains crossover-ed to, added
+        when installing xover.
+        '''
         visited = {}
         doc = self._part.document()
         for vh in self._part.getVirtualHelices():
-           # print 'vh_num = ' + str(vh._number)
             stap_ss = vh.stapleStrandSet()
-           # print stap_ss
             list = stap_ss.getStrandList()
-           # print list
             for strand in stap_ss:
                 visited[strand] = False
             if self.include_scaffold:
@@ -58,11 +60,7 @@ class RefreshOligosCommand(UndoCommand):
             strand5gen = strand.generator5pStrand()
             # this gets the oligo and burns a strand in the generator
             strand5 = next(strand5gen)
-            #print('strand5p = %s' % strand5._name)
-            #print('5p type = %d' % strand5._linkedList._strand_type)
             for strand5 in strand5gen:
-                #print('strand5p = %s' % strand5._name)
-
                 oligo5 = strand5.oligo()
                 if oligo5 != start_oligo:
                     oligo5.removeFromPart()
@@ -76,9 +74,7 @@ class RefreshOligosCommand(UndoCommand):
             else:
                 strand3gen = strand.generator3pStrand()
                 strand3 = next(strand3gen)   # burn one
-               # print('strand3p = %s' % strand3._name)
                 for strand3 in strand3gen:
-                #    print('strand3p = %s' % strand3._name)
                     oligo3 = strand3.oligo()
                     if oligo3 != start_oligo:
                         oligo3.removeFromPart()

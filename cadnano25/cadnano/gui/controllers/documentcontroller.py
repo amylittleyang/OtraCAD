@@ -53,7 +53,7 @@ class DocumentController():
         self.win.updateRenderView(self)    # now instantiates a document customized for AnimDNA
         # self.win.setWindowIcon(app().icon)
         # app().documentWindowWasCreatedSignal.emit(self._document, self.win) # create breakHandler, purpose unknown, probably don't need
-#        self._connectWindowSignalsToSelf()
+        self._connectWindowSignalsToSelf()
         self.win.show()
         app().active_document = self
 
@@ -85,8 +85,7 @@ class DocumentController():
     #     self.windock.setVisible(True)
 
     def _connectWindowSignalsToSelf(self):
-        """This method serves to group all the signal & slot connections
-        made by DocumentController"""
+        # actionUndo and actionRedo operates on the undostack in document
         self.win.actionUndo.triggered.connect(self.actionUndoSlot)
         self.win.actionRedo.triggered.connect(self.actionRedoSlot)
 

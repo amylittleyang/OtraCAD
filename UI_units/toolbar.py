@@ -13,10 +13,11 @@ class ToolBar(QToolBar):
         super(ToolBar, self).__init__(None)
         self.mainWindow = mainWindow
         self.doc = mainWindow.doc
+        # get actions from mainWindow parsed from .ui file
         self.actionOpen = mainWindow.actionOpen
         self.actionSave = mainWindow.actionSave
         self.actionCreate_toehold = mainWindow.actionCreate_toehold
-        self.setupUI()
+        self.setupUI() # and connect action to slot
 
     def setupUI(self):
         root = QFileInfo(__file__).absolutePath()
@@ -29,29 +30,32 @@ class ToolBar(QToolBar):
 
 
     def actionOpenTriggeredSlot(self):
+        # user wants to import a .json file
         file_dialog = QFileDialog()
-# the name filters must be a list
         file_dialog.setNameFilters(["Jason files (*.json)", "All files (*)"])
         file_dialog.selectNameFilter("Jason files (*.json)")
-# show the dialog
+        # show file dialog
         boo = file_dialog.exec_()
         myFile = None
+        # if file dialog is executed
         if(boo):
             selectedFiles = file_dialog.selectedFiles()
+            # get the first and only file selected
             myFile = selectedFiles[0]
         if(myFile is not None):
-            #call cadnano json parsing funcality here and pass jasonFile. Check to see if result is correct
             messageBox = QMessageBox()
+            # show file path
             messageBox.setText(myFile +' selected')
             messageBox.exec_()
             path = myFile
 
+            # use python function to read .json file
             with io.open(path, 'r', encoding='utf-8') as fd:
                 dict = json.load(fd)
                 doc = Document()
                 doc.mainWindow = self.mainWindow
                 doc.dc = DocumentController(doc)
-                doc.dc._connectWindowSignalsToSelf()
+                # re-construct strand & oligo, render them on renderView
                 domain_decode.decode(doc,dict)
                 self.mainWindow.setDoc(doc)
 

@@ -1,7 +1,3 @@
-import sys, os
-
-from code import interact
-
 from cadnano.proxyconfigure import proxyConfigure
 proxyConfigure('PyQt')
 import cadnano.util as util
@@ -39,8 +35,8 @@ class AppDecorator(QObject):
         from cadnano.gui.views.pathview import pathstyles as styles
         styles.setFontMetrics()
 
-    def prefsClicked(self):
-        self.prefs.showDialog()
+    # def prefsClicked(self):
+    #     self.prefs.showDialog()
 
     def exec_(self):
         if hasattr(self, 'qApp'):

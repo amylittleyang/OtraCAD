@@ -31,8 +31,6 @@ class LinkedList(ProxyObject):
         ### questionable methods
     def __iter__(self):
         """Iterate over each strand in the strands list."""
-#        self._strand_list = self.getStrandList()
-#        print 'strand list is ' + str(self._strand_list)
         return self._strand_list.__iter__()
     # end def
     def generatorStrand(self):
@@ -103,10 +101,6 @@ class LinkedList(ProxyObject):
         return (low_idx, high_idx)
     # end def
 
-    # needs completion
-    def hasStrandAt(self, idxLow, idxHigh):
-        # return boolean
-        pass
     # modify to fit linked list
     def indexOfRightmostNonemptyBase(self):
         """Returns the high base_idx of the last strand, or 0."""
@@ -166,9 +160,7 @@ class LinkedList(ProxyObject):
         """Return the bounds of the StrandSet as defined in the part."""
         return self._virtual_helix.part().maxBaseIdx()
     # end def
-    def strandCount(self):
-        return self._virtual_helix._scaf_LinkedList._length + self._virtual_helix._stap_LinkedList._length+self._virtual_helix._overhang_LinkedList._length
-    # end def
+
     def strandType(self):
         return self._strand_type
     # end def
@@ -176,7 +168,7 @@ class LinkedList(ProxyObject):
 
 # linked list methods
     def append(self,domain):
-        # append domian to the end of the list
+        # append domain to the end of the list
         if self._head is None:
             self._head = domain
         else:
@@ -190,30 +182,19 @@ class LinkedList(ProxyObject):
 
     # end def
 
-    def __delete__(self, domain_name):
-        # mark domain as inactive, don't delete reference to hybridized domain on scaffold strand
-        # retrieve domain by domain_name
-        pass
-
     def domainAtIndex(self,index):
-        # return domain at the index (starting at 0)
+        # return domain at the index (negative works as well)
         if not index:
             return
         if index < 0:
             index = self._length+index
         assert index < self._length
         curr = self._head
-        while True:
+        while curr:
             if curr._index == index:
                 return curr
             else:
                 curr = curr._domain_3p
-                if curr == None:
-                    break
-
-    def insertAt(self,domain,idx):
-        # insert domain at specified index. Index numbered 5' to 3'
-        self._length += 1
 
     def reverse(self):
         # reverse linked list to go 5' to 3' if necessary. hint: queue/stack
@@ -508,8 +489,6 @@ class LinkedList(ProxyObject):
         else:
             s_set_idx_low = -1
 
-            #print ('last strandset index = ' + str(s_set_idx_low))
-
             while low < high:
                 mid = (low + high) // 2
                 midStrand = strand_list[mid]
@@ -550,9 +529,7 @@ class LinkedList(ProxyObject):
             qHigh += 1  # bump it up for a more efficient comparison
             i = 0 # use this to
             while temp_strand:
-                #print(temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
                 if temp_strand.lowIdx() <= qHigh:
-                    #print('yielded: '+temp_strand._name + ' low index %d, qHigh %d' % (temp_strand.lowIdx(), qHigh))
                     yield temp_strand
                 # use a next and a default to cause a break condition
                 temp_strand = next(temp_strands, None)
@@ -576,7 +553,6 @@ class LinkedList(ProxyObject):
             self._last_strandset_idx = i if -1 < i < len_strands else None
             return
         else:
-            #print('bastard went bad')
             # no strand was found
             # go ahead and clear the cache
             self._last_strandset_idx = None if len(self._strand_list) > 0 else 0
@@ -746,8 +722,6 @@ class LinkedList(ProxyObject):
             return True
 
     def removeDomainAt(self,idx):
-        for domain in self._strand_list:
-            print(domain._name)
         self.removeDomainFromStrandList(self._strand_list,idx)
         print('pop idx = %d' % idx)
         curr = self._head

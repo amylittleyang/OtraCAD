@@ -1,13 +1,10 @@
 __author__ = 'jie'
-from PyQt5.QtWidgets import QGraphicsLineItem
 from strandrep.toehold_item_controller import ToeholdItemController
 from cadnano.gui.views.pathview import pathstyles as styles
 from PyQt5.QtCore import QRectF, Qt, QPointF, QEvent
 
 from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QPainterPath
-from PyQt5.QtGui import QTransform, QTextCursor
 from PyQt5.QtWidgets  import QGraphicsPathItem, QGraphicsRectItem
-from PyQt5.QtWidgets  import QGraphicsTextItem
 
 _BASE_WIDTH = _BW = styles.PATH_BASE_WIDTH
 _HALF_BASE_WIDTH = _HBW = _BASE_WIDTH / 2
@@ -24,7 +21,7 @@ def _insertGen(path,start, c1, p1, stop):
     path.lineTo(stop)
 # end def
 
-
+#TODO: create different toehold paint paths for toehold going in different directions
 _PATH_START = QPointF(_HBW, _HBW)
 _PATH_DOWN_C1 = QPointF(1 *_BW, 1.5 *_BW)
 _PATH_DOWN_P1 = QPointF(2 * _BW, 1.6 *_BW)
@@ -81,6 +78,11 @@ class InsertionPath(object):
 # end class
 
 class ToeholdItem(QGraphicsPathItem):
+    '''
+    view toehold item renders a toehold on render view;
+    one toehold item is created for each toehold list;
+    toehold item hidden only when no toehold domain exists in toehold list
+    '''
     def __init__(self,domain,virtual_helix_item,prime):
         super(ToeholdItem, self).__init__(virtual_helix_item)
         self._virtual_helix_item = virtual_helix_item

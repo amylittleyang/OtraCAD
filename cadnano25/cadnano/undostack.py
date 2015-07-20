@@ -16,7 +16,6 @@ class UndoStack(object):
     def clear(self):
         self.undostack = deque()
         self.redostack = []
-        print('undostack cleared')
 
     def push(self, undocommand):
         if self.macro_count > 0:

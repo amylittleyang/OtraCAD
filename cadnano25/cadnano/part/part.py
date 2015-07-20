@@ -661,7 +661,6 @@ class Part(ProxyObject):
             if strand3p.idx5Prime() == idx3p:  # yes, idx already matches
                 xo_strand3 = strand3p
             else:  # no, let's try to split
-                print('no else right')
                 offset3p = -1 if ss3p.isDrawn5to3() else 1
                 if ss3p.strandCanBeSplit(strand3p, idx3p + offset3p):
                     found, overlap, ss_idx = ss3p._findIndexOfRangeFor(strand3p)
