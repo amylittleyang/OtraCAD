@@ -7,14 +7,14 @@ from cadnano.cnproxy import ProxyObject, ProxySignal
 
 
 class Domain(ProxyObject):
-    def __init__(self,linkedList,low_idx,high_idx,bs_low = None, bs_high = None, hyb_strand=None):
-        super(Domain, self).__init__(linkedList)
-        self._doc = linkedList.document()
+    def __init__(self,strandset,low_idx,high_idx,bs_low = None, bs_high = None, hyb_strand=None):
+        super(Domain, self).__init__(strandset)
+        self._doc = strandset.document()
         self._hyb_strand_idx = hyb_strand
-        self._index = linkedList.length()
-        self._vh = linkedList._virtual_helix
+        self._index = strandset.length()
+        self._vh = strandset._virtual_helix
         self._vhNum = self._vh._number
-        self._type = linkedList._strand_type
+        self._type = strandset._strand_type
         # domain naming
         if self._type == 0:
             self._type_str = 'scaf'
@@ -29,7 +29,7 @@ class Domain(ProxyObject):
         #coordinates and indexes
         self._bs_low  = bs_low
         self._bs_high = bs_high
-        self._strandset = linkedList
+        self._strandset = strandset
         self._low_idx = low_idx
         self._high_idx = high_idx
         self._length = high_idx-low_idx+1

@@ -94,8 +94,8 @@ def decode(document,obj):
         insertions = helix['loop']
         skips = helix['skip']
         vh = part.virtualHelixAtCoord((row, col))
-        scaf_strand_LinkedList = vh._scaf_LinkedList
-        stap_strand_LinkedList = vh._stap_LinkedList
+        scaf_strand_set = vh._scaf_strand_set
+        stap_strand_set = vh._stap_strand_set
 
         # read scaf segments and xovers
 
@@ -150,7 +150,7 @@ def decode(document,obj):
             low_idx = scaf_seg[vh_num][i]
             high_idx = scaf_seg[vh_num][i + 1]
             # split scaffold domain based on staple domain hybridized to
-            installLinkedList(low_idx,high_idx,scaf,scaf_strand_LinkedList,new_scaf_seg)
+            installStrandSet(low_idx,high_idx,scaf,scaf_strand_set,new_scaf_seg)
 
         new_stap_seg = []
         #install staple segments
@@ -158,10 +158,10 @@ def decode(document,obj):
             low_idx = stap_seg[vh_num][i]
             high_idx = stap_seg[vh_num][i + 1]
             # split staple domain based on scaffold domain hybridized to
-            installLinkedList(low_idx,high_idx,stap,stap_strand_LinkedList,new_stap_seg)
+            installStrandSet(low_idx,high_idx,stap,stap_strand_set,new_stap_seg)
 
         # rename staple based on complement domain on scaffold
-        for domain in vh._stap_LinkedList:
+        for domain in vh._stap_strand_set:
             stap_idx = domain._low_idx
             scaf_domain_idx = getStrandIdx(stap_idx,new_scaf_seg)
             domain.setName(scaf_domain_idx)
@@ -273,7 +273,7 @@ def decode(document,obj):
     document.undoStack().clear()
 
 # calls recursive function
-def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList,new_strand_seg):
+def installStrandSet(low_idx,high_idx,strand_update,strand_linkedList,new_strand_seg):
     '''
     get strand coordinates from low_idx to high_idx; pass all coordinates included
     to recursive function to split domain based on hybridized strand index.
@@ -304,7 +304,6 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low,new_strand_seg):
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-        #domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1])
         new_strand_seg.append(low)
         new_strand_seg.append(low+idx-1)
         cmd = strand_linkedList.createStrand(low, low+idx-1, use_undostack=True)

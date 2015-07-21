@@ -11,7 +11,6 @@ class CreateToeholdCommand(UndoCommand):
         # get references from domain
         super(CreateToeholdCommand,self).__init__('create strand')
         self._domain = domain
-        self._overhang_linkedlist = vh._overhang_LinkedList
         self._doc = domain._doc
         self._oligo = domain.oligo()
         self._insert_index = None

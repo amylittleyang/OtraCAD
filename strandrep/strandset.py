@@ -10,7 +10,7 @@ from cadnano.cnproxy import ProxyObject, ProxySignal
 from cadnano.strand import Strand
 from cadnano.oligo import Oligo
 
-class LinkedList(ProxyObject):
+class StrandSet(ProxyObject):
     '''
     Container for all model staple/scaffold strands on a model virtual helix;
     A total of two linked lists pertains to each virtual helix;
@@ -18,7 +18,7 @@ class LinkedList(ProxyObject):
     '''
     def __init__(self, strand_type,vh):
         self._doc = vh.document()
-        super(LinkedList, self).__init__(vh)
+        super(StrandSet, self).__init__(vh)
         self._virtual_helix = vh
         self._undoStack = None
         self._last_strandset_idx = None
