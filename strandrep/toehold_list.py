@@ -25,6 +25,7 @@ class ToeholdList(ProxyObject):
         self._toehold_list.append(toehold)
 
     def removeToehold(self,toehold_name):
+        # remove model toehold
         for t in self._toehold_list:
             if t._name == toehold_name:
                 self._toehold_list.remove(t)

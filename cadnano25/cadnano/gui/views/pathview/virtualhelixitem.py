@@ -63,14 +63,14 @@ class VirtualHelixItem(QGraphicsPathItem):
     # end def
 
 
-    def strandAddedSlot(self, sender, strand):
+    def strandAddedSlot(self, sender, domain):
         """
         Instantiates a StrandItem upon notification that the model has a
         new Strand.  The StrandItem is responsible for creating its own
         controller for communication with the model, and for adding itself to
         its parent (which is *this* VirtualHelixItem, i.e. 'self').
         """
-        StrandItem(strand, self, self._viewroot)
+        StrandItem(domain, self, self._viewroot)
     # end def
 
     def decoratorAddedSlot(self, decorator):

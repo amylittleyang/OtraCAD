@@ -161,12 +161,10 @@ def decode(document,obj):
             installLinkedList(low_idx,high_idx,stap,stap_strand_LinkedList,new_stap_seg)
 
         # rename staple based on complement domain on scaffold
-        curr0 = curr = vh._stap_LinkedList._head
-        while curr:
-            stap_idx = curr._low_idx
+        for domain in vh._stap_LinkedList:
+            stap_idx = domain._low_idx
             scaf_domain_idx = getStrandIdx(stap_idx,new_scaf_seg)
-            curr.setName(scaf_domain_idx)
-            curr = curr._domain_3p
+            domain.setName(scaf_domain_idx)
 
 
       # INSTALL XOVERS
@@ -287,15 +285,15 @@ def installLinkedList(low_idx,high_idx,strand_update,strand_linkedList,new_stran
     # appendDomain split strand into domains and append domains to strandset
     appendDomain(list, hyb_strand,strand_linkedList,0,low_idx,new_strand_seg)
     # put domains in strandlist after all domains are appended
-    strand_linkedList.finishAppend()
 
 # split strand into domains and append domains to strand_linkedList
 def appendDomain(list,hyb_stap,strand_linkedList,idx,low,new_strand_seg):
     if idx == len(list) or len(list) == 0:
-        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1])
+        #domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1])
         new_strand_seg.append(low)
         new_strand_seg.append(low+idx-1)
-        strand_linkedList.append(domain)
+        cmd = strand_linkedList.createStrand(low, low+idx-1, use_undostack=True)
+        domain = cmd._domain
         domain_low = strand_linkedList.domainAtIndex(-2)
         if domain_low and (not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]) or len(list)==1):
             # adjacent domains on the same strand are connected by connection3p and connection5p (same as connectionLow and connectionHigh)
@@ -306,10 +304,11 @@ def appendDomain(list,hyb_stap,strand_linkedList,idx,low,new_strand_seg):
         return
     now_stap = list[idx][4]
     if now_stap != hyb_stap:
-        domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1])
+        #domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[idx-1])
         new_strand_seg.append(low)
         new_strand_seg.append(low+idx-1)
-        strand_linkedList.append(domain)
+        cmd = strand_linkedList.createStrand(low, low+idx-1, use_undostack=True)
+        domain = cmd._domain
         domain_low = strand_linkedList.domainAtIndex(-2)
         if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
             domain_low.setConnectionHigh(domain)
@@ -327,7 +326,6 @@ def hybridized(list):
     # return true if the complement strandset has strand at the query position
     list_copy = []
     for i in range(len(list)):
-        print i
         list_copy.append(list[i]+1)
     return any(list)
 

@@ -11,24 +11,31 @@ from cadnano.strand import Strand
 from cadnano.oligo import Oligo
 
 class LinkedList(ProxyObject):
+    '''
+    Container for all model staple/scaffold strands on a model virtual helix;
+    A total of two linked lists pertains to each virtual helix;
+
+    '''
     def __init__(self, strand_type,vh):
         self._doc = vh.document()
         super(LinkedList, self).__init__(vh)
         self._virtual_helix = vh
         self._undoStack = None
         self._last_strandset_idx = None
-        self._strand_type = strand_type
+        self._strand_type = strand_type # staple or scaffold
         self._undoStack = None
         self._name = str(strand_type)
 
         self._head = None
-        self._length = 0
-        self._strand_list = self.getStrandList()
+        self._strand_list = []
         self._is_Drawn_5_to_3 = self.isDrawn5to3()
 
-    def finishAppend(self):
-        self._strand_list = self.getStrandList()
-        ### questionable methods
+
+    ### SIGNALS ###
+    strandsetStrandAddedSignal = ProxySignal(ProxyObject, ProxyObject,
+                                    name='strandsetStrandAddedSignal')#pyqtSignal(QObject,
+
+
     def __iter__(self):
         """Iterate over each strand in the strands list."""
         return self._strand_list.__iter__()
@@ -37,22 +44,23 @@ class LinkedList(ProxyObject):
         """Return a generator that yields the strands in self._strand_list."""
         return iter(self._strand_list)
     # end def
+
     # public query
-    def getNeighbors(self, strand):
-        is_in_set, overlap, strandset_idx = self._findIndexOfRangeFor(strand)
-        s_list = self._strand_list
-        if is_in_set:
-            if strandset_idx > 0:
-                lowStrand = s_list[strandset_idx - 1]
-            else:
-                lowStrand = None
-            if strandset_idx < len(s_list) - 1:
-                highStrand = s_list[strandset_idx + 1]
-            else:
-                highStrand = None
-            return lowStrand, highStrand
-        else:
-            raise IndexError
+    # def getNeighbors(self, strand):
+    #     is_in_set, overlap, strandset_idx = self._findIndexOfRangeFor(strand)
+    #     s_list = self._strand_list
+    #     if is_in_set:
+    #         if strandset_idx > 0:
+    #             lowStrand = s_list[strandset_idx - 1]
+    #         else:
+    #             lowStrand = None
+    #         if strandset_idx < len(s_list) - 1:
+    #             highStrand = s_list[strandset_idx + 1]
+    #         else:
+    #             highStrand = None
+    #         return lowStrand, highStrand
+    #     else:
+    #         raise IndexError
 
         # modify to incorporate overhang strandset
     def complementStrandSet(self):
@@ -67,8 +75,10 @@ class LinkedList(ProxyObject):
             return vh.stapleStrandSet()
     # end def
 
+    def _addToStrandList(self, strand, idx):
+        """Inserts strand into the _strand_list at idx."""
+        self._strand_list.insert(idx, strand)
 
-    # no idea what this is
     def getBoundsOfEmptyRegionContaining(self, base_idx):
         """
         Returns the (tight) bounds of the contiguous stretch of unpopulated
@@ -101,7 +111,6 @@ class LinkedList(ProxyObject):
         return (low_idx, high_idx)
     # end def
 
-    # modify to fit linked list
     def indexOfRightmostNonemptyBase(self):
         """Returns the high base_idx of the last strand, or 0."""
         if len(self._strand_list) > 0:
@@ -110,30 +119,17 @@ class LinkedList(ProxyObject):
             return 0
 
 
-
-
-
-
-
-
-
-
-
 # accessory methods
     def __repr__(self):
         if self._strand_type == 0:
             type = 'scaf'
-        elif self._strand_type == 1:
-            type = 'stap'
         else:
-            type = 'overhang'
+            type = 'stap'
+
         num = self._virtual_helix.number()
         return "<%s_StrandSet(%d)>" % (type, num)
     # end def
 
-    ### SIGNALS ###
-    strandsetStrandAddedSignal = ProxySignal(ProxyObject, ProxyObject,
-                                    name='strandsetStrandAddedSignal')#pyqtSignal(QObject,
 
     def part(self):
         return self._virtual_helix.part()
@@ -179,41 +175,37 @@ class LinkedList(ProxyObject):
             domain.setDomain5p(curr)
 
         self._length += 1
+        self._strand_list.append(domain)
 
     # end def
 
     def domainAtIndex(self,index):
         # return domain at the index (negative works as well)
-        if not index:
-            return
+        print len(self._strand_list)
         if index < 0:
-            index = self._length+index
-        assert index < self._length
-        curr = self._head
-        while curr:
-            if curr._index == index:
-                return curr
-            else:
-                curr = curr._domain_3p
-
-    def reverse(self):
-        # reverse linked list to go 5' to 3' if necessary. hint: queue/stack
-        curr = self._head
-        stack = []
-        while True:
-            stack.append(curr)
-            curr = curr._domain_3p
-            if curr == None:
-                break
-        curr = stack.pop()
-        curr.setDomain5p(None)
-        self._head = curr
-        while stack:
-            curr.setDomain3p(stack.pop())
-            d3p = curr._domain_3p
-            d3p.setDomain5p(curr)
-            curr = curr._domain_3p
-        curr.setDomain3p(None)
+            index = len(self._strand_list) + index
+        if index >= 0:
+            return self._strand_list[index]
+        else:
+            return None
+    # def reverse(self):
+    #     # reverse linked list to go 5' to 3' if necessary. hint: queue/stack
+    #     curr = self._head
+    #     stack = []
+    #     while True:
+    #         stack.append(curr)
+    #         curr = curr._domain_3p
+    #         if curr == None:
+    #             break
+    #     curr = stack.pop()
+    #     curr.setDomain5p(None)
+    #     self._head = curr
+    #     while stack:
+    #         curr.setDomain3p(stack.pop())
+    #         d3p = curr._domain_3p
+    #         d3p.setDomain5p(curr)
+    #         curr = curr._domain_3p
+    #     curr.setDomain3p(None)
 
 
     def __len__(self):
@@ -567,6 +559,9 @@ class LinkedList(ProxyObject):
             return (False, 0)
     # end def
 
+    def length(self):
+        return len(self._strand_list)
+
     def _findIndexOfRangeFor(self, strand):
         """
         Performs a binary search for strand in self._strand_list.
@@ -685,7 +680,7 @@ class LinkedList(ProxyObject):
         """docstring for deepCopy"""
         pass
 
-    def createStrand(self,domain, base_idx_low, base_idx_high, use_undostack=True):
+    def createStrand(self, base_idx_low, base_idx_high, use_undostack=True):
         """
         Assumes a strand is being created at a valid set of indices.
         """
@@ -694,7 +689,7 @@ class LinkedList(ProxyObject):
         can_insert, strandset_idx = \
                                 self.getIndexToInsert(base_idx_low, base_idx_high)
         if can_insert:
-            c = CreateStrandCommand(self,domain,
+            c = CreateStrandCommand(self,
                                         base_idx_low, base_idx_high, strandset_idx)
             row, col = self._virtual_helix.coord()
             # d = "(%d,%d).%d + [%d,%d]" % \
@@ -722,27 +717,12 @@ class LinkedList(ProxyObject):
             return True
 
     def removeDomainAt(self,idx):
+        domain = self._strand_list[idx]
+        domain_3p = domain._domain_3p
+        domain_5p = domain._domain_5p
+        domain_3p.setDomain5p(domain_5p)
+        domain_5p.setDomain3p(domain_3p)
         self.removeDomainFromStrandList(self._strand_list,idx)
-        print('pop idx = %d' % idx)
-        curr = self._head
-        precur = curr
-        if curr._index == idx:
-            self._head = curr._domain_3p
-            if self._head:
-                self._head.setDomain5p(None)
-            return
-        while curr:
-            curridx = curr._index
-            if curridx == idx:
-                precur.setDomain3p(curr._domain_3p)
-                if curr._domain_3p is not None:
-                    curr._domain_3p.setDomain5p(precur)
-                break
-            else:
-                precur = curr
-                curr = curr._domain_3p
 
-    def removeDomainFromStrandList(self,strand_list,domain_idx):
-        for domain in strand_list:
-            if domain._index == domain_idx:
-                strand_list.remove(domain)
+    def removeDomainFromStrandList(self,domain_idx):
+        self._strand_list.pop(domain_idx)

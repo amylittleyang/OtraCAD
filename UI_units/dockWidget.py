@@ -2,6 +2,11 @@ __author__ = 'jie'
 from PyQt5.QtWidgets import QDockWidget,QWidget,QVBoxLayout,QCheckBox,QDialogButtonBox,QGroupBox,QFormLayout,QMessageBox
 from PyQt5 import QtCore
 class DockWidget(QDockWidget):
+    '''
+    Panel on the right of main window;
+    container for GUI objects that provide options for transformation;
+    panel renewed when new operation is selected in tool Bar
+    '''
     def __init__(self,mainWindow):
         super(DockWidget, self).__init__(None)
         self.mainWindow = mainWindow
@@ -11,6 +16,7 @@ class DockWidget(QDockWidget):
         self.can_update = False
 
     def setupUI(self):
+        # set up layout for dock widget
         self.setAllowedAreas(QtCore.Qt.RightDockWidgetArea)
         self.setFeatures(QDockWidget.AllDockWidgetFeatures)
         dockWidgetContents = QWidget()
@@ -23,6 +29,7 @@ class DockWidget(QDockWidget):
         '''
         prepare dockWidget for create toehold command:
         create checkbox3p, checkbox5p,buttonBox;
+        apply layout;
         '''
 
         if not self.isHidden():
@@ -60,6 +67,8 @@ class DockWidget(QDockWidget):
             self.updateCheckBoxState()
 
     def updateCheckBoxState(self):
+        # notified by document when an active domain is selected;
+        # check box appearance updated to show allowable operations;
             if self.activeDomain is not None and self.can_update:
                  if self.activeDomain.canCreateToeholdAt(3): # true if 3' domain on oligo has no toehold or xover
                     self.checkBox_3p.setCheckable(True)
@@ -70,7 +79,9 @@ class DockWidget(QDockWidget):
 
 
     def buttonBoxAcceptedSlot(self):
-        # save changes to macro; undo all commands and add all commands to undo_stack
+        # save changes to macro;
+        # undo all commands;
+        # add all commands to undo_stack
         if self.doc is not None and self.doc.activeDomain() is not None:
             activeDomain = self.doc.activeDomain()
             activeDomain.toeholdChangeAccepted()
@@ -83,7 +94,7 @@ class DockWidget(QDockWidget):
 
 
     def buttonBoxRejectedSlot(self):
-        # undo all commands
+        # undo all commands;
         if self.activeDomain is not None:
             activeDomain = self.doc.activeDomain()
             activeDomain.toeholdChangeRejected()
@@ -97,6 +108,7 @@ class DockWidget(QDockWidget):
     def updateActiveDomain(self,domain):
         # triggered when new active domain is selected; notified by document
         self.activeDomain = domain
+        # update check box state for the new active domain
         self.updateCheckBoxState()
 
 

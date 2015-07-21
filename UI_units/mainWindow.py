@@ -29,6 +29,7 @@ class MainWindow(QMainWindow):
         self.toolBar = ToolBar(self)
         self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
 
+        # main window setup
         root = QFileInfo(__file__).absolutePath()
         self.setWindowTitle('AnimDNA')
         self.setWindowIcon((QIcon(root+'/images/bug.png')))
@@ -39,7 +40,7 @@ class MainWindow(QMainWindow):
         # CustomQGraphicsView extends QGraphicsView, allow zooming in/out and drag by using "command+click"
         self.renderView = CustomQGraphicsView(self.path_splitter)
 
-
+        # size polices
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -61,7 +62,7 @@ class MainWindow(QMainWindow):
 
 
     def updateRenderView(self,doc_ctrl):
-         doc = doc_ctrl._document
+        # set up render view to render imported .json file
          self.pathscene = QGraphicsScene(parent=self.renderView)
          self.pathroot = PathRootItem(rect=self.pathscene.sceneRect(),\
                                      parent=None,\
@@ -75,10 +76,10 @@ class MainWindow(QMainWindow):
          self.renderView.scene_root_item = self.pathroot
          self.renderView._scale_fit_factor = 0.9
          self.renderView._name = 'renderView'
-#         self.path_tool_manager = PathToolManager(self,self.path_toolbar)
     #end def
 
     def setDoc(self,doc):
+        # set documents for all child widgets
         self.doc = doc
         self.dockWidget.doc = doc
         self.toolBar.doc = doc

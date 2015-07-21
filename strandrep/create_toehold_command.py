@@ -4,10 +4,11 @@ from strandrep.toehold_list import ToeholdList
 from strandrep.toehold import Toehold
 class CreateToeholdCommand(UndoCommand):
     '''
-    called by Domain to create toehold on an end of an oligo
+    called by Domain to create toehold on an end of an oligo;
+    can be undone if added to undo stack before executed;
     '''
     def __init__(self,vh,domain,end):
-        # domain = domain to operate on
+        # get references from domain
         super(CreateToeholdCommand,self).__init__('create strand')
         self._domain = domain
         self._overhang_linkedlist = vh._overhang_LinkedList
@@ -22,8 +23,10 @@ class CreateToeholdCommand(UndoCommand):
             self._insert_index = domain.idx5Prime
 
     def redo(self):
-        # create model toehold
-        #TODO: substitute 5 with userlength input
+        # create toehold list as container for toehold domains;
+        # add model toehold to toehold list;
+        # create toehold item and show item on render view;
+        #TODO: substitute 5 with user length input
         toehold = Toehold(5,self._domain,self._prime) # model toehold
         self._toehold = toehold
         toeholdList = ToeholdList(self._domain,toehold)
@@ -31,11 +34,11 @@ class CreateToeholdCommand(UndoCommand):
             self._domain.setToehold3p(toeholdList)
         elif self._prime == 5:
             self._domain.setToehold5p(toeholdList)
-        self._domain.toeholdAddedSignal.emit(self._domain,self._prime) # emitted by end domain; notifies strand item of end domain to create toehold item
+        self._domain.toeholdAddedSignal.emit(self._domain,self._prime) # emitted by end domain; notifies strand item to create toehold item
 
     #TODO: update domain oligo length
     def undo(self):
-        # undo create model toehold and view toehold item
+        # delete model toehold and toehold item
         if self._prime == 5:
             toeholdList = self._domain.toehold5p()
             toehold_name = 'T5'+self._domain._name
@@ -43,6 +46,7 @@ class CreateToeholdCommand(UndoCommand):
             toeholdList = self._domain.toehold3p()
             toehold_name = 'T3'+self._domain._name
         toeholdList.removeToehold(toehold_name)
+        # remove toehold item if no toehold remains in toehold list
         if len(toeholdList._toehold_list) == 0:
             if self._prime == 5:
                 self._domain.setToehold5p(None)

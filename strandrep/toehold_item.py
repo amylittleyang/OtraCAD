@@ -70,6 +70,7 @@ class InsertionPath(object):
     # end def
 
     def getInsert(self, is_top):
+        # decide which path to use
         if is_top:
             return _INSERT_PATH_UP
         else:
@@ -105,4 +106,5 @@ class ToeholdItem(QGraphicsPathItem):
         self._toehold_item_controller = ToeholdItemController(self)
 
     def deleteItem(self,domain):
+        # hide item from view
         self.hide()

@@ -154,7 +154,7 @@ class StrandItem(QGraphicsLineItem):
     def oligoAppearanceChangedSlot(self, oligo):
         strand = self._model_strand
         self._updateColor(strand)
-        if strand._domain.connection3p():
+        if strand.connection3p():
             self._xover3pEnd._updateColor(strand)
         for insertion in self.insertionItems().values():
             insertion.updateItem()
@@ -521,8 +521,7 @@ class StrandItem(QGraphicsLineItem):
 
     ### EVENT HANDLERS ###
     def mousePressEvent(self, event):
-        strand = self._model_strand
-        domain = strand._domain
+        domain = self._model_strand
         domain._doc.setActiveDomain(domain)
         print('active domain = %s' % domain._name)
         """
@@ -566,7 +565,7 @@ class StrandItem(QGraphicsLineItem):
         vhi_num = self._virtual_helix_item.number()
         idx = int(floor((event.pos().x()) / _BASE_WIDTH))
         oligo_length = self._model_strand.oligo().length()
-        self.partItem().updateStatusBar("%s at %d[%d]\tlength: %d" % (self._model_strand._domain._name, vhi_num, idx, oligo_length))
+        self.partItem().updateStatusBar("%s at %d[%d]\tlength: %d" % (self._model_strand._name, vhi_num, idx, oligo_length))
 #        tool_method_name = self._getActiveTool().methodPrefix() + "HoverMove"
 #        if hasattr(self, tool_method_name):
 #            getattr(self, tool_method_name)(event, idx)

@@ -11,6 +11,7 @@ import json
 class ToolBar(QToolBar):
     def __init__(self,mainWindow):
         super(ToolBar, self).__init__(None)
+        # get actions from main window
         self.mainWindow = mainWindow
         self.doc = mainWindow.doc
         # get actions from mainWindow parsed from .ui file
@@ -20,6 +21,7 @@ class ToolBar(QToolBar):
         self.setupUI() # and connect action to slot
 
     def setupUI(self):
+        # set icon for actions
         root = QFileInfo(__file__).absolutePath()
         self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
         self.actionOpen.triggered.connect(self.actionOpenTriggeredSlot)
