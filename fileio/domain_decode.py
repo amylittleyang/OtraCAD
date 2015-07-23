@@ -286,36 +286,42 @@ def installStrandSet(low_idx,high_idx,strand_update,strand_linkedList,new_strand
     appendDomain(list, hyb_strand,strand_linkedList,0,low_idx,new_strand_seg)
     # put domains in strandlist after all domains are appended
 
-# split strand into domains and append domains to strand_linkedList
+# split strand into domains and append domains to strandset
+# WARNING: burnt my brain when writing this function
 def appendDomain(list,hyb_stap,strand_linkedList,idx,low,new_strand_seg):
+    # recursion base case, when list is empty or when pointer has moved to the end of the list
     if idx == len(list) or len(list) == 0:
-        #domain = Domain(strand_linkedList,low,low+idx-1,bs_low=list[0],bs_high=list[len(list)-1])
         new_strand_seg.append(low)
         new_strand_seg.append(low+idx-1)
+        # use createStrandCommand to create new domain and strand item
         cmd = strand_linkedList.createStrand(low, low+idx-1, use_undostack=True)
         domain = cmd._domain
         domain_low = strand_linkedList.domainAtIndex(-2)
+        # if new domain is on the same strand with last domain
         if domain_low and (not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]) or len(list)==1):
-            # adjacent domains on the same strand are connected by connection3p and connection5p (same as connectionLow and connectionHigh)
             domain_low.setConnectionHigh(domain)
             domain_low.setIsConnectionHighXover(True)
             domain.setConnectionLow(domain_low)
             domain.setIsConnectionLowXover(True)
         return
+    # hybridized domain index at current pointer
     now_stap = list[idx][4]
+    # hybridized domain index changed --> hybridized domain has changed
     if now_stap != hyb_stap:
         new_strand_seg.append(low)
         new_strand_seg.append(low+idx-1)
+        # create new domain
         cmd = strand_linkedList.createStrand(low, low+idx-1, use_undostack=True)
         domain = cmd._domain
         domain_low = strand_linkedList.domainAtIndex(-2)
+        # if new domain is on the same strand with last domain
         if domain_low and not isSegmentStartOrEnd(strand_linkedList._strand_type,strand_linkedList._virtual_helix._number,low,list[0][0],list[0][1],list[0][2],list[0][3]):
             domain_low.setConnectionHigh(domain)
             domain_low.setIsConnectionHighXover(True)
             domain.setConnectionLow(domain_low)
             domain.setIsConnectionLowXover(True)
         low = low + idx
-        # truncate list and pass back
+        # truncate list and pass back to recursive function
         appendDomain(list[idx:],now_stap,strand_linkedList,0,low,new_strand_seg)
     else:
         appendDomain(list,hyb_stap,strand_linkedList,idx+1,low,new_strand_seg)

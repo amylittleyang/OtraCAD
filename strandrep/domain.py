@@ -80,8 +80,8 @@ class Domain(ProxyObject):
         self._endDomain = None
 
  ### Singals
-    toeholdremovedSignal = ProxySignal(ProxyObject,object,name='toeholdRemovedSignal') # toeholdRemovedSlot in strand item
-    toeholdAddedSignal = ProxySignal(ProxyObject,object,name = 'toeholdAddedSignal')   # toeholdAddedSlot in strand item
+    toeholdremovedSignal = ProxySignal(object,object,name='toeholdRemovedSignal') # toeholdRemovedSlot in strand item
+    toeholdAddedSignal = ProxySignal(object,object,name = 'toeholdAddedSignal')   # toeholdAddedSlot in strand item
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') # hasNewOligoSlot in abstract strand item
     strandUpdateSignal = ProxySignal(ProxyObject, name='strandUpdateSignal') #pyqtSignal(QObject)
     strandRemovedSignal = ProxySignal(ProxyObject, name='strandRemovedSignal') #pyqtSignal(QObject)  # strand

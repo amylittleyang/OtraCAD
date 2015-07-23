@@ -59,6 +59,7 @@ class StrandItem(QGraphicsLineItem):
         self._is_drawn_5to3 = is_drawn_5to3
         # self._isOnTop = virtual_helix_item.isStrandOnTop(model_strand)
         # label
+        self._is_on_top = self._virtual_helix_item.isStrandOnTop(self._model_strand)
         self._seq_label = QGraphicsSimpleTextItem(self)
         
         self.refreshInsertionItems(model_strand)
@@ -75,6 +76,22 @@ class StrandItem(QGraphicsLineItem):
 
         self.setZValue(styles.ZSTRANDITEM)
 
+        self._toehold_item_3p = None
+        self._toehold_item_5p = None
+        self._toehold_cap_3p = None
+        self._toehold_cap_5p = None
+
+        if self._is_drawn_5to3:
+            self._toehold_cap_3p = EndpointItem(self,'low',not self._is_drawn_5to3)
+            self._toehold_cap_5p = EndpointItem(self,'low',self._is_drawn_5to3)
+            self.toeholdCapHigh = self.toeholdCap3p
+            self.toeholdCapLow = self.toeholdCap5p
+        else:
+            self._toehold_cap_3p =  EndpointItem(self,'high',not self._is_drawn_5to3)
+            self._toehold_cap_5p =  EndpointItem(self,'high',self._is_drawn_5to3)
+            self.toeholdCapHigh = self.toeholdCap5p
+            self.toeholdCapLow = self.toeholdCap3p
+
         # xover comming from the 3p end
         self._xover3pEnd = XoverItem(self, virtual_helix_item)
         if not getBatch():
@@ -84,11 +101,18 @@ class StrandItem(QGraphicsLineItem):
 
         self.setZValue(styles.ZSTRANDITEM)
         self.setFlag(QGraphicsItem.ItemIsSelectable)
-        self._toehold_item_3p = None
-        self._toehold_item_5p = None
+
+
+
     # end def
 
-    ### SIGNALS ###
+    def toeholdCap3p(self):
+        return self._toehold_cap_3p
+
+    def toeholdCap5p(self):
+        return self._toehold_cap_5p
+
+
 
     ### SLOTS ###
     def strandResizedSlot(self, strand, indices):
@@ -231,24 +255,69 @@ class StrandItem(QGraphicsLineItem):
         self.selectIfRequired(self.partItem().document(), indices)
     # end def
 
-    def toeholdAddedSlot(self,domain,prime):
+    def toeholdAddedSlot(self,toeholdList,prime):
         # create toehold item after model toehold is added to domain
+
+
         if prime == 3:
             if self._toehold_item_3p is not None:
                 self._toehold_item_3p.show()
             else:
-                self._toehold_item_3p = ToeholdItem(domain,self._virtual_helix_item,3)
+                self._toehold_item_3p = ToeholdItem(toeholdList,self._virtual_helix_item,3)
+            if self._is_drawn_5to3:
+                self._high_cap.hide()
+            else:
+                self._low_cap.hide()
+            self._toehold_cap_3p.show()
+
         if prime == 5:
             if self._toehold_item_5p is not None:
                 self._toehold_item_5p.show()
             else:
-                self._toehold_item_5p = ToeholdItem(domain,self._virtual_helix_item,5)
-    def toeholdRemovedSlot(self,domain,prime):
+                self._toehold_item_5p = ToeholdItem(toeholdList,self._virtual_helix_item,5)
+            if self._is_drawn_5to3:
+                self._low_cap.hide()
+            else:
+                self._high_cap.hide()
+            self._toehold_cap_5p.show()
+
+    def toeholdRemovedSlot(self,toeholdList,prime):
          # hide toehold items
         if prime == 3:
-            self._toehold_item_3p.deleteItem(domain)
+            self._toehold_item_3p.deleteItem(toeholdList)
+            if self._is_drawn_5to3:
+                 self._high_cap.show()
+            else:
+                 self._low_cap.show()
+            self._toehold_cap_3p.hide()
         if prime == 5:
-            self._toehold_item_5p.deleteItem(domain)
+            self._toehold_item_5p.deleteItem(toeholdList)
+            if self._is_drawn_5to3:
+                self._low_cap.show()
+            else:
+                self._high_cap.show()
+            self._toehold_cap_5p.hide()
+
+    # def toeholdCapSetPos(self,toehold_cap_list):
+    #     vhi = self._virtual_helix_item
+    #     strand = self._model_strand
+    #     bw = _BASE_WIDTH
+    #     low_idx, high_idx = strand.lowIdx(), strand.highIdx()
+    #     l_upper_left_x, l_upper_left_y = vhi.upperLeftCornerOfBase(low_idx, strand)
+    #     h_upper_left_x, h_upper_left_y = vhi.upperLeftCornerOfBase(high_idx, strand)
+    #     for toehold_cap in toehold_cap_list:
+    #         if toehold_cap is None: continue
+    #         if self._is_drawn_5to3:
+    #             x = h_upper_left_x
+    #             y = h_upper_left_y-1.5*_BASE_WIDTH if self._is_on_top else h_upper_left_y+1.5*bw
+    #         else:
+    #             x = l_upper_left_x
+    #             y = l_upper_left_y-1.5*_BASE_WIDTH if self._is_on_top else h_upper_left_y+1.5*bw
+    #         toehold_cap.safeSetPos(x,y)
+    #
+    #
+
+
     ### ACCESSORS ###
     def viewroot(self):
         return self._viewroot
@@ -366,6 +435,18 @@ class StrandItem(QGraphicsLineItem):
         dual_cap = self._dual_cap
 
         # 1. Cap visibilty
+        if self._is_on_top:
+            self.toeholdCapLow().safeSetPos(l_upper_left_x+bw,l_upper_left_y - bw)
+            self.toeholdCapHigh().safeSetPos(h_upper_left_x-1.5*bw,h_upper_left_y - bw)
+        else:
+            self.toeholdCapLow().safeSetPos(l_upper_left_x+bw,l_upper_left_y + bw)
+            self.toeholdCapHigh().safeSetPos(h_upper_left_x-1.5*bw,h_upper_left_y + bw)
+
+        self._toehold_cap_3p.hide()
+        self._toehold_cap_5p.hide()
+
+
+
         lx = l_upper_left_x + bw  # draw from right edge of base
         low_cap.safeSetPos(l_upper_left_x, l_upper_left_y)
         if strand.connectionLow() is not None:  # has low xover
@@ -460,6 +541,8 @@ class StrandItem(QGraphicsLineItem):
         self._high_cap.updateHighlight(brush)
         self._dual_cap.updateHighlight(brush)
         self._tick.updateHighlight(brush)
+        self.toeholdCap3p().updateHighlight(brush)
+        self.toeholdCap5p().updateHighlight(brush)
     # end def
 
     def _updateSequenceText(self):

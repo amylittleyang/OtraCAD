@@ -96,17 +96,19 @@ class DockWidget(QDockWidget):
     def buttonBoxRejectedSlot(self):
         # undo all commands;
         if self.activeDomain is not None:
-            activeDomain = self.doc.activeDomain()
-            activeDomain.toeholdChangeRejected()
-            self.checkBox_3p.setCheckable(False)
-            self.checkBox_5p.setCheckable(False)
-            self.checkBox_3p.setStyleSheet("background-color:#ddd")
-            self.checkBox_5p.setStyleSheet("background-color:#ddd")
-            self.activeDomain = None
+            self.activeDomain.toeholdChangeRejected()
+            if self.can_update:
+                self.checkBox_3p.setCheckable(False)
+                self.checkBox_5p.setCheckable(False)
+                self.checkBox_3p.setStyleSheet("background-color:#ddd")
+                self.checkBox_5p.setStyleSheet("background-color:#ddd")
+                self.activeDomain = None
         self.hide()
 
     def updateActiveDomain(self,domain):
         # triggered when new active domain is selected; notified by document
+        if (not self.activeDomain == domain) and self.activeDomain is not None:
+            self.buttonBoxRejectedSlot()
         self.activeDomain = domain
         # update check box state for the new active domain
         self.updateCheckBoxState()

@@ -7,6 +7,7 @@ class CreateToeholdCommand(UndoCommand):
     called by Domain to create toehold on an end of an oligo;
     can be undone if added to undo stack before executed;
     '''
+    # TODO: walk Reem through create toehold
     def __init__(self,vh,domain,end):
         # get references from domain
         super(CreateToeholdCommand,self).__init__('create strand')
@@ -33,7 +34,7 @@ class CreateToeholdCommand(UndoCommand):
             self._domain.setToehold3p(toeholdList)
         elif self._prime == 5:
             self._domain.setToehold5p(toeholdList)
-        self._domain.toeholdAddedSignal.emit(self._domain,self._prime) # emitted by end domain; notifies strand item to create toehold item
+        self._domain.toeholdAddedSignal.emit(toeholdList,self._prime) # emitted by end domain; notifies strand item to create toehold item
 
     #TODO: update domain oligo length
     def undo(self):
@@ -51,7 +52,7 @@ class CreateToeholdCommand(UndoCommand):
                 self._domain.setToehold5p(None)
             if self._prime == 3:
                 self._domain.setToehold3p(None)
-            self._domain.toeholdRemovedSignal.emit(self._domain,self._prime) # notifies end domain strand item to hide toehold item
+            self._domain.toeholdRemovedSignal.emit(toeholdList,self._prime) # notifies end domain strand item to hide toehold item
 
 
 

@@ -15,6 +15,8 @@ class ToeholdList(ProxyObject):
         self._toehold_list.append(toehold)
         self._length = 1
         self._base_length = toehold._length
+        self._is_high_idx = toehold._is_high_idx
+        self._is_drawn_5_to_3 = self._domain._is_drawn_5_to_3
 
 
     def append(self,toehold):
