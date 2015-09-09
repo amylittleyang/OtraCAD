@@ -27,7 +27,6 @@ class VirtualHelixItem(QGraphicsPathItem):
         self._part_item = part_item
         self._model_virtual_helix = model_virtual_helix
         self._viewroot = viewroot
-#        self._getActiveTool = part_item._getActiveTool
         self._controller = VirtualHelixItemController(self, model_virtual_helix)
         
         self._handle = VirtualHelixHandleItem(model_virtual_helix, part_item, viewroot)

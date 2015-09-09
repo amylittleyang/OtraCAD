@@ -180,6 +180,13 @@ class StrandItem(QGraphicsLineItem):
         self._updateColor(strand)
         if strand.connection3p():
             self._xover3pEnd._updateColor(strand)
+        if strand.toeholdList3p():
+            self._toehold_cap_3p.setSelectedColor(False)
+            self._toehold_item_3p.updateColor(False)
+        if strand.toeholdList5p():
+            self._toehold_cap_5p.setSelectedColor(False)
+            self._toehold_item_5p.updateColor(False)
+
         for insertion in self.insertionItems().values():
             insertion.updateItem()
     # end def
@@ -263,7 +270,7 @@ class StrandItem(QGraphicsLineItem):
             if self._toehold_item_3p is not None:
                 self._toehold_item_3p.show()
             else:
-                self._toehold_item_3p = ToeholdItem(toeholdList,self._virtual_helix_item,3)
+                self._toehold_item_3p = ToeholdItem(toeholdList,self,prime)
             if self._is_drawn_5to3:
                 self._high_cap.hide()
             else:
@@ -274,7 +281,7 @@ class StrandItem(QGraphicsLineItem):
             if self._toehold_item_5p is not None:
                 self._toehold_item_5p.show()
             else:
-                self._toehold_item_5p = ToeholdItem(toeholdList,self._virtual_helix_item,5)
+                self._toehold_item_5p = ToeholdItem(toeholdList,self,prime)
             if self._is_drawn_5to3:
                 self._low_cap.hide()
             else:
@@ -525,15 +532,17 @@ class StrandItem(QGraphicsLineItem):
 
     def _updateHighlight(self, color):
         """
-        
+
         """
+        #TODO: called when oligo is highlighted
+
         oligo = self._model_strand.oligo()
         pen_width = styles.PATH_STRAND_STROKE_WIDTH
         if oligo.shouldHighlight():
-            #color.setAlpha(128)
-            pen_width = styles.PATH_STRAND_STROKE_WIDTH
+            color.setAlpha(128)
+            pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
         pen = QPen(color, pen_width)
-        # pen.setCosmetic(True)
+        pen.setCosmetic(True)
         brush = QBrush(color)
         pen.setCapStyle(Qt.FlatCap)
         self.setPen(pen)
@@ -606,7 +615,6 @@ class StrandItem(QGraphicsLineItem):
     def mousePressEvent(self, event):
         domain = self._model_strand
         domain._doc.setActiveDomain(domain)
-        print('active domain = %s' % domain._name)
         """
         Parses a mousePressEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.

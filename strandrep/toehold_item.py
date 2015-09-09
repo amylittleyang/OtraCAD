@@ -19,13 +19,11 @@ def _insertGen(path,start,rect,stop,deg1,deg2):
     path.arcTo(rect,deg1,deg2)
     path.lineTo(stop)
 # end def
-
-#TODO: create different toehold paint paths for toehold going in different directions
 _PATH_START = QPointF(_HBW, _HBW)
 
 # insert path up high idx
 _INSERT_PATH_UP_HIGH_IDX = QPainterPath()
-_PATH_UP_HIGH_STOP = QPointF(-_BW, -.5*_BW)
+_PATH_UP_HIGH_STOP = QPointF(-.65*_BW, -.5*_BW)
 _ARC_RECT = QRectF(-.6*_BW,-.5*_BW,1*_BW,1*_BW)
 _insertGen(_INSERT_PATH_UP_HIGH_IDX, _PATH_START+QPointF(-0.7*_BW,0),_ARC_RECT, _PATH_UP_HIGH_STOP,-90,180)
 _INSERT_PATH_UP_HIGH_IDX.translate(_OFFSET1, 0)
@@ -33,25 +31,25 @@ _INSERT_PATH_UP_HIGH_RECT = _INSERT_PATH_UP_HIGH_IDX.boundingRect()
 
 # insert path up low index
 _INSERT_PATH_UP_LOW_IDX = QPainterPath()
-_PATH_UP_LOW_STOP = QPointF(_BW,-.5*_BW)
+_PATH_UP_LOW_STOP = QPointF(.9*_BW,-.5*_BW)
 _ARC_RECT = QRectF(-.4*_BW,-.5*_BW,1*_BW,1*_BW)
-_insertGen(_INSERT_PATH_UP_LOW_IDX,_PATH_START+QPointF(.7*_BW,0),_ARC_RECT,_PATH_UP_LOW_STOP,-90,-180)
+_insertGen(_INSERT_PATH_UP_LOW_IDX,_PATH_START+QPointF(0.2*_BW,0),_ARC_RECT,_PATH_UP_LOW_STOP,-90,-180)
 _INSERT_PATH_UP_LOW_IDX.translate(_OFFSET1,0)
 _INSERT_PATH_UP_LOW_RECT = _INSERT_PATH_UP_LOW_IDX.boundingRect()
 
 # insert path down high index
 _INSERT_PATH_DOWN_HIGH_IDX = QPainterPath()
-_PATH_DOWN_HIGH_STOP = QPointF(-_BW, 1.5*_BW)
+_PATH_DOWN_HIGH_STOP = QPointF(-1.1*_BW, 1.5*_BW)
 _ARC_RECT = QRectF(-.6*_BW, .5*_BW,1*_BW,1*_BW)
-_insertGen(_INSERT_PATH_DOWN_HIGH_IDX, _PATH_START+QPointF(-0.7*_BW,0),_ARC_RECT, _PATH_DOWN_HIGH_STOP,90,-180)
+_insertGen(_INSERT_PATH_DOWN_HIGH_IDX, _PATH_START+QPointF(-0.65*_BW,0),_ARC_RECT, _PATH_DOWN_HIGH_STOP,90,-180)
 _INSERT_PATH_DOWN_HIGH_IDX.translate(_OFFSET1, 0)
 _INSERT_PATH_DOWN_HIGH_RECT = _INSERT_PATH_DOWN_HIGH_IDX.boundingRect()
 
 # insert path down low index
 _INSERT_PATH_DOWN_LOW_IDX = QPainterPath()
-_PATH_DOWN_LOW_STOP = QPointF(_BW,1.5*_BW)
+_PATH_DOWN_LOW_STOP = QPointF(.75*_BW,1.5*_BW)
 _ARC_RECT = QRectF(-.4*_BW, .5*_BW,1*_BW,1*_BW)
-_insertGen(_INSERT_PATH_DOWN_LOW_IDX,_PATH_START+QPointF(.7*_BW,0),_ARC_RECT,_PATH_DOWN_LOW_STOP,90,180)
+_insertGen(_INSERT_PATH_DOWN_LOW_IDX,_PATH_START+QPointF(.25*_BW,0),_ARC_RECT,_PATH_DOWN_LOW_STOP,90,180)
 _INSERT_PATH_DOWN_LOW_IDX.translate(_OFFSET1,0)
 _INSERT_PATH_DOWN_LOW_RECT = _INSERT_PATH_DOWN_LOW_IDX.boundingRect()
 
@@ -106,14 +104,15 @@ class ToeholdItem(QGraphicsPathItem):
     one toehold item is created for each toehold list;
     toehold item hidden only when no toehold domain exists in toehold list
     '''
-    def __init__(self,toeholdList,virtual_helix_item,prime):
-        super(ToeholdItem, self).__init__(virtual_helix_item)
-        self._virtual_helix_item = virtual_helix_item
+    def __init__(self,toeholdList,strand_item,prime):
+        super(ToeholdItem, self).__init__(strand_item)
+        self._strand_item = strand_item
+        self._virtual_helix_item = strand_item._virtual_helix_item
         self._toehold_list = toeholdList
         self._domain = toeholdList._domain
         self._prime = prime
         self.hide()
-        _insert_path = InsertionPath()
+        self._insert_path = InsertionPath()
         self._is_on_top = is_on_top = self._virtual_helix_item.isStrandOnTop(self._domain)
         self._is_high_idx = self._toehold_list._is_high_idx
         y = 0 if is_on_top else _BW
@@ -121,13 +120,35 @@ class ToeholdItem(QGraphicsPathItem):
             self.setPos(_BW*self._domain._high_idx, y)
         else:
             self.setPos(_BW*self._domain._low_idx, y)
+        self._toehold_item_controller = ToeholdItemController(self)
         self.setZValue(styles.ZINSERTHANDLE)
-        self.setPen(QPen(QColor(self._domain.oligo().color()), styles.PATH_STRAND_STROKE_WIDTH))
-        self.setBrush(QBrush(Qt.NoBrush))
-        path = _insert_path.getInsert(is_on_top,self._is_high_idx)
+        self.updateColor(False)
+
+    def updateColor(self, value):
+        oligo = self._domain.oligo()
+        bool = oligo.shouldHighlight()
+        if value == True:
+            bool = not oligo.shouldHighlight()
+
+        if bool:
+            color = QColor(oligo.color())
+            color.setAlpha(128)
+            pen = QPen(color, styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH)
+            pen.setCosmetic(True)
+            self.setPen(pen)
+        else:
+            color = QColor(oligo.color())
+            pen = QPen(color, styles.PATH_STRAND_STROKE_WIDTH)
+            pen.setCosmetic(True)
+            self.setPen(pen)
+
+        brush = self.brush()
+        brush.setColor(color)
+        self.setBrush(brush)
+        path = self._insert_path.getInsert(self._is_on_top,self._is_high_idx)
         self.setPath(path)
         self.show()
-        self._toehold_item_controller = ToeholdItemController(self)
+
 
     def deleteItem(self,domain):
         # hide item from view

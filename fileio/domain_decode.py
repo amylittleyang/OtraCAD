@@ -164,7 +164,10 @@ def decode(document,obj):
         for domain in vh._stap_strand_set:
             stap_idx = domain._low_idx
             scaf_domain_idx = getStrandIdx(stap_idx,new_scaf_seg)
-            domain.setName(scaf_domain_idx)
+            if scaf_domain_idx is not None:
+                domain.setName(scaf_domain_idx)
+            else:
+                domain.setName(-1) #Inner-staple single-stranded region
 
 
       # INSTALL XOVERS
@@ -347,7 +350,7 @@ def getStrandIdx(idx,strand_seg,vh_num = None):
     for i in range(0,len(seg),2):
         l = seg[i]
         h = seg[i+1]
-        if l <= idx and idx <= h:
+        if l <= idx <= h:
             return i/2
 
 def isSegmentStartOrEnd(strandtype, vh_num, base_idx, five_vh, five_idx, three_vh, three_idx):

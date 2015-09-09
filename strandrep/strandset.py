@@ -181,7 +181,7 @@ class StrandSet(ProxyObject):
 
     def domainAtIndex(self,index):
         # return domain at the index (negative works as well)
-        print len(self._strand_list)
+        #print len(self._strand_list)
         if index < 0:
             index = len(self._strand_list) + index
         if index >= 0:

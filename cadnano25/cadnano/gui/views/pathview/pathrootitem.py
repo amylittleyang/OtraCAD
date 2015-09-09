@@ -46,6 +46,7 @@ class PathRootItem(QGraphicsRectItem):
         dock = self._window.dockWidget
         dock.updateActiveDomain(domain)
 
+
     def partAddedSlot(self, sender, model_part):
         """
         Receives notification from the model that a part has been added.

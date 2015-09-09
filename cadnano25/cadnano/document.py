@@ -35,6 +35,7 @@ class Document(ProxyObject):
         self._controller = None
         self._selected_part = None
         self._active_domain = None
+        self._active_oligo = None
         # the dictionary maintains what is selected
         self._selection_dict = {}
         # the added list is what was recently selected or deselected
@@ -496,8 +497,23 @@ class Document(ProxyObject):
         return self._active_domain
 
     def setActiveDomain(self,domain):
+        #TODO: change this code when selecting domain on selected oligo; add function to determine action
         self._active_domain = domain
         self.documentActiveDomainAddedSignal.emit(domain)
+        self.setActiveOligo(domain.oligo())
+
+
+    def setActiveOligo(self,oligo):
+        if self._active_oligo == oligo:
+            self._active_oligo = None
+            oligo.setSelected(False)
+        elif self._active_oligo is not None:
+            self._active_oligo.setSelected(False)
+            self._active_oligo = oligo
+            oligo.setSelected(True)
+        else:
+            self._active_oligo = oligo
+            oligo.setSelected(True)
 
     ### PRIVATE SUPPORT METHODS ###
     def _addPart(self, part, use_undostack=True):

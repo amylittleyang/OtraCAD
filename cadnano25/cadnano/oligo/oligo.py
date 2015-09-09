@@ -32,6 +32,7 @@ class Oligo(ProxyObject):
         self._length = 0
         self._is_loop = False
         self._color = color if color else "#0066cc"
+        self._selected = False
         self._toehold_cmd_dict = defaultdict()
 
     # end def
@@ -151,16 +152,21 @@ class Oligo(ProxyObject):
         return output
     # end def
 
+    def setSelected(self,selected):
+        self._selected = selected
+        self.oligoAppearanceChangedSignal.emit(self)
+
     def shouldHighlight(self):
-        if not self._strand5p:
-            return False
-        if self._strand5p.isScaffold():
-            return False
-        if self.length() < 18:
-            return True
-        if self.length() > 50:
-            return True
-        return False
+        return self._selected
+        #if not self._strand5p:
+        #    return False
+        #if self._strand5p.isScaffold():
+        #    return False
+        #if self.length() < 18:
+        #    return True
+        #if self.length() > 50:
+        #    return True
+        #return False
     # end def
 
     ### PUBLIC METHODS FOR EDITING THE MODEL ###

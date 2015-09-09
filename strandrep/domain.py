@@ -42,6 +42,7 @@ class Domain(ProxyObject):
         self._is_5p_connection_xover = None
         self._is_3p_connection_xover = None
         self._hyb_domain = None
+        self._unhyb_domain = 0;
         # orientation on virtual helix
         self._is_drawn_5_to_3 = self._strandset.isDrawn5to3()
         if  self._is_drawn_5_to_3:
@@ -90,7 +91,15 @@ class Domain(ProxyObject):
         return self._strandset.strandFilter()
 
     def setName(self,scaf_index):
-        self._name = string.ascii_lowercase[scaf_index] + str(self._vhNum) + "*"
+        if scaf_index == -1:
+            self._name = str(self._vhNum) + "M" + str(self._unhyb_domain)
+            self._unhyb_domain += 1
+        else:
+            try:
+                self._name = string.ascii_lowercase[scaf_index] + str(self._vhNum) + "*"
+            except:
+                print("self_idx = %d, vh = %d" %(self.lowIdx(),self._vhNum))
+
 
     def name(self):
         return self._name
@@ -177,6 +186,12 @@ class Domain(ProxyObject):
 
     def setToehold5p(self,toeholdList):
         self._toehold_list_5p = toeholdList
+
+    def toeholdList3p(self):
+        return self._toehold_list_3p
+
+    def toeholdList5p(self):
+        return self._toehold_list_5p
 
     def setOligo(self, new_oligo, emit_signal=True):
         self._oligo = new_oligo

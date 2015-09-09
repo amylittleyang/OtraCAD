@@ -435,12 +435,13 @@ class XoverItem(QGraphicsPathItem):
         oligo = strand.oligo()
         color = self.pen().color() if self.isSelected() else QColor(oligo.color())
         # print "update xover color", color.value(), self.isSelected(), self.group(), self.parentItem()
-        pen_width = styles.PATH_STRAND_STROKE_WIDTH
-        # if oligo.shouldHighlight():
-        #     pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
-        #     color.setAlpha(128)
+        if oligo.shouldHighlight():
+             pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
+             color.setAlpha(128)
+        else:
+             pen_width = styles.PATH_STRAND_STROKE_WIDTH
         pen = QPen(color, pen_width)
-        # pen.setCosmetic(True)
+        pen.setCosmetic(True)
         pen.setCapStyle(Qt.FlatCap)
         self.setPen(pen)
     # end def

@@ -7,7 +7,6 @@ class CreateToeholdCommand(UndoCommand):
     called by Domain to create toehold on an end of an oligo;
     can be undone if added to undo stack before executed;
     '''
-    # TODO: walk Reem through create toehold
     def __init__(self,vh,domain,end):
         # get references from domain
         super(CreateToeholdCommand,self).__init__('create strand')
