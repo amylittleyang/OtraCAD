@@ -86,7 +86,8 @@ class Domain(ProxyObject):
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') # hasNewOligoSlot in abstract strand item
     strandUpdateSignal = ProxySignal(ProxyObject, name='strandUpdateSignal') #pyqtSignal(QObject)
     strandRemovedSignal = ProxySignal(ProxyObject, name='strandRemovedSignal') #pyqtSignal(QObject)  # strand
-
+    strandSelectedSignal = ProxySignal(ProxyObject,name='strandSelectedSignal')
+    strandRemovedFromSelectionSignal = ProxySignal(ProxyObject,name='strandRemovedFromSelectionSignal')
     def strandFilter(self):
         return self._strandset.strandFilter()
 

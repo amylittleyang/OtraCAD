@@ -31,6 +31,8 @@ class AbstractStrandItemController(object):
         m_s.strandRemovedSignal.connect(s_i.strandRemovedSlot)
         m_s.toeholdAddedSignal.connect(s_i.toeholdAddedSlot)
         m_s.toeholdRemovedSignal.connect(s_i.toeholdRemovedSlot)
+        m_s.strandSelectedSignal.connect(s_i.strandSelectedSlot)
+        m_s.strandRemovedFromSelectionSignal.connect(s_i.strandRemovedFromSelectionSlot)
         # m_s.strandInsertionAddedSignal.connect(s_i.strandInsertionAddedSlot)
         # m_s.strandInsertionChangedSignal.connect(s_i.strandInsertionChangedSlot)
         # m_s.strandInsertionRemovedSignal.connect(s_i.strandInsertionRemovedSlot)

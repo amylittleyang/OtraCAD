@@ -28,6 +28,8 @@ _ARC_RECT = QRectF(-.6*_BW,-.5*_BW,1*_BW,1*_BW)
 _insertGen(_INSERT_PATH_UP_HIGH_IDX, _PATH_START+QPointF(-0.7*_BW,0),_ARC_RECT, _PATH_UP_HIGH_STOP,-90,180)
 _INSERT_PATH_UP_HIGH_IDX.translate(_OFFSET1, 0)
 _INSERT_PATH_UP_HIGH_RECT = _INSERT_PATH_UP_HIGH_IDX.boundingRect()
+#_BIG_RECT = _DEFAULT_RECT.united(_DEFAULT_RECT,_INSERT_PATH_UP_HIGH_RECT)
+
 
 # insert path up low index
 _INSERT_PATH_UP_LOW_IDX = QPainterPath()
@@ -36,6 +38,8 @@ _ARC_RECT = QRectF(-.4*_BW,-.5*_BW,1*_BW,1*_BW)
 _insertGen(_INSERT_PATH_UP_LOW_IDX,_PATH_START+QPointF(0.2*_BW,0),_ARC_RECT,_PATH_UP_LOW_STOP,-90,-180)
 _INSERT_PATH_UP_LOW_IDX.translate(_OFFSET1,0)
 _INSERT_PATH_UP_LOW_RECT = _INSERT_PATH_UP_LOW_IDX.boundingRect()
+#_BIG_RECT = _DEFAULT_RECT.united(_DEFAULT_RECT,_INSERT_PATH_UP_LOW_RECT)
+
 
 # insert path down high index
 _INSERT_PATH_DOWN_HIGH_IDX = QPainterPath()
@@ -44,6 +48,8 @@ _ARC_RECT = QRectF(-.6*_BW, .5*_BW,1*_BW,1*_BW)
 _insertGen(_INSERT_PATH_DOWN_HIGH_IDX, _PATH_START+QPointF(-0.65*_BW,0),_ARC_RECT, _PATH_DOWN_HIGH_STOP,90,-180)
 _INSERT_PATH_DOWN_HIGH_IDX.translate(_OFFSET1, 0)
 _INSERT_PATH_DOWN_HIGH_RECT = _INSERT_PATH_DOWN_HIGH_IDX.boundingRect()
+#_BIG_RECT = _DEFAULT_RECT.united(_DEFAULT_RECT,_INSERT_PATH_DOWN_HIGH_RECT)
+
 
 # insert path down low index
 _INSERT_PATH_DOWN_LOW_IDX = QPainterPath()
@@ -52,13 +58,14 @@ _ARC_RECT = QRectF(-.4*_BW, .5*_BW,1*_BW,1*_BW)
 _insertGen(_INSERT_PATH_DOWN_LOW_IDX,_PATH_START+QPointF(.25*_BW,0),_ARC_RECT,_PATH_DOWN_LOW_STOP,90,180)
 _INSERT_PATH_DOWN_LOW_IDX.translate(_OFFSET1,0)
 _INSERT_PATH_DOWN_LOW_RECT = _INSERT_PATH_DOWN_LOW_IDX.boundingRect()
+#_BIG_RECT = _DEFAULT_RECT.united(_DEFAULT_RECT,_INSERT_PATH_DOWN_LOW_RECT)
+
 
 # insert path down low index
 
 
 
-# _BIG_RECT = _DEFAULT_RECT.united(_INSERT_PATH_UP_HIGH_RECT)
-# _BIG_RECT = _BIG_RECT.united(_INSERT_PATH_DOWNRect)
+#_BIG_RECT = _BIG_RECT.united(_INSERT_PATH_DOWNRect)
 _B_PEN2 = QPen(styles.BLUE_STROKE, 2)
 _OFFSET2   = _BW*0.75
 _FONT = QFont(styles.THE_FONT, 10, QFont.Bold)
@@ -120,9 +127,11 @@ class ToeholdItem(QGraphicsPathItem):
             self.setPos(_BW*self._domain._high_idx, y)
         else:
             self.setPos(_BW*self._domain._low_idx, y)
-        self._toehold_item_controller = ToeholdItemController(self)
+        self._toehold_item_controller = ToeholdItemController(self,self._toehold_list)
         self.setZValue(styles.ZINSERTHANDLE)
         self.updateColor(False)
+        self._click_area = QGraphicsRectItem(self)
+        self._click_area.mousePressEvent = self.mousePressEvent
 
     def updateColor(self, value):
         oligo = self._domain.oligo()
@@ -134,12 +143,12 @@ class ToeholdItem(QGraphicsPathItem):
             color = QColor(oligo.color())
             color.setAlpha(128)
             pen = QPen(color, styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH)
-            pen.setCosmetic(True)
+            pen.setCosmetic(False)
             self.setPen(pen)
         else:
             color = QColor(oligo.color())
             pen = QPen(color, styles.PATH_STRAND_STROKE_WIDTH)
-            pen.setCosmetic(True)
+            pen.setCosmetic(False)
             self.setPen(pen)
 
         brush = self.brush()
@@ -153,3 +162,50 @@ class ToeholdItem(QGraphicsPathItem):
     def deleteItem(self,domain):
         # hide item from view
         self.hide()
+
+    def mousePressEvent(self, event):
+        domain = self._domain
+        doc = domain._doc
+        t = self._toehold_list
+        doc.setActiveDomain(domain)
+        if event.modifiers() & Qt.ShiftModifier:
+            selection = doc.selectedToehold()
+            if t in selection:
+                doc.removeSelectedToehold(t)
+            else:
+                doc.addSelectedToehold(t)
+        else:
+            #uncolor all previously added domain, clear from selection
+            doc.removeAllToeholdFromSelection()
+            doc.removeAllDomainFromSelection()
+            doc.setActiveOligo(domain.oligo())
+
+
+    def setSelectedColor(self, value):
+        if value == True:
+            color = QColor("#ff3333")
+            pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
+        else:
+            oligo = self._domain.oligo()
+            color = QColor(oligo.color())
+            pen_width = styles.PATH_STRAND_STROKE_WIDTH
+            if oligo.shouldHighlight():
+                color.setAlpha(128)
+        pen = QPen(color,pen_width)
+        self.setPen(pen)
+
+    def toeholdRemovedFromSelectionSlot(self,t):
+        self.setSelectedColor(False)
+        if self._is_high_idx:
+            self._strand_item.toeholdCapHigh().setSelectedColor(False)
+        else:
+            self._strand_item.toeholdCapLow().setSelectedColor(False)
+
+    def toeholdSelectedSlot(self,t):
+        self.setSelectedColor(True)
+        if self._is_high_idx:
+            self._strand_item.toeholdCapHigh().setSelectedColor(True)
+        else:
+            self._strand_item.toeholdCapLow().setSelectedColor(True)
+
+

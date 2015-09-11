@@ -18,6 +18,8 @@ class ToeholdList(ProxyObject):
         self._is_high_idx = toehold._is_high_idx
         self._is_drawn_5_to_3 = self._domain._is_drawn_5_to_3
 
+    toeholdRemovedFromSelectionSignal = ProxySignal(ProxyObject,name='toeholdRemovedFromSelectionSignal') #connect to toehold_item
+    toeholdSelectedSignal = ProxySignal(ProxyObject,name='toeholdSelectedSignal')#connect to toehold_item
 
     def append(self,toehold):
         '''

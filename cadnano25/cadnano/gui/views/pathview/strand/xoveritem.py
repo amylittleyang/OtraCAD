@@ -47,6 +47,7 @@ class XoverNode3(QGraphicsRectItem):
 
     ### EVENT HANDLERS ###
     def mousePressEvent(self, event):
+        return
         """
         Parses a mousePressEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.
@@ -231,12 +232,12 @@ class XoverItem(QGraphicsPathItem):
         self.hide()
         
         # for easier mouseclick
-        self._click_area = c_a = QGraphicsRectItem(self)
+        #self._click_area = c_a = QGraphicsRectItem(self)
         # self._click_area.setAcceptHoverEvents(True)
         # c_a.hoverMoveEvent = self.hoverMoveEvent
-        c_a.mousePressEvent = self.mousePressEvent
-        c_a.mouseMoveEvent = self.mouseMoveEvent
-        c_a.setPen(QPen(Qt.NoPen))
+        #c_a.mousePressEvent = self.mousePressEvent
+        #c_a.mouseMoveEvent = self.mouseMoveEvent
+        #c_a.setPen(QPen(Qt.NoPen))
 
 #        self._getActiveTool = strand_item._getActiveTool
 
@@ -259,8 +260,8 @@ class XoverItem(QGraphicsPathItem):
             self._node3 = None
             self._node5 = None
         self._strand5p = None
-        scene.removeItem(self._click_area)
-        self._click_area = None
+        #scene.removeItem(self._click_area)
+        #self._click_area = None
         scene.removeItem(self)
     # end def
 
@@ -414,7 +415,7 @@ class XoverItem(QGraphicsPathItem):
 
         tempR = painterpath.boundingRect()
         tempR.adjust(-bw/2, 0, bw, 0)
-        self._click_area.setRect(tempR)
+#        self._click_area.setRect(tempR)
         self.setPath(painterpath)
         node3.updatePositionAndAppearance()
         node5.updatePositionAndAppearance()
@@ -441,7 +442,7 @@ class XoverItem(QGraphicsPathItem):
         else:
              pen_width = styles.PATH_STRAND_STROKE_WIDTH
         pen = QPen(color, pen_width)
-        pen.setCosmetic(True)
+        pen.setCosmetic(False)
         pen.setCapStyle(Qt.FlatCap)
         self.setPen(pen)
     # end def

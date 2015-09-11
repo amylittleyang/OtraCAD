@@ -8,21 +8,18 @@ from cadnano.gui.views.pathview import pathstyles as styles
 from .xoveritem import XoverItem
 from .decorators.insertionitem import InsertionItem
 from strandrep.toehold_item import ToeholdItem
-import cadnano.gui.views.pathview.pathselection as pathselection
-
-import cadnano.util as util
 from cadnano import getBatch
 
-from PyQt5.QtCore import QRectF, Qt, QObject, pyqtSignal
-
-from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QFontMetricsF
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem
+from PyQt5.QtCore import QRectF, Qt
+from PyQt5 import QtCore,Qt
+from PyQt5.QtGui import QBrush, QPen,QColor
+from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem
 from PyQt5.QtWidgets import QGraphicsLineItem, QGraphicsSimpleTextItem
 
 
 _BASE_WIDTH = styles.PATH_BASE_WIDTH
 _DEFAULT_RECT = QRectF(0,0, _BASE_WIDTH, _BASE_WIDTH)
-_NO_PEN = QPen(Qt.NoPen)
+_NO_PEN = QPen(QtCore.Qt.NoPen)
 
 
 class StrandItem(QGraphicsLineItem):
@@ -542,9 +539,9 @@ class StrandItem(QGraphicsLineItem):
             color.setAlpha(128)
             pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
         pen = QPen(color, pen_width)
-        pen.setCosmetic(True)
+        pen.setCosmetic(False)
         brush = QBrush(color)
-        pen.setCapStyle(Qt.FlatCap)
+        pen.setCapStyle(QtCore.Qt.FlatCap)
         self.setPen(pen)
         self._low_cap.updateHighlight(brush)
         self._high_cap.updateHighlight(brush)
@@ -614,7 +611,21 @@ class StrandItem(QGraphicsLineItem):
     ### EVENT HANDLERS ###
     def mousePressEvent(self, event):
         domain = self._model_strand
-        domain._doc.setActiveDomain(domain)
+        doc = domain._doc
+        doc.setActiveDomain(domain)
+        if event.modifiers() & QtCore.Qt.ShiftModifier:
+            selection = domain._doc.selectedDomain()
+            if domain in selection:
+                doc.removeSelectedDomain(domain)
+            else:
+                doc.addSelectedDomain(domain)
+        else:
+            #uncolor all previously added domain, clear from selection
+            doc.setActiveOligo(domain.oligo())
+            doc.removeAllDomainFromSelection()
+            doc.removeAllToeholdFromSelection()
+
+
         """
         Parses a mousePressEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.
@@ -815,15 +826,23 @@ class StrandItem(QGraphicsLineItem):
     def setSelectedColor(self, value):
         if value == True:
             color = QColor("#ff3333")
+            pen_width = styles.PATH_STRAND_HIGHLIGHT_STROKE_WIDTH
         else:
             oligo = self._model_strand.oligo()
             color = QColor(oligo.color())
+            pen_width = styles.PATH_STRAND_STROKE_WIDTH
             if oligo.shouldHighlight():
                 color.setAlpha(128)
-        pen = self.pen()
-        pen.setColor(color)
+        pen = QPen(color,pen_width)
         self.setPen(pen)
     # end def
+
+    def strandSelectedSlot(self):
+        self.setSelectedColor(True)
+
+    def strandRemovedFromSelectionSlot(self):
+        self.setSelectedColor(False)
+
 
     def itemChange(self, change, value):
         return QGraphicsItem.itemChange(self, change, value)

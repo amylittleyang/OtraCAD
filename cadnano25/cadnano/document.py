@@ -38,6 +38,8 @@ class Document(ProxyObject):
         self._active_oligo = None
         # the dictionary maintains what is selected
         self._selection_dict = {}
+        self._selected_domain=[]
+        self._selected_toehold=[]
         # the added list is what was recently selected or deselected
         self._selected_changed_dict = {}
         app().documentWasCreatedSignal.emit(self)
@@ -500,8 +502,6 @@ class Document(ProxyObject):
         #TODO: change this code when selecting domain on selected oligo; add function to determine action
         self._active_domain = domain
         self.documentActiveDomainAddedSignal.emit(domain)
-        self.setActiveOligo(domain.oligo())
-
 
     def setActiveOligo(self,oligo):
         if self._active_oligo == oligo:
@@ -514,6 +514,42 @@ class Document(ProxyObject):
         else:
             self._active_oligo = oligo
             oligo.setSelected(True)
+
+    def addSelectedDomain(self,domain):
+        self.selectedDomain().append(domain)
+        domain.strandSelectedSignal.emit(domain)
+
+    def removeSelectedDomain(self,domain):
+        if domain in self.selectedDomain():
+            self.selectedDomain().remove(domain)
+            domain.strandRemovedFromSelectionSignal.emit(domain)
+
+    def removeAllDomainFromSelection(self):
+        for s in self.selectedDomain():
+            s.strandRemovedFromSelectionSignal.emit(s)
+        self._selected_domain = []
+
+    def selectedDomain(self):
+        return self._selected_domain
+
+
+    def addSelectedToehold(self,t):
+        self.selectedToehold().append(t)
+        t.toeholdSelectedSignal.emit(t)
+
+    def removeSelectedToehold(self,t):
+        if t in self.selectedToehold():
+            self.selectedToehold().remove(t)
+            t.toeholdRemovedFromSelectionSignal.emit(t)
+
+    def removeAllToeholdFromSelection(self):
+        for t in self.selectedToehold():
+            t.toeholdRemovedFromSelectionSignal.emit(t)
+        self._selected_toehold = []
+
+    def selectedToehold(self):
+        return self._selected_toehold
+
 
     ### PRIVATE SUPPORT METHODS ###
     def _addPart(self, part, use_undostack=True):
