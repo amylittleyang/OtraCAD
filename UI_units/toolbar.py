@@ -18,6 +18,9 @@ class ToolBar(QToolBar):
         self.actionOpen = mainWindow.actionOpen
         self.actionSave = mainWindow.actionSave
         self.actionCreate_toehold = mainWindow.actionCreate_toehold
+        self.actionResize_toehold = mainWindow.actionResize_toehold
+        self.actionRemove_toehold = mainWindow.actionRemove_toehold
+
         self.setupUI() # and connect action to slot
 
     def setupUI(self):
@@ -25,11 +28,19 @@ class ToolBar(QToolBar):
         root = QFileInfo(__file__).absolutePath()
         self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
         self.actionOpen.triggered.connect(self.actionOpenTriggeredSlot)
+
+        self.actionRemove_toehold.setIcon(QIcon(root+'/images/remove_toehold.png'))
+        self.actionRemove_toehold.triggered.connect(self.actionRemoveToeholdTriggeredSlot)
+
+
         self.actionSave.setIcon(QIcon(root+'/images/489751-Floppy_Disk-128.png'))
         self.actionSave.triggered.connect(self.actionSaveTriggeredSlot)
+
         self.actionCreate_toehold.setIcon(QIcon(root+'/images/transformation.png'))
         self.actionCreate_toehold.triggered.connect(self.mainWindow.dockWidget.actionCreate_toeholdTriggeredSlot)
 
+        self.actionResize_toehold.setIcon(QIcon(root+'/images/resize_toehold.png'))
+        self.actionResize_toehold.triggered.connect(self.mainWindow.dockWidget.actionResizeToeholdTriggeredSlot)
 
     def actionOpenTriggeredSlot(self):
         # user wants to import a .json file
@@ -74,3 +85,21 @@ class ToolBar(QToolBar):
 
     def actionSaveTriggeredSlot(self):
         pass
+
+    def actionRemoveToeholdTriggeredSlot(self):
+        if self.doc is None:
+            msg = QMessageBox()
+            msg.setText("No doc.")
+            msg.exec_()
+            return
+        t_list = self.doc._selected_toehold
+        #print(t_list.__len__())
+        if t_list.__len__() is not 1:
+            msg = QMessageBox()
+            msg.setText("Must select one toehold")
+            msg.exec_()
+            return
+        else:
+            toehold = t_list[0]._toehold_list[0]
+            toehold._domain.removeToehold(toehold)
+

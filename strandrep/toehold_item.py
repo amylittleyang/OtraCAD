@@ -4,7 +4,7 @@ from cadnano.gui.views.pathview import pathstyles as styles
 from PyQt5.QtCore import QRectF, Qt, QPointF, QEvent
 from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QPainterPath
 from PyQt5.QtWidgets  import QGraphicsPathItem, QGraphicsRectItem
-from cadnano.gui.views.pathview.strand.endpointitem import EndpointItem
+from math import floor
 
 _BASE_WIDTH = _BW = styles.PATH_BASE_WIDTH
 _HALF_BASE_WIDTH = _HBW = _BASE_WIDTH / 2
@@ -111,12 +111,13 @@ class ToeholdItem(QGraphicsPathItem):
     one toehold item is created for each toehold list;
     toehold item hidden only when no toehold domain exists in toehold list
     '''
-    def __init__(self,toeholdList,strand_item,prime):
+    def __init__(self,toehold,strand_item,prime):
         super(ToeholdItem, self).__init__(strand_item)
+        self._toehold = toehold
         self._strand_item = strand_item
         self._virtual_helix_item = strand_item._virtual_helix_item
-        self._toehold_list = toeholdList
-        self._domain = toeholdList._domain
+        self._toehold_list = toehold._toehold_list
+        self._domain = toehold._toehold_list._domain
         self._prime = prime
         self.hide()
         self._insert_path = InsertionPath()
@@ -131,7 +132,10 @@ class ToeholdItem(QGraphicsPathItem):
         self.setZValue(styles.ZINSERTHANDLE)
         self.updateColor(False)
         self._click_area = QGraphicsRectItem(self)
+        self.setAcceptHoverEvents(True)
         self._click_area.mousePressEvent = self.mousePressEvent
+        self._click_area.hoverMoveEvent = self.hoverMoveEvent
+        self._click_area.hoverLeaveEvent = self.hoverLeaveEvent
 
     def updateColor(self, value):
         oligo = self._domain.oligo()
@@ -207,5 +211,29 @@ class ToeholdItem(QGraphicsPathItem):
             self._strand_item.toeholdCapHigh().setSelectedColor(True)
         else:
             self._strand_item.toeholdCapLow().setSelectedColor(True)
+
+
+    def hoverMoveEvent(self, event):
+        """
+        Parses a mouseMoveEvent to extract strandSet and base index,
+        forwarding them to approproate tool method as necessary.
+        """
+
+        td = self.toeholdDomainToStr()
+        self._strand_item.partItem().updateStatusBar("Toehold domains at %s: %s " % (self._domain._name, td))
+
+
+    def hoverLeaveEvent(self, event):
+        self._strand_item.partItem().updateStatusBar("")
+
+    def toeholdDomainToStr(self):
+        str = ""
+        for d in self._toehold_list._toehold_list:
+            str = str + d._name + " "
+        return str
+
+
+
+
 
 

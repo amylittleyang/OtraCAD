@@ -1,6 +1,7 @@
 __author__ = 'jie'
-from PyQt5.QtWidgets import QDockWidget,QWidget,QVBoxLayout,QCheckBox,QDialogButtonBox,QGroupBox,QFormLayout,QMessageBox
+from PyQt5.QtWidgets import QLabel,QLineEdit,QDockWidget,QWidget,QHBoxLayout,QVBoxLayout,QCheckBox,QDialogButtonBox,QGroupBox,QFormLayout,QMessageBox
 from PyQt5 import QtCore
+
 class DockWidget(QDockWidget):
     '''
     Panel on the right of main window;
@@ -13,6 +14,7 @@ class DockWidget(QDockWidget):
         self.doc = mainWindow.doc
         self.setupUI()
         self.activeDomain = None
+        self.toehold = None
         self.can_update = False
 
     def setupUI(self):
@@ -25,6 +27,8 @@ class DockWidget(QDockWidget):
         self.setWidget(dockWidgetContents)
         self.hide()
 
+
+###   CREATE TOEHOLD METHODS
     def actionCreate_toeholdTriggeredSlot(self):
         '''
         prepare dockWidget for create toehold command:
@@ -42,8 +46,8 @@ class DockWidget(QDockWidget):
             self.checkBox_5p.stateChanged.connect(lambda:self.checkBoxStateChangedSlot(self.checkBox_5p))
             self.checkBox_3p.setCheckable(False)
             self.checkBox_5p.setCheckable(False)
-            self.checkBox_3p.setStyleSheet("background-color:#ddd")
-            self.checkBox_5p.setStyleSheet("background-color:#ddd")
+            #self.checkBox_3p.setStyleSheet("background-color:#ddd")
+            #self.checkBox_5p.setStyleSheet("background-color:#ddd")
 
             self.buttonBox = QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
             self.buttonBox.accepted.connect(self.buttonBoxAcceptedSlot)
@@ -72,10 +76,10 @@ class DockWidget(QDockWidget):
             if self.activeDomain is not None and self.can_update:
                  if self.activeDomain.canCreateToeholdAt(3): # true if 3' domain on oligo has no toehold or xover
                     self.checkBox_3p.setCheckable(True)
-                    self.checkBox_3p.setStyleSheet("background-color:#eee")
+                    #self.checkBox_3p.setStyleSheet("background-color:#eee")
                  if self.activeDomain.canCreateToeholdAt(5): # true if 5' domain on oligo has no toehold or xover
                     self.checkBox_5p.setCheckable(True)
-                    self.checkBox_5p.setStyleSheet("background-color:#eee")
+                    #self.checkBox_5p.setStyleSheet("background-color:#eee")
 
 
     def buttonBoxAcceptedSlot(self):
@@ -107,7 +111,7 @@ class DockWidget(QDockWidget):
 
     def updateActiveDomain(self,domain):
         # triggered when new active domain is selected; notified by document
-        if (not self.activeDomain == domain) and self.activeDomain is not None:
+        if self.can_update and (not self.activeDomain == domain) and self.activeDomain is not None:
             self.buttonBoxRejectedSlot()
         self.activeDomain = domain
         # update check box state for the new active domain
@@ -146,4 +150,86 @@ class DockWidget(QDockWidget):
 
         # notify active domain of check box message
         self.activeDomain.toeholdChanged(prime,checked)
+
+### RESIZE TOEHOLD METHODS
+    def actionResizeToeholdTriggeredSlot(self):
+        '''
+        prepare dock widget for resize toehold panel
+        :return:
+        '''
+        if not self.isHidden():
+            self.hide()
+        elif self.doc == None or self.doc.selectedToehold().__len__()==0:
+            msg = QMessageBox()
+            msg.setText("No toehold selected.")
+            msg.exec_()
+        elif self.doc.selectedToehold().__len__() is not 1:
+            msg = QMessageBox()
+            msg.setText("Select only one toehold")
+            msg.exec_()
+        else:
+            # prepare dock widget for resize toehold window
+            self.can_update = False # disable createToehold widget update
+            self.setWindowTitle('Resize Toehold')
+            text_label= QLabel()
+            default_label = QLabel()
+            nt_label = QLabel()
+            default_label.setText("default: 5 nt")
+            nt_label.setText("nt")
+            text_label.setText("Toehold Length: ")
+            groupBox = QGroupBox()
+            buttonBox = QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+            buttonBox.accepted.connect(self.resizeToeholdAcceptedSlot)
+            buttonBox.rejected.connect(self.resizeToeholdRejectedSlot)
+            form = QFormLayout()
+            horizontal = QHBoxLayout()
+            self.line_edit = QLineEdit()
+            list = self.doc.selectedToehold()
+            toeholdList = list[0]
+            toehold = toeholdList._toehold_list[0]
+            self.toehold = toehold
+            self.line_edit.setText(str(toehold.length()))
+            horizontal.addWidget(text_label)
+            horizontal.addWidget(self.line_edit)
+            horizontal.addWidget(nt_label)
+            groupBox.setLayout(horizontal)
+            form.setAlignment(QtCore.Qt.AlignRight)
+            form.addWidget(groupBox)
+            form.addWidget(default_label)
+            form.addWidget(buttonBox)
+            dockWidgetContents = self.widget()
+            QWidget().setLayout(dockWidgetContents.layout())
+            dockWidgetContents.setLayout(form)
+            self.show()
+
+    def resizeToeholdAcceptedSlot(self):
+        list = self.doc.selectedToehold()
+        toeholdList = list[0]
+        toehold = toeholdList._toehold_list[0]
+        newLen = self.line_edit.text()
+        if not newLen.isdigit():
+            msg = QMessageBox()
+            msg.setText("Invalid Input")
+            msg.exec_()
+            self.hide()
+            return
+        else:
+            newLen = int(newLen)
+            toehold.setLength(newLen)
+            self.hide()
+
+
+
+    def resizeToeholdRejectedSlot(self):
+        self.hide()
+
+
+
+
+
+
+
+
+
+
 

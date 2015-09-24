@@ -259,15 +259,12 @@ class StrandItem(QGraphicsLineItem):
         self.selectIfRequired(self.partItem().document(), indices)
     # end def
 
-    def toeholdAddedSlot(self,toeholdList,prime):
+    def toeholdAddedSlot(self,toehold,prime):
         # create toehold item after model toehold is added to domain
 
-
         if prime == 3:
-            if self._toehold_item_3p is not None:
-                self._toehold_item_3p.show()
-            else:
-                self._toehold_item_3p = ToeholdItem(toeholdList,self,prime)
+
+            self._toehold_item_3p = ToeholdItem(toehold,self,prime)
             if self._is_drawn_5to3:
                 self._high_cap.hide()
             else:
@@ -275,10 +272,8 @@ class StrandItem(QGraphicsLineItem):
             self._toehold_cap_3p.show()
 
         if prime == 5:
-            if self._toehold_item_5p is not None:
-                self._toehold_item_5p.show()
-            else:
-                self._toehold_item_5p = ToeholdItem(toeholdList,self,prime)
+
+            self._toehold_item_5p = ToeholdItem(toehold,self,prime)
             if self._is_drawn_5to3:
                 self._low_cap.hide()
             else:
@@ -646,6 +641,7 @@ class StrandItem(QGraphicsLineItem):
         Parses a mouseMoveEvent to extract strandSet and base index,
         forwarding them to approproate tool method as necessary.
         """
+        return
         tool_method_name = self._getActiveTool().methodPrefix() + "MouseMove"
         if hasattr(self, tool_method_name):
             idx = int(floor((event.pos().x()) / _BASE_WIDTH))

@@ -2,6 +2,7 @@ __author__ = 'jie'
 import string
 from operator import attrgetter
 from strandrep.create_toehold_command import CreateToeholdCommand
+from strandrep.remove_toehold_command import RemoveToeholdCommand
 import cadnano.util as util
 from cadnano.cnproxy import ProxyObject, ProxySignal
 
@@ -339,6 +340,13 @@ class Domain(ProxyObject):
             if cmd is not None:
                 cmd.undo()
                 dict[prime] = None
+
+    def removeToehold(self,toehold):
+        cmd = RemoveToeholdCommand(self,toehold)
+        stack=[cmd]
+        d = '%s remove toehold' % self._name
+        util.execCommandList(self,stack,d,use_undostack=True)
+
 
 
     def undoStack(self):

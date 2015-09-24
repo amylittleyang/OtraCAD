@@ -23,3 +23,8 @@ class Toehold(ProxyObject):
     def setToeholdList(self,toeholdList):
         self._toehold_list = toeholdList
 
+    def setLength(self,length):
+        self._length = length
+
+    def length(self):
+        return self._length

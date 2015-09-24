@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
-    <height>559</height>
+    <width>914</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>707</width>
+     <width>914</width>
      <height>22</height>
     </rect>
    </property>
@@ -69,6 +69,8 @@
    <addaction name="actionSave"/>
    <addaction name="separator"/>
    <addaction name="actionCreate_toehold"/>
+   <addaction name="actionResize_toehold"/>
+   <addaction name="actionRemove_toehold"/>
   </widget>
   <action name="actionRecent_File">
    <property name="text">
@@ -224,10 +226,27 @@
     <string>Ctrl+Z</string>
    </property>
   </action>
+  <action name="actionResize_toehold">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>resize toehold</string>
+   </property>
+   <property name="toolTip">
+    <string>Change the length of a selected toehold</string>
+   </property>
+  </action>
+  <action name="actionRemove_toehold">
+   <property name="text">
+    <string>remove toehold</string>
+   </property>
+   <property name="toolTip">
+    <string>remove selected toehold</string>
+   </property>
+  </action>
  </widget>
  <resources>
-  <include location="images/TransformaitonIcon.qrc"/>
-  <include location="images/UndoIcon.qrc"/>
   <include location="images/RedoIcon.qrc"/>
   <include location="images/SaveIcon.qrc"/>
   <include location="images/SelectIcon.qrc"/>

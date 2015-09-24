@@ -84,6 +84,7 @@ class CustomQGraphicsView(QGraphicsView):
         # Modifier keys and buttons
         self._key_mod = Qt.Key_Control
         self._key_select = Qt.Key_Shift
+
         self._button_pan = Qt.LeftButton
         self._button_pan_alt = Qt.MidButton
         self._button_zoom = Qt.RightButton

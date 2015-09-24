@@ -13,6 +13,8 @@ class ToeholdList(ProxyObject):
         self._domain = domain
         self._toehold_list = []
         self._toehold_list.append(toehold)
+        toehold.setToeholdList(self)
+
         self._length = 1
         self._base_length = toehold._length
         self._is_high_idx = toehold._is_high_idx
@@ -27,6 +29,7 @@ class ToeholdList(ProxyObject):
         pass first toehold object as argument to the initialization function
         '''
         self._toehold_list.append(toehold)
+        toehold.setToeholdList(self)
 
     def removeToehold(self,toehold_name):
         # remove model toehold
