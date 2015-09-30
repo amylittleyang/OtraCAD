@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # cadnano 2.5  (*radnano*)
 This is a development version of cadnano ported to `Qt5/PyQt5`, 
 the dev branch is most up to date
@@ -63,3 +64,34 @@ OS X and Linux installs of `PyQt5` can be painful for some people.
 # *nno2stl*: Conversion of cadnano .nno files to 3D STL model
 
 The purpose of this is for 3D printing cadnano designs
+=======
+# README #
+
+Currently, we are running main.py under bin.
+
+### What is this repository for? ###
+
+* Quick summary
+* Version
+* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
+### How do I get set up? ###
+
+* Summary of set up
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution guidelines ###
+
+* Writing tests
+* Code review
+* Other guidelines
+
+### Who do I talk to? ###
+
+* Repo owner or admin
+* Other community or team contact
+>>>>>>> master

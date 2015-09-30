@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from .cnproxy import tapp
 
 
@@ -41,3 +42,6 @@ def initAppWithGui(appArgs=None):
     
 
 __all__ = ["document", "enum", "decorators", "fileio", "oligo", "part", "strand", "strand", "strandset", "virtualhelix"]
+=======
+__author__ = 'reemmokhtar'
+>>>>>>> master

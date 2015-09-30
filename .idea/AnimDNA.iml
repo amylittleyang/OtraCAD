@@ -5,9 +5,12 @@
       <sourceFolder url="file://$MODULE_DIR$/cadnano25" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/nno2stl" />
     </content>
+<<<<<<< HEAD
     <content url="file:///opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PyQt5">
       <excludeFolder url="file:///opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PyQt5" />
     </content>
+=======
+>>>>>>> master
     <orderEntry type="jdk" jdkName="Python 2.7.6 (/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cadnano_copy" />
