@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/cadnano2.5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cadnano25" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 2.7.6 (/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
