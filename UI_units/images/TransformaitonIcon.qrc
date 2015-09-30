@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="dna">
+    <file>transformation.png</file>
+  </qresource>
+  <qresource prefix="rip_off">
+    <file>rip_off.png</file>
+  </qresource>
+</RCC>

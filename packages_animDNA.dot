@@ -1,0 +1,53 @@
+digraph "packages_animDNA" {
+charset="utf-8"
+rankdir=BT
+"0" [label=".idea", shape="box"];
+"1" [label="UI_units", shape="box"];
+"2" [label="UI_units.controller", shape="box"];
+"3" [label="UI_units.controller.pathToolbarController", shape="box"];
+"4" [label="UI_units.controller.tool_bar_controller", shape="box"];
+"5" [label="UI_units.rip_off_dialog", shape="box"];
+"6" [label="UI_units.ui_window", shape="box"];
+"7" [label="__init__", shape="box"];
+"8" [label="fileio", shape="box"];
+"9" [label="fileio.decode", shape="box"];
+"10" [label="fileio.domain_decode", shape="box"];
+"11" [label="initialization", shape="box"];
+"12" [label="initialization.appDecorator", shape="box"];
+"13" [label="initialization.main", shape="box"];
+"14" [label="initialization.ui_loader", shape="box"];
+"15" [label="nno2stl", shape="box"];
+"16" [label="nno2stl.cylinder", shape="box"];
+"17" [label="nno2stl.face", shape="box"];
+"18" [label="nno2stl.halfcylinder", shape="box"];
+"19" [label="nno2stl.matrix3", shape="box"];
+"20" [label="nno2stl.matrix4", shape="box"];
+"21" [label="nno2stl.solid", shape="box"];
+"22" [label="nno2stl.stlwriter", shape="box"];
+"23" [label="nno2stl.vector", shape="box"];
+"24" [label="pyqt5_check", shape="box"];
+"25" [label="strandrep", shape="box"];
+"26" [label="strandrep.domain", shape="box"];
+"27" [label="strandrep.linked_list", shape="box"];
+"3" -> "5" [arrowhead="open", arrowtail="none"];
+"4" -> "9" [arrowhead="open", arrowtail="none"];
+"9" -> "8" [arrowhead="open", arrowtail="none"];
+"9" -> "10" [arrowhead="open", arrowtail="none"];
+"10" -> "26" [arrowhead="open", arrowtail="none"];
+"11" -> "12" [arrowhead="open", arrowtail="none"];
+"12" -> "14" [arrowhead="open", arrowtail="none"];
+"13" -> "11" [arrowhead="open", arrowtail="none"];
+"14" -> "3" [arrowhead="open", arrowtail="none"];
+"14" -> "4" [arrowhead="open", arrowtail="none"];
+"14" -> "6" [arrowhead="open", arrowtail="none"];
+"16" -> "21" [arrowhead="open", arrowtail="none"];
+"16" -> "22" [arrowhead="open", arrowtail="none"];
+"16" -> "23" [arrowhead="open", arrowtail="none"];
+"18" -> "20" [arrowhead="open", arrowtail="none"];
+"18" -> "21" [arrowhead="open", arrowtail="none"];
+"18" -> "22" [arrowhead="open", arrowtail="none"];
+"18" -> "23" [arrowhead="open", arrowtail="none"];
+"21" -> "17" [arrowhead="open", arrowtail="none"];
+"21" -> "19" [arrowhead="open", arrowtail="none"];
+"21" -> "23" [arrowhead="open", arrowtail="none"];
+}

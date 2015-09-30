@@ -1,0 +1,22 @@
+digraph "classes_animDNA" {
+charset="utf-8"
+rankdir=BT
+"0" [label="{AppDecorator|active_document : NoneType\ldocumentWasCreatedSignal\ldocumentWindowWasCreatedSignal\ldocument_controllers : set\lmainEventLoop\lpartItem : NoneType\lprefs\lqApp\lvh : dict\lvhi : dict\l|exec_()\lprefsClicked()\l}", shape="record"];
+"1" [label="{Cylinder|length\lradius\l|}", shape="record"];
+"2" [label="{Decoder|document\lmainWindow\l|domainDecode()\l}", shape="record"];
+"3" [label="{Domain|\l|getName()\lisStaple()\loligo()\l}", shape="record"];
+"4" [label="{HalfCylinder|height_segments\llength\lradial_segments : int\lradius\l|}", shape="record"];
+"5" [label="{LinkedList|strandsetStrandAddedSignal\l|append()\lcomplementStrandSet()\lcreateStrand()\ldeepCopy()\ldocument()\ldomainAtIndex()\lgeneratorStrand()\lgetBoundsOfEmptyRegionContaining()\lgetIndexToInsert()\lgetLegacyArray()\lgetNeighbors()\lgetOverlappingStrands()\lgetStrand()\lgetStrandIndex()\lgetStrandList()\lhasNoStrandAtOrNoXover()\lhasStrandAt()\lhasStrandAtAndNoXover()\lindexOfRightmostNonemptyBase()\linsertAt()\lisDrawn5to3()\lisScaffold()\lisStaple()\lpart()\lpartMaxBaseIdx()\lremove()\lremoveAllStrands()\lremoveStrand()\lstrandCount()\lstrandFilter()\lstrandType()\lundoStack()\lvirtualHelix()\l}", shape="record"];
+"6" [label="{MainWindow|action_modify\lmain_splitter\lpath_splitter\lpath_tool_manager\lpathroot\lpathscene\lrenderView\l|setupUI()\lupdateRenderView()\l}", shape="record"];
+"7" [label="{PathToolbarController|mainWindow\lripOffDialog\lui_loader\l|action_Rip_off_Triggered_Slot()\lconnect()\l}", shape="record"];
+"8" [label="{RipOffDialog|\l|setupUI()\l}", shape="record"];
+"9" [label="{Solid|face_vertex_uvs : list\lfaces : list\lname\lvertices : list\l|addFace()\laddVertex()\lapplyMatrix()\lcomputeFaceNormals()\l}", shape="record"];
+"10" [label="{ToolBarController|controlledItem\lloader\lmainWindow\l|action_Open_Triggered_Slot()\lconnect()\l}", shape="record"];
+"11" [label="{UiLoader|mainWindow\lpath_toolbar_controller\ltoolBarController\l|connectActions()\linstantiateControllers()\l}", shape="record"];
+"1" -> "9" [arrowhead="empty", arrowtail="none"];
+"4" -> "9" [arrowhead="empty", arrowtail="none"];
+"6" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="mainWindow", style="solid"];
+"7" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="path_toolbar_controller", style="solid"];
+"8" -> "7" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="ripOffDialog", style="solid"];
+"10" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="toolBarController", style="solid"];
+}
