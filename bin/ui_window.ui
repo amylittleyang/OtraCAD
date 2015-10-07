@@ -71,6 +71,8 @@
    <addaction name="actionCreate_toehold"/>
    <addaction name="actionResize_toehold"/>
    <addaction name="actionRemove_toehold"/>
+   <addaction name="separator"/>
+   <addaction name="actionRip_off"/>
   </widget>
   <action name="actionRecent_File">
    <property name="text">
@@ -203,21 +205,6 @@
     <string>create toehold</string>
    </property>
   </action>
-  <action name="actionRip_off">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rip_off/rip_off.png</normaloff>:/rip_off/rip_off.png</iconset>
-   </property>
-   <property name="text">
-    <string>rip off</string>
-   </property>
-   <property name="toolTip">
-    <string>rip off selected strand</string>
-   </property>
-  </action>
   <action name="actionUndo">
    <property name="text">
     <string>Undo</string>
@@ -245,9 +232,16 @@
     <string>remove selected toehold</string>
    </property>
   </action>
+  <action name="actionRip_off">
+   <property name="text">
+    <string>rip_off</string>
+   </property>
+   <property name="toolTip">
+    <string>rip off strand</string>
+   </property>
+  </action>
  </widget>
  <resources>
-  <include location="images/RedoIcon.qrc"/>
   <include location="images/SaveIcon.qrc"/>
   <include location="images/SelectIcon.qrc"/>
  </resources>

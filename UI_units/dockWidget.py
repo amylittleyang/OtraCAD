@@ -223,6 +223,88 @@ class DockWidget(QDockWidget):
     def resizeToeholdRejectedSlot(self):
         self.hide()
 
+    def actionRipOffTriggeredSlot(self):
+        if not self.isHidden():
+            self.hide()
+        if self.doc is None:
+            return
+        domain = self.doc.activeDomain()
+        if domain is None:
+            msg = QMessageBox()
+            msg.setText("Must select one strand")
+            msg.exec_()
+            return
+        oligo = domain.oligo()
+        if oligo.isLoop():
+            msg = QMessageBox()
+            msg.setText("Can't rip off loop strand")
+            msg.exec_()
+            return
+        if not oligo.hasToehold():
+            msg = QMessageBox()
+            msg.setText("Strand does not have overhang toehold")
+            msg.exec_()
+            return
+        # prepare dock widget for rip off panel
+        self.can_update = False # disable createToehold widget update
+        self.setWindowTitle("Rip Off Strand")
+        text0 = QLabel()
+        text0.setText("Selected Strand:")
+        text1 = QLabel()
+        d5p = oligo.strand5p()
+        d3p = oligo.domain3p()
+        dcurr = d5p
+        s = d5p._name
+        dcurr = dcurr.connection3p()
+        while(dcurr!=None):
+            s = s +"_"+dcurr._name
+            dcurr = dcurr.connection3p()
+        if d5p.hasToehold():
+            t_list_5 = d5p.toehold5p()._toehold_list
+            for t in t_list_5:
+                s = t._name+"_"+s
+        if d3p.hasToehold():
+            t_list_3 = d3p.toehold3p()._toehold_list
+            for t in t_list_3:
+                s = s+"_"+t._name
+        text1.setText("strand %s on helix %d   " % (s, d5p._vhNum))
+        text2 = QLabel()
+        text2.setText("length: %s" % oligo._length)
+        text3 = QLabel()
+        text3.setText("Complement Strand: (5' to 3')  ")
+        text4 = QLabel()
+        d3p = oligo.domain3p()
+        s = d3p._name
+        dcurr = d3p.connection5p()
+        while(dcurr!=None):
+            s = s + "_"+dcurr._name
+            dcurr = dcurr.connection5p()
+        if d5p.hasToehold():
+            t_list_5 = d5p.toehold5p()._toehold_list
+            for t in t_list_5:
+                s = s+"_"+t._name
+        if d3p.hasToehold():
+            t_list_3 = d3p.toehold3p()._toehold_list
+            for t in t_list_3:
+                s = t._name+"_"+s
+
+        text4.setText("%s" % s)
+        buttonBox =QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+        form = QFormLayout()
+        form.addWidget(text0)
+        form.addWidget(text1)
+        form.addWidget(text2)
+        form.addWidget(text3)
+        form.addWidget(text4)
+        form.addWidget(buttonBox)
+        dockWidgetContents = self.widget()
+        QWidget().setLayout(dockWidgetContents.layout())
+        dockWidgetContents.setLayout(form)
+        self.show()
+
+
+
+
 
 
 

@@ -195,6 +195,7 @@ class Domain(ProxyObject):
     def toeholdList5p(self):
         return self._toehold_list_5p
 
+
     def setOligo(self, new_oligo, emit_signal=True):
         self._oligo = new_oligo
         if emit_signal:
@@ -287,6 +288,9 @@ class Domain(ProxyObject):
         else: # remove a toehold at a prime
             cmd.undo()
             dict[prime] = None
+
+    def hasToehold(self):
+        return (self.toehold3p() is not None) or (self.toehold5p() is not None)
 
     def canCreateToeholdAt(self,prime):
         '''

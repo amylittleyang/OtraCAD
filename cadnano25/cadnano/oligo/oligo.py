@@ -50,6 +50,28 @@ class Oligo(ProxyObject):
             idx = -1
         return "<%s %s>(%s %d[%d])" % (cls_name, olg_id, strand_type, vh_num, idx)
 
+    def hasToehold(self):
+        d3p = self.domain3p()
+        d5p = self.domain5p()
+        return d3p.hasToehold() or d5p.hasToehold()
+
+    def domain5p(self):
+        if self._domain5p is None:
+            self._domain5p = self.strand5p()
+
+        return self._domain5p
+
+    def domain3p(self):
+        if self._domain3p is None:
+            curr0 = curr = self.strand5p()
+            while(curr.connection3p()!= None):
+                curr = curr.connection3p()
+                if curr0 == curr:
+                    break
+            self._domain3p = curr
+        return self._domain3p
+
+
     def shallowCopy(self):
         olg = Oligo(self._part)
         olg._strand5p = self._strand5p

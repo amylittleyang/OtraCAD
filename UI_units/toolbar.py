@@ -20,6 +20,7 @@ class ToolBar(QToolBar):
         self.actionCreate_toehold = mainWindow.actionCreate_toehold
         self.actionResize_toehold = mainWindow.actionResize_toehold
         self.actionRemove_toehold = mainWindow.actionRemove_toehold
+        self.actionRip_off = mainWindow.actionRip_off
 
         self.setupUI() # and connect action to slot
 
@@ -28,6 +29,9 @@ class ToolBar(QToolBar):
         root = QFileInfo(__file__).absolutePath()
         self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
         self.actionOpen.triggered.connect(self.actionOpenTriggeredSlot)
+
+        self.actionRip_off.setIcon(QIcon(root+'/images/rip_off.png'))
+        self.actionRip_off.triggered.connect(self.mainWindow.dockWidget.actionRipOffTriggeredSlot)
 
         self.actionRemove_toehold.setIcon(QIcon(root+'/images/remove_toehold.png'))
         self.actionRemove_toehold.triggered.connect(self.actionRemoveToeholdTriggeredSlot)
@@ -102,4 +106,5 @@ class ToolBar(QToolBar):
         else:
             toehold = t_list[0]._toehold_list[0]
             toehold._domain.removeToehold(toehold)
+
 
