@@ -119,6 +119,8 @@ class Document(ProxyObject):
     # end def
 
     def removeStrandFromSelection(self, strand):
+        self._active_oligo = None
+        self._active_domain = None
         ss = strand.strandSet()
         if ss in self._selection_dict:
             temp = self._selection_dict[ss]

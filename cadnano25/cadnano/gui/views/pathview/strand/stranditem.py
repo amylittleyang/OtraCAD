@@ -98,6 +98,7 @@ class StrandItem(QGraphicsLineItem):
 
         self.setZValue(styles.ZSTRANDITEM)
         self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self.shown_attributes=[]
 
 
 
@@ -148,6 +149,9 @@ class StrandItem(QGraphicsLineItem):
         scene.removeItem(self._click_area)
         self._high_cap.destroy()
         self._low_cap.destroy()
+        self._tick.destroy()
+        self.toeholdCap5p().destroy()
+        self.toeholdCap3p().destroy()
         # scene.removeItem(self._high_cap)
         # scene.removeItem(self._low_cap)
         scene.removeItem(self._seq_label)
@@ -164,6 +168,37 @@ class StrandItem(QGraphicsLineItem):
         self._virtual_helix_item = None
         scene.removeItem(self)
     # end def
+
+    def togglePreviewRipOffSlot(self):
+        if self.isVisible():
+            self.hide()
+            if self.toeholdCap5p().isVisible():
+                self.shown_attributes = [self.toeholdCap5p()]
+                self.toeholdCap5p().hide()
+            if self.toeholdCap3p().isVisible():
+                self.shown_attributes.append(self.toeholdCap3p())
+                self.toeholdCap3p().hide()
+            if self._low_cap.isVisible():
+                self.shown_attributes.append(self._low_cap)
+                self._low_cap.hide()
+            if self._high_cap.isVisible():
+                self.shown_attributes.append(self._high_cap)
+                self._high_cap.hide()
+            if self._tick.isVisible():
+                self.shown_attributes.append(self._tick)
+                self._tick.hide()
+            if self._xover3pEnd and self._xover3pEnd.isVisible():
+                self._xover3pEnd.hide()
+                self.shown_attributes.append(self._xover3pEnd)
+
+
+        else:
+            self.show()
+            for item in self.shown_attributes:
+                item.show()
+            self.shown_attributes=[]
+
+
 
     def strandUpdateSlot(self, strand):
         """

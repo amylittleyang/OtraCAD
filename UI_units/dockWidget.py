@@ -1,6 +1,8 @@
 __author__ = 'jie'
 from PyQt5.QtWidgets import QLabel,QLineEdit,QDockWidget,QWidget,QHBoxLayout,QVBoxLayout,QCheckBox,QDialogButtonBox,QGroupBox,QFormLayout,QMessageBox
 from PyQt5 import QtCore
+import cadnano.util as util
+from cadnano.oligo.removeoligocmd import RemoveOligoCommand
 
 class DockWidget(QDockWidget):
     '''
@@ -224,11 +226,12 @@ class DockWidget(QDockWidget):
         self.hide()
 
     def actionRipOffTriggeredSlot(self):
-        if not self.isHidden():
-            self.hide()
+
+        # check if can apply operation
         if self.doc is None:
             return
         domain = self.doc.activeDomain()
+        self.activeDomain = domain
         if domain is None:
             msg = QMessageBox()
             msg.setText("Must select one strand")
@@ -245,6 +248,12 @@ class DockWidget(QDockWidget):
             msg.setText("Strand does not have overhang toehold")
             msg.exec_()
             return
+        if self.isVisible():
+            self.RipOffRejectedSlot()
+            self.hide()
+            return
+        else:
+            self.show()
         # prepare dock widget for rip off panel
         self.can_update = False # disable createToehold widget update
         self.setWindowTitle("Rip Off Strand")
@@ -259,11 +268,11 @@ class DockWidget(QDockWidget):
         while(dcurr!=None):
             s = s +"_"+dcurr._name
             dcurr = dcurr.connection3p()
-        if d5p.hasToehold():
+        if d5p.toehold5p() is not None:
             t_list_5 = d5p.toehold5p()._toehold_list
             for t in t_list_5:
                 s = t._name+"_"+s
-        if d3p.hasToehold():
+        if d3p.toehold3p() is not None:
             t_list_3 = d3p.toehold3p()._toehold_list
             for t in t_list_3:
                 s = s+"_"+t._name
@@ -279,17 +288,20 @@ class DockWidget(QDockWidget):
         while(dcurr!=None):
             s = s + "_"+dcurr._name
             dcurr = dcurr.connection5p()
-        if d5p.hasToehold():
+        if d5p.toehold5p() is not None:
             t_list_5 = d5p.toehold5p()._toehold_list
             for t in t_list_5:
                 s = s+"_"+t._name
-        if d3p.hasToehold():
+        if d3p.toehold3p() is not None:
             t_list_3 = d3p.toehold3p()._toehold_list
             for t in t_list_3:
                 s = t._name+"_"+s
 
         text4.setText("%s" % s)
         buttonBox =QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+        buttonBox.accepted.connect(self.RipOffAcceptedSlot)
+        buttonBox.rejected.connect(self.RipOffRejectedSlot)
+
         form = QFormLayout()
         form.addWidget(text0)
         form.addWidget(text1)
@@ -301,7 +313,21 @@ class DockWidget(QDockWidget):
         QWidget().setLayout(dockWidgetContents.layout())
         dockWidgetContents.setLayout(form)
         self.show()
+        # create previewRipOffCommand to preview operation
+        domain.oligo().previewRipOff()
 
+    def RipOffAcceptedSlot(self):
+        cmds =[]
+        cmd = RemoveOligoCommand(self.activeDomain.oligo())
+        cmds.append(cmd)
+        d = '%s rip off' % self.activeDomain._name
+        util.execCommandList(self.activeDomain,cmds,d,use_undostack=True)
+        self.hide()
+
+
+    def RipOffRejectedSlot(self):
+        self.hide()
+        self.doc.undoStack().undo()
 
 
 

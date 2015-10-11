@@ -29,9 +29,9 @@ class RemoveAllStrandsCommand(UndoCommand):
             # end for
             s_set._strand_list = []
         #end for
-        for vh in self._vhs:
+        #for vh in self._vhs:
             # for updating the Slice View displayed helices
-            part.partStrandChangedSignal.emit(part, vh)
+            #part.partStrandChangedSignal.emit(part, vh)
         # end for
         self._oligos.clear()
     # end def

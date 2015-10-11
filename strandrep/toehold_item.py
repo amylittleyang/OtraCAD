@@ -232,6 +232,14 @@ class ToeholdItem(QGraphicsPathItem):
             str = str + d._name + " "
         return str
 
+    def destroy(self):
+        scene = self.scene()
+        scene.removeItem(self._click_area)
+        self._click_area = None
+        scene.removeItem(self)
+
+
+
 
 
 

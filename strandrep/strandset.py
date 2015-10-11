@@ -720,9 +720,11 @@ class StrandSet(ProxyObject):
         domain = self._strand_list[idx]
         domain_3p = domain._domain_3p
         domain_5p = domain._domain_5p
-        domain_3p.setDomain5p(domain_5p)
-        domain_5p.setDomain3p(domain_3p)
-        self.removeDomainFromStrandList(self._strand_list,idx)
+        if domain_3p is not None:
+            domain_3p.setDomain5p(domain_5p)
+        if domain_5p is not None:
+            domain_5p.setDomain3p(domain_3p)
+        self.removeDomainFromStrandList(idx)
 
     def removeDomainFromStrandList(self,domain_idx):
         self._strand_list.pop(domain_idx)

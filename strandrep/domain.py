@@ -5,6 +5,8 @@ from strandrep.create_toehold_command import CreateToeholdCommand
 from strandrep.remove_toehold_command import RemoveToeholdCommand
 import cadnano.util as util
 from cadnano.cnproxy import ProxyObject, ProxySignal
+from strandrep.preview_rip_off_command import PreviewRipOffCommand
+
 
 
 class Domain(ProxyObject):
@@ -82,6 +84,7 @@ class Domain(ProxyObject):
         self._endDomain = None
 
  ### Singals
+    togglePreviewRipOffSignal = ProxySignal(name="togglePreviewRipOffSignal") #previewRipOffSlot in strand item, toggle hide/show of strand item
     toeholdremovedSignal = ProxySignal(object,object,name='toeholdRemovedSignal') # toeholdRemovedSlot in strand item
     toeholdAddedSignal = ProxySignal(object,object,name = 'toeholdAddedSignal')   # toeholdAddedSlot in strand item
     strandHasNewOligoSignal = ProxySignal(ProxyObject, name='strandHasNewOligoSignal') # hasNewOligoSlot in abstract strand item
@@ -350,8 +353,6 @@ class Domain(ProxyObject):
         stack=[cmd]
         d = '%s remove toehold' % self._name
         util.execCommandList(self,stack,d,use_undostack=True)
-
-
 
     def undoStack(self):
         return self._strandset.undoStack()

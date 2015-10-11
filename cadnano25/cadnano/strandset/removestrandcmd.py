@@ -41,8 +41,8 @@ class RemoveStrandCommand(UndoCommand):
         strandset = self._strandset
         # strandset._removeFromStrandList(strand)
         doc = strandset._doc
-        doc.removeStrandFromSelection(strand)
-        strandset.removeDomainAt(strand._domain._index)
+        doc.removeStrandFromSelection(strand) ###
+        strandset.removeDomainAt(strand._index) ###
         strand5p = self._old_strand5p
         strand3p = self._old_strand3p
         oligo = self._oligo
@@ -50,7 +50,7 @@ class RemoveStrandCommand(UndoCommand):
         olg3p = self._new_oligo3p
 
         #oligo.incrementLength(-strand.totalLength())
-        oligo.removeFromPart()
+        oligo.removeFromPart()  ###
 
         if strand5p is not None:
             strand5p.setConnection3p(None)
@@ -94,7 +94,7 @@ class RemoveStrandCommand(UndoCommand):
             # strand.strandModsRemovedSignal.emit(strand, self.mids[1], strand.highIdx())
 
         # for updating the Slice View displayed helices
-        strandset.part().partStrandChangedSignal.emit(strandset.part(), strandset.virtualHelix())
+       # strandset.part().partStrandChangedSignal.emit(strandset.part(), strandset.virtualHelix())
     # end def
 
     def undo(self):

@@ -33,6 +33,7 @@ class AbstractStrandItemController(object):
         m_s.toeholdRemovedSignal.connect(s_i.toeholdRemovedSlot)
         m_s.strandSelectedSignal.connect(s_i.strandSelectedSlot)
         m_s.strandRemovedFromSelectionSignal.connect(s_i.strandRemovedFromSelectionSlot)
+        m_s.togglePreviewRipOffSignal.connect(s_i.togglePreviewRipOffSlot)
         # m_s.strandInsertionAddedSignal.connect(s_i.strandInsertionAddedSlot)
         # m_s.strandInsertionChangedSignal.connect(s_i.strandInsertionChangedSlot)
         # m_s.strandInsertionRemovedSignal.connect(s_i.strandInsertionRemovedSlot)
@@ -61,17 +62,23 @@ class AbstractStrandItemController(object):
         m_s.strandHasNewOligoSignal.disconnect(s_i.strandHasNewOligoSlot)
         m_s.strandRemovedSignal.disconnect(s_i.strandRemovedSlot)
 
-        m_s.strandInsertionAddedSignal.disconnect(s_i.strandInsertionAddedSlot)
-        m_s.strandInsertionChangedSignal.disconnect(s_i.strandInsertionChangedSlot)
-        m_s.strandInsertionRemovedSignal.disconnect(s_i.strandInsertionRemovedSlot)
-        m_s.strandModsAddedSignal.disconnect(s_i.strandModsAddedSlot)
-        m_s.strandModsChangedSignal.disconnect(s_i.strandModsChangedSlot)
-        m_s.strandModsRemovedSignal.disconnect(s_i.strandModsRemovedSlot)
-        m_s.strandModifierAddedSignal.disconnect(s_i.strandModifierAddedSlot)
-        m_s.strandModifierChangedSignal.disconnect(s_i.strandModifierChangedSlot)
-        m_s.strandModifierRemovedSignal.disconnect(s_i.strandModifierRemovedSlot)
-        
-        m_s.selectedChangedSignal.disconnect(s_i.selectedChangedSlot)
+        m_s.toeholdAddedSignal.disconnect(s_i.toeholdAddedSlot)
+        m_s.toeholdRemovedSignal.disconnect(s_i.toeholdRemovedSlot)
+        m_s.strandSelectedSignal.disconnect(s_i.strandSelectedSlot)
+        m_s.strandRemovedFromSelectionSignal.disconnect(s_i.strandRemovedFromSelectionSlot)
+        m_s.togglePreviewRipOffSignal.disconnect(s_i.togglePreviewRipOffSlot)
+
+        # m_s.strandInsertionAddedSignal.disconnect(s_i.strandInsertionAddedSlot)
+        # m_s.strandInsertionChangedSignal.disconnect(s_i.strandInsertionChangedSlot)
+        # m_s.strandInsertionRemovedSignal.disconnect(s_i.strandInsertionRemovedSlot)
+        # m_s.strandModsAddedSignal.disconnect(s_i.strandModsAddedSlot)
+        # m_s.strandModsChangedSignal.disconnect(s_i.strandModsChangedSlot)
+        # m_s.strandModsRemovedSignal.disconnect(s_i.strandModsRemovedSlot)
+        # m_s.strandModifierAddedSignal.disconnect(s_i.strandModifierAddedSlot)
+        # m_s.strandModifierChangedSignal.disconnect(s_i.strandModifierChangedSlot)
+        # m_s.strandModifierRemovedSignal.disconnect(s_i.strandModifierRemovedSlot)
+        #
+        # m_s.selectedChangedSignal.disconnect(s_i.selectedChangedSlot)
     # end def
 
     def disconnectOligoSignals(self):

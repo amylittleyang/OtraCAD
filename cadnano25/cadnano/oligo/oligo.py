@@ -11,6 +11,7 @@ from collections import defaultdict
 from .applycolorcmd import ApplyColorCommand
 from .applysequencecmd import ApplySequenceCommand
 from .removeoligocmd import RemoveOligoCommand
+from strandrep.preview_rip_off_command import PreviewRipOffCommand
 
 class Oligo(ProxyObject):
     """
@@ -326,5 +327,10 @@ class Oligo(ProxyObject):
         # end else
     # end def
 
+    def previewRipOff(self):
+        cmd = PreviewRipOffCommand(self)
+        stack=[cmd]
+        d = 'preview %s rip off' % self.domain5p()._name
+        util.execCommandList(self,stack,d,use_undostack=True)
 # end class
     
