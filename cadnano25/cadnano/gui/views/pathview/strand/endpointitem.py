@@ -74,7 +74,7 @@ class EndpointItem(QGraphicsPathItem):
 
     def __init__(self, strand_item, cap_type, is_drawn5to3):
         """The parent should be a StrandItem."""
-        super(EndpointItem, self).__init__(strand_item.virtualHelixItem())
+        super(EndpointItem, self).__init__(strand_item)
 
         self._strand_item = strand_item
 #        self._getActiveTool = strand_item._getActiveTool

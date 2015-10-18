@@ -17,7 +17,6 @@ class CreateToeholdCommand(UndoCommand):
         self._oligo = domain.oligo()
         self._insert_index = None
         self._prime = end
-        self._toehold = None
         if end == 3:
             self._insert_index = domain.idx3Prime
         else:
@@ -28,7 +27,6 @@ class CreateToeholdCommand(UndoCommand):
         # add model toehold to toehold list;
         # create toehold item and show item on render view;
         toehold = Toehold(TOEHOLD_LENGTH,self._domain,self._prime) # model toehold
-        self._toehold = toehold
         toeholdList = ToeholdList(self._domain,toehold)
         if self._prime == 3:
             self._domain.setToehold3p(toeholdList)

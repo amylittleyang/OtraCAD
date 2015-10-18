@@ -37,6 +37,11 @@ class StrandItem(QGraphicsLineItem):
         self._model_strand = model_strand
         self._virtual_helix_item = virtual_helix_item
         self._viewroot = viewroot
+        self._selected = model_strand.oligo()._selected
+        if self._selected:
+            self.strandSelectedSlot()
+        else:
+            self.strandRemovedFromSelectionSlot()
 
         self._controller = StrandItemController(self, model_strand)
         is_drawn_5to3 = model_strand.strandSet().isDrawn5to3()
@@ -99,6 +104,11 @@ class StrandItem(QGraphicsLineItem):
         self.setZValue(styles.ZSTRANDITEM)
         self.setFlag(QGraphicsItem.ItemIsSelectable)
         self.shown_attributes=[]
+        if model_strand.hasToehold():
+            for t_list in model_strand.toeholds():
+                toehold = t_list._toehold_list[0]
+                self.toeholdAddedSlot(toehold,toehold._prime)
+
 
 
 
@@ -150,8 +160,14 @@ class StrandItem(QGraphicsLineItem):
         self._high_cap.destroy()
         self._low_cap.destroy()
         self._tick.destroy()
-        self.toeholdCap5p().destroy()
-        self.toeholdCap3p().destroy()
+        self._toehold_cap_3p.destroy()
+        self._toehold_cap_5p.destroy()
+        if self._toehold_item_3p:
+            self._toehold_item_3p.destroy()
+        if self._toehold_item_5p:
+            self._toehold_item_5p.destroy()
+        #self.toeholdCap5p().destroy()
+        #self.toeholdCap3p().destroy()
         # scene.removeItem(self._high_cap)
         # scene.removeItem(self._low_cap)
         scene.removeItem(self._seq_label)
@@ -166,6 +182,11 @@ class StrandItem(QGraphicsLineItem):
         self._seq_label = None
         self._model_strand = None
         self._virtual_helix_item = None
+        self._toehold_cap_3p = None
+        self._toehold_cap_5p = None
+        self._toehold_item_3p = None
+        self._toehold_item_5p = None
+        self._tick = None
         scene.removeItem(self)
     # end def
 
@@ -318,14 +339,16 @@ class StrandItem(QGraphicsLineItem):
     def toeholdRemovedSlot(self,toeholdList,prime):
          # hide toehold items
         if prime == 3:
-            self._toehold_item_3p.deleteItem(toeholdList)
+            self._toehold_item_3p.destroy()
+            self._toehold_item_3p = None
             if self._is_drawn_5to3:
                  self._high_cap.show()
             else:
                  self._low_cap.show()
             self._toehold_cap_3p.hide()
         if prime == 5:
-            self._toehold_item_5p.deleteItem(toeholdList)
+            self._toehold_item_5p.destroy()
+            self._toehold_item_5p = None
             if self._is_drawn_5to3:
                 self._low_cap.show()
             else:

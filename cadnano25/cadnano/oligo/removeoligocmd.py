@@ -2,6 +2,11 @@ from cadnano.cnproxy import UndoCommand
 
 class RemoveOligoCommand(UndoCommand):
     def __init__(self,oligo):
+        '''
+        Model strand was never removed; just destroy and re-create view objects
+        :param oligo:
+        :return:
+        '''
         super(RemoveOligoCommand, self).__init__("remove oligo")
         self._oligo = oligo
         self._part = oligo.part()
@@ -12,7 +17,7 @@ class RemoveOligoCommand(UndoCommand):
     def redo(self):
         s_i_list = self._strand_idx_list
         o = self._oligo
-        s5p = o.strand5p()
+        s5p = o.domain5p()
         part = self._part
 
         for strand in list(s5p.generator3pStrand()):
@@ -53,5 +58,7 @@ class RemoveOligoCommand(UndoCommand):
         # add Oligo to part but don't set parent to None?
         # o.addToPart(part)
         part.addOligo(o)
+
+
     # end def
 # end class

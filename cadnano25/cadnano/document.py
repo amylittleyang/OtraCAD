@@ -119,7 +119,7 @@ class Document(ProxyObject):
     # end def
 
     def removeStrandFromSelection(self, strand):
-        self._active_oligo = None
+        self.setActiveOligo(None)
         self._active_domain = None
         ss = strand.strandSet()
         if ss in self._selection_dict:
@@ -506,6 +506,11 @@ class Document(ProxyObject):
         self.documentActiveDomainAddedSignal.emit(domain)
 
     def setActiveOligo(self,oligo):
+        if oligo == None:
+            if self._active_oligo is not None:
+                self._active_oligo.setSelected(False)
+            self._active_oligo = None
+            return
         if self._active_oligo == oligo:
             self._active_oligo = None
             oligo.setSelected(False)

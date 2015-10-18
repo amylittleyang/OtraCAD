@@ -51,6 +51,9 @@ class Oligo(ProxyObject):
             idx = -1
         return "<%s %s>(%s %d[%d])" % (cls_name, olg_id, strand_type, vh_num, idx)
 
+    def setSelected(self,bool):
+        self._selected = bool
+
     def hasToehold(self):
         d3p = self.domain3p()
         d5p = self.domain5p()

@@ -292,8 +292,23 @@ class Domain(ProxyObject):
             cmd.undo()
             dict[prime] = None
 
+    def createToehold(self,toehold,use_undostack = True):
+        # put removed toeholds back, no need to check if_can_create_toehold
+        cmd = CreateToeholdCommand(self._vh,toehold._domain,toehold._prime)
+        list = [cmd]
+        d = "createToehold %s at %s".format(toehold._name,toehold._domain._name)
+        util.execCommandList(self,list,d,use_undostack=use_undostack)
+
     def hasToehold(self):
         return (self.toehold3p() is not None) or (self.toehold5p() is not None)
+
+    def toeholds(self):
+        t = []
+        if self.toehold3p():
+            t.append(self.toehold3p())
+        if self.toehold5p():
+            t.append(self.toehold5p())
+        return t
 
     def canCreateToeholdAt(self,prime):
         '''
@@ -348,11 +363,11 @@ class Domain(ProxyObject):
                 cmd.undo()
                 dict[prime] = None
 
-    def removeToehold(self,toehold):
+    def removeToehold(self,toehold,use_undostack=True):
         cmd = RemoveToeholdCommand(self,toehold)
         stack=[cmd]
         d = '%s remove toehold' % self._name
-        util.execCommandList(self,stack,d,use_undostack=True)
+        util.execCommandList(self,stack,d,use_undostack=use_undostack)
 
     def undoStack(self):
         return self._strandset.undoStack()

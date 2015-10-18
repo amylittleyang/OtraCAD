@@ -111,6 +111,8 @@ def decode(document,obj):
             if is3primeXover(StrandType.SCAFFOLD, vh_num, i, three_vh, three_idx):
                 scaf_xo[vh_num].append((i, three_vh, three_idx))
             # read staple segments and xovers; update stap .json
+                #TODO: Reem, you need to look here because this is where Amy added in the 5th element
+                #TODO: Reem, you might need to modify this to render existing toeholds in otracad .json files
         for i in range(len(stap)):
                 five_vh, five_idx, three_vh, three_idx = stap[i]
                 '''
@@ -146,6 +148,7 @@ def decode(document,obj):
 
         new_scaf_seg = []
         # install scaffold segments
+        #TODO: Reem, whenever you see install, this is adding/rendering objects
         for i in range(0, len(scaf_seg[vh_num]), 2):
             low_idx = scaf_seg[vh_num][i]
             high_idx = scaf_seg[vh_num][i + 1]

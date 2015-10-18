@@ -317,6 +317,7 @@ class DockWidget(QDockWidget):
         domain.oligo().previewRipOff()
 
     def RipOffAcceptedSlot(self):
+        self.doc.undoStack().undo() # undo preview_rip_off_command before applying rip_off_command
         cmds =[]
         cmd = RemoveOligoCommand(self.activeDomain.oligo())
         cmds.append(cmd)
