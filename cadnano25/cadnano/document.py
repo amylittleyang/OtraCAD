@@ -495,7 +495,6 @@ class Document(ProxyObject):
         if self._selected_part == newPart:
             return
         self._selected_part = newPart
-    # end def
 
     def activeDomain(self):
         return self._active_domain

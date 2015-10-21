@@ -104,10 +104,7 @@ class StrandItem(QGraphicsLineItem):
         self.setZValue(styles.ZSTRANDITEM)
         self.setFlag(QGraphicsItem.ItemIsSelectable)
         self.shown_attributes=[]
-        if model_strand.hasToehold():
-            for t_list in model_strand.toeholds():
-                toehold = t_list._toehold_list[0]
-                self.toeholdAddedSlot(toehold,toehold._prime)
+        self.refresh_toehold()
 
 
 
@@ -119,6 +116,12 @@ class StrandItem(QGraphicsLineItem):
 
     def toeholdCap5p(self):
         return self._toehold_cap_5p
+
+    def refresh_toehold(self):
+        if self._model_strand.hasToehold():
+            for t_list in self._model_strand.toeholds():
+                toehold = t_list._toehold_list[0]
+                self.toeholdAddedSlot(toehold,toehold._prime)
 
 
 
@@ -319,8 +322,8 @@ class StrandItem(QGraphicsLineItem):
         # create toehold item after model toehold is added to domain
 
         if prime == 3:
-
-            self._toehold_item_3p = ToeholdItem(toehold,self,prime)
+            if not self._toehold_item_3p:
+                self._toehold_item_3p = ToeholdItem(toehold,self,prime)
             if self._is_drawn_5to3:
                 self._high_cap.hide()
             else:
@@ -328,8 +331,8 @@ class StrandItem(QGraphicsLineItem):
             self._toehold_cap_3p.show()
 
         if prime == 5:
-
-            self._toehold_item_5p = ToeholdItem(toehold,self,prime)
+            if not self._toehold_item_5p:
+                self._toehold_item_5p = ToeholdItem(toehold,self,prime)
             if self._is_drawn_5to3:
                 self._low_cap.hide()
             else:
@@ -572,6 +575,10 @@ class StrandItem(QGraphicsLineItem):
         self._click_area.setRect(rectf)
         self._updateHighlight(self.pen().color())
         self._updateColor(strand)
+
+        # 5. Refresh toehold
+        self.refresh_toehold()
+
     # end def
 
     def _updateColor(self, strand):

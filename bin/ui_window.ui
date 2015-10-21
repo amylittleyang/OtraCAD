@@ -73,6 +73,7 @@
    <addaction name="actionRemove_toehold"/>
    <addaction name="separator"/>
    <addaction name="actionRip_off"/>
+   <addaction name="actionMerge_domain"/>
   </widget>
   <action name="actionRecent_File">
    <property name="text">
@@ -238,6 +239,11 @@
    </property>
    <property name="toolTip">
     <string>rip off strand</string>
+   </property>
+  </action>
+  <action name="actionMerge_domain">
+   <property name="text">
+    <string>merge_domain</string>
    </property>
   </action>
  </widget>

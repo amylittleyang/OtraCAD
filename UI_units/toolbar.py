@@ -17,6 +17,7 @@ class ToolBar(QToolBar):
         # get actions from mainWindow parsed from .ui file
         self.actionOpen = mainWindow.actionOpen
         self.actionSave = mainWindow.actionSave
+        self.actionMerge_domain = mainWindow.actionMerge_domain
         self.actionCreate_toehold = mainWindow.actionCreate_toehold
         self.actionResize_toehold = mainWindow.actionResize_toehold
         self.actionRemove_toehold = mainWindow.actionRemove_toehold
@@ -27,6 +28,10 @@ class ToolBar(QToolBar):
     def setupUI(self):
         # set icon for actions
         root = QFileInfo(__file__).absolutePath()
+
+        self.actionMerge_domain.setIcon(QIcon(root+'/images/merge.png'))
+        self.actionMerge_domain.triggered.connect(self.actionMerge_domainTriggeredSlot)
+
         self.actionOpen.setIcon(QIcon(root+'/images/Live Mail.ico'))
         self.actionOpen.triggered.connect(self.actionOpenTriggeredSlot)
 
@@ -107,4 +112,22 @@ class ToolBar(QToolBar):
             toehold = t_list[0]._toehold_list[0]
             toehold._domain.removeToehold(toehold)
 
+    def actionMerge_domainTriggeredSlot(self):
+        if self.doc is None:
+            msg = QMessageBox()
+            msg.setText("No files imported.")
+            msg.exec_()
+            return
+        d_list = self.doc._selected_domain
+        if len(d_list) is not 2:
+            msg = QMessageBox()
+            msg.setText("Select two domains.")
+            msg.exec_()
+            return
+        # doc is not None, only two domains selected
+        one = d_list[0]
+        print(one._name)
+        two = d_list[1]
+        one.merge_with(two)
+        self.doc._selected_domain = []
 

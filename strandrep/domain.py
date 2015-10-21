@@ -5,7 +5,6 @@ from strandrep.create_toehold_command import CreateToeholdCommand
 from strandrep.remove_toehold_command import RemoveToeholdCommand
 import cadnano.util as util
 from cadnano.cnproxy import ProxyObject, ProxySignal
-from strandrep.preview_rip_off_command import PreviewRipOffCommand
 
 
 
@@ -371,3 +370,57 @@ class Domain(ProxyObject):
 
     def undoStack(self):
         return self._strandset.undoStack()
+
+    def merge_with(self,domain):
+        '''
+        method to merge self with another domain;
+        Need to: adjust index; rm second domain; rm tick mark (emit signal to notify strand_item
+        after model is changed); inherit connections, toeholds,domain3p/5p from second domain;
+        '''
+        # adjust indices & domain_3p/5p reference
+        if self._low_idx > domain._low_idx:
+            self._low_idx = domain._low_idx
+            if self._is_drawn_5_to_3:
+                self._domain_5p = domain._domain_5p
+                if self._domain_5p:
+                    self._domain_5p._domain_3p = self
+            else:
+                self._domain_3p = domain._domain_3p
+                if self._domain_3p:
+                    self._domain_3p._domain_5p = self
+        else:
+            self._high_idx = domain._high_idx
+            if self._is_drawn_5_to_3:
+                self._domain_3p = domain._domain_3p
+                if self._domain_3p:
+                    self._domain_3p._domain_5p = self
+            else:
+                self._domain_5p = domain._domain_5p
+                if self._domain_5p:
+                    self._domain_5p._domain_3p = self
+        # length
+        self._length = self.length() + domain.length()
+        # domain name
+        self._name = self._name+"_"+ domain._name
+        # toehold and connection
+        if domain.connection3p() and domain.connection3p() != self:
+            self.setConnection3p(domain.connection3p())
+            self.setIs3pConnectionXover(domain.is3pConnectionXover())
+        if domain.connection5p() and domain.connection5p() != self:
+            self.setConnection5p(domain.connection5p())
+            self.setIs5pConnectionXover(domain.is5pConnectionXover())
+        if not domain.connection3p():
+            self.setConnection3p(None)
+        if not domain.connection5p():
+            self.setConnection5p(None)
+        if domain.toehold3p():
+            self.setToehold3p(domain.toehold3p())
+        if domain.toehold5p():
+            self.setToehold5p(domain.toehold5p())
+
+        #destroy second strand, refresh oligo
+        domain.strandRemovedSignal.emit(domain)
+        self.strandUpdateSignal.emit(self)
+
+
+
