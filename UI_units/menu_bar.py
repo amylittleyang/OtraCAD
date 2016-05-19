@@ -1,5 +1,5 @@
 __author__ = 'jie'
-from PyQt5.QtWidgets import QMenuBar
+from PyQt5.QtWidgets import QMenuBar, QAction
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QFileInfo
 class MenuBar(QMenuBar):

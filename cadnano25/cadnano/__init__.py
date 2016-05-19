@@ -1,5 +1,11 @@
 __author__ = 'jie'
 
+import sys
+import os
+LOCAL_DIR = os.path.dirname(os.path.realpath(__file__)) 
+PROJECT_DIR = os.path.dirname(LOCAL_DIR)
+sys.path.append(PROJECT_DIR)
+sys.path.insert(0, '.')
 from cadnano.cnproxy import tapp
 
 
@@ -7,7 +13,6 @@ global shared_app
 shared_app = tapp
 
 global batch
-batch = False
 global reopen
 reopen = False
 

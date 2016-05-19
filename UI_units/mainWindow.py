@@ -1,12 +1,13 @@
 __author__ = 'jie'
+import os
 from PyQt5 import uic
-from cadnano.gui.views.pathview.pathrootitem import PathRootItem
+from cadnano25.cadnano.gui.views.pathview.pathrootitem import PathRootItem
 from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QGraphicsScene,QVBoxLayout
-from PyQt5.QtWidgets import QMainWindow,QWidget
+from PyQt5.QtWidgets import QMainWindow,QAction
 from PyQt5.QtWidgets import QGraphicsItem
-from cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
+from cadnano25.cadnano.gui.views.customqgraphicsview import CustomQGraphicsView
 from PyQt5 import QtWidgets,QtCore,QtGui
 from UI_units.toolbar import ToolBar
 from UI_units.dockWidget import DockWidget
@@ -18,20 +19,31 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         # read .ui file from QtDesigner
-        uic.loadUi('ui_window.ui', self)
+        __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+        f = open(os.path.join(__location__, 'ui_window.ui'));
+        uic.loadUi(f, self)
         self.doc = None
         self.setupUI()
 
     def setupUI(self):
+        # actions
+        root = QFileInfo(__file__).absolutePath()
+        # self.actionUndo = QAction(QIcon(root+'/images/Undo-icon.png'),"undo",self)
+        # self.actionMerge_domain = QAction(self)
+        # self.actionCreate_toehold = QAction(self)
+        # self.actionResize_toehold = QAction(self)
+        # self.actionRemove_toehold = QAction(self)
+
         # connect menuBar, toolBar, dockWidget to self(mainWindow)
         self.dockWidget = DockWidget(self)
         self.menuBar = MenuBar(self)
         self.toolBar = ToolBar(self)
         self.addDockWidget(QtCore.Qt.RightDockWidgetArea,self.dockWidget)
 
+
         # main window setup
         root = QFileInfo(__file__).absolutePath()
-        self.setWindowTitle('AnimDNA')
+        self.setWindowTitle('OtraCAD')
         self.setWindowIcon((QIcon(root+'/images/bug.png')))
         # splitter allows user control the size of child widgets by dragging the boundary between the children
         self.main_splitter = QtWidgets.QSplitter(self.centralwidget)
@@ -39,6 +51,9 @@ class MainWindow(QMainWindow):
         # renderView is where .json file is rendered in the window;
         # CustomQGraphicsView extends QGraphicsView, allow zooming in/out and drag by using "command+click"
         self.renderView = CustomQGraphicsView(self.path_splitter)
+
+
+
 
         # size polices
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)

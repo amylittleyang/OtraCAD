@@ -76,8 +76,8 @@ class DummySignal(object):
 # end class
 
 
-from cadnano import undostack
-from cadnano import undocommand
+from cadnano25.cadnano import undostack
+from cadnano25.cadnano import undocommand
 
 ProxySignal = DummySignal
 ProxyObject = CNObject

@@ -1,6 +1,6 @@
 __author__ = 'jie'
 
-from cadnano.cnproxy import tapp
+from cadnano25.cadnano.cnproxy import tapp
 
 
 global shared_app
